@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/fonts/dynamic_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/gradients/silver.tres" type="Gradient" id=2]
+[ext_resource path="res://src/prefabs/Textbar.tscn" type="PackedScene" id=3]
+
+[sub_resource type="GradientTexture" id=1]
+gradient = ExtResource( 2 )
+
+[node name="Login" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="Sprite" type="Sprite" parent="Background"]
+position = Vector2( 291.356, 516.451 )
+rotation = -1.5708
+scale = Vector2( 0.523641, 626.521 )
+texture = SubResource( 1 )
+
+[node name="TextBar" parent="." instance=ExtResource( 3 )]
+margin_left = 185.0
+margin_top = 487.0
+margin_right = -16.0
+margin_bottom = 552.0
+
+[node name="Tip" parent="TextBar" index="0"]
+text = "Username"
+
+[node name="Label" type="Label" parent="."]
+margin_left = 17.0
+margin_top = 515.0
+margin_right = 190.0
+margin_bottom = 554.0
+custom_fonts/font = ExtResource( 1 )
+text = "Username"
+
+[node name="TextBar2" parent="." instance=ExtResource( 3 )]
+margin_left = 187.0
+margin_top = 567.0
+margin_right = -14.0
+margin_bottom = 632.0
+
+[node name="Tip" parent="TextBar2" index="0"]
+text = "Password"
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 19.0
+margin_top = 595.0
+margin_right = 192.0
+margin_bottom = 634.0
+custom_fonts/font = ExtResource( 1 )
+text = "Password"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[editable path="TextBar"]
+[editable path="TextBar2"]

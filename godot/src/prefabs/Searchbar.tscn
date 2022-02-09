@@ -1,0 +1,101 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/fonts/dynamic_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/prefabs/search_bar.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/arial_narrow_7.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="DynamicFont" id=8]
+size = 42
+use_filter = true
+font_data = ExtResource( 3 )
+
+[node name="TextBar" type="Control"]
+anchor_right = 1.0
+margin_bottom = 65.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tip" type="Label" parent="."]
+anchor_left = 0.14
+anchor_top = 0.125
+anchor_right = 0.869
+anchor_bottom = 0.125
+margin_left = -17.64
+margin_top = -0.125
+margin_right = -17.961
+margin_bottom = 47.875
+custom_colors/font_color = Color( 1, 1, 1, 0.482353 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = SubResource( 6 )
+text = "Search.."
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Type" type="LineEdit" parent="."]
+anchor_left = 0.099
+anchor_top = 0.109
+anchor_right = 0.85
+anchor_bottom = 0.109
+margin_left = -0.0240021
+margin_top = -0.0850005
+margin_right = -0.222992
+margin_bottom = 50.915
+custom_colors/selection_color = Color( 1, 1, 1, 0.631373 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/minimum_spaces = 0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/normal = SubResource( 4 )
+max_length = 18
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.034
+anchor_right = 0.966
+margin_left = -0.0840015
+margin_top = 61.0
+margin_right = 0.0839844
+margin_bottom = 65.0
+rect_min_size = Vector2( 0, 4 )
+custom_styles/panel = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 0.872
+anchor_top = 0.215
+anchor_right = 0.872
+anchor_bottom = 0.215
+margin_left = -11.272
+margin_top = 0.0249996
+margin_right = 54.728
+margin_bottom = 45.025
+custom_fonts/font = SubResource( 8 )
+text = "X"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="focus_entered" from="Type" to="." method="_on_Type_focus_entered"]
+[connection signal="text_changed" from="Type" to="." method="_on_Type_text_changed"]
