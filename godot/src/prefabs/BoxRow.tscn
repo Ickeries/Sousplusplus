@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/fonts/box_row_title_font.tres" type="DynamicFont" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.160784, 0.160784, 0.160784, 1 )
+border_color = Color( 0.137255, 0.337255, 0.615686, 1 )
+
+[node name="BoxRow" type="Control"]
+margin_right = 576.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 576, 200 )
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 19.0
+margin_top = 20.0
+margin_right = 203.0
+margin_bottom = 50.0
+custom_fonts/font = ExtResource( 1 )
+text = "Delicious Pies"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Label"]
+visible = false
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -12.0
+margin_top = -10.0
+margin_right = 12.0
+margin_bottom = 6.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -47,8 +47,7 @@ func _on_Scroll_gui_input(event):
 
 
 func _on_Items_resized():
-	$Scrollbar.value = -to_position.y
-	$Scrollbar.page = rect_size.y
+	pass
 
 
 func _on_ScrollTimer_timeout():

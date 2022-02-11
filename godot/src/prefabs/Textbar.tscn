@@ -16,9 +16,10 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="TextBar" type="Control"]
-anchor_right = 1.0
+[node name="Textbar" type="Control"]
+margin_right = 576.0
 margin_bottom = 65.0
+rect_min_size = Vector2( 128, 0 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -42,21 +43,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Type" type="LineEdit" parent="."]
-anchor_left = 0.127
+[node name="Line" type="LineEdit" parent="."]
+anchor_left = 0.099
 anchor_top = 0.109
-anchor_right = 0.878
+anchor_right = 0.85
 anchor_bottom = 0.109
-margin_left = -16.152
+margin_left = -0.0240021
 margin_top = -0.0850005
-margin_right = -16.351
+margin_right = -0.222992
 margin_bottom = 50.915
 custom_colors/selection_color = Color( 1, 1, 1, 0.631373 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_constants/minimum_spaces = 0
 custom_fonts/font = ExtResource( 1 )
+custom_styles/read_only = SubResource( 5 )
 custom_styles/focus = SubResource( 5 )
 custom_styles/normal = SubResource( 4 )
+max_length = 18
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -74,5 +77,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="focus_entered" from="Type" to="." method="_on_Type_focus_entered"]
-[connection signal="text_changed" from="Type" to="." method="_on_Type_text_changed"]
+[connection signal="focus_entered" from="Line" to="." method="_on_Line_focus_entered"]
+[connection signal="text_changed" from="Line" to="." method="_on_Line_text_changed"]

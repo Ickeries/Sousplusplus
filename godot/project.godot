@@ -11,8 +11,13 @@ config_version=4
 [application]
 
 config/name="Sousplusplus"
-run/main_scene="res://src/scenes/HomePage.tscn"
+run/main_scene="res://src/scenes/Main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://src/autoloads/global.gd"
+Pipeline="*res://src/autoloads/Pipeline.tscn"
 
 [display]
 
