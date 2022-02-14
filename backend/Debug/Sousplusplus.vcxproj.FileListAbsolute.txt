@@ -1,1 +1,2 @@
 C:\Users\david\Desktop\Github\Sousplusplus\backend\Debug\Sousplusplus.exe
+C:\Users\david\Documents\GitHub\Sousplusplus\backend\Debug\Sousplusplus.exe

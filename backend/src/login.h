@@ -5,8 +5,9 @@ File: login.h
 Description: Authenticates login information
 */
 
-#include <nlohmann/json.hpp>
 #include <fstream>
+
+#include "json.hpp"
 
 using namespace std;
 using json = nlohmann::json;
