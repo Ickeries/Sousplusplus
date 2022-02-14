@@ -32,13 +32,13 @@ visible = false
 visible = false
 
 [node name="User" type="Button" parent="."]
-margin_left = 209.0
+margin_left = 195.0
 margin_top = 872.0
-margin_right = 340.0
+margin_right = 372.0
 margin_bottom = 1007.0
 custom_fonts/font = ExtResource( 5 )
 custom_styles/normal = SubResource( 2 )
-text = "User"
+text = "My Kitchen"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -50,7 +50,7 @@ margin_right = 174.0
 margin_bottom = 1007.0
 custom_fonts/font = ExtResource( 5 )
 custom_styles/normal = SubResource( 2 )
-text = "Home"
+text = "Explore"
 __meta__ = {
 "_edit_use_anchors_": false
 }
