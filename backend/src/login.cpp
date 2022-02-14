@@ -7,7 +7,10 @@ Description: Authenticates login information, retrieves current user information
 
 Login::Login()
 {
-	
+	// Saves contents of users file into json
+	ifstream file(users_path);
+	file >> users_json;
+	file.close();
 }
 
 Login::~Login()
@@ -16,25 +19,21 @@ Login::~Login()
 }
 
 
-// Check /database/users/login.txt to see if contains the necessary login information
+// Authenticates login information
 bool Login::authenticate_login_information(string username, string password)
 {
-	// Opens the users json file and places it into built in json class
-	ifstream file("../database/users/users.txt");
-	json j;
-	file >> j;
-
 	// Loop through array of users and compare usernames and passwords. Return true if match is found.
-	int size = j["sheets"][0]["lines"].size();
+	int size = users_json["sheets"][0]["lines"].size();
 	for (int i = 0; i < size; i++)
 	{
+		auto user = users_json["sheets"][0]["lines"][i];
 		bool verified_username = false;
 		bool verified_password = false;
-		if (j["sheets"][0]["lines"][i]["name"] == username)
+		if (user["name"] == username)
 		{
 			verified_username = true;
 		}
-		if (j["sheets"][0]["lines"][i]["password"] == password)
+		if (user["password"] == password)
 		{
 			verified_password = true;
 		}

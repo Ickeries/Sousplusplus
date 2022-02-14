@@ -6,9 +6,7 @@ Description: Authenticates login information
 */
 
 #include <nlohmann/json.hpp>
-#include <iostream>
 #include <fstream>
-
 
 using namespace std;
 using json = nlohmann::json;
@@ -20,5 +18,7 @@ public:
 	
 	bool authenticate_login_information(string username, string password);
 	bool create_new_account(string username, string password);
-	
+private:
+	string users_path = "../database/users/users.txt";
+	json users_json;
 };
