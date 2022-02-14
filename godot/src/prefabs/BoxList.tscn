@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/fonts/box_row_title_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/prefabs/boxes/box_list/box_list.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+
+[node name="BoxList" type="Control"]
+margin_right = 576.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 576, 200 )
+mouse_filter = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header" type="Control" parent="."]
+margin_right = 577.0
+margin_bottom = 46.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Header"]
+margin_left = 5.0
+margin_top = 4.0
+margin_right = 207.0
+margin_bottom = 50.0
+mouse_filter = 1
+custom_fonts/font = ExtResource( 1 )
+custom_styles/focus = SubResource( 1 )
+text = "Delicious Pies"
+flat = true
+
+[node name="Body" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 48.0
+margin_bottom = -8.0
+rect_clip_content = true
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Vertical" type="HBoxContainer" parent="Body"]
+margin_right = 588.0
+margin_bottom = 144.0
+mouse_filter = 2
+
+[connection signal="gui_input" from="." to="." method="_on_BoxList_gui_input"]

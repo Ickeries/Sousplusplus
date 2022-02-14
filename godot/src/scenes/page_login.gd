@@ -7,7 +7,6 @@ func _on_Login_pressed():
 
 
 func _on_CreateAccount_pressed():
-	$Animator.play("to_create_account")
 	$Inputs/Username.clear()
 	$Inputs/Password.clear()
 	$Inputs/ConfirmPassword.clear()

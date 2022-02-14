@@ -1,15 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/fonts/dynamic_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/scenes/page_login.gd" type="Script" id=2]
 [ext_resource path="res://src/prefabs/Textbar.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/fonts/box_row_title_font.tres" type="DynamicFont" id=4]
 
-[sub_resource type="Gradient" id=13]
-colors = PoolColorArray( 0, 0, 0, 1, 0.294118, 0.294118, 0.294118, 1 )
-
-[sub_resource type="GradientTexture" id=7]
-gradient = SubResource( 13 )
+[sub_resource type="Theme" id=10]
 
 [sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
@@ -33,363 +28,6 @@ expand_margin_right = 16.0
 expand_margin_top = 6.0
 expand_margin_bottom = 6.0
 
-[sub_resource type="Animation" id=10]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Inputs/Username:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 134, 309 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Inputs/Password:rect_position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 133, 432 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Inputs/ConfirmPassword:rect_position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 133, 494 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Inputs/ConfirmPassword:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Inputs/ConfirmPassword/Line:editable")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("Buttons/Login:rect_position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 230, 665 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("Buttons/CreateAccount:rect_position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 100, 745 ) ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("Buttons/BackToLogin:rect_position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -444, 744 ) ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("Buttons/ConfirmAccount:rect_position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -444, 679 ) ]
-}
-
-[sub_resource type="Animation" id=12]
-resource_name = "to_create_account"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Inputs/Username:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 99, 309 ), Vector2( 100, 241 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Inputs/Password:rect_position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 98, 432 ), Vector2( 99, 364 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Inputs/ConfirmPassword:rect_position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 98, 538 ), Vector2( 99, 494 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Inputs/ConfirmPassword:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Inputs/ConfirmPassword/Line:editable")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("Animator:playback_speed")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 4.0 ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("Buttons/Login:rect_position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 230, 665 ), Vector2( 763, 665 ) ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("Buttons/CreateAccount:rect_position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 100, 745 ), Vector2( 633, 745 ) ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("Buttons/BackToLogin:rect_position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( -444, 744 ), Vector2( 101, 744 ) ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("Buttons/ConfirmAccount:rect_position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( -444, 679 ), Vector2( 101, 679 ) ]
-}
-
-[sub_resource type="Animation" id=11]
-resource_name = "to_login"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Inputs/Username:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 98, 241 ), Vector2( 98, 309 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Inputs/Password:rect_position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 97, 364 ), Vector2( 97, 432 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Inputs/ConfirmPassword:rect_position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 107, 498 ), Vector2( 106, 538 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Inputs/ConfirmPassword:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Inputs/ConfirmPassword/Line:editable")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("Animator:playback_speed")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 4.0 ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("Buttons/Login:rect_position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 775, 665 ), Vector2( 230, 665 ) ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("Buttons/CreateAccount:rect_position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 645, 745 ), Vector2( 100, 745 ) ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("Buttons/BackToLogin:rect_position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 101, 744 ), Vector2( -444, 744 ) ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("Buttons/ConfirmAccount:rect_position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 101, 679 ), Vector2( -444, 679 ) ]
-}
-
 [node name="Login" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -398,105 +36,47 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Background" type="CanvasLayer" parent="."]
-layer = -100
-
-[node name="Sprite" type="Sprite" parent="Background"]
-position = Vector2( 291.233, 504.293 )
-rotation = -1.5708
-scale = Vector2( 0.520954, 606.033 )
-texture = SubResource( 7 )
+[node name="Sprite" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = SubResource( 10 )
+color = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
 __meta__ = {
+"_edit_lock_": true,
 "_editor_description_": ""
 }
 
-[node name="Buttons" type="Node2D" parent="."]
-position = Vector2( 0, -66 )
-
-[node name="Login" type="Button" parent="Buttons"]
-margin_left = 230.0
-margin_top = 665.0
-margin_right = 322.0
-margin_bottom = 704.0
-custom_fonts/font = ExtResource( 1 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/focus = SubResource( 8 )
-custom_styles/normal = SubResource( 8 )
-text = "Login"
+[node name="Inputs" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="CreateAccount" type="Button" parent="Buttons"]
-margin_left = 100.0
-margin_top = 745.0
-margin_right = 455.0
-margin_bottom = 784.0
-custom_fonts/font = ExtResource( 1 )
-custom_styles/normal = SubResource( 8 )
-text = "Create Account"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ConfirmAccount" type="Button" parent="Buttons"]
-margin_left = -444.0
-margin_top = 679.0
-margin_right = -69.0
-margin_bottom = 718.0
-custom_fonts/font = ExtResource( 1 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/focus = SubResource( 8 )
-custom_styles/normal = SubResource( 8 )
-text = "Confirm New Account"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="BackToLogin" type="Button" parent="Buttons"]
-margin_left = -444.0
-margin_top = 744.0
-margin_right = -69.0
-margin_bottom = 783.0
-custom_fonts/font = ExtResource( 1 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/focus = SubResource( 8 )
-custom_styles/normal = SubResource( 8 )
-text = "Back to Login"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Warnings" type="Node" parent="."]
-
-[node name="LoginWarning" type="Label" parent="Warnings"]
-margin_left = 141.0
-margin_top = 278.0
-margin_right = 479.0
-margin_bottom = 308.0
-custom_colors/font_color = Color( 0.980392, 0.286275, 0.286275, 1 )
-custom_fonts/font = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Inputs" type="Node2D" parent="."]
-position = Vector2( -7, -75 )
 
 [node name="Username" parent="Inputs" instance=ExtResource( 3 )]
-margin_left = 134.0
-margin_top = 309.0
-margin_right = 541.0
-margin_bottom = 374.0
+anchor_left = 0.5
+anchor_top = 0.25
+anchor_right = 0.5
+anchor_bottom = 0.25
+margin_left = -193.312
+margin_top = -112.0
+margin_right = 201.208
+margin_bottom = -47.192
+mouse_filter = 1
 
 [node name="Tip" parent="Inputs/Username" index="0"]
 text = "Username"
 
 [node name="Label" type="Label" parent="Inputs/Username"]
-margin_left = 32.0
-margin_top = 79.0
-margin_right = 205.0
-margin_bottom = 118.0
+anchor_left = 0.044
+anchor_top = 0.999
+anchor_right = 0.044
+anchor_bottom = 0.999
+margin_left = 15.9531
+margin_top = 16.0038
+margin_right = 188.953
+margin_bottom = 55.0038
 custom_fonts/font = ExtResource( 1 )
 text = "Username"
 __meta__ = {
@@ -504,10 +84,15 @@ __meta__ = {
 }
 
 [node name="Password" parent="Inputs" instance=ExtResource( 3 )]
-margin_left = 133.0
-margin_top = 432.0
-margin_right = 538.0
-margin_bottom = 497.0
+anchor_left = 0.5
+anchor_top = 0.25
+anchor_right = 0.5
+anchor_bottom = 0.25
+margin_left = -192.0
+margin_top = 32.747
+margin_right = 208.0
+margin_bottom = 97.747
+mouse_filter = 1
 
 [node name="Tip" parent="Inputs/Password" index="0"]
 text = "Password"
@@ -527,11 +112,15 @@ __meta__ = {
 }
 
 [node name="ConfirmPassword" parent="Inputs" instance=ExtResource( 3 )]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 133.0
-margin_top = 494.0
-margin_right = 530.0
-margin_bottom = 559.0
+anchor_left = 0.5
+anchor_top = 0.25
+anchor_right = 0.5
+anchor_bottom = 0.25
+margin_left = -192.0
+margin_top = 160.747
+margin_right = 208.0
+margin_bottom = 225.747
+mouse_filter = 1
 
 [node name="Tip" parent="Inputs/ConfirmPassword" index="0"]
 text = "Confirm Password"
@@ -551,11 +140,67 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Animator" type="AnimationPlayer" parent="."]
-playback_speed = 4.0
-anims/RESET = SubResource( 10 )
-anims/to_create_account = SubResource( 12 )
-anims/to_login = SubResource( 11 )
+[node name="Buttons" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Login" type="Button" parent="Buttons"]
+margin_left = 240.0
+margin_top = 585.0
+margin_right = 332.0
+margin_bottom = 624.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/normal = SubResource( 8 )
+text = "Login"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreateAccount" type="Button" parent="Buttons"]
+margin_left = 112.0
+margin_top = 665.0
+margin_right = 467.0
+margin_bottom = 704.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = SubResource( 8 )
+text = "Create Account"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmAccount" type="Button" parent="Buttons"]
+margin_left = -444.0
+margin_top = 560.0
+margin_right = -69.0
+margin_bottom = 599.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/normal = SubResource( 8 )
+text = "Confirm New Account"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackToLogin" type="Button" parent="Buttons"]
+margin_left = -444.0
+margin_top = 625.0
+margin_right = -69.0
+margin_bottom = 664.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/normal = SubResource( 8 )
+text = "Back to Login"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="Buttons/Login" to="." method="_on_Login_pressed"]
 [connection signal="pressed" from="Buttons/CreateAccount" to="." method="_on_CreateAccount_pressed"]
