@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/fonts/box_row_title_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/prefabs/boxes/box_list/box_list.gd" type="Script" id=2]
+[ext_resource path="res://src/prefabs/objects/Item.tscn" type="PackedScene" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -33,6 +34,9 @@ custom_fonts/font = ExtResource( 1 )
 custom_styles/focus = SubResource( 1 )
 text = "Delicious Pies"
 flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Body" type="Control" parent="."]
 anchor_right = 1.0
@@ -45,9 +49,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Vertical" type="HBoxContainer" parent="Body"]
-margin_right = 588.0
-margin_bottom = 144.0
-mouse_filter = 2
+[node name="Item" parent="Body" instance=ExtResource( 3 )]
+
+[node name="Item2" parent="Body" instance=ExtResource( 3 )]
+
+[node name="Item3" parent="Body" instance=ExtResource( 3 )]
+
+[node name="Item4" parent="Body" instance=ExtResource( 3 )]
+
+[node name="Item5" parent="Body" instance=ExtResource( 3 )]
+
+[node name="Item6" parent="Body" instance=ExtResource( 3 )]
 
 [connection signal="gui_input" from="." to="." method="_on_BoxList_gui_input"]

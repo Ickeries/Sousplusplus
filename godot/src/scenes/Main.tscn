@@ -55,5 +55,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
 [connection signal="pressed" from="User" to="." method="_on_User_pressed"]
 [connection signal="pressed" from="Home" to="." method="_on_Home_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]

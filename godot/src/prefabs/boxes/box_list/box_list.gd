@@ -4,11 +4,12 @@ var pressed : bool = false
 var scrolling : int = 0
 var starting_press_position : Vector2 = Vector2(0,0)
 
-onready var vertical_to_position : Vector2 = $Body/Vertical.rect_position
-
+onready var vertical_to_position : Vector2 = $Body.rect_position
+onready var body = $Body
 func _physics_process(delta):
-	$Body/Vertical.rect_position.x = lerp($Body/Vertical.rect_position.x, vertical_to_position.x, delta * 10.0)
-	vertical_to_position.x = clamp(vertical_to_position.x, -$Body/Vertical.rect_size.x * 0.5, 0)
+	body .rect_position.x = lerp(body .rect_position.x, vertical_to_position.x, delta * 10.0)
+	vertical_to_position.x = clamp(vertical_to_position.x, -body .rect_size.x * 0.5, 0)
+
 func _on_BoxList_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.get_button_index() == BUTTON_LEFT:
@@ -32,7 +33,7 @@ func _on_BoxList_gui_input(event):
 			elif scrolling == 2:
 				pass
 			elif scrolling == 0:
-				if abs(event.position.x - starting_press_position.x) > 2.5:
+				if abs(event.position.x - starting_press_position.x) > 5.5:
 					scrolling = 1
 				elif abs(event.position.y - starting_press_position.y) > 2.5:
 					scrolling = 2

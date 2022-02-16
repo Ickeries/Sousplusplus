@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
-[ext_resource path="res://src/prefabs/objects/recipe.gd" type="Script" id=2]
+[ext_resource path="res://src/prefabs/objects/item_state_machine.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://src/prefabs/objects/recipe.gd" type="Script" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.211765, 0.211765, 0.211765, 1 )
@@ -94,14 +95,14 @@ tracks/1/keys = {
 "values": [ Vector2( 140, 0 ), Vector2( 140, 139 ) ]
 }
 
-[node name="Recipe" type="Control"]
+[node name="Item" type="Control"]
 anchor_right = 0.222
 anchor_bottom = 0.125
 margin_right = 0.127991
 rect_min_size = Vector2( 140, 140 )
 rect_clip_content = true
 mouse_filter = 1
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -119,7 +120,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -142,4 +143,8 @@ anims/RESET = SubResource( 3 )
 anims/empty = SubResource( 5 )
 anims/fill = SubResource( 4 )
 
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 1 )
+
 [connection signal="gui_input" from="." to="." method="_on_Recipe_gui_input"]
+[connection signal="animation_finished" from="Animator" to="StateMachine" method="_on_Animator_animation_finished"]

@@ -4,12 +4,9 @@ extends Node
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
-
+onready var image = Image.new()
+onready var texture = ImageTexture.new()
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	var test_string = "I hate godot"
-	print(Pipeline.check(test_string))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
