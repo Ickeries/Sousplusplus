@@ -103,13 +103,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\database.cpp" />
-    <ClCompile Include="src\login.cpp" />
-    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\database_recipes.cpp" />
+    <ClCompile Include="src\database_users.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\database.h" />
-    <ClInclude Include="src\login.h" />
+    <ClInclude Include="src\database_recipes.h" />
+    <ClInclude Include="src\database_users.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

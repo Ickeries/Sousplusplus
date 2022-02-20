@@ -1,7 +1,9 @@
 extends Control
 
 
- 
+func _ready():
+	pass
+
 func _on_Login_pressed():
 	var username = $Inputs/Username.get_text()
 	var password = $Inputs/Password.get_text()
@@ -29,6 +31,3 @@ func _on_BackToLogin_pressed():
 func _on_ConfirmAccount_pressed():
 	var username = $Inputs/Username.get_text()
 	var password = $Inputs/Password.get_text()
-	var confirm_password = $Inputs/ConfirmPassword.get_text()
-	Global.current_user = {"id":1,"name":username,"password":password}
-	get_tree().change_scene("res://src/scenes/kitchen/Kitchen.tscn")

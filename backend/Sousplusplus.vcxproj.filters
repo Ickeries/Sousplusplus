@@ -15,21 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\database.cpp">
+    <ClCompile Include="src\database_users.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\login.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\main.cpp">
+    <ClCompile Include="src\database_recipes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\database.h">
+    <ClInclude Include="src\database_users.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\login.h">
+    <ClInclude Include="src\database_recipes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
