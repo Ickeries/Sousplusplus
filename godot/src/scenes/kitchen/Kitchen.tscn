@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/icons/profile_pfp_placeholder.png" type="Texture" id=1]
+[ext_resource path="res://assets/fonts/box_row_title_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://src/scenes/kitchen/page_kitchen.gd" type="Script" id=4]
+
+[sub_resource type="Gradient" id=6]
+colors = PoolColorArray( 0.482353, 0.482353, 0.482353, 1, 0.14902, 0.14902, 0.14902, 1 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.0666667, 0.0666667, 0.0666667, 0.941176 )
+
+[node name="Kitchen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 288.139, 528.25 )
+rotation = -1.5708
+scale = Vector2( 0.548828, 626.515 )
+texture = SubResource( 7 )
+
+[node name="Top" type="Control" parent="."]
+anchor_right = 1.0
+margin_bottom = 222.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Top"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pfp" type="TextureButton" parent="Top"]
+margin_left = 24.0
+margin_top = 17.0
+margin_right = 210.0
+margin_bottom = 203.0
+texture_normal = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Username" type="Label" parent="Top"]
+margin_left = 259.0
+margin_top = 33.0
+margin_right = 491.0
+margin_bottom = 71.0
+custom_fonts/font = ExtResource( 2 )
+text = "Temporary User"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Signin" type="Button" parent="Top"]
+margin_left = 311.0
+margin_top = 108.0
+margin_right = 421.0
+margin_bottom = 152.0
+custom_fonts/font = ExtResource( 3 )
+text = "Sign in"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Top/Signin" to="." method="_on_Signin_pressed"]

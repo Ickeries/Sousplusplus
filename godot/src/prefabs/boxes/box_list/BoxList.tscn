@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/prefabs/boxes/box_list/box_list.gd" type="Script" id=2]
+[ext_resource path="res://src/prefabs/objects/Item.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/prefabs/objects/Item2.tscn" type="PackedScene" id=4]
+
+[node name="BoxList" type="Control"]
+margin_right = 576.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 576, 200 )
+mouse_filter = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Body" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.86
+margin_bottom = -36.08
+rect_min_size = Vector2( 0, 190 )
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Item" parent="Body" instance=ExtResource( 3 )]
+margin_right = 2.37398
+margin_bottom = 157.05
+
+[node name="Item2" parent="Body" instance=ExtResource( 3 )]
+margin_right = 2.37398
+margin_bottom = 157.05
+
+[node name="Item3" parent="Body" instance=ExtResource( 4 )]
+margin_bottom = 157.05
+
+[node name="Item5" parent="Body" instance=ExtResource( 3 )]
+margin_right = 2.37398
+margin_bottom = 157.05
+
+[node name="Item6" parent="Body" instance=ExtResource( 3 )]
+margin_right = 2.37398
+margin_bottom = 157.05
+
+[connection signal="gui_input" from="." to="." method="_on_BoxList_gui_input"]

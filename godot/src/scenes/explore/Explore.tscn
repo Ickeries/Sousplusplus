@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/prefabs/BoxScroll.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/prefabs/boxes/box_grid/BoxGrid.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/prefabs/Textbar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/scenes/explore/explore.gd" type="Script" id=4]
+
+[sub_resource type="Gradient" id=6]
+colors = PoolColorArray( 0.482353, 0.482353, 0.482353, 1, 0.14902, 0.14902, 0.14902, 1 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.0666667, 0.0666667, 0.0666667, 0.941176 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.392157, 0.392157, 0.392157, 1 )
+
+[node name="Explore" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="Color" type="Sprite" parent="Background"]
+position = Vector2( 287.487, 516.293 )
+rotation = -1.5708
+scale = Vector2( 0.509235, 598.541 )
+texture = SubResource( 7 )
+
+[node name="Scroll" parent="." instance=ExtResource( 1 )]
+margin_top = 18.672
+margin_bottom = -0.335999
+rect_clip_content = false
+
+[node name="Items" parent="Scroll" index="0"]
+margin_bottom = 132.0
+
+[node name="BoxGrid" parent="Scroll/Items" index="0" instance=ExtResource( 2 )]
+margin_right = 576.0
+margin_bottom = 657.0
+
+[node name="BoxGrid2" parent="Scroll/Items" index="1" instance=ExtResource( 2 )]
+margin_top = 661.0
+margin_right = 576.0
+margin_bottom = 1318.0
+
+[node name="Top" type="Panel" parent="."]
+anchor_right = 1.0
+margin_bottom = 98.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Textbar" parent="Top" instance=ExtResource( 3 )]
+anchor_top = 0.006
+anchor_right = 1.0
+anchor_bottom = 0.994
+margin_left = 93.0
+margin_top = 20.412
+margin_right = -92.0
+margin_bottom = -10.412
+
+[node name="Panel" type="Panel" parent="Top"]
+margin_left = 12.0
+margin_top = 13.0
+margin_right = 86.0
+margin_bottom = 87.0
+custom_styles/panel = SubResource( 9 )
+
+[editable path="Scroll"]

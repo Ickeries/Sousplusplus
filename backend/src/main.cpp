@@ -13,10 +13,6 @@ int main()
 	string username("markus22");
 	string password("flyingtiger45");
 
-	if (login1->authenticate_login_information("markus22", "flyingtiger45") == true)
-	{
-		cout << "\n\n\nAccount " << username << " has logged on!\n\n\n";
-	}
-	
+	string info = login1->authenticate_login_information("markus22", "flyingtiger45");
 	return 1;
 }

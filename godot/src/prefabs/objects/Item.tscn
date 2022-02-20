@@ -1,113 +1,174 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/prefabs/objects/item_state_machine.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/icons/dishes/applepie_320px.jpg" type="Texture" id=2]
 [ext_resource path="res://src/prefabs/objects/recipe.gd" type="Script" id=3]
+[ext_resource path="res://assets/icons/star.png" type="Texture" id=4]
+[ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.211765, 0.211765, 0.211765, 1 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+bg_color = Color( 0, 0, 0, 1 )
+draw_center = false
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color( 0.839216, 0.686275, 0.0941176, 1 )
+border_blend = true
+corner_radius_top_left = 13
+corner_radius_top_right = 13
+corner_radius_bottom_right = 13
+corner_radius_bottom_left = 13
 
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 1, 1, 1, 0.270588 )
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_styles/panel:border_width_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 6 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:custom_styles/panel:border_width_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 6 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:custom_styles/panel:border_width_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 6 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:custom_styles/panel:border_width_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 6 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "pulse"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_styles/panel:border_width_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 6, 16, 6 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:custom_styles/panel:border_width_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 6, 16, 6 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:custom_styles/panel:border_width_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 6, 16, 6 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:custom_styles/panel:border_width_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 6, 16, 6 ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Fill:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 140 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Fill:rect_size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 140, 0 ) ]
-}
 
 [sub_resource type="Animation" id=5]
 resource_name = "empty"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Fill:rect_size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 140, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Fill:rect_position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 140 ) ]
-}
 
 [sub_resource type="Animation" id=4]
 resource_name = "fill"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Fill:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 140 ), Vector2( 0, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Fill:rect_size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 140, 0 ), Vector2( 140, 139 ) ]
-}
+
+[sub_resource type="Animation" id=6]
+resource_name = "held"
 
 [node name="Item" type="Control"]
-anchor_right = 0.222
-anchor_bottom = 0.125
-margin_right = 0.127991
-rect_min_size = Vector2( 140, 140 )
-rect_clip_content = true
+anchor_right = 0.278
+anchor_bottom = 0.186
+margin_right = -0.128021
+margin_bottom = -0.464005
+rect_min_size = Vector2( 160, 190 )
 mouse_filter = 1
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Main" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -30.0
+rect_clip_content = true
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Image" type="TextureRect" parent="Main"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Border" type="Panel" parent="Main"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -116,24 +177,48 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Image" type="TextureRect" parent="."]
+[node name="Animator" type="AnimationPlayer" parent="Main/Border"]
+autoplay = "pulse"
+anims/RESET = SubResource( 9 )
+anims/pulse = SubResource( 10 )
+
+[node name="Bottom" type="Control" parent="."]
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -29.0
 mouse_filter = 2
-texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Star" type="TextureRect" parent="Bottom"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -33.0
+margin_top = -26.0
+margin_right = -12.0
+margin_bottom = -5.0
+mouse_filter = 2
+texture = ExtResource( 4 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Fill" type="Panel" parent="."]
+[node name="Favorites" type="Label" parent="Bottom"]
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 140.0
-margin_right = 140.0
-margin_bottom = 140.0
-mouse_filter = 2
-custom_styles/panel = SubResource( 2 )
+margin_left = -129.0
+margin_top = -33.0
+margin_right = -39.0
+margin_bottom = 5.0
+custom_fonts/font = ExtResource( 5 )
+text = "32123"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -142,9 +227,10 @@ __meta__ = {
 anims/RESET = SubResource( 3 )
 anims/empty = SubResource( 5 )
 anims/fill = SubResource( 4 )
+anims/held = SubResource( 6 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 1 )
 
-[connection signal="gui_input" from="." to="." method="_on_Recipe_gui_input"]
+[connection signal="gui_input" from="Main" to="." method="_on_Main_gui_input"]
 [connection signal="animation_finished" from="Animator" to="StateMachine" method="_on_Animator_animation_finished"]

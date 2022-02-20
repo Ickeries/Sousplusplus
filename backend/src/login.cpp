@@ -1,26 +1,39 @@
-#include "login.h"
 
-/*
-File: login.cpp
-Description: Authenticates login information, retrieves current user information, etc.
-*/
 
-Login::Login()
+#include <string>
+#include <fstream>
+#include "json.hpp"
+
+using json = nlohmann::json;
+using namespace std;
+namespace login
 {
-	// Saves contents of users file into json
+
+string users_path = "users.txt";
+
+json users_json;
+
+void initialize()
+{
 	ifstream file(users_path);
-	file >> users_json;
-	file.close();
+	if (file.is_open())
+	{
+		file >> users_json;
+		file.close();
+	}
 }
 
-Login::~Login()
+bool save_users_json()
 {
-	
+	ofstream file;
+	file.open(users_path);
+	file << users_json.dump();
+	file.close();
+	return true;
 }
 
-
-// Authenticates login information
-bool Login::authenticate_login_information(string username, string password)
+//Authenticates login information
+std::string authenticate_login_information(string username, string password)
 {
 	// Loop through array of users and compare usernames and passwords. Return true if match is found.
 	int size = users_json["sheets"][0]["lines"].size();
@@ -38,12 +51,31 @@ bool Login::authenticate_login_information(string username, string password)
 			verified_password = true;
 		}
 		if (verified_username && verified_password)
-			return true;
+			return user.dump();
+	}
+	
+	return "";
+}
+
+
+bool create_new_account(string username, string password)
+{
+	
+	if (authenticate_login_information(username, password).empty())
+	{
+		json new_user;
+		new_user["id"] = users_json["sheets"][0]["lines"].size();
+		new_user["name"] = username;
+		new_user["password"] = password;
+		//
+		users_json["sheets"][0]["lines"].push_back(new_user);
+		if (save_users_json() == false)
+			return false;
+		return true;
 	}
 	return false;
 }
 
-bool Login::create_new_account(string username, string password)
-{
-	return false;
+
+
 }

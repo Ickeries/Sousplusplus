@@ -1,8 +1,29 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/fonts/dynamic_font.tres" type="DynamicFont" id=1]
-[ext_resource path="res://src/prefabs/search_bar.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/arial_narrow_7.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="GDScript" id=9]
+script/source = "extends Control
+
+onready var line = $Line
+
+func clear():
+	$Line.text = \"\"
+	_on_Line_text_changed($Line.text)
+
+func get_text() -> String:
+	return line.text
+
+
+func _on_Line_text_changed(new_text):
+	$Tip.visible = (new_text.length() == 0)
+
+
+func _on_Line_focus_entered():
+	$Tip.visible = false
+
+"
 
 [sub_resource type="StyleBoxEmpty" id=6]
 
@@ -25,7 +46,7 @@ font_data = ExtResource( 3 )
 [node name="TextBar" type="Control"]
 anchor_right = 1.0
 margin_bottom = 65.0
-script = ExtResource( 2 )
+script = SubResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

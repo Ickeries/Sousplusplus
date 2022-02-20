@@ -1,12 +1,9 @@
-#include "database.h"
 
 
-Database::Database()
+namespace database
+{
+void test()
 {
 	
 }
-
-Database::~Database()
-{
-	
 }

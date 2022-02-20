@@ -12,10 +12,7 @@ func _physics_process(delta):
 func _logic():
 	match(state):
 		"idle":
-			host.rect_position = lerp(host.rect_position, Vector2(host.get_index() * 140,0), get_physics_process_delta_time() * 10.0)
-		"held":
-			host.rect_global_position = lerp(host.rect_global_position, host.get_global_mouse_position(), get_physics_process_delta_time() * 10.0)
-
+			pass
 func change_state(new_state):
 	state = new_state
 	_enter_state()

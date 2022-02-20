@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/prefabs/boxes/box_list/BoxList.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/fonts/box_row_title_font.tres" type="DynamicFont" id=2]
+
+[node name="BoxGrid" type="VBoxContainer"]
+margin_right = 577.0
+margin_bottom = 644.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+margin_right = 577.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 0, 45 )
+
+[node name="Label" type="Label" parent="Control"]
+margin_top = 4.0
+margin_right = 577.0
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 2 )
+text = "Delicious Pie"
+align = 1
+
+[node name="Vertical" type="VBoxContainer" parent="."]
+margin_top = 49.0
+margin_right = 577.0
+margin_bottom = 657.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BoxList" parent="Vertical" instance=ExtResource( 1 )]
+margin_right = 577.0
+
+[node name="BoxList2" parent="Vertical" instance=ExtResource( 1 )]
+margin_top = 204.0
+margin_right = 577.0
+margin_bottom = 404.0
+
+[node name="BoxList3" parent="Vertical" instance=ExtResource( 1 )]
+margin_top = 408.0
+margin_right = 577.0
+margin_bottom = 608.0
