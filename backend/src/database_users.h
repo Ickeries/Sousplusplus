@@ -8,6 +8,7 @@
 #include <string>
 #include "json.hpp"
 
+
 using json = nlohmann::json;
 using namespace std;
 
@@ -15,7 +16,7 @@ namespace database_users
 {
 	static string file_path = "../database/users.txt";
 	static vector<json> database;
-
+	int main();
 	void save_database();
 	void load_database();
 	void print_database();

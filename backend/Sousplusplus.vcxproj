@@ -105,6 +105,7 @@
   <ItemGroup>
     <ClCompile Include="src\database_recipes.cpp" />
     <ClCompile Include="src\database_users.cpp" />
+    <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\database_recipes.h" />

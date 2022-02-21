@@ -42,9 +42,8 @@ void database_users::print_database()
 
 
 // Testing area //
-int main()
+int database_users::main()
 {
-
 	database_users::load_database();
 	database_users::print_database();
 	database_users::save_database();
