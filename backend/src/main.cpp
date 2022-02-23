@@ -1,7 +1,6 @@
-#include "database_users.h"
-
+#include "database.h"
 int main()
 {
-	database_users::main();
+	database::main();
 	return 0;
 }
