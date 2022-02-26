@@ -13,7 +13,9 @@ int database::callback(void*data, int argc, char** argv, char** azColName)
 	return 0;
 }
 
-vector<json> database::get(const char * statement)
+
+// Parse sql statement and returns vector of results as a json if any.
+vector<json> database::parse(const char * statement)
 {
 	char* zErrMsg = 0;
 	int rc;
@@ -31,7 +33,7 @@ int database::main()
 	{
 		string input;
 		getline(cin, input);
-		vector<json> results = get(input.c_str());
+		vector<json> results = parse(input.c_str());
 		for (int i = 0; i < results.size(); i++)
 		{
 			cout << results[i].dump() << endl;
