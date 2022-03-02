@@ -98,8 +98,8 @@ env.Append(LIBPATH=[cpp_bindings_path + 'bin/'])
 env.Append(LIBS=[cpp_library])
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
-env.Append(CPPPATH=['../backend/src/', '../backend/src/gdnative/'])
-sources = Glob('../backend/src/*.cpp') + Glob('../backend/src/include/*.c') + Glob('../backend/src/gdnative/*.cpp')
+env.Append(CPPPATH=['../backend/src/', '../backend/src/godot/'])
+sources = Glob('../backend/src/*.cpp') + Glob('../backend/src/include/*.c') + Glob('../backend/src/godot/*.cpp')
 
 library = env.SharedLibrary(target=env['target_path'] + env['target_name'] , source=sources)
 
