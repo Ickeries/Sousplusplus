@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{F365A280-D705-4199-8D1F-D4660793A28A}</ProjectGuid>
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <ProjectGuid>{FE2B2D28-9A97-4ABA-A43D-0739D283FAC4}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -79,7 +79,7 @@
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -103,13 +103,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\database_recipes.cpp" />
-    <ClCompile Include="src\database_users.cpp" />
+    <ClCompile Include="src\database.cpp" />
+    <ClCompile Include="src\include\shell.c" />
+    <ClCompile Include="src\include\sqlite3.c" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\recipes.cpp" />
+    <ClCompile Include="src\users.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\database_recipes.h" />
-    <ClInclude Include="src\database_users.h" />
+    <ClInclude Include="src\database.h" />
+    <ClInclude Include="src\include\json.hpp" />
+    <ClInclude Include="src\include\sqlite3.h" />
+    <ClInclude Include="src\include\sqlite3ext.h" />
+    <ClInclude Include="src\json.hpp" />
+    <ClInclude Include="src\recipes.h" />
+    <ClInclude Include="src\users.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
