@@ -18,6 +18,15 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\database.h" />
+    <ClInclude Include="src\include\json.hpp" />
+    <ClInclude Include="src\include\sqlite3.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\database.cpp" />
+    <ClCompile Include="src\include\sqlite3.c" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <ProjectGuid>{FE2B2D28-9A97-4ABA-A43D-0739D283FAC4}</ProjectGuid>
@@ -102,23 +111,6 @@
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="src\database.cpp" />
-    <ClCompile Include="src\include\shell.c" />
-    <ClCompile Include="src\include\sqlite3.c" />
-    <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\recipes.cpp" />
-    <ClCompile Include="src\users.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\database.h" />
-    <ClInclude Include="src\include\json.hpp" />
-    <ClInclude Include="src\include\sqlite3.h" />
-    <ClInclude Include="src\include\sqlite3ext.h" />
-    <ClInclude Include="src\json.hpp" />
-    <ClInclude Include="src\recipes.h" />
-    <ClInclude Include="src\users.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -1,22 +1,32 @@
 #include "database.h"
 
-// Pushs sql data into data vector  when callback is called.
-int database::callback(void*data, int argc, char** argv, char** azColName)
+string database::vector2string(vector<json> vec)
 {
-	vector<json> * results = static_cast<vector<json>*>(data);
+	string result;
+	result += "[";
+	for (int i = 0; i < vec.size(); i++)
+	{
+		result += vec[i].dump();
+		if (i < vec.size() - 1)
+			result += ",";
+	}
+	result += "]";
+	return result;
+}
+
+int database::callback(void* data, int argc, char** argv, char** azColName)
+{
+	vector<json>* results = static_cast<vector<json>*>(data);
 	json j;
 	for (int i = 0; i < argc; i++)
 	{
-		j[ azColName[i] ] = string(argv[i] ? argv[i] : "NULL");
+		j[azColName[i]] = string(argv[i] ? argv[i] : "NULL");
 	}
 	results->push_back(j);
-
 	return 0;
 }
 
-
-// Parse sql statement and returns vector of results as a json if any.
-vector<json> database::call(const char * statement)
+vector<json> database::call(const char* statement)
 {
 	char* zErrMsg = 0;
 	int rc;
@@ -25,21 +35,25 @@ vector<json> database::call(const char * statement)
 	return data;
 }
 
-// User test input
-int database::main()
+string database::get_recipes_by_text(string text)
 {
-	int rc = sqlite3_open(file_path, &db);
+	string input = string("Select * from recipes where name like '" + text + "%'");
+	vector<json> results = call(input.c_str());
+	return vector2string(results);
+}
 
-	while (true)
-	{
-		string input;
-		getline(cin, input);
-		vector<json> results = call(input.c_str());
-		for (int i = 0; i < results.size(); i++)
-		{
-			cout << results[i].dump() << endl;
-		}
-	}
+
+
+void database::initialize()
+{
+	char* zErrMsg = 0;
+	int rc;
+	rc = sqlite3_open(db_name, &db);
+}
+
+
+int main()
+{
+	database::initialize();
 	return 0;
-
 }

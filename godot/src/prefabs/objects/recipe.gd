@@ -1,6 +1,5 @@
 extends Control
 
-onready var state_machine = $StateMachine
 onready var httprequest : = HTTPRequest.new()
 
 var pressed : bool = false

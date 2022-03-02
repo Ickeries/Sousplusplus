@@ -17,7 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Pipeline="*res://src/autoloads/Pipeline.tscn"
-Global="*res://src/autoloads/Global.tscn"
+Global="*res://src/autoloads/global.gd"
 
 [display]
 

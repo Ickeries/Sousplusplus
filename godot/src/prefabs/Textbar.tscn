@@ -26,14 +26,12 @@ __meta__ = {
 }
 
 [node name="Tip" type="Label" parent="."]
-anchor_left = 0.14
-anchor_top = 0.125
-anchor_right = 0.869
-anchor_bottom = 0.125
-margin_left = -17.64
-margin_top = 4.875
-margin_right = -17.961
-margin_bottom = 54.875
+anchor_left = 0.032
+anchor_right = 0.867
+margin_left = 13.568
+margin_top = 9.0
+margin_right = -47.809
+margin_bottom = 59.0
 custom_colors/font_color = Color( 1, 1, 1, 0.482353 )
 custom_fonts/font = ExtResource( 1 )
 custom_styles/normal = SubResource( 6 )
@@ -44,14 +42,12 @@ __meta__ = {
 }
 
 [node name="Line" type="LineEdit" parent="."]
-anchor_left = 0.099
-anchor_top = 0.109
-anchor_right = 0.85
-anchor_bottom = 0.109
-margin_left = -0.0240021
-margin_top = 3.915
-margin_right = -0.222992
-margin_bottom = 54.915
+anchor_left = 0.033
+anchor_right = 0.974
+margin_left = 6.992
+margin_top = 10.891
+margin_right = -102.647
+margin_bottom = 61.891
 custom_colors/selection_color = Color( 1, 1, 1, 0.631373 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_constants/minimum_spaces = 0
@@ -59,7 +55,7 @@ custom_fonts/font = ExtResource( 1 )
 custom_styles/read_only = SubResource( 5 )
 custom_styles/focus = SubResource( 5 )
 custom_styles/normal = SubResource( 4 )
-max_length = 18
+max_length = 40
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -79,3 +75,4 @@ __meta__ = {
 
 [connection signal="focus_entered" from="Line" to="." method="_on_Line_focus_entered"]
 [connection signal="text_changed" from="Line" to="." method="_on_Line_text_changed"]
+[connection signal="text_entered" from="Line" to="." method="_on_Line_text_entered"]
