@@ -22,10 +22,13 @@
     <ClInclude Include="src\database.h" />
     <ClInclude Include="src\include\json.hpp" />
     <ClInclude Include="src\include\sqlite3.h" />
+    <ClInclude Include="src\search.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\database.cpp" />
     <ClCompile Include="src\include\sqlite3.c" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\search.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

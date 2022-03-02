@@ -1,5 +1,12 @@
 #include "database.h"
 
+/*
+File: database.cpp
+Creator: David Serrano
+Description: Logic for database functions.
+*/
+
+// Takes a vector of json and returns a string.
 string database::vector2string(vector<json> vec)
 {
 	string result;
@@ -14,6 +21,7 @@ string database::vector2string(vector<json> vec)
 	return result;
 }
 
+// Places outputs of an sql statement into a vector of json.
 int database::callback(void* data, int argc, char** argv, char** azColName)
 {
 	vector<json>* results = static_cast<vector<json>*>(data);
@@ -26,34 +34,23 @@ int database::callback(void* data, int argc, char** argv, char** azColName)
 	return 0;
 }
 
-vector<json> database::call(const char* statement)
+
+// Calls an sql statement.
+vector<json> database::call(string statement)
 {
+	cout << statement << endl;
 	char* zErrMsg = 0;
 	int rc;
 	vector<json> data;
-	rc = sqlite3_exec(db, statement, callback, &data, &zErrMsg);
+	rc = sqlite3_exec(db, statement.c_str(), callback, &data, &zErrMsg);
 	return data;
 }
 
-string database::get_recipes_by_text(string text)
-{
-	string input = string("Select * from recipes where name like '" + text + "%'");
-	vector<json> results = call(input.c_str());
-	return vector2string(results);
-}
 
-
-
+// Starts up the database
 void database::initialize()
 {
 	char* zErrMsg = 0;
 	int rc;
 	rc = sqlite3_open(db_name, &db);
-}
-
-
-int main()
-{
-	database::initialize();
-	return 0;
 }
