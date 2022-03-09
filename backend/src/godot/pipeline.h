@@ -19,8 +19,9 @@ public:
     void _process(float delta);
 	String check(String input);
 	
-	String get_recipes_from_text(String text);
-	
+	String get_recipes_by_name(String name);
+	String get_recipe_by_name(String name);
+	String get_recipe_ingredients_by_name(String name);
 	
 };
 }

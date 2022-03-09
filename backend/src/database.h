@@ -12,7 +12,7 @@ using json = nlohmann::json;
 
 namespace database
 {
-	static const char * db_name = "../database/database.db";
+	static const char * db_name = "../../database/database.db";
 	static sqlite3 * db;
 	string vector2string(vector<json> vec);
 	int callback(void* data, int argc, char** argv, char** azColName);

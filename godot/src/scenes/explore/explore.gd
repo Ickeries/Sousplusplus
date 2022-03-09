@@ -16,5 +16,5 @@ func update_list(array : Array):
 
 
 func _on_Textbar_search_entered(text):
-	var results = parse_json(Pipeline.get_recipes_from_text(text))
+	var results = parse_json(Pipeline.get_recipes_by_name(text))
 	update_list(results)

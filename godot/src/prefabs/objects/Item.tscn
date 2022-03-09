@@ -78,3 +78,5 @@ margin_left = 190.0
 margin_top = 77.0
 margin_right = 566.0
 margin_bottom = 80.0
+
+[connection signal="gui_input" from="." to="." method="_on_Item_gui_input"]

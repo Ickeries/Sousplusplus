@@ -27,6 +27,9 @@
     <ClInclude Include="src\search.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\recipe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\database.cpp">
@@ -39,6 +42,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\recipe.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
