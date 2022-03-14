@@ -1,0 +1,266 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/fonts/dynamic_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/fonts/box_row_title_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/scenes/recipe_page/page_recipe.gd" type="Script" id=3]
+[ext_resource path="res://assets/icons/dishes/applepie1.jpg" type="Texture" id=4]
+[ext_resource path="res://src/prefabs/BoxScroll.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Gradient" id=6]
+colors = PoolColorArray( 0.909804, 0.909804, 0.909804, 1, 0.701961, 0.701961, 0.701961, 1 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="StyleBoxEmpty" id=12]
+
+[sub_resource type="StyleBoxEmpty" id=13]
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[sub_resource type="StyleBoxEmpty" id=15]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[node name="RecipePage" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="Color" type="Sprite" parent="Background"]
+modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+position = Vector2( 287.487, 516.293 )
+rotation = -1.5708
+scale = Vector2( 0.509235, 598.541 )
+texture = SubResource( 7 )
+
+[node name="Scroll" parent="." instance=ExtResource( 6 )]
+anchor_top = 0.0
+anchor_bottom = 1.0
+margin_top = 0.0
+margin_bottom = 0.0
+
+[node name="Items" parent="Scroll" index="0"]
+margin_right = 10.0
+margin_bottom = 511.0
+custom_constants/separation = 26
+
+[node name="PanelContainer" type="CenterContainer" parent="Scroll/Items" index="0"]
+margin_right = 556.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 556, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="Scroll/Items/PanelContainer"]
+margin_left = 150.0
+margin_right = 406.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 256, 256 )
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Header" type="PanelContainer" parent="Scroll/Items" index="1"]
+margin_top = 282.0
+margin_right = 556.0
+margin_bottom = 351.0
+rect_min_size = Vector2( 556, 0 )
+custom_styles/panel = SubResource( 10 )
+
+[node name="Vertical" type="VBoxContainer" parent="Scroll/Items/Header"]
+margin_right = 556.0
+margin_bottom = 69.0
+
+[node name="Title" type="Label" parent="Scroll/Items/Header/Vertical"]
+margin_right = 556.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 2 )
+text = "Apple Pie"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Creator" type="Label" parent="Scroll/Items/Header/Vertical"]
+margin_top = 42.0
+margin_right = 556.0
+margin_bottom = 69.0
+custom_fonts/font = ExtResource( 1 )
+text = "by David Serrano"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description" type="PanelContainer" parent="Scroll/Items" index="2"]
+margin_top = 377.0
+margin_right = 576.0
+margin_bottom = 525.0
+rect_min_size = Vector2( 556, 0 )
+custom_styles/panel = SubResource( 11 )
+
+[node name="Vertical" type="VBoxContainer" parent="Scroll/Items/Description"]
+margin_right = 576.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 556, 0 )
+custom_constants/separation = 10
+
+[node name="Title" type="Label" parent="Scroll/Items/Description/Vertical"]
+margin_right = 556.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 2 )
+text = "Description"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="TextEdit" parent="Scroll/Items/Description/Vertical"]
+margin_top = 48.0
+margin_right = 556.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 556, 100 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_readonly = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/read_only = SubResource( 12 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/normal = SubResource( 14 )
+custom_styles/completion = SubResource( 15 )
+text = "An amazing pie that I have spent years creating. Surely no one will have the guts to copy me! Will you be better than everyone else will suffer!"
+wrap_enabled = true
+
+[node name="Ingredients" type="PanelContainer" parent="Scroll/Items" index="3"]
+margin_top = 551.0
+margin_right = 576.0
+margin_bottom = 951.0
+rect_min_size = Vector2( 556, 400 )
+mouse_filter = 1
+custom_styles/panel = SubResource( 8 )
+
+[node name="VBox" type="VBoxContainer" parent="Scroll/Items/Ingredients"]
+margin_right = 576.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 556, 0 )
+
+[node name="Title" type="Label" parent="Scroll/Items/Ingredients/VBox"]
+margin_right = 576.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 2 )
+text = "Ingredients"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="VBoxContainer" parent="Scroll/Items/Ingredients/VBox"]
+margin_top = 42.0
+margin_right = 576.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 556, 0 )
+custom_constants/separation = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Instructions" type="PanelContainer" parent="Scroll/Items" index="4"]
+margin_top = 977.0
+margin_right = 556.0
+margin_bottom = 1535.0
+rect_min_size = Vector2( 556, 0 )
+mouse_filter = 1
+custom_styles/panel = SubResource( 9 )
+
+[node name="VBox" type="VBoxContainer" parent="Scroll/Items/Instructions"]
+margin_right = 556.0
+margin_bottom = 558.0
+
+[node name="Title" type="Label" parent="Scroll/Items/Instructions/VBox"]
+margin_right = 556.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 556, 0 )
+custom_fonts/font = ExtResource( 2 )
+text = "Instructions"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="VBoxContainer" parent="Scroll/Items/Instructions/VBox"]
+margin_top = 42.0
+margin_right = 556.0
+margin_bottom = 558.0
+rect_min_size = Vector2( 556, 0 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Scroll/Items/Instructions/VBox/Container"]
+margin_right = 556.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 556, 100 )
+mouse_filter = 1
+custom_fonts/mono_font = ExtResource( 1 )
+custom_fonts/normal_font = ExtResource( 2 )
+text = "1. Preheat the oven to 425 degrees F!"
+fit_content_height = true
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Scroll/Items/Instructions/VBox/Container"]
+margin_top = 104.0
+margin_right = 556.0
+margin_bottom = 204.0
+rect_min_size = Vector2( 556, 100 )
+mouse_filter = 1
+custom_fonts/mono_font = ExtResource( 1 )
+custom_fonts/normal_font = ExtResource( 2 )
+text = "1. Preheat the oven to 425 degrees F (220 degrees C)
+"
+scroll_active = false
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Scroll/Items/Instructions/VBox/Container"]
+margin_top = 208.0
+margin_right = 556.0
+margin_bottom = 308.0
+rect_min_size = Vector2( 556, 100 )
+mouse_filter = 1
+custom_fonts/mono_font = ExtResource( 1 )
+custom_fonts/normal_font = ExtResource( 2 )
+text = "1. Preheat the oven to 425 degrees F (220 degrees C)
+"
+scroll_active = false
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Scroll/Items/Instructions/VBox/Container"]
+margin_top = 312.0
+margin_right = 556.0
+margin_bottom = 412.0
+rect_min_size = Vector2( 556, 100 )
+mouse_filter = 1
+custom_fonts/mono_font = ExtResource( 1 )
+custom_fonts/normal_font = ExtResource( 2 )
+text = "1. Preheat the oven to 425 degrees F (220 degrees C)
+"
+scroll_active = false
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="Scroll/Items/Instructions/VBox/Container"]
+margin_top = 416.0
+margin_right = 556.0
+margin_bottom = 516.0
+rect_min_size = Vector2( 556, 100 )
+mouse_filter = 1
+custom_fonts/mono_font = ExtResource( 1 )
+custom_fonts/normal_font = ExtResource( 2 )
+text = "1. Preheat the oven to 425 degrees F (220 degrees C)
+"
+scroll_active = false
+
+[connection signal="focus_exited" from="Scroll/Items/Description/Vertical/Text" to="." method="_on_Text_focus_exited"]
+
+[editable path="Scroll"]

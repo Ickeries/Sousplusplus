@@ -1,6 +1,6 @@
 extends Control
 
-var item_loaded = load("res://src/prefabs/objects/Item.tscn")
+var item_loaded = load("res://src/prefabs/items/Item.tscn")
 
 func _ready():
 	pass

@@ -13,8 +13,8 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-	items.rect_position = lerp(items.rect_position, to_position, delta * 10.0)
-	$Scrollbar.value = lerp($Scrollbar.value, -to_position.y, delta * 10.0)
+	items.rect_position = lerp(items.rect_position, to_position, delta * 20.0)
+	$Scrollbar.value = lerp($Scrollbar.value, -to_position.y, delta * 20.0)
 
 func _on_Scroll_gui_input(event):
 	if event is InputEventMouseButton:

@@ -1,6 +1,11 @@
 extends Control
 
-var ingredient_list_item_loaded = load("res://src/prefabs/objects/list_items/IngredientListItem.tscn")
+var ingredient_list_item_loaded = load("res://src/prefabs/items/list_items/IngredientListItem.tscn")
+
+onready var header_title = $Scroll/Items/Header/Vertical/Title
+onready var header_creator = $Scroll/Items/Header/Vertical/Creator
+onready var description_title = $Scroll/Items/Description/Vertical/Text
+
 
 func _ready():
 	call_deferred("_deferred")
@@ -13,12 +18,15 @@ func _deferred():
 	if recipes.size() > 0:
 		var recipe = recipes[0]
 		if recipe.has("recipe_name"):
-			$Scroll/Items/Header/Title.set_text(recipe["recipe_name"])
+			header_title.set_text(recipe["recipe_name"])
+		if recipe.has("recipe_creator"):
+			header_creator.set_text(recipe["recipe_creator"])
 		if recipe.has("recipe_description"):
-			$Scroll/Items/Header/Description.set_text(recipe["recipe_description"])
+			description_title.set_text(recipe["recipe_description"])
 	
-	var results = parse_json(Pipeline.get_recipe_ingredients_by_name(Global.current_recipe))
-	for result in results:
+	# Ingredients
+	var ingredients = parse_json(Pipeline.get_recipe_ingredients_by_name(Global.current_recipe))
+	for result in ingredients:
 		var ingredient_list_item_instance = ingredient_list_item_loaded.instance()
 		$Scroll/Items/Ingredients/VBox/Container.add_child(ingredient_list_item_instance)
 		ingredient_list_item_instance.set_data(result)
@@ -29,3 +37,8 @@ func load_recipe(id : int):
 
 func _on_GoBack_pressed():
 	get_tree().change_scene("res://src/scenes/explore/Explore.tscn")
+
+
+func _on_Text_request_completion():
+	print("LEL")
+

@@ -51,6 +51,9 @@ vector<json> database::call(string statement)
 void database::initialize()
 {
 	char* zErrMsg = 0;
-	int rc;
-	rc = sqlite3_open(db_name, &db);
+	if (sqlite3_open_v2(db_release_path, &db, SQLITE_OPEN_READWRITE, nullptr) == SQLITE_OK)
+		return;
+	if (sqlite3_open_v2(db_debug_path, &db, SQLITE_OPEN_READWRITE, nullptr) == SQLITE_OK)
+		return;
+
 }
