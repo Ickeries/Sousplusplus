@@ -9,7 +9,7 @@ using namespace godot;
 void Pipeline::_register_methods() {
     register_method("_process", &Pipeline::_process);
 	register_method("check", &Pipeline::check);
-	
+
 	// Search
 	register_method("get_recipes_by_name", &Pipeline::get_recipes_by_name);
 	// Recipe

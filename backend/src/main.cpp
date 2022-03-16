@@ -13,7 +13,6 @@ int main()
 	{
 		string input;
 		getline(cin, input);
-		cout << recipe::get_recipe_by_name(input) << endl;
 		
 	}
 	return 0;

@@ -55,5 +55,6 @@ void database::initialize()
 		return;
 	if (sqlite3_open_v2(db_debug_path, &db, SQLITE_OPEN_READWRITE, nullptr) == SQLITE_OK)
 		return;
-
 }
+
+

@@ -1,15 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/prefabs/BoxScroll.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/prefabs/Textbar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/scenes/explore/explore.gd" type="Script" id=4]
 [ext_resource path="res://assets/fonts/box_row_title_font.tres" type="DynamicFont" id=5]
 
-[sub_resource type="Gradient" id=10]
-colors = PoolColorArray( 0.482353, 0.482353, 0.482353, 1, 0.14902, 0.14902, 0.14902, 1 )
-
-[sub_resource type="GradientTexture" id=7]
-gradient = SubResource( 10 )
+[sub_resource type="StyleBoxEmpty" id=12]
 
 [sub_resource type="StyleBoxEmpty" id=11]
 
@@ -27,21 +23,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Background" type="CanvasLayer" parent="."]
-layer = -100
-
-[node name="Color" type="Sprite" parent="Background"]
-position = Vector2( 287.487, 516.293 )
-rotation = -1.5708
-scale = Vector2( 0.509235, 598.541 )
-texture = SubResource( 7 )
-
 [node name="Scroll" parent="." instance=ExtResource( 1 )]
 margin_top = -3.328
 margin_bottom = 115.664
+container_path = NodePath("Container")
 
-[node name="Items" parent="Scroll" index="0"]
-custom_constants/separation = 8
+[node name="Container" type="PanelContainer" parent="Scroll"]
+margin_right = 14.0
+margin_bottom = 14.0
+mouse_filter = 1
+custom_styles/panel = SubResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Items" type="VBoxContainer" parent="Scroll/Container"]
+margin_right = 14.0
+margin_bottom = 14.0
+custom_constants/separation = 2
 
 [node name="Top" type="Panel" parent="."]
 anchor_right = 1.0
@@ -82,5 +81,3 @@ margin_right = 381.0
 margin_bottom = 52.0
 
 [connection signal="search_entered" from="Top/Textbar" to="." method="_on_Textbar_search_entered"]
-
-[editable path="Scroll"]

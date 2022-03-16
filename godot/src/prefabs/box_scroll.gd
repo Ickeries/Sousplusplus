@@ -1,54 +1,24 @@
-extends Control
+extends UIButton
 
 const DIST_TO_SCROLL : = 25.0
 const POSITION_LERP_SPEED : = 10.0
-onready var items = $Items
-onready var to_position : Vector2 = items.rect_position
-onready var start_position : Vector2 = items.rect_position
-var pressed : bool = false
-var scrolling : bool = false
-var starting_press_position : = Vector2(0,0)
+
+export (NodePath) var container_path = ""
+onready var container = get_node_or_null(container_path)
 
 func _ready():
-	pass
-
-func _physics_process(delta):
-	items.rect_position = lerp(items.rect_position, to_position, delta * 20.0)
-	$Scrollbar.value = lerp($Scrollbar.value, -to_position.y, delta * 20.0)
-
-func _on_Scroll_gui_input(event):
-	if event is InputEventMouseButton:
-		if event.get_button_index() == BUTTON_LEFT:
-			if event.pressed:
-				pressed = true
-				starting_press_position = event.position
-			else:
-				pressed = false
-				scrolling = false
-	
-	# Check if input is already handled
-	if get_tree().is_input_handled():
-		return false
-	
-	# Scroll the control node
-	if event is InputEventMouseMotion:
-		if pressed:
-			if scrolling:
-				to_position.y += event.relative.y
-				to_position.y = clamp(to_position.y,-items.rect_size.y * 0.5, 0)
-				$ScrollTimer.start()
-				$Scrollbar.visible = true
-			else:
-				if event.position.distance_to(starting_press_position) > DIST_TO_SCROLL:
-					scrolling = true
-	
-	if scrolling:
-		get_tree().set_input_as_handled()
-
+	move_child($Scrollbar, get_child_count()-1)
 
 func _on_Items_resized():
+	$Scrollbar.set_page(rect_size.y)
+	$Scrollbar.set_max($Container.rect_size.y)
+
+func _on_Scrollbar_scrolling():
 	pass
-
-
-func _on_ScrollTimer_timeout():
-	$Scrollbar.visible = false
+	
+	
+func _on_Scroll_vertical_scrolled(value):
+	if container:
+		container.rect_position.y += value
+		$Scrollbar.set_value(-container.rect_position.y)
+		container.rect_position.y = clamp(container.rect_position.y, -$Container.rect_size.y ,0)

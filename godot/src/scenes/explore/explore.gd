@@ -1,17 +1,17 @@
 extends Control
 
 var item_loaded = load("res://src/prefabs/items/Item.tscn")
-
+onready var items = $Scroll/Container/Items
 func _ready():
 	pass
 
 func update_list(array : Array):
-	for child in $Scroll/Items.get_children():
+	for child in items.get_children():
 		child.queue_free()
 	for i in array:
 		var item_instance = item_loaded.instance()
-		$Scroll/Items.add_child(item_instance)
-		item_instance.set_item(i)
+		items.add_child(item_instance)
+		item_instance.set_data(i)
 
 
 
