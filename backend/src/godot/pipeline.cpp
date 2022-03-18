@@ -25,6 +25,7 @@ Pipeline::~Pipeline() {
 }
 
 void Pipeline::_init() {
+	json j;
 	database::initialize();
 }
 

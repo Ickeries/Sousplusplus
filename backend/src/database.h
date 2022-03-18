@@ -15,10 +15,9 @@ namespace database
 	static const char * db_release_path = "../../database/database.db";
 	static const char * db_debug_path = "../database/database.db";
 	static sqlite3 * db;
-	string vector2string(vector<json> vec);
 	int callback(void* data, int argc, char** argv, char** azColName);
-	vector<json> call(string statement);
-	void initialize();
+	json call(string statement);
+	bool open();
 
 	//Dont know why this is highlighted when the function is in the class...
 	int insert_recipe_ingredient(const char* s, int recipe_id, string recipe_name, string ingredient_name, string ingredient_amount);

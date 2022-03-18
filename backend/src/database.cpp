@@ -6,25 +6,10 @@ Creator: David Serrano
 Description: Logic for database functions.
 */
 
-// Takes a vector of json and returns a string.
-string database::vector2string(vector<json> vec)
-{
-	string result;
-	result += "[";
-	for (int i = 0; i < vec.size(); i++)
-	{
-		result += vec[i].dump();
-		if (i < vec.size() - 1)
-			result += ",";
-	}
-	result += "]";
-	return result;
-}
-
 //Places outputs of an sql statement into a vector of json.
 int database::callback(void* data, int argc, char** argv, char** azColName)
 {
-	vector<json>* results = static_cast<vector<json>*>(data);
+	json * results = static_cast<json*>(data);
 	json j;
 	for (int i = 0; i < argc; i++)
 	{
@@ -36,25 +21,30 @@ int database::callback(void* data, int argc, char** argv, char** azColName)
 
 
 // Calls an sql statement.
-vector<json> database::call(string statement)
+json database::call(string statement)
 {
-	cout << statement << endl;
+	json data;
+	// If database cannot be opened, return empty json
+	if (!open())
+		return data;
 	char* zErrMsg = 0;
-	int rc;
-	vector<json> data;
-	rc = sqlite3_exec(db, statement.c_str(), callback, &data, &zErrMsg);
+	// Check if statement creates an error
+	if (sqlite3_exec(db, statement.c_str(), callback, &data, &zErrMsg) != SQLITE_OK)
+		sqlite3_free(zErrMsg);
+	sqlite3_close(db);
 	return data;
 }
 
 
 // Starts up the database
-void database::initialize()
+bool database::open()
 {
 	char* zErrMsg = 0;
 	if (sqlite3_open_v2(db_release_path, &db, SQLITE_OPEN_READWRITE, nullptr) == SQLITE_OK)
-		return;
+		return true;
 	if (sqlite3_open_v2(db_debug_path, &db, SQLITE_OPEN_READWRITE, nullptr) == SQLITE_OK)
-		return;
+		return true;
+	return false;
 }
 
 

@@ -8,12 +8,11 @@ using namespace std;
 
 int main()
 {
-	database::initialize();
 	while (true)
 	{
 		string input;
 		getline(cin, input);
-		
+		cout << search::get_recipes_by_name(input, 4).dump(4) << endl;
 	}
 	return 0;
 }
