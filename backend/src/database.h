@@ -19,6 +19,18 @@ namespace database
 	int callback(void* data, int argc, char** argv, char** azColName);
 	vector<json> call(string statement);
 	void initialize();
-}
+
+	//Dont know why this is highlighted when the function is in the class...
+	int insert_recipe_ingredient(const char* s, int recipe_id, string recipe_name, string ingredient_name, string ingredient_amount);
+}	int insert_recipes(const char* s, int recipe_id, string name, int creator_id, string recipe_description);
+	int insert_recipe_directions(const char* s, int recipe_id, string recipe_name, string recipe_directions);
+	int insert_new_user(const char* s, int recipe_id, string name, string password);
+	void add_new_recipe(const char* s, vector<json> vec);
+
+	//This are here to testing purposing, will delete later
+	//int selectData(const char* s);
+	//int callback(void* not_Used, int argc, char** argv, char** az_Col_Name);
+
 
 #endif
+//Slide 8 Next Quiz; Slide 34
