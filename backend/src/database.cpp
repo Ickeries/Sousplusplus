@@ -91,7 +91,7 @@ int insert_recipes(const char* s, int recipe_id, string recipe_name, int creator
 
 	rc = sqlite3_open("../database/database.db", &db);
 
-	string sql("INSERT INTO recipes (recipe_id, recipe_name, creator_name , recipe_description) VALUES('" + to_string(recipe_id) + "', '" + recipe_name + "','" + creator_id + "', '" + recipe_description + "'); ");
+	string sql("INSERT INTO recipes (recipe_id, recipe_name, creator_name , recipe_description) VALUES('" + to_string(recipe_id) + "', '" + recipe_name + "','" + to_string(creator_id) + "', '" + recipe_description + "'); ");
 
 	rc = sqlite3_exec(db, sql.c_str(), NULL, 0, &zErrMsg);
 
