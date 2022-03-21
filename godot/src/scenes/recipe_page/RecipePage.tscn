@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=5]
 [ext_resource path="res://src/prefabs/BoxScroll.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/icons/dishes/applepie1.jpg" type="Texture" id=7]
+[ext_resource path="res://assets/fonts/large_title.tres" type="DynamicFont" id=8]
 
 [sub_resource type="Gradient" id=6]
 colors = PoolColorArray( 0.909804, 0.909804, 0.909804, 1, 0.701961, 0.701961, 0.701961, 1 )
@@ -14,9 +15,7 @@ colors = PoolColorArray( 0.909804, 0.909804, 0.909804, 1, 0.701961, 0.701961, 0.
 [sub_resource type="GradientTexture" id=7]
 gradient = SubResource( 6 )
 
-[sub_resource type="StyleBoxEmpty" id=9]
-
-[sub_resource type="StyleBoxEmpty" id=11]
+[sub_resource type="StyleBoxEmpty" id=10]
 
 [node name="RecipePage" type="Control"]
 anchor_right = 1.0
@@ -41,109 +40,338 @@ margin_bottom = 0.0
 container_path = NodePath("Container")
 
 [node name="Container" type="MarginContainer" parent="Scroll"]
-margin_right = 570.0
-margin_bottom = 916.0
+margin_right = 574.0
+margin_bottom = 696.0
 mouse_filter = 2
-custom_constants/margin_left = 6
+custom_constants/margin_right = 12
+custom_constants/margin_left = 12
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Vertical" type="VBoxContainer" parent="Scroll/Container"]
-margin_left = 6.0
-margin_right = 576.0
-margin_bottom = 916.0
+margin_left = 12.0
+margin_right = 562.0
+margin_bottom = 1402.0
 mouse_filter = 2
 
 [node name="Space" type="Control" parent="Scroll/Container/Vertical"]
-margin_right = 570.0
+margin_right = 550.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 0, 100 )
 mouse_filter = 1
 
 [node name="Image" type="CenterContainer" parent="Scroll/Container/Vertical"]
 margin_top = 104.0
-margin_right = 570.0
-margin_bottom = 360.0
+margin_right = 550.0
+margin_bottom = 374.0
 mouse_filter = 1
 
-[node name="TextureRect" type="TextureRect" parent="Scroll/Container/Vertical/Image"]
-margin_left = 157.0
-margin_right = 413.0
-margin_bottom = 256.0
+[node name="Container" type="PanelContainer" parent="Scroll/Container/Vertical/Image"]
+margin_left = 140.0
+margin_right = 410.0
+margin_bottom = 270.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Scroll/Container/Vertical/Image/Container"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 263.0
+margin_bottom = 263.0
 rect_min_size = Vector2( 256, 256 )
 texture = ExtResource( 7 )
 expand = true
 
 [node name="Header" type="PanelContainer" parent="Scroll/Container/Vertical"]
-margin_top = 364.0
-margin_right = 570.0
-margin_bottom = 428.0
+margin_top = 378.0
+margin_right = 550.0
+margin_bottom = 430.0
 mouse_filter = 1
-custom_styles/panel = SubResource( 9 )
 
-[node name="Vertical" type="VBoxContainer" parent="Scroll/Container/Vertical/Header"]
-margin_right = 570.0
-margin_bottom = 64.0
+[node name="Horizontal" type="HBoxContainer" parent="Scroll/Container/Vertical/Header"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 543.0
+margin_bottom = 45.0
+custom_constants/separation = 13
 
-[node name="Title" type="Label" parent="Scroll/Container/Vertical/Header/Vertical"]
-margin_right = 570.0
+[node name="Title" type="Label" parent="Scroll/Container/Vertical/Header/Horizontal"]
+margin_right = 145.0
 margin_bottom = 38.0
 custom_constants/line_spacing = 0
 custom_fonts/font = ExtResource( 5 )
 text = "Apple  Pie"
-align = 1
 
-[node name="Creator" type="Label" parent="Scroll/Container/Vertical/Header/Vertical"]
-margin_top = 42.0
-margin_right = 570.0
-margin_bottom = 64.0
-custom_fonts/font = ExtResource( 2 )
+[node name="Creator" type="Label" parent="Scroll/Container/Vertical/Header/Horizontal"]
+margin_left = 158.0
+margin_right = 280.0
+margin_bottom = 38.0
+custom_colors/font_color = Color( 1, 1, 1, 0.341176 )
+custom_fonts/font = ExtResource( 5 )
 text = "by David"
 align = 1
 
-[node name="Description" type="CenterContainer" parent="Scroll/Container/Vertical"]
-margin_top = 432.0
-margin_right = 570.0
-margin_bottom = 596.0
+[node name="Description" type="PanelContainer" parent="Scroll/Container/Vertical"]
+margin_top = 434.0
+margin_right = 550.0
+margin_bottom = 630.0
 mouse_filter = 1
 
-[node name="Text" type="TextEdit" parent="Scroll/Container/Vertical/Description"]
-margin_left = 53.0
-margin_right = 517.0
-margin_bottom = 164.0
-rect_min_size = Vector2( 464, 164 )
+[node name="Vertical" type="VBoxContainer" parent="Scroll/Container/Vertical/Description"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 543.0
+margin_bottom = 189.0
+
+[node name="Title" type="Label" parent="Scroll/Container/Vertical/Description/Vertical"]
+margin_right = 536.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 5 )
+text = "Description"
+
+[node name="Panel" type="MarginContainer" parent="Scroll/Container/Vertical/Description/Vertical"]
+margin_top = 42.0
+margin_right = 536.0
+margin_bottom = 182.0
+rect_min_size = Vector2( 0, 70 )
+mouse_filter = 1
+custom_constants/margin_right = 12
+custom_constants/margin_left = 12
+
+[node name="Text" type="TextEdit" parent="Scroll/Container/Vertical/Description/Vertical/Panel"]
+margin_left = 12.0
+margin_right = 524.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 0, 140 )
 mouse_filter = 1
 custom_fonts/font = ExtResource( 1 )
-custom_styles/normal = SubResource( 11 )
-text = "A delicious apple pie that is to die for! Thanks for the meal everyone!"
+custom_styles/normal = SubResource( 10 )
+text = "Text is unused.
+"
+selecting_enabled = false
 wrap_enabled = true
 
 [node name="Ingredients" type="PanelContainer" parent="Scroll/Container/Vertical"]
-margin_top = 600.0
-margin_right = 570.0
-margin_bottom = 696.0
+margin_top = 634.0
+margin_right = 550.0
+margin_bottom = 830.0
 mouse_filter = 1
 
 [node name="Vertical" type="VBoxContainer" parent="Scroll/Container/Vertical/Ingredients"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 563.0
-margin_bottom = 89.0
+margin_right = 543.0
+margin_bottom = 189.0
 
 [node name="Title" type="Label" parent="Scroll/Container/Vertical/Ingredients/Vertical"]
-margin_right = 556.0
+margin_right = 536.0
 margin_bottom = 38.0
 custom_fonts/font = ExtResource( 5 )
 text = "Ingredients"
-align = 1
 
 [node name="List" type="VBoxContainer" parent="Scroll/Container/Vertical/Ingredients/Vertical"]
 margin_top = 42.0
-margin_right = 556.0
-margin_bottom = 82.0
+margin_right = 536.0
+margin_bottom = 182.0
 
 [node name="IngredientListItem" parent="Scroll/Container/Vertical/Ingredients/Vertical/List" instance=ExtResource( 4 )]
+anchor_right = 0.0
+margin_right = 536.0
+margin_bottom = 32.0
+
+[node name="IngredientListItem2" parent="Scroll/Container/Vertical/Ingredients/Vertical/List" instance=ExtResource( 4 )]
+anchor_right = 0.0
+margin_top = 36.0
+margin_right = 536.0
+margin_bottom = 68.0
+
+[node name="IngredientListItem3" parent="Scroll/Container/Vertical/Ingredients/Vertical/List" instance=ExtResource( 4 )]
+anchor_right = 0.0
+margin_top = 72.0
+margin_right = 536.0
+margin_bottom = 104.0
+
+[node name="IngredientListItem4" parent="Scroll/Container/Vertical/Ingredients/Vertical/List" instance=ExtResource( 4 )]
+anchor_right = 0.0
+margin_top = 108.0
+margin_right = 536.0
+margin_bottom = 140.0
+
+[node name="Tags" type="PanelContainer" parent="Scroll/Container/Vertical"]
+margin_top = 834.0
+margin_right = 550.0
+margin_bottom = 966.0
+
+[node name="Vertical" type="VBoxContainer" parent="Scroll/Container/Vertical/Tags"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 543.0
+margin_bottom = 125.0
+
+[node name="Header" type="HBoxContainer" parent="Scroll/Container/Vertical/Tags/Vertical"]
+margin_right = 536.0
+margin_bottom = 82.0
+
+[node name="Title" type="Label" parent="Scroll/Container/Vertical/Tags/Vertical/Header"]
+margin_top = 22.0
+margin_right = 71.0
+margin_bottom = 60.0
+custom_fonts/font = ExtResource( 5 )
+text = "Tags"
+
+[node name="AddTag" type="Button" parent="Scroll/Container/Vertical/Tags/Vertical/Header"]
+margin_left = 75.0
+margin_right = 154.0
+margin_bottom = 82.0
+custom_fonts/font = ExtResource( 8 )
+text = " + "
+
+[node name="RemoveTag" type="Button" parent="Scroll/Container/Vertical/Tags/Vertical/Header"]
+margin_left = 158.0
+margin_right = 227.0
+margin_bottom = 82.0
+custom_fonts/font = ExtResource( 8 )
+text = " - "
+
+[node name="Horizontal" type="HBoxContainer" parent="Scroll/Container/Vertical/Tags/Vertical"]
+margin_top = 86.0
+margin_right = 536.0
+margin_bottom = 118.0
+
+[node name="Tag" type="LineEdit" parent="Scroll/Container/Vertical/Tags/Vertical/Horizontal"]
+margin_right = 66.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 2 )
+text = "Vegan"
+expand_to_text_length = true
+
+[node name="Tag2" type="LineEdit" parent="Scroll/Container/Vertical/Tags/Vertical/Horizontal"]
+margin_left = 70.0
+margin_right = 136.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 2 )
+text = "Vegan"
+expand_to_text_length = true
+
+[node name="Tag3" type="LineEdit" parent="Scroll/Container/Vertical/Tags/Vertical/Horizontal"]
+margin_left = 140.0
+margin_right = 206.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 2 )
+text = "Vegan"
+expand_to_text_length = true
+
+[node name="Tag4" type="LineEdit" parent="Scroll/Container/Vertical/Tags/Vertical/Horizontal"]
+margin_left = 210.0
+margin_right = 276.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 2 )
+text = "Vegan"
+expand_to_text_length = true
+
+[node name="Tag5" type="LineEdit" parent="Scroll/Container/Vertical/Tags/Vertical/Horizontal"]
+margin_left = 280.0
+margin_right = 346.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 2 )
+text = "Vegan"
+expand_to_text_length = true
+
+[node name="Tag6" type="LineEdit" parent="Scroll/Container/Vertical/Tags/Vertical/Horizontal"]
+margin_left = 350.0
+margin_right = 416.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 2 )
+text = "Vegan"
+expand_to_text_length = true
+
+[node name="Tag7" type="LineEdit" parent="Scroll/Container/Vertical/Tags/Vertical/Horizontal"]
+margin_left = 420.0
+margin_right = 486.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 2 )
+text = "Vegan"
+expand_to_text_length = true
+
+[node name="Instructions" type="PanelContainer" parent="Scroll/Container/Vertical"]
+margin_top = 970.0
+margin_right = 550.0
+margin_bottom = 1402.0
+
+[node name="Vertical" type="VBoxContainer" parent="Scroll/Container/Vertical/Instructions"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 543.0
+margin_bottom = 425.0
+
+[node name="Horizontal" type="HBoxContainer" parent="Scroll/Container/Vertical/Instructions/Vertical"]
+margin_right = 536.0
+margin_bottom = 82.0
+custom_constants/separation = 10
+
+[node name="Title" type="Label" parent="Scroll/Container/Vertical/Instructions/Vertical/Horizontal"]
+margin_top = 22.0
+margin_right = 172.0
+margin_bottom = 60.0
+custom_fonts/font = ExtResource( 5 )
+text = "Instructions"
+align = 1
+
+[node name="AddInstruction" type="Button" parent="Scroll/Container/Vertical/Instructions/Vertical/Horizontal"]
+margin_left = 182.0
+margin_right = 261.0
+margin_bottom = 82.0
+custom_fonts/font = ExtResource( 8 )
+text = " + "
+
+[node name="RemoveInstruction" type="Button" parent="Scroll/Container/Vertical/Instructions/Vertical/Horizontal"]
+margin_left = 271.0
+margin_right = 340.0
+margin_bottom = 82.0
+custom_fonts/font = ExtResource( 8 )
+text = " - "
+
+[node name="List" type="VBoxContainer" parent="Scroll/Container/Vertical/Instructions/Vertical"]
+margin_top = 86.0
+margin_right = 536.0
+margin_bottom = 418.0
+
+[node name="Text" type="TextEdit" parent="Scroll/Container/Vertical/Instructions/Vertical/List"]
+margin_right = 536.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+custom_fonts/font = ExtResource( 2 )
+text = "Do Stuff"
+show_line_numbers = true
+
+[node name="Text2" type="TextEdit" parent="Scroll/Container/Vertical/Instructions/Vertical/List"]
+margin_top = 84.0
+margin_right = 536.0
+margin_bottom = 164.0
+rect_min_size = Vector2( 0, 80 )
+custom_fonts/font = ExtResource( 2 )
+text = "Do Stuff"
+show_line_numbers = true
+
+[node name="Text3" type="TextEdit" parent="Scroll/Container/Vertical/Instructions/Vertical/List"]
+margin_top = 168.0
+margin_right = 536.0
+margin_bottom = 248.0
+rect_min_size = Vector2( 0, 80 )
+custom_fonts/font = ExtResource( 2 )
+text = "Do Stuff"
+show_line_numbers = true
+
+[node name="Text4" type="TextEdit" parent="Scroll/Container/Vertical/Instructions/Vertical/List"]
+margin_top = 252.0
+margin_right = 536.0
+margin_bottom = 332.0
+rect_min_size = Vector2( 0, 80 )
+custom_fonts/font = ExtResource( 2 )
+text = "Do Stuff"
+show_line_numbers = true
 
 [node name="Return" type="Button" parent="."]
 margin_left = 16.0
@@ -157,14 +385,17 @@ __meta__ = {
 }
 
 [node name="Save" type="Button" parent="."]
-margin_left = 452.0
-margin_top = 22.0
-margin_right = 560.0
-margin_bottom = 66.0
+margin_left = 135.0
+margin_top = 20.0
+margin_right = 243.0
+margin_bottom = 64.0
 custom_fonts/font = ExtResource( 5 )
 text = "Save"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="pressed" from="Scroll/Container/Vertical/Tags/Vertical/Header/AddTag" to="." method="_on_AddTag_pressed"]
+[connection signal="pressed" from="Scroll/Container/Vertical/Tags/Vertical/Header/RemoveTag" to="." method="_on_RemoveTag_pressed"]
 [connection signal="pressed" from="Return" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="Save" to="." method="_on_Save_pressed"]
