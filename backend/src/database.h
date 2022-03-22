@@ -20,11 +20,11 @@ namespace database
 	bool open();
 
 	//Dont know why this is highlighted when the function is in the class...
-	int insert_recipe_ingredient(const char* s, int recipe_id, string recipe_name, string ingredient_name, string ingredient_amount);
-}	int insert_recipes(const char* s, int recipe_id, string name, int creator_id, string recipe_description);
-	int insert_recipe_directions(const char* s, int recipe_id, string recipe_name, string recipe_directions);
-	int insert_new_user(const char* s, int recipe_id, string name, string password);
-	void add_new_recipe(const char* s, vector<json> vec);
+	int insert_recipe_ingredient(int recipe_ingredient_count, string recipe_id, string ingredient_name, string ingredient_amount);
+}	int insert_recipes(string recipe_id, string name, string creator_id, string recipe_description);
+	int insert_recipe_directions(int recipe_description_count, string recipe_id, string recipe_directions);
+	int insert_new_user(string recipe_id, string name, string password);
+	void add_new_recipe(json recipe);
 
 	//This are here to testing purposing, will delete later
 	//int selectData(const char* s);

@@ -50,116 +50,74 @@ bool database::open()
 
 
 // Takes data that was provided by the user and inputs into the database :: Step 2
-int insert_recipe_ingredient(const char* s, int recipe_id, string recipe_name, string ingredient_name, string ingredient_amount)
+int insert_recipe_ingredient(int recipe_ingredient_count, string recipe_id, string ingredient_name, string ingredient_amount)
 {
-	sqlite3* db;
-	char* zErrMsg;
-	int rc = 0;
-
-	rc = sqlite3_open("../database/database.db", &db);
-
-	string sql("INSERT INTO recipe_ingredients (recipe_id, recipe_name, ingredient_name , ingredient_amount) VALUES('" + to_string(recipe_id) + "', '" + recipe_name + "','" + ingredient_name + "', '" + ingredient_amount + "'); ");
-	rc = sqlite3_exec(db, sql.c_str(), NULL, 0, &zErrMsg);
-
-	if (rc != SQLITE_OK)
+	for (int i = 0; i < recipe_ingredient_count; ++i)
 	{
-		cout << "Error inserting into table :(\n";
-		sqlite3_free(zErrMsg);
+		string statement("INSERT INTO recipe_ingredients (recipe_id, ingredient_name , ingredient_amount) VALUES('" + recipe_id + "','" + ingredient_name + "', '" + ingredient_amount + "'); ");
+		database::call(statement);
 	}
-	else
-		cout << "Successfully inserted into table\n";
-	sqlite3_close(db);
 	return 0;
 }
 
 //Inserts recipe information  :: Step 1
-int insert_recipes(const char* s, int recipe_id, string recipe_name, int creator_id, string recipe_description)
+int insert_recipes(string recipe_id, string recipe_name, string creator_id, string recipe_description)
 {
-	sqlite3* db;
-	char* zErrMsg;
-	int rc = 0;
-
-	rc = sqlite3_open("../database/database.db", &db);
-
-	string sql("INSERT INTO recipes (recipe_id, recipe_name, creator_name , recipe_description) VALUES('" + to_string(recipe_id) + "', '" + recipe_name + "','" + to_string(creator_id) + "', '" + recipe_description + "'); ");
-
-	rc = sqlite3_exec(db, sql.c_str(), NULL, 0, &zErrMsg);
-
-	if (rc != SQLITE_OK)
-	{
-		cout << "Error inserting into table :(\n";
-		sqlite3_free(zErrMsg);
-	}
-	else
-		cout << "Successfully inserted into table\n";
-	sqlite3_close(db);
-
+	
+	string statement("INSERT INTO recipes (recipe_id, recipe_name, creator_name , recipe_description) VALUES('" + recipe_id + "', '" + recipe_name + "','" + creator_id + "', '" + recipe_description + "'); ");
+	database::call(statement);
+	
 	return 0;
 }
 
 
 //Inserts the directions of the recipe    :: Step 3
-int insert_recipe_directions(const char* s, int recipe_id, string recipe_name, string recipe_directions)
+int insert_recipe_directions(int recipe_description_count, string recipe_id, string recipe_directions)
 {
-	sqlite3* db;
-	char* zErrMsg;
-	int rc = 0;
-
-	rc = sqlite3_open("../database/database.db", &db);
-
-	string sql("INSERT INTO recipes_directions (recipe_id, recipe_name, creator_name , recipe_description) VALUES('" + to_string(recipe_id) + "', '" + recipe_name + "','" + recipe_directions + "'); ");
-
-	rc = sqlite3_exec(db, sql.c_str(), NULL, 0, &zErrMsg);
-
-	if (rc != SQLITE_OK)
+	for (int i = 0; i < recipe_description_count; ++i)
 	{
-		cout << "Error inserting into table :(\n";
-		sqlite3_free(zErrMsg);
+		string statement("INSERT INTO recipes_directions (recipe_id, recipe_description) VALUES('" + recipe_id + "', '" + recipe_directions + "'); ");
+			database::call(statement);
+
 	}
-	else
-		cout << "Successfully inserted into recipe_directions table\n";
-	sqlite3_close(db);
+	string statement("INSERT INTO recipes_directions (recipe_id, recipe_description) VALUES('" + recipe_id + "', '" + recipe_directions + "'); ");
+
+	database::call(statement);
 
 	return 0;
 }
 
 
 //Inserts new user id and passwords
-int insert_new_user(const char* s, int id, string name, string password)
+int insert_new_user(string id, string name, string password)
 {
-	sqlite3* db;
-	char* zErrMsg;
-	int rc = 0;
 
-	rc = sqlite3_open("../database/database.db", &db);
+	string statement("INSERT INTO users (id, name, password) VALUES('" + id + "', '" + name + "','" + password + "'); ");
 
-	string sql("INSERT INTO users (id, name, password) VALUES('" + to_string(id) + "', '" + name + "','" + password + "'); ");
-
-	rc = sqlite3_exec(db, sql.c_str(), NULL, 0, &zErrMsg);
-
-	if (rc != SQLITE_OK)
-	{
-		cout << "Error inserting into table :(\n";
-		sqlite3_free(zErrMsg);
-	}
-	else
-		cout << "Successfully inserted into users table\n";
-	sqlite3_close(db);
+	database::call(statement);
 
 	return 0;
 }
 
 //Will gather all information and send it to its proper table. 
-void add_new_recipe(const char* s, vector<json> vec)
+void add_new_recipe(json recipe)
 {
-	int recipe_id, creator_id;
-	string recipe_name , recipe_ingredient, recipe_description, recipe_direction, recipe_ingredient_amount;
+	int recipe_description_count, recipe_directions_count;
 
-	// vector will be broken down and assigned its value to the term and sent to its proper table. 
+	string recipe_name , recipe_ingredient, recipe_description, recipe_direction, recipe_ingredient_amount,
+		recipe_id, creator_id;
 
-	insert_recipes(database::db_release_path, recipe_id, recipe_name, creator_id, recipe_description);
-	insert_recipe_ingredient(database::db_release_path, recipe_id, recipe_name, recipe_ingredient, recipe_ingredient_amount);
-	insert_recipe_directions(database::db_release_path, recipe_id, recipe_name, recipe_direction);
+	recipe.at("recipe_id") = recipe_id;
+	recipe.at("name") = recipe_name;
+	recipe.at("creator_id") = creator_id;
+	recipe.at("description") = recipe_description;
+	recipe_description_count = recipe.at("desciption").size();
+	recipe.at("ingredients") = recipe_ingredient;
+	recipe_directions_count = recipe.at("ingredients").size();
+
+	insert_recipes(recipe_id, recipe_name, creator_id, recipe_description);
+	insert_recipe_ingredient(recipe_description_count, recipe_id, recipe_ingredient, recipe_ingredient_amount);
+	insert_recipe_directions(recipe_directions_count, recipe_id, recipe_direction);
 
 }
 
@@ -173,11 +131,10 @@ int selectData(const char* s)
 	int rc = 0;
 
 	rc = sqlite3_open("../database/database.db", &db);
-	string sql = "SELECT * FROM recipes; ";
+	string statement = "SELECT * FROM recipes; ";
 
-	sqlite3_exec(db, sql.c_str(), callback, 0, NULL);
+	database::call(statement);
 
-	sqlite3_close(db);
 	return 0;
 }
 
