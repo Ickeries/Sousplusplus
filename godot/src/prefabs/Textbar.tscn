@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/fonts/dynamic_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/prefabs/text_bar.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=3]
 
@@ -34,7 +33,7 @@ margin_top = 9.0
 margin_right = -47.809
 margin_bottom = 59.0
 custom_colors/font_color = Color( 1, 1, 1, 0.482353 )
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 3 )
 custom_styles/normal = SubResource( 6 )
 text = "Search.."
 valign = 2

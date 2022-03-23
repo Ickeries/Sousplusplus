@@ -1,17 +1,19 @@
-extends UIButton
+extends PanelContainer
 
 var data = {}
 
+var start_position : = Vector2(0,0)
+
 func set_data(dictionary : Dictionary):
-	data = dictionary
 	if dictionary.has("recipe_name"):
-		$Title.text = dictionary.recipe_name
-	if dictionary.has("recipe_description"):
-		$Description.text = dictionary.recipe_description
-	if dictionary.has("creator"):
-		$Creator.text= dictionary.creator
+		$Header/Vertical/Name.text = dictionary["recipe_name"]
 
 
-func _on_Item_pressed():
-	if data.has("recipe_id"):
-		Global.emit_signal("recipe_page_called", data)
+func _on_Item_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT:
+			if event.pressed:
+				start_position = event.position
+			else:
+				if event.position.distance_to(start_position) < 10.0:
+					Global.emit_signal("recipe_popup_called", data)

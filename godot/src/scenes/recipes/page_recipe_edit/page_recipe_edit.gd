@@ -15,6 +15,7 @@ var data = {
 }
 
 func _ready():
+	_on_Container_resized()
 	call_deferred("_deferred")
 
 func _deferred():
@@ -25,7 +26,7 @@ func load_recipe(id : int):
 
 
 func _on_Return_pressed():
-	emit_signal("recipe_page_hide")
+	visible = false
 
 func _on_AddTag_pressed():
 	if tags.get_child_count() < 5:
@@ -41,3 +42,25 @@ func _on_RemoveTag_pressed():
 func _on_Save_pressed():
 	data["recipe_description"] = description.text
 	print(data)
+
+
+onready var description_animator = $Scroll/Container/Vertical/Description/Animator
+
+# Description
+func _on_EditDescription_pressed():
+	if description_animator.get_current_animation() == "confirm":
+		description_animator.play("edit")
+	else:
+		description_animator.play("confirm")
+
+
+func _on_ClearDescription_pressed():
+	pass # Replace with function body.
+
+
+func _on_Container_resized():
+	$ScrollBar.max_value = $Scroll/Container.rect_size.y
+	$ScrollBar.page = $Scroll.rect_size.y
+
+func _on_ScrollBar_value_changed(value):
+	$Scroll.scroll_vertical = value
