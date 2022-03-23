@@ -25,7 +25,9 @@ namespace database
 	int insert_recipe_directions(int recipe_description_count, string recipe_id, string recipe_directions);
 	int insert_new_user(string recipe_id, string name, string password);
 	void add_new_recipe(json recipe);
-
+	void remove_row(string table_name, string row, string name);
+	void update(string table_name, string col_to_update, string updated_info,string condition_col, string search_condition);
+	
 	//This are here to testing purposing, will delete later
 	//int selectData(const char* s);
 	//int callback(void* not_Used, int argc, char** argv, char** az_Col_Name);

@@ -120,6 +120,31 @@ void add_new_recipe(json recipe)
 	insert_recipe_directions(recipe_directions_count, recipe_id, recipe_direction);
 
 }
+// will remove an entire row from a table, passing which table whi
+void remove_row(string table_name, string row, string name)
+{
+	string statement("DELETE FROM " + table_name + " WHERE " + row + "='" + name + "'");
+	database::call(statement);
+}
+
+/* this method takes in table, which row will be updated along with the new text
+     which col to search for and the specific row
+	 I.E. to update recipe description
+	 update("Recipes" , "recipe_desciption", "New Description Goes Here", 
+	        "recipe_name","Chicken Alfredo" );
+*/
+void update(string table_name, string col_to_update, string updated_info,
+			 string condition_col, string search_condition)
+{
+	string statement1("Update" + table_name);
+	string statement2("SET " + col_to_update +"='" + updated_info + "'");
+	string statement3("WHERE " + condition_col + " = '" + search_condition + "'");
+
+	database::call(statement1);
+	database::call(statement2);
+	database::call(statement3);
+}
+
 
 
 //@Erik Put this here to test if tables were opening/inserting correctly. will delete later 
