@@ -1,12 +1,13 @@
-extends PanelContainer
+extends Control
 
 var data = {}
 
 var start_position : = Vector2(0,0)
 
 func set_data(dictionary : Dictionary):
+	data = dictionary
 	if dictionary.has("recipe_name"):
-		$Header/Vertical/Name.text = dictionary["recipe_name"]
+		$Name.text = dictionary["recipe_name"]
 
 
 func _on_Item_gui_input(event):
@@ -16,4 +17,5 @@ func _on_Item_gui_input(event):
 				start_position = event.position
 			else:
 				if event.position.distance_to(start_position) < 10.0:
-					Global.emit_signal("recipe_popup_called", data)
+					Global.emit_signal("update_data", data)
+					Global.emit_signal("enter_page", "PageRecipe")

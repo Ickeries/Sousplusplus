@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/fonts/font18.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/scenes/recipes/page_recipe/page_recipe_ingredient.gd" type="Script" id=2]
+
+[node name="PageRecipeIngredient" type="HBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/separation = 32
+alignment = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="."]
+margin_top = 9.0
+margin_right = 56.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 1 )
+text = "Apples"
+
+[node name="Amount" type="Label" parent="."]
+margin_left = 88.0
+margin_top = 9.0
+margin_right = 108.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 1 )
+text = "12"

@@ -24,7 +24,7 @@ public:
 	
 	String get_recipes_by_name(String name);
 	String get_recipe_by_name(String name);
-	String get_recipe_ingredients_by_name(String name);
+	String get_recipe_ingredients_by_id(int id);
 	
 };
 }

@@ -20,5 +20,5 @@ func _on_Scroll_gui_input(event):
 	
 	if event is InputEventMouseMotion:
 		if pressed and event.position.distance_to(start_position) > 10.0:
-			$Tween.interpolate_property(self, "scroll_vertical", scroll_vertical, scroll_vertical-event.relative.y, .05)
+			$Tween.interpolate_property(self, "scroll_vertical", scroll_vertical, scroll_vertical-event.relative.y*1.5, .05)
 			$Tween.start()

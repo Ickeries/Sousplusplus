@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://src/prefabs/items/Item.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/prefabs/Searchbar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ui/ui_scroll.gd" type="Script" id=2]
-[ext_resource path="res://src/prefabs/Textbar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/scenes/explore/explore.gd" type="Script" id=4]
 [ext_resource path="res://assets/fonts/large_title.tres" type="DynamicFont" id=5]
 
@@ -18,9 +17,9 @@ __meta__ = {
 [node name="Scroll" type="ScrollContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 9.0
-margin_top = 187.0
-margin_right = -14.0
+margin_left = 12.0
+margin_top = 251.0
+margin_right = -18.0
 margin_bottom = -35.0
 scroll_horizontal_enabled = false
 script = ExtResource( 2 )
@@ -28,168 +27,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Container" type="MarginContainer" parent="Scroll"]
-margin_right = 580.0
-margin_bottom = 1072.0
-mouse_filter = 2
-
-[node name="Vertical" type="GridContainer" parent="Scroll/Container"]
-margin_right = 580.0
-margin_bottom = 1072.0
-custom_constants/vseparation = 16
-columns = 2
-
-[node name="Item" parent="Scroll/Container/Vertical" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 288.0
-margin_bottom = 120.0
-
-[node name="Item2" parent="Scroll/Container/Vertical" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 292.0
-margin_right = 580.0
-margin_bottom = 120.0
-
-[node name="Item3" parent="Scroll/Container/Vertical" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 136.0
-margin_right = 288.0
-margin_bottom = 256.0
-
-[node name="Item4" parent="Scroll/Container/Vertical" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 292.0
-margin_top = 136.0
-margin_right = 580.0
-margin_bottom = 256.0
-
-[node name="Item5" parent="Scroll/Container/Vertical" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 272.0
-margin_right = 288.0
-margin_bottom = 392.0
-
-[node name="Item6" parent="Scroll/Container/Vertical" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 292.0
-margin_top = 272.0
-margin_right = 580.0
-margin_bottom = 392.0
-
-[node name="Item7" parent="Scroll/Container/Vertical" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 408.0
-margin_right = 288.0
-margin_bottom = 528.0
-
-[node name="Item8" parent="Scroll/Container/Vertical" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 292.0
-margin_top = 408.0
-margin_right = 580.0
-margin_bottom = 528.0
-
-[node name="Item9" parent="Scroll/Container/Vertical" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 544.0
-margin_right = 288.0
-margin_bottom = 664.0
-
-[node name="Item10" parent="Scroll/Container/Vertical" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 292.0
-margin_top = 544.0
-margin_right = 580.0
-margin_bottom = 664.0
-
-[node name="Item11" parent="Scroll/Container/Vertical" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 680.0
-margin_right = 288.0
-margin_bottom = 800.0
-
-[node name="Item12" parent="Scroll/Container/Vertical" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 292.0
-margin_top = 680.0
-margin_right = 580.0
-margin_bottom = 800.0
-
-[node name="Item13" parent="Scroll/Container/Vertical" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 816.0
-margin_right = 288.0
-margin_bottom = 936.0
-
-[node name="Item14" parent="Scroll/Container/Vertical" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 292.0
-margin_top = 816.0
-margin_right = 580.0
-margin_bottom = 936.0
-
-[node name="Item15" parent="Scroll/Container/Vertical" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 952.0
-margin_right = 288.0
-margin_bottom = 1072.0
-
-[node name="Item16" parent="Scroll/Container/Vertical" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 292.0
-margin_top = 952.0
-margin_right = 580.0
-margin_bottom = 1072.0
+[node name="Grid" type="VBoxContainer" parent="Scroll"]
 
 [node name="Tween" type="Tween" parent="Scroll"]
 
-[node name="ScrollBar" type="VScrollBar" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 6.0
-margin_top = 158.0
-margin_right = 32.0
-margin_bottom = -195.0
-max_value = 300.0
-step = 1.0
-page = 150.0
+[node name="Searchbar" parent="." instance=ExtResource( 1 )]
+margin_left = -5.0
+margin_top = 103.0
+margin_right = 545.0
+margin_bottom = 234.0
+
+[node name="Label" type="Label" parent="."]
+margin_left = 13.0
+margin_top = 13.0
+margin_right = 337.0
+margin_bottom = 89.0
+custom_fonts/font = ExtResource( 5 )
+text = "Explore"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Textbar" parent="." instance=ExtResource( 3 )]
-margin_left = 41.0
-margin_top = 22.0
-margin_right = 543.0
-margin_bottom = 94.0
-
-[node name="NoRecipesFound" type="Label" parent="."]
-visible = false
-margin_left = 50.0
-margin_top = 421.0
-margin_right = 542.0
-margin_bottom = 497.0
-custom_fonts/font = ExtResource( 5 )
-text = "No recipes found"
-
 [connection signal="gui_input" from="Scroll" to="Scroll" method="_on_Scroll_gui_input"]
-[connection signal="resized" from="Scroll/Container" to="." method="_on_Container_resized"]
-[connection signal="value_changed" from="ScrollBar" to="." method="_on_ScrollBar_value_changed"]
-[connection signal="search_entered" from="Textbar" to="." method="_on_Textbar_search_entered"]
+[connection signal="search_entered" from="Searchbar" to="." method="_on_Searchbar_search_entered"]

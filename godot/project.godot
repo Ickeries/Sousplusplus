@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Control",
+"class": "Textbar",
+"language": "GDScript",
+"path": "res://src/prefabs/text_bar.gd"
+} ]
+_global_script_class_icons={
+"Textbar": ""
+}
+
 [application]
 
 config/name="Sousplusplus"

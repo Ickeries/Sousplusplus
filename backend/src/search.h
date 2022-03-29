@@ -10,7 +10,7 @@ using json = nlohmann::json;
 
 namespace search
 {
-	json get_recipes_by_name(string name, int limit);
+	json get_recipes_by_name(string name);
 
 
 }

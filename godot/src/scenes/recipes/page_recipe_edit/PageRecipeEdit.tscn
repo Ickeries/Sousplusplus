@@ -1,144 +1,96 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://assets/fonts/dynamic_font.tres" type="DynamicFont" id=1]
-[ext_resource path="res://assets/fonts/font18.tres" type="DynamicFont" id=2]
 [ext_resource path="res://src/scenes/recipes/page_recipe_edit/page_recipe_edit.gd" type="Script" id=3]
-[ext_resource path="res://src/prefabs/items/list_items/IngredientListItem.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=5]
 [ext_resource path="res://src/ui/ui_scroll.gd" type="Script" id=6]
-[ext_resource path="res://assets/icons/dishes/applepie1.jpg" type="Texture" id=7]
+[ext_resource path="res://assets/fonts/box_row_title_font.tres" type="DynamicFont" id=7]
 [ext_resource path="res://assets/fonts/large_title.tres" type="DynamicFont" id=8]
 
-[sub_resource type="Gradient" id=6]
-colors = PoolColorArray( 0.909804, 0.909804, 0.909804, 1, 0.701961, 0.701961, 0.701961, 1 )
+[sub_resource type="StyleBoxEmpty" id=13]
 
-[sub_resource type="GradientTexture" id=7]
-gradient = SubResource( 6 )
-
-[sub_resource type="StyleBoxEmpty" id=11]
-
-[sub_resource type="StyleBoxFlat" id=8]
-
-[sub_resource type="Animation" id=9]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Vertical/Panel/Text:readonly")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Vertical/Panel/Text:custom_styles/normal")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ SubResource( 8 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Vertical/Panel/Text:custom_styles/read_only")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ SubResource( 11 ) ]
-}
-
-[sub_resource type="StyleBoxEmpty" id=12]
-
-[sub_resource type="Animation" id=13]
-resource_name = "confirm"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Vertical/Panel/Text:custom_styles/normal")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ SubResource( 12 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Vertical/Panel/Text:readonly")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Vertical/Panel/Text:custom_styles/read_only")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ SubResource( 11 ) ]
-}
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0, 0, 0, 0.478431 )
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+expand_margin_top = 8.0
+expand_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxEmpty" id=14]
 
-[sub_resource type="Animation" id=10]
-resource_name = "edit"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Vertical/Panel/Text:readonly")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Vertical/Panel/Text:custom_styles/normal")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ null ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Vertical/Panel/Text:custom_styles/read_only")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ SubResource( 14 ) ]
-}
+[sub_resource type="StyleBoxFlat" id=17]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0, 0, 0, 1 )
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 1, 1, 1, 1 )
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id=15]
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.690196, 0.266667, 0.156863, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.137255, 0.490196, 0.741176, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.0745098, 0.254902, 0.384314, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.117647, 0.427451, 0.647059, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="PageRecipeEdit" type="Control"]
 anchor_right = 1.0
@@ -148,16 +100,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Color" type="Sprite" parent="."]
-modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
-position = Vector2( 286.052, 514.596 )
-rotation = -1.5708
-scale = Vector2( 0.499279, 573.319 )
-texture = SubResource( 7 )
-
 [node name="Scroll" type="ScrollContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_bottom = -147.0
 rect_min_size = Vector2( 576, 0 )
 follow_focus = true
 scroll_horizontal_enabled = false
@@ -167,428 +113,286 @@ __meta__ = {
 }
 
 [node name="Container" type="MarginContainer" parent="Scroll"]
-margin_right = 576.0
-margin_bottom = 1508.0
-rect_min_size = Vector2( 576, 0 )
+margin_right = 550.0
+margin_bottom = 1186.0
+rect_min_size = Vector2( 550, 0 )
 mouse_filter = 2
 custom_constants/margin_right = 16
-custom_constants/margin_left = 16
+custom_constants/margin_left = 32
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Vertical" type="VBoxContainer" parent="Scroll/Container"]
-margin_left = 16.0
-margin_right = 560.0
-margin_bottom = 1508.0
+margin_left = 32.0
+margin_right = 534.0
+margin_bottom = 1186.0
 mouse_filter = 2
+custom_constants/separation = 32
 
 [node name="Space" type="Control" parent="Scroll/Container/Vertical"]
-margin_right = 544.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 0, 100 )
+margin_right = 502.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 0, 150 )
 mouse_filter = 1
 
-[node name="Image" type="CenterContainer" parent="Scroll/Container/Vertical"]
-margin_top = 104.0
-margin_right = 544.0
-margin_bottom = 374.0
+[node name="Name" type="PanelContainer" parent="Scroll/Container/Vertical"]
+margin_top = 182.0
+margin_right = 502.0
+margin_bottom = 272.0
 mouse_filter = 1
+custom_styles/panel = SubResource( 13 )
 
-[node name="Container" type="PanelContainer" parent="Scroll/Container/Vertical/Image"]
-margin_left = 137.0
-margin_right = 407.0
-margin_bottom = 270.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Horizontal" type="VBoxContainer" parent="Scroll/Container/Vertical/Name"]
+margin_right = 502.0
+margin_bottom = 90.0
+custom_constants/separation = 6
 
-[node name="TextureRect" type="TextureRect" parent="Scroll/Container/Vertical/Image/Container"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 263.0
-margin_bottom = 263.0
-rect_min_size = Vector2( 256, 256 )
-texture = ExtResource( 7 )
-expand = true
-
-[node name="Header" type="PanelContainer" parent="Scroll/Container/Vertical"]
-margin_top = 378.0
-margin_right = 544.0
-margin_bottom = 430.0
-mouse_filter = 1
-
-[node name="Horizontal" type="HBoxContainer" parent="Scroll/Container/Vertical/Header"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 537.0
-margin_bottom = 45.0
-custom_constants/separation = 13
-
-[node name="Title" type="Label" parent="Scroll/Container/Vertical/Header/Horizontal"]
-margin_right = 145.0
+[node name="Title" type="Label" parent="Scroll/Container/Vertical/Name/Horizontal"]
+margin_right = 502.0
 margin_bottom = 38.0
-custom_constants/line_spacing = 0
-custom_fonts/font = ExtResource( 5 )
-text = "Apple  Pie"
+custom_fonts/font = ExtResource( 7 )
+text = "Title"
+autowrap = true
 
-[node name="Creator" type="Label" parent="Scroll/Container/Vertical/Header/Horizontal"]
-margin_left = 158.0
-margin_right = 280.0
-margin_bottom = 38.0
-custom_colors/font_color = Color( 1, 1, 1, 0.341176 )
+[node name="Text" type="LineEdit" parent="Scroll/Container/Vertical/Name/Horizontal"]
+margin_top = 44.0
+margin_right = 502.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 300, 0 )
 custom_fonts/font = ExtResource( 5 )
-text = "by David"
-align = 1
+custom_styles/normal = SubResource( 16 )
 
 [node name="Description" type="PanelContainer" parent="Scroll/Container/Vertical"]
-margin_top = 434.0
-margin_right = 544.0
-margin_bottom = 636.0
+margin_top = 304.0
+margin_right = 502.0
+margin_bottom = 494.0
 mouse_filter = 1
+custom_styles/panel = SubResource( 14 )
 
 [node name="Vertical" type="VBoxContainer" parent="Scroll/Container/Vertical/Description"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 537.0
-margin_bottom = 195.0
+margin_right = 502.0
+margin_bottom = 190.0
 
 [node name="Header" type="HBoxContainer" parent="Scroll/Container/Vertical/Description/Vertical"]
-margin_right = 530.0
-margin_bottom = 44.0
+margin_right = 502.0
+margin_bottom = 46.0
 custom_constants/separation = 16
 
 [node name="Title" type="Label" parent="Scroll/Container/Vertical/Description/Vertical/Header"]
-margin_top = 3.0
+margin_top = 4.0
 margin_right = 164.0
-margin_bottom = 41.0
+margin_bottom = 42.0
 custom_fonts/font = ExtResource( 5 )
 text = "Description"
 
-[node name="EditDescription" type="Button" parent="Scroll/Container/Vertical/Description/Vertical/Header"]
-margin_left = 180.0
-margin_right = 247.0
-margin_bottom = 44.0
-custom_fonts/font = ExtResource( 5 )
-text = "Edit"
-
 [node name="ClearDescription" type="Button" parent="Scroll/Container/Vertical/Description/Vertical/Header"]
-margin_left = 263.0
-margin_right = 350.0
-margin_bottom = 44.0
+margin_left = 180.0
+margin_right = 263.0
+margin_bottom = 46.0
 custom_fonts/font = ExtResource( 5 )
+custom_styles/normal = SubResource( 17 )
 text = "Clear"
 
-[node name="Panel" type="MarginContainer" parent="Scroll/Container/Vertical/Description/Vertical"]
-margin_top = 48.0
-margin_right = 530.0
-margin_bottom = 188.0
-rect_min_size = Vector2( 0, 70 )
-mouse_filter = 1
-custom_constants/margin_right = 12
-custom_constants/margin_left = 12
-
-[node name="Text" type="TextEdit" parent="Scroll/Container/Vertical/Description/Vertical/Panel"]
-margin_left = 12.0
-margin_right = 518.0
-margin_bottom = 140.0
+[node name="Text" type="TextEdit" parent="Scroll/Container/Vertical/Description/Vertical"]
+margin_top = 50.0
+margin_right = 502.0
+margin_bottom = 190.0
 rect_min_size = Vector2( 0, 140 )
-mouse_filter = 1
-custom_fonts/font = ExtResource( 1 )
-custom_styles/read_only = SubResource( 11 )
+custom_fonts/font = ExtResource( 5 )
+custom_styles/focus = SubResource( 8 )
 custom_styles/normal = SubResource( 8 )
 text = "Text is unused.
 "
 selecting_enabled = false
 wrap_enabled = true
 
-[node name="Animator" type="AnimationPlayer" parent="Scroll/Container/Vertical/Description"]
-autoplay = "confirm"
-anims/RESET = SubResource( 9 )
-anims/confirm = SubResource( 13 )
-anims/edit = SubResource( 10 )
-
 [node name="Ingredients" type="PanelContainer" parent="Scroll/Container/Vertical"]
-margin_top = 640.0
-margin_right = 544.0
-margin_bottom = 936.0
+margin_top = 526.0
+margin_right = 502.0
+margin_bottom = 614.0
 mouse_filter = 1
+custom_styles/panel = SubResource( 14 )
 
 [node name="Vertical" type="VBoxContainer" parent="Scroll/Container/Vertical/Ingredients"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 537.0
-margin_bottom = 289.0
+margin_right = 502.0
+margin_bottom = 88.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Scroll/Container/Vertical/Ingredients/Vertical"]
-margin_right = 530.0
-margin_bottom = 82.0
+[node name="Header" type="HBoxContainer" parent="Scroll/Container/Vertical/Ingredients/Vertical"]
+margin_right = 502.0
+margin_bottom = 84.0
 
-[node name="Title" type="Label" parent="Scroll/Container/Vertical/Ingredients/Vertical/HBoxContainer"]
-margin_top = 22.0
-margin_right = 162.0
-margin_bottom = 60.0
+[node name="Title" type="Label" parent="Scroll/Container/Vertical/Ingredients/Vertical/Header"]
+margin_top = 23.0
+margin_right = 256.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 256, 0 )
 custom_fonts/font = ExtResource( 5 )
 text = "Ingredients"
 
-[node name="AddTag" type="Button" parent="Scroll/Container/Vertical/Ingredients/Vertical/HBoxContainer"]
-margin_left = 166.0
-margin_right = 245.0
-margin_bottom = 82.0
+[node name="AddIngredient" type="Button" parent="Scroll/Container/Vertical/Ingredients/Vertical/Header"]
+margin_left = 260.0
+margin_right = 344.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 84, 84 )
 custom_fonts/font = ExtResource( 8 )
+custom_styles/normal = SubResource( 17 )
 text = " + "
 
-[node name="RemoveTag" type="Button" parent="Scroll/Container/Vertical/Ingredients/Vertical/HBoxContainer"]
-margin_left = 249.0
-margin_right = 318.0
-margin_bottom = 82.0
+[node name="RemoveIngredient" type="Button" parent="Scroll/Container/Vertical/Ingredients/Vertical/Header"]
+margin_left = 348.0
+margin_right = 432.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 84, 84 )
 custom_fonts/font = ExtResource( 8 )
+custom_styles/normal = SubResource( 17 )
 text = " - "
 
 [node name="List" type="VBoxContainer" parent="Scroll/Container/Vertical/Ingredients/Vertical"]
-margin_top = 86.0
-margin_right = 530.0
-margin_bottom = 282.0
-
-[node name="IngredientListItem" parent="Scroll/Container/Vertical/Ingredients/Vertical/List" instance=ExtResource( 4 )]
-anchor_right = 0.0
-margin_right = 530.0
-margin_bottom = 46.0
-
-[node name="IngredientListItem2" parent="Scroll/Container/Vertical/Ingredients/Vertical/List" instance=ExtResource( 4 )]
-anchor_right = 0.0
-margin_top = 50.0
-margin_right = 530.0
-margin_bottom = 96.0
-
-[node name="IngredientListItem3" parent="Scroll/Container/Vertical/Ingredients/Vertical/List" instance=ExtResource( 4 )]
-anchor_right = 0.0
-margin_top = 100.0
-margin_right = 530.0
-margin_bottom = 146.0
-
-[node name="IngredientListItem4" parent="Scroll/Container/Vertical/Ingredients/Vertical/List" instance=ExtResource( 4 )]
-anchor_right = 0.0
-margin_top = 150.0
-margin_right = 530.0
-margin_bottom = 196.0
+margin_top = 88.0
+margin_right = 502.0
+margin_bottom = 88.0
 
 [node name="Tags" type="PanelContainer" parent="Scroll/Container/Vertical"]
-margin_top = 940.0
-margin_right = 544.0
-margin_bottom = 1072.0
+margin_top = 646.0
+margin_right = 502.0
+margin_bottom = 734.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 15 )
 
 [node name="Vertical" type="VBoxContainer" parent="Scroll/Container/Vertical/Tags"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 537.0
-margin_bottom = 125.0
+margin_right = 502.0
+margin_bottom = 88.0
 
 [node name="Header" type="HBoxContainer" parent="Scroll/Container/Vertical/Tags/Vertical"]
-margin_right = 530.0
-margin_bottom = 82.0
+margin_right = 502.0
+margin_bottom = 84.0
 
 [node name="Title" type="Label" parent="Scroll/Container/Vertical/Tags/Vertical/Header"]
-margin_top = 22.0
-margin_right = 71.0
-margin_bottom = 60.0
+margin_top = 23.0
+margin_right = 256.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 256, 0 )
 custom_fonts/font = ExtResource( 5 )
 text = "Tags"
 
 [node name="AddTag" type="Button" parent="Scroll/Container/Vertical/Tags/Vertical/Header"]
-margin_left = 75.0
-margin_right = 154.0
-margin_bottom = 82.0
+margin_left = 260.0
+margin_right = 344.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 84, 84 )
 custom_fonts/font = ExtResource( 8 )
+custom_styles/normal = SubResource( 17 )
 text = " + "
 
 [node name="RemoveTag" type="Button" parent="Scroll/Container/Vertical/Tags/Vertical/Header"]
-margin_left = 158.0
-margin_right = 227.0
-margin_bottom = 82.0
+margin_left = 348.0
+margin_right = 432.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 84, 84 )
 custom_fonts/font = ExtResource( 8 )
+custom_styles/normal = SubResource( 17 )
 text = " - "
 
 [node name="Horizontal" type="HBoxContainer" parent="Scroll/Container/Vertical/Tags/Vertical"]
-margin_top = 86.0
-margin_right = 530.0
-margin_bottom = 118.0
-
-[node name="Tag" type="LineEdit" parent="Scroll/Container/Vertical/Tags/Vertical/Horizontal"]
-margin_right = 66.0
-margin_bottom = 32.0
-custom_fonts/font = ExtResource( 2 )
-text = "Vegan"
-expand_to_text_length = true
-
-[node name="Tag2" type="LineEdit" parent="Scroll/Container/Vertical/Tags/Vertical/Horizontal"]
-margin_left = 70.0
-margin_right = 136.0
-margin_bottom = 32.0
-custom_fonts/font = ExtResource( 2 )
-text = "Vegan"
-expand_to_text_length = true
-
-[node name="Tag3" type="LineEdit" parent="Scroll/Container/Vertical/Tags/Vertical/Horizontal"]
-margin_left = 140.0
-margin_right = 206.0
-margin_bottom = 32.0
-custom_fonts/font = ExtResource( 2 )
-text = "Vegan"
-expand_to_text_length = true
-
-[node name="Tag4" type="LineEdit" parent="Scroll/Container/Vertical/Tags/Vertical/Horizontal"]
-margin_left = 210.0
-margin_right = 276.0
-margin_bottom = 32.0
-custom_fonts/font = ExtResource( 2 )
-text = "Vegan"
-expand_to_text_length = true
-
-[node name="Tag5" type="LineEdit" parent="Scroll/Container/Vertical/Tags/Vertical/Horizontal"]
-margin_left = 280.0
-margin_right = 346.0
-margin_bottom = 32.0
-custom_fonts/font = ExtResource( 2 )
-text = "Vegan"
-expand_to_text_length = true
-
-[node name="Tag6" type="LineEdit" parent="Scroll/Container/Vertical/Tags/Vertical/Horizontal"]
-margin_left = 350.0
-margin_right = 416.0
-margin_bottom = 32.0
-custom_fonts/font = ExtResource( 2 )
-text = "Vegan"
-expand_to_text_length = true
-
-[node name="Tag7" type="LineEdit" parent="Scroll/Container/Vertical/Tags/Vertical/Horizontal"]
-margin_left = 420.0
-margin_right = 486.0
-margin_bottom = 32.0
-custom_fonts/font = ExtResource( 2 )
-text = "Vegan"
-expand_to_text_length = true
+margin_top = 88.0
+margin_right = 502.0
+margin_bottom = 88.0
 
 [node name="Instructions" type="PanelContainer" parent="Scroll/Container/Vertical"]
-margin_top = 1076.0
-margin_right = 544.0
-margin_bottom = 1508.0
+margin_top = 766.0
+margin_right = 502.0
+margin_bottom = 854.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 15 )
 
 [node name="Vertical" type="VBoxContainer" parent="Scroll/Container/Vertical/Instructions"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 537.0
-margin_bottom = 425.0
+margin_right = 502.0
+margin_bottom = 88.0
 
 [node name="Horizontal" type="HBoxContainer" parent="Scroll/Container/Vertical/Instructions/Vertical"]
-margin_right = 530.0
-margin_bottom = 82.0
+margin_right = 502.0
+margin_bottom = 84.0
 custom_constants/separation = 10
 
 [node name="Title" type="Label" parent="Scroll/Container/Vertical/Instructions/Vertical/Horizontal"]
-margin_top = 22.0
-margin_right = 172.0
-margin_bottom = 60.0
+margin_top = 23.0
+margin_right = 256.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 256, 0 )
 custom_fonts/font = ExtResource( 5 )
 text = "Instructions"
-align = 1
 
 [node name="AddInstruction" type="Button" parent="Scroll/Container/Vertical/Instructions/Vertical/Horizontal"]
-margin_left = 182.0
-margin_right = 261.0
-margin_bottom = 82.0
+margin_left = 266.0
+margin_right = 350.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 84, 84 )
 custom_fonts/font = ExtResource( 8 )
+custom_styles/normal = SubResource( 17 )
 text = " + "
 
 [node name="RemoveInstruction" type="Button" parent="Scroll/Container/Vertical/Instructions/Vertical/Horizontal"]
-margin_left = 271.0
-margin_right = 340.0
-margin_bottom = 82.0
+margin_left = 360.0
+margin_right = 444.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 84, 84 )
 custom_fonts/font = ExtResource( 8 )
+custom_styles/normal = SubResource( 17 )
 text = " - "
 
 [node name="List" type="VBoxContainer" parent="Scroll/Container/Vertical/Instructions/Vertical"]
-margin_top = 86.0
-margin_right = 530.0
-margin_bottom = 418.0
+margin_top = 88.0
+margin_right = 502.0
+margin_bottom = 88.0
+custom_constants/separation = 16
 
-[node name="Text" type="TextEdit" parent="Scroll/Container/Vertical/Instructions/Vertical/List"]
-margin_right = 530.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 0, 80 )
-custom_fonts/font = ExtResource( 2 )
-text = "Do Stuff"
-show_line_numbers = true
+[node name="Space2" type="Control" parent="Scroll/Container/Vertical"]
+margin_top = 886.0
+margin_right = 502.0
+margin_bottom = 1186.0
+rect_min_size = Vector2( 0, 300 )
+mouse_filter = 2
 
-[node name="Text2" type="TextEdit" parent="Scroll/Container/Vertical/Instructions/Vertical/List"]
-margin_top = 84.0
-margin_right = 530.0
-margin_bottom = 164.0
-rect_min_size = Vector2( 0, 80 )
-custom_fonts/font = ExtResource( 2 )
-text = "Do Stuff"
-show_line_numbers = true
+[node name="Tween" type="Tween" parent="Scroll"]
 
-[node name="Text3" type="TextEdit" parent="Scroll/Container/Vertical/Instructions/Vertical/List"]
-margin_top = 168.0
-margin_right = 530.0
-margin_bottom = 248.0
-rect_min_size = Vector2( 0, 80 )
-custom_fonts/font = ExtResource( 2 )
-text = "Do Stuff"
-show_line_numbers = true
-
-[node name="Text4" type="TextEdit" parent="Scroll/Container/Vertical/Instructions/Vertical/List"]
-margin_top = 252.0
-margin_right = 530.0
-margin_bottom = 332.0
-rect_min_size = Vector2( 0, 80 )
-custom_fonts/font = ExtResource( 2 )
-text = "Do Stuff"
-show_line_numbers = true
-
-[node name="Return" type="Button" parent="."]
-margin_left = 16.0
+[node name="DontSave" type="Button" parent="."]
+margin_left = 406.0
 margin_top = 21.0
-margin_right = 124.0
-margin_bottom = 65.0
+margin_right = 561.0
+margin_bottom = 120.0
 custom_fonts/font = ExtResource( 5 )
-text = "Return"
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/focus = SubResource( 12 )
+custom_styles/normal = SubResource( 12 )
+text = "Don't Save"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Save" type="Button" parent="."]
-margin_left = 135.0
-margin_top = 20.0
-margin_right = 243.0
-margin_bottom = 64.0
+margin_left = 16.0
+margin_top = 21.0
+margin_right = 124.0
+margin_bottom = 120.0
 custom_fonts/font = ExtResource( 5 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 9 )
 text = "Save"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScrollBar" type="VScrollBar" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 5.0
-margin_right = 59.0
-max_value = 300.0
-step = 1.0
-page = 150.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[connection signal="resized" from="Scroll/Container" to="." method="_on_Container_resized"]
-[connection signal="pressed" from="Scroll/Container/Vertical/Description/Vertical/Header/EditDescription" to="." method="_on_EditDescription_pressed"]
+[connection signal="gui_input" from="Scroll" to="Scroll" method="_on_Scroll_gui_input"]
 [connection signal="pressed" from="Scroll/Container/Vertical/Description/Vertical/Header/ClearDescription" to="." method="_on_ClearDescription_pressed"]
-[connection signal="pressed" from="Scroll/Container/Vertical/Ingredients/Vertical/HBoxContainer/AddTag" to="." method="_on_AddTag_pressed"]
-[connection signal="pressed" from="Scroll/Container/Vertical/Ingredients/Vertical/HBoxContainer/RemoveTag" to="." method="_on_RemoveTag_pressed"]
+[connection signal="pressed" from="Scroll/Container/Vertical/Ingredients/Vertical/Header/AddIngredient" to="." method="_on_AddIngredient_pressed"]
+[connection signal="pressed" from="Scroll/Container/Vertical/Ingredients/Vertical/Header/RemoveIngredient" to="." method="_on_RemoveIngredient_pressed"]
 [connection signal="pressed" from="Scroll/Container/Vertical/Tags/Vertical/Header/AddTag" to="." method="_on_AddTag_pressed"]
 [connection signal="pressed" from="Scroll/Container/Vertical/Tags/Vertical/Header/RemoveTag" to="." method="_on_RemoveTag_pressed"]
-[connection signal="pressed" from="Return" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="Scroll/Container/Vertical/Instructions/Vertical/Horizontal/AddInstruction" to="." method="_on_AddInstruction_pressed"]
+[connection signal="pressed" from="Scroll/Container/Vertical/Instructions/Vertical/Horizontal/RemoveInstruction" to="." method="_on_RemoveInstruction_pressed"]
+[connection signal="pressed" from="DontSave" to="." method="_on_DontSave_pressed"]
 [connection signal="pressed" from="Save" to="." method="_on_Save_pressed"]
-[connection signal="value_changed" from="ScrollBar" to="." method="_on_ScrollBar_value_changed"]

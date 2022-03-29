@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/prefabs/items/list_items/list_item_ingredient.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/box_row_title_font.tres" type="DynamicFont" id=3]
+
+[node name="PageRecipeEditIngredient" type="PanelContainer"]
+anchor_right = 1.0
+margin_bottom = 40.0
+mouse_filter = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Horizontal" type="HBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 569.0
+margin_bottom = 55.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="LineEdit" parent="Horizontal"]
+margin_right = 300.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 300, 0 )
+custom_fonts/font = ExtResource( 2 )
+text = "Apple Juice"
+
+[node name="Amount" type="LineEdit" parent="Horizontal"]
+margin_left = 304.0
+margin_right = 468.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 164, 0 )
+custom_fonts/font = ExtResource( 2 )
+
+[node name="Remove" type="Button" parent="Horizontal"]
+margin_left = 472.0
+margin_right = 512.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 40, 0 )
+custom_fonts/font = ExtResource( 3 )
+text = "X"
+
+[connection signal="pressed" from="Horizontal/Remove" to="." method="_on_Remove_pressed"]

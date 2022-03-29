@@ -1,12 +1,14 @@
 extends Control
 
 var item_loaded = load("res://src/prefabs/items/Item.tscn")
-onready var items = $Scroll/Container/Vertical
+var add_new_recipe_loaded = load("res://src/scenes/explore/PageExploreAddNewRecipe.tscn")
+onready var items = $Scroll/Grid
 func _ready():
+	update_list([])
 	call_deferred("_deferred")
 
 func _deferred():
-	_on_Container_resized()
+	pass
 
 func update_list(array : Array):
 	for child in items.get_children():
@@ -15,26 +17,13 @@ func update_list(array : Array):
 		var item_instance = item_loaded.instance()
 		items.add_child(item_instance)
 		item_instance.set_data(i)
-	
-	if array.size() == 0:
-		$NoRecipesFound.visible = true
-	else:
-		$NoRecipesFound.visible = false
 
-
-
-func _on_Textbar_search_entered(text):
+func _on_Searchbar_search_entered(text):
 	var results = parse_json(Pipeline.get_recipes_by_name(text))
-	update_list(results)
-
-
-func _on_ScrollBar_value_changed(value):
-	$Scroll.scroll_vertical = value
-	
-func _on_Container_resized():
-	$ScrollBar.max_value = $Scroll/Container.rect_size.y
-	$ScrollBar.page = clamp($ScrollBar.page, $Scroll.rect_size.y, $ScrollBar.max_value)
-	print($ScrollBar.max_value, " and ", $ScrollBar.page)
+	if results != null:
+		update_list(results)
+	else:
+		Global.print_message("No valid recipes found.", Vector2(200,300))
 
 
 func _on_Scroll_gui_input(event):

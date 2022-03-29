@@ -11,18 +11,16 @@
 
 [sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 1, 1, 1, 0.709804 )
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [node name="Textbar" type="Control"]
-margin_right = 576.0
-margin_bottom = 64.0
+margin_right = 561.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 128, 0 )
 script = ExtResource( 2 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 291.0, 490.0 ]
 }
 
 [node name="Tip" type="Label" parent="."]
@@ -62,11 +60,11 @@ __meta__ = {
 
 [node name="Panel" type="Panel" parent="."]
 anchor_left = 0.034
-anchor_right = 0.966
-margin_left = 0.415998
+anchor_right = 0.971
+margin_left = 0.925999
 margin_top = 62.0
-margin_right = 0.583984
-margin_bottom = 64.0
+margin_right = 0.268982
+margin_bottom = 68.0
 rect_min_size = Vector2( 0, 2 )
 custom_styles/panel = SubResource( 7 )
 __meta__ = {

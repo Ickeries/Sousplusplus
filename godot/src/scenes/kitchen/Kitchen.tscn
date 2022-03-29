@@ -1,82 +1,74 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/icons/profile_pfp_placeholder.png" type="Texture" id=1]
-[ext_resource path="res://assets/fonts/box_row_title_font.tres" type="DynamicFont" id=2]
-[ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=3]
-[ext_resource path="res://src/scenes/kitchen/page_kitchen.gd" type="Script" id=4]
+[ext_resource path="res://src/ui/ui_scroll.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/scenes/kitchen/page_kitchen.gd" type="Script" id=3]
+[ext_resource path="res://assets/fonts/large_title.tres" type="DynamicFont" id=4]
+[ext_resource path="res://src/scenes/explore/PageExploreAddNewRecipe.tscn" type="PackedScene" id=5]
 
-[sub_resource type="Gradient" id=6]
-colors = PoolColorArray( 0.482353, 0.482353, 0.482353, 1, 0.14902, 0.14902, 0.14902, 1 )
-
-[sub_resource type="GradientTexture" id=7]
-gradient = SubResource( 6 )
-
-[sub_resource type="StyleBoxFlat" id=8]
-bg_color = Color( 0.0666667, 0.0666667, 0.0666667, 0.941176 )
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+draw_center = false
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
 
 [node name="Kitchen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 4 )
+mouse_filter = 2
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="ColorRect" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 288.139, 528.25 )
-rotation = -1.5708
-scale = Vector2( 0.548828, 626.515 )
-texture = SubResource( 7 )
-
-[node name="Top" type="Control" parent="."]
-anchor_right = 1.0
-margin_bottom = 222.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Panel" type="Panel" parent="Top"]
+[node name="Scroll" type="ScrollContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 8 )
+margin_left = 21.0
+margin_top = 200.0
+margin_right = -10.0
+margin_bottom = -134.0
+scroll_horizontal_enabled = false
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Pfp" type="TextureButton" parent="Top"]
-margin_left = 24.0
-margin_top = 17.0
-margin_right = 210.0
-margin_bottom = 203.0
-texture_normal = ExtResource( 1 )
-expand = true
+[node name="Grid" type="VBoxContainer" parent="Scroll"]
+
+[node name="Tween" type="Tween" parent="Scroll"]
+
+[node name="Label" type="Label" parent="."]
+margin_left = 13.0
+margin_top = 13.0
+margin_right = 337.0
+margin_bottom = 89.0
+custom_fonts/font = ExtResource( 4 )
+text = "My Kitchen"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Username" type="Label" parent="Top"]
-margin_left = 259.0
-margin_top = 33.0
-margin_right = 491.0
-margin_bottom = 71.0
+[node name="PageExploreAddNewRecipe" parent="." instance=ExtResource( 5 )]
+margin_left = 15.0
+margin_top = 91.0
+margin_right = -146.856
+margin_bottom = 90.84
+
+[node name="SignIn" type="Button" parent="."]
+margin_left = 355.0
+margin_top = 18.0
+margin_right = 558.0
+margin_bottom = 201.0
 custom_fonts/font = ExtResource( 2 )
-text = "Temporary User"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Signin" type="Button" parent="Top"]
-margin_left = 311.0
-margin_top = 108.0
-margin_right = 421.0
-margin_bottom = 152.0
-custom_fonts/font = ExtResource( 3 )
+custom_styles/normal = SubResource( 1 )
 text = "Sign in"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="Top/Signin" to="." method="_on_Signin_pressed"]
+[connection signal="visibility_changed" from="." to="." method="_on_Kitchen_visibility_changed"]
+[connection signal="gui_input" from="Scroll" to="Scroll" method="_on_Scroll_gui_input"]
+[connection signal="pressed" from="SignIn" to="." method="_on_SignIn_pressed"]
