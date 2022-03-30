@@ -1,26 +1,18 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/scenes/recipes/page_recipe_edit/PageRecipeEdit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/scenes/explore/Explore.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/scenes/main.gd" type="Script" id=3]
-[ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=4]
 [ext_resource path="res://src/scenes/recipes/page_recipe/PageRecipe.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/scenes/login/Login.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/scenes/kitchen/Kitchen.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/scenes/splash/PageSplash.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Gradient" id=10]
-colors = PoolColorArray( 0.482353, 0.482353, 0.482353, 1, 0.14902, 0.14902, 0.14902, 1 )
+colors = PoolColorArray( 0.368627, 0.368627, 0.368627, 1, 0.105882, 0.105882, 0.105882, 1 )
 
 [sub_resource type="GradientTexture" id=11]
 gradient = SubResource( 10 )
-
-[sub_resource type="StyleBoxEmpty" id=15]
-
-[sub_resource type="StyleBoxEmpty" id=16]
-
-[sub_resource type="StyleBoxEmpty" id=17]
-
-[sub_resource type="StyleBoxEmpty" id=18]
 
 [sub_resource type="Animation" id=12]
 length = 0.001
@@ -31,56 +23,98 @@ resource_name = "hide_recipe_page"
 [sub_resource type="Animation" id=14]
 resource_name = "show_recipe_page"
 
-[sub_resource type="StyleBoxFlat" id=21]
-bg_color = Color( 0.607843, 0.607843, 0.607843, 1 )
-draw_center = false
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 70
-corner_radius_top_right = 70
-corner_radius_bottom_right = 70
-corner_radius_bottom_left = 70
-expand_margin_left = 20.0
-expand_margin_right = 20.0
-expand_margin_top = 20.0
-expand_margin_bottom = 20.0
+[sub_resource type="Animation" id=22]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
 
-[sub_resource type="StyleBoxFlat" id=19]
-bg_color = Color( 0.607843, 0.607843, 0.607843, 1 )
-draw_center = false
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 70
-corner_radius_top_right = 70
-corner_radius_bottom_right = 70
-corner_radius_bottom_left = 70
-expand_margin_left = 10.0
-expand_margin_right = 10.0
-expand_margin_top = 10.0
-expand_margin_bottom = 10.0
+[sub_resource type="Animation" id=23]
+resource_name = "fade_to_black"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
-[sub_resource type="StyleBoxFlat" id=20]
-bg_color = Color( 0.607843, 0.607843, 0.607843, 1 )
-draw_center = false
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 0, 0.172549, 0.917647, 1 )
-corner_radius_top_left = 70
-corner_radius_top_right = 70
-corner_radius_bottom_right = 70
-corner_radius_bottom_left = 70
-expand_margin_left = 10.0
-expand_margin_right = 10.0
-expand_margin_top = 10.0
-expand_margin_bottom = 10.0
+[sub_resource type="Animation" id=24]
+resource_name = "fade_to_clear"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Animator:playback_speed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 3.0 ]
+}
 
 [node name="Main" type="Node"]
 script = ExtResource( 3 )
@@ -94,31 +128,35 @@ rotation = -1.5708
 scale = Vector2( 0.509235, 598.541 )
 texture = SubResource( 11 )
 
-[node name="Tabs" type="TabContainer" parent="."]
+[node name="Tabs" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/tab_fg = SubResource( 15 )
-custom_styles/tab_disabled = SubResource( 16 )
-custom_styles/tab_bg = SubResource( 17 )
-custom_styles/panel = SubResource( 18 )
-tabs_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="SplashPage" parent="Tabs" instance=ExtResource( 8 )]
+margin_top = 14.0
+
 [node name="Explore" parent="Tabs" instance=ExtResource( 2 )]
-
-[node name="Login" parent="Tabs" instance=ExtResource( 6 )]
 visible = false
-
-[node name="PageRecipeEdit" parent="Tabs" instance=ExtResource( 1 )]
-visible = false
-
-[node name="PageRecipe" parent="Tabs" instance=ExtResource( 5 )]
-visible = false
+margin_top = 14.0
 
 [node name="Kitchen" parent="Tabs" instance=ExtResource( 7 )]
 visible = false
+margin_top = 14.0
+
+[node name="Login" parent="Tabs" instance=ExtResource( 6 )]
+visible = false
+margin_top = 14.0
+
+[node name="PageRecipeEdit" parent="Tabs" instance=ExtResource( 1 )]
+visible = false
+margin_top = 14.0
+
+[node name="PageRecipe" parent="Tabs" instance=ExtResource( 5 )]
+visible = false
+margin_top = 14.0
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 playback_speed = 4.0
@@ -126,42 +164,17 @@ anims/RESET = SubResource( 12 )
 anims/hide_recipe_page = SubResource( 13 )
 anims/show_recipe_page = SubResource( 14 )
 
-[node name="Buttons" type="HBoxContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+[node name="Fade" type="ColorRect" parent="."]
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -150.0
-margin_top = -141.0
-margin_right = 150.0
-margin_bottom = -27.0
-custom_constants/separation = 64
+color = Color( 0, 0, 0, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Explore" type="Button" parent="Buttons"]
-margin_right = 117.0
-margin_bottom = 114.0
-rect_min_size = Vector2( 80, 80 )
-custom_fonts/font = ExtResource( 4 )
-custom_styles/hover = SubResource( 21 )
-custom_styles/pressed = SubResource( 19 )
-custom_styles/focus = SubResource( 20 )
-custom_styles/normal = SubResource( 19 )
-text = "Explore"
-
-[node name="Kitchen" type="Button" parent="Buttons"]
-margin_left = 181.0
-margin_right = 300.0
-margin_bottom = 114.0
-rect_min_size = Vector2( 100, 100 )
-custom_fonts/font = ExtResource( 4 )
-custom_styles/hover = SubResource( 21 )
-custom_styles/pressed = SubResource( 19 )
-custom_styles/focus = SubResource( 20 )
-custom_styles/normal = SubResource( 19 )
-text = "Kitchen"
-
-[connection signal="pressed" from="Buttons/Explore" to="." method="_on_Explore_pressed"]
-[connection signal="pressed" from="Buttons/Kitchen" to="." method="_on_Kitchen_pressed"]
+[node name="Animator" type="AnimationPlayer" parent="Fade"]
+autoplay = "fade_to_clear"
+playback_speed = 3.0
+anims/RESET = SubResource( 22 )
+anims/fade_to_black = SubResource( 23 )
+anims/fade_to_clear = SubResource( 24 )

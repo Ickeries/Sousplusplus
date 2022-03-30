@@ -9,19 +9,20 @@ var ingredient_loaded = load("res://src/scenes/recipes/page_recipe/PageRecipeIng
 func _ready():
 	Global.connect("update_data", self, "on_update_data")
 
-func on_update_data(new_data : Dictionary):
-	if !new_data.has_all(["recipe_id"]):
-		return
-	description_text.text = new_data["recipe_description"]
-	name_text.text = new_data["recipe_name"]
+func on_update_data(id : int):
 	
-	var ingredients = parse_json(Pipeline.get_recipe_ingredients_by_id(new_data["recipe_id"]))
-	Global.delete_children(ingredient_list)
-	if ingredients:
-		for ingredient in ingredients:
-			var ingredient_instance = ingredient_loaded.instance()
-			ingredient_list.add_child(ingredient_instance)
-			ingredient_instance.set_data(ingredient)
+	var recipe = parse_json(Pipeline.get_recipe_by_id(id))
+	if recipe:
+		description_text.text = recipe["recipe_description"]
+		name_text.text = recipe["recipe_name"]
+		# Display recipe ingredients
+		var ingredients = parse_json(Pipeline.get_recipe_ingredients_by_id(recipe["recipe_id"]))
+		Global.delete_children(ingredient_list)
+		if ingredients:
+			for ingredient in ingredients:
+				var ingredient_instance = ingredient_loaded.instance()
+				ingredient_list.add_child(ingredient_instance)
+				ingredient_instance.set_data(ingredient)
 	
 
 func _on_Button_pressed():

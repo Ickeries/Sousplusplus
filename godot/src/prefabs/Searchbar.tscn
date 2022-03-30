@@ -43,9 +43,9 @@ corner_radius_bottom_right = 60
 corner_radius_bottom_left = 60
 
 [node name="Searchbar" type="Control"]
-margin_right = 561.0
-margin_bottom = 125.0
-rect_min_size = Vector2( 128, 0 )
+margin_right = 575.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 128, 160 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false,
@@ -55,10 +55,10 @@ __meta__ = {
 [node name="Tip" type="Label" parent="."]
 anchor_left = 0.032
 anchor_right = 0.867
-margin_left = 13.568
-margin_top = 9.0
-margin_right = -47.809
-margin_bottom = 59.0
+margin_left = 6.092
+margin_top = 22.0
+margin_right = -55.285
+margin_bottom = 72.0
 custom_colors/font_color = Color( 1, 1, 1, 0.482353 )
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 6 )
@@ -71,10 +71,10 @@ __meta__ = {
 [node name="Line" type="LineEdit" parent="."]
 anchor_left = 0.033
 anchor_right = 0.974
-margin_left = 6.992
-margin_top = 10.891
-margin_right = -102.647
-margin_bottom = 61.891
+margin_left = -0.483997
+margin_top = 23.891
+margin_right = -110.123
+margin_bottom = 74.891
 custom_colors/selection_color = Color( 1, 1, 1, 0.631373 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_constants/minimum_spaces = 0
@@ -89,11 +89,11 @@ __meta__ = {
 
 [node name="Panel" type="Panel" parent="."]
 anchor_left = 0.034
-anchor_right = 0.77
-margin_left = 0.925999
-margin_top = 62.0
-margin_right = 0.0299683
-margin_bottom = 68.0
+anchor_right = 0.737
+margin_left = -6.55
+margin_top = 75.0
+margin_right = 0.224976
+margin_bottom = 81.0
 rect_min_size = Vector2( 0, 2 )
 custom_styles/panel = SubResource( 7 )
 __meta__ = {
@@ -101,13 +101,12 @@ __meta__ = {
 }
 
 [node name="SearchButton" type="Button" parent="."]
-anchor_left = 0.786
-anchor_top = 0.032
-anchor_right = 0.786
-anchor_bottom = 0.032
-margin_left = 0.0499573
-margin_right = 120.05
-margin_bottom = 120.0
+anchor_left = 0.755
+anchor_right = 0.755
+margin_left = -0.125
+margin_top = 14.0
+margin_right = 119.875
+margin_bottom = 134.0
 custom_fonts/font = ExtResource( 3 )
 custom_styles/hover = SubResource( 8 )
 custom_styles/pressed = SubResource( 9 )

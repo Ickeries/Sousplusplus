@@ -3,16 +3,14 @@
 [ext_resource path="res://src/scenes/recipes/page_recipe_edit/page_recipe_edit_instruction.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/fonts/large_title.tres" type="DynamicFont" id=3]
-[ext_resource path="res://assets/fonts/font18.tres" type="DynamicFont" id=4]
 
 [sub_resource type="StyleBoxEmpty" id=6]
 
 [sub_resource type="StyleBoxFlat" id=5]
 draw_center = false
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
 border_width_bottom = 4
+
+[sub_resource type="StyleBoxEmpty" id=11]
 
 [sub_resource type="StyleBoxEmpty" id=7]
 
@@ -26,8 +24,8 @@ border_width_bottom = 4
 anchor_right = 0.92
 anchor_bottom = 0.078
 margin_right = 0.0800171
-margin_bottom = 64.128
-rect_min_size = Vector2( 0, 80 )
+margin_bottom = 106.128
+rect_min_size = Vector2( 0, 186 )
 custom_styles/panel = SubResource( 6 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -38,7 +36,7 @@ __meta__ = {
 [node name="Panel" type="Panel" parent="."]
 show_behind_parent = true
 margin_right = 530.0
-margin_bottom = 144.0
+margin_bottom = 200.0
 mouse_filter = 2
 custom_styles/panel = SubResource( 5 )
 __meta__ = {
@@ -47,28 +45,28 @@ __meta__ = {
 
 [node name="Horizontal" type="HBoxContainer" parent="."]
 margin_right = 530.0
-margin_bottom = 144.0
+margin_bottom = 200.0
 
 [node name="Number" type="Label" parent="Horizontal"]
-margin_top = 34.0
-margin_right = 74.0
-margin_bottom = 110.0
+margin_right = 37.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 200 )
 custom_fonts/font = ExtResource( 3 )
-text = "33"
+text = "1"
 align = 1
 
-[node name="Text" type="Control" parent="Horizontal"]
-margin_left = 78.0
-margin_right = 498.0
-margin_bottom = 144.0
-rect_min_size = Vector2( 420, 0 )
+[node name="Text" type="PanelContainer" parent="Horizontal"]
+margin_left = 41.0
+margin_right = 477.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 420, 200 )
+custom_styles/panel = SubResource( 11 )
 
 [node name="Hint" type="Label" parent="Horizontal/Text"]
 modulate = Color( 1, 1, 1, 0.529412 )
-margin_left = 10.0
-margin_top = 12.0
-margin_right = 339.0
-margin_bottom = 50.0
+margin_right = 436.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 200 )
 custom_fonts/font = ExtResource( 2 )
 text = "Enter instruction here.."
 __meta__ = {
@@ -76,12 +74,10 @@ __meta__ = {
 }
 
 [node name="TextEdit" type="TextEdit" parent="Horizontal/Text"]
-margin_left = 5.0
-margin_top = 8.0
-margin_right = 445.0
-margin_bottom = 136.0
-rect_min_size = Vector2( 436, 49 )
-custom_fonts/font = ExtResource( 4 )
+margin_right = 436.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 436, 200 )
+custom_fonts/font = ExtResource( 2 )
 custom_styles/read_only = SubResource( 7 )
 custom_styles/focus = SubResource( 8 )
 custom_styles/normal = SubResource( 9 )

@@ -1,31 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/scenes/explore/page_explore_add_new_recipe.gd" type="Script" id=2]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.235294, 0.235294, 0.235294, 1 )
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color( 0.168627, 0.168627, 0.168627, 1 )
-corner_radius_top_left = 64
-corner_radius_top_right = 64
-corner_radius_bottom_right = 64
-corner_radius_bottom_left = 64
-expand_margin_left = 16.0
-expand_margin_right = 16.0
-expand_margin_top = 16.0
-expand_margin_bottom = 16.0
-
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.105882, 0.105882, 0.105882, 1 )
+draw_center = false
 border_width_left = 8
 border_width_top = 8
 border_width_right = 8
 border_width_bottom = 8
-border_color = Color( 0.0431373, 0.0431373, 0.0431373, 1 )
+border_color = Color( 1, 1, 1, 1 )
 corner_radius_top_left = 64
 corner_radius_top_right = 64
 corner_radius_bottom_right = 64
@@ -52,11 +37,11 @@ margin_top = 23.0
 margin_right = 23.864
 margin_bottom = 22.984
 custom_fonts/font = ExtResource( 1 )
-custom_styles/hover = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 2 )
-custom_styles/focus = SubResource( 1 )
-custom_styles/normal = SubResource( 1 )
-text = "Add New recipe"
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = SubResource( 2 )
+text = "New Recipe"
 __meta__ = {
 "_edit_use_anchors_": false
 }

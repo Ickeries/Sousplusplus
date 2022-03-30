@@ -49,19 +49,36 @@ bool database::open()
 
 
 
-// Takes data that was provided by the user and inputs into the database :: Step 2
-int insert_recipe_ingredient(int recipe_ingredient_count, string recipe_id, string ingredient_name, string ingredient_amount)
+
+int database::save_recipe_ingredients(json ingredients)
 {
-	for (int i = 0; i < recipe_ingredient_count; ++i)
+	for (int i = 0; i < ingredients.size(); i++)
 	{
-		string statement("INSERT INTO recipe_ingredients (recipe_id, ingredient_name , ingredient_amount) VALUES('" + recipe_id + "','" + ingredient_name + "', '" + ingredient_amount + "'); ");
-		database::call(statement);
+		save_recipe_ingredient(ingredients[i]["recipe_id"], ingredients[i]["ingredient_name"], ingredients[i]["ingredient_amount"]);
 	}
 	return 0;
 }
 
+// Takes data that was provided by the user and inputs into the database :: Step 2
+int database::save_recipe_ingredient(string recipe_id, string ingredient_name, string ingredient_amount)
+{
+	string statement("INSERT INTO recipe_ingredients (recipe_id, ingredient_name , ingredient_amount) VALUES('" + recipe_id + "','" + ingredient_name + "', '" + ingredient_amount + "'); ");
+	cout << statement << endl << endl;
+	
+	database::call(statement);
+	return 0;
+}
+
+int database::clear_recipe_ingredients(string id)
+{
+	string statement("DELETE from recipe_ingredients where recipe_id = '" + id + "';");
+	
+	database::call(statement);
+	return 0;
+}
+
 //Inserts recipe information  :: Step 1
-int insert_recipes(string recipe_id, string recipe_name, string creator_id, string recipe_description)
+int save_recipe(string recipe_id, string recipe_name, string creator_id, string recipe_description)
 {
 	
 	string statement("INSERT INTO recipes (recipe_id, recipe_name, creator_name , recipe_description) VALUES('" + recipe_id + "', '" + recipe_name + "','" + creator_id + "', '" + recipe_description + "'); ");
@@ -100,26 +117,26 @@ int insert_new_user(string id, string name, string password)
 }
 
 //Will gather all information and send it to its proper table. 
-void add_new_recipe(json recipe)
+void database::save_recipe(json recipe)
 {
-	int recipe_description_count, recipe_directions_count;
+	// Clear recipe ingredients
+	if (recipe["instructions"].size() > 0)
+	{
+		clear_recipe_ingredients(recipe["recipe_id"]);
+		save_recipe_ingredients(recipe["instructions"]);
+	}
 
-	string recipe_name , recipe_ingredient, recipe_description, recipe_direction, recipe_ingredient_amount,
-		recipe_id, creator_id;
+	string recipe_id = recipe["recipe_id"];
+	string recipe_name = recipe["recipe_name"];
+	string creator_name = recipe["creator_name"];
+	string recipe_description = recipe["recipe_description"];
 
-	recipe.at("recipe_id") = recipe_id;
-	recipe.at("name") = recipe_name;
-	recipe.at("creator_id") = creator_id;
-	recipe.at("description") = recipe_description;
-	recipe_description_count = recipe.at("desciption").size();
-	recipe.at("ingredients") = recipe_ingredient;
-	recipe_directions_count = recipe.at("ingredients").size();
-
-	insert_recipes(recipe_id, recipe_name, creator_id, recipe_description);
-	insert_recipe_ingredient(recipe_description_count, recipe_id, recipe_ingredient, recipe_ingredient_amount);
-	insert_recipe_directions(recipe_directions_count, recipe_id, recipe_direction);
+	string statement("REPLACE INTO recipes (recipe_id, recipe_name, creator_name , recipe_description) VALUES('" + recipe_id + "', '" + recipe_name + "','" + creator_name + "', '" + recipe_description + "'); ");
+	database::call(statement);
 
 }
+
+
 // will remove an entire row from a table, passing which table whi
 void remove_row(string table_name, string row, string name)
 {

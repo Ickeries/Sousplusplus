@@ -23,8 +23,13 @@ public:
 	String check(String input);
 	
 	String get_recipes_by_name(String name);
+	String get_recipe_by_id(int id);
 	String get_recipe_by_name(String name);
 	String get_recipe_ingredients_by_id(int id);
+
+
+	void save_recipe(String recipe);
+	void save_recipe_ingredients(String recipe_ingredients);
 	
 };
 }

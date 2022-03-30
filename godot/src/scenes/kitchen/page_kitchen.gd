@@ -2,7 +2,7 @@ extends Control
 
 var item_loaded = load("res://src/prefabs/items/Item.tscn")
 var add_new_recipe_loaded = load("res://src/scenes/explore/PageExploreAddNewRecipe.tscn")
-onready var items = $Scroll/Grid
+onready var items = $Vertical/Scroll/Grid
 func _ready():
 	update_list([])
 	call_deferred("_deferred")
@@ -31,10 +31,14 @@ func _on_Scroll_gui_input(event):
 
 
 func _on_Kitchen_visibility_changed():
-	var recipes = parse_json(Pipeline.get_recipes_by_name(""))
+	var recipes = parse_json(Pipeline.get_recipes_by_name("a"))
 	if recipes:
 		update_list(recipes)
 
 
 func _on_SignIn_pressed():
 	Global.emit_signal("enter_page", "Login")
+
+
+func _on_Explore_pressed():
+	Global.emit_signal("enter_page", "Explore")

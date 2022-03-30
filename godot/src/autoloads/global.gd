@@ -15,7 +15,7 @@ signal enter_page(page_name)
 signal set_page(page_name)
 signal enter_return()
 
-signal update_data(data)
+signal update_data(id)
 
 var current_user = {}
 var current_recipe = ""

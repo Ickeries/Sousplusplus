@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/fonts/large_title.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=2]
@@ -12,6 +12,24 @@
 [sub_resource type="StyleBoxEmpty" id=2]
 
 [sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxFlat" id=5]
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[sub_resource type="StyleBoxFlat" id=4]
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
 
 [node name="PageRecipe" type="Control"]
 anchor_right = 1.0
@@ -33,41 +51,19 @@ __meta__ = {
 
 [node name="Vertical" type="VBoxContainer" parent="Scroll"]
 margin_right = 576.0
-margin_bottom = 557.0
+margin_bottom = 555.0
 custom_constants/separation = 32
 
-[node name="Control" type="Control" parent="Scroll/Vertical"]
+[node name="Space" type="Control" parent="Scroll/Vertical"]
 margin_right = 576.0
-margin_bottom = 132.0
-rect_min_size = Vector2( 0, 132 )
+margin_bottom = 130.0
+rect_min_size = Vector2( 0, 130 )
 mouse_filter = 2
 
-[node name="Return" type="Button" parent="Scroll/Vertical/Control"]
-margin_left = 14.0
-margin_top = 11.0
-margin_right = 122.0
-margin_bottom = 119.0
-custom_fonts/font = ExtResource( 2 )
-text = "Return"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Edit" type="Button" parent="Scroll/Vertical/Control"]
-margin_left = 448.0
-margin_top = 11.0
-margin_right = 556.0
-margin_bottom = 119.0
-custom_fonts/font = ExtResource( 2 )
-text = "Edit"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Header" type="PanelContainer" parent="Scroll/Vertical"]
-margin_top = 164.0
+margin_top = 162.0
 margin_right = 576.0
-margin_bottom = 282.0
+margin_bottom = 280.0
 mouse_filter = 2
 custom_styles/panel = SubResource( 1 )
 
@@ -81,7 +77,7 @@ margin_bottom = 76.0
 rect_min_size = Vector2( 576, 0 )
 custom_fonts/font = ExtResource( 1 )
 custom_styles/normal = SubResource( 2 )
-text = "Apple Pie"
+text = "Untitled"
 align = 1
 autowrap = true
 __meta__ = {
@@ -95,16 +91,16 @@ margin_bottom = 118.0
 rect_min_size = Vector2( 576, 0 )
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 2 )
-text = "by David Serrano"
+text = "by null"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Description" type="PanelContainer" parent="Scroll/Vertical"]
-margin_top = 314.0
+margin_top = 312.0
 margin_right = 576.0
-margin_bottom = 383.0
+margin_bottom = 381.0
 mouse_filter = 2
 custom_styles/panel = SubResource( 3 )
 
@@ -131,7 +127,7 @@ margin_bottom = 69.0
 rect_min_size = Vector2( 576, 0 )
 custom_fonts/font = ExtResource( 3 )
 custom_styles/normal = SubResource( 2 )
-text = "A wonderful meal meant for a king. What can I say?"
+text = "No description available"
 align = 1
 autowrap = true
 __meta__ = {
@@ -139,9 +135,9 @@ __meta__ = {
 }
 
 [node name="Ingredients" type="PanelContainer" parent="Scroll/Vertical"]
-margin_top = 415.0
+margin_top = 413.0
 margin_right = 576.0
-margin_bottom = 483.0
+margin_bottom = 481.0
 mouse_filter = 2
 custom_styles/panel = SubResource( 3 )
 
@@ -181,9 +177,9 @@ margin_bottom = 68.0
 custom_constants/separation = 16
 
 [node name="Instructions" type="PanelContainer" parent="Scroll/Vertical"]
-margin_top = 515.0
+margin_top = 513.0
 margin_right = 576.0
-margin_bottom = 557.0
+margin_bottom = 555.0
 mouse_filter = 2
 custom_styles/panel = SubResource( 3 )
 
@@ -210,6 +206,30 @@ margin_bottom = 42.0
 
 [node name="Tween" type="Tween" parent="Scroll"]
 
+[node name="Edit" type="Button" parent="."]
+margin_left = 454.0
+margin_top = 899.0
+margin_right = 562.0
+margin_bottom = 1007.0
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 5 )
+text = "Edit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Return" type="Button" parent="."]
+margin_left = 14.0
+margin_top = 898.0
+margin_right = 122.0
+margin_bottom = 1006.0
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 4 )
+text = "Return"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="gui_input" from="Scroll" to="Scroll" method="_on_Scroll_gui_input"]
-[connection signal="pressed" from="Scroll/Vertical/Control/Return" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="Scroll/Vertical/Control/Edit" to="." method="_on_Edit_pressed"]
+[connection signal="pressed" from="Edit" to="." method="_on_Edit_pressed"]
+[connection signal="pressed" from="Return" to="." method="_on_Button_pressed"]

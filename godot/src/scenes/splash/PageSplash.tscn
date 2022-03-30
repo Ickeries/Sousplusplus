@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/fonts/large_title.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/scenes/splash/page_splash.gd" type="Script" id=3]
+
+[node name="SplashPage" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -107.0
+margin_top = 278.0
+margin_right = 107.0
+margin_bottom = 354.0
+custom_fonts/font = ExtResource( 2 )
+text = "Sous++"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -83.5
+margin_top = 497.0
+margin_right = 83.5
+margin_bottom = 535.0
+custom_fonts/font = ExtResource( 1 )
+text = "Tap to start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="gui_input" from="." to="." method="_on_SplashPage_gui_input"]
