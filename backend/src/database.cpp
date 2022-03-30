@@ -77,19 +77,9 @@ int database::clear_recipe_ingredients(string id)
 	return 0;
 }
 
-//Inserts recipe information  :: Step 1
-int save_recipe(string recipe_id, string recipe_name, string creator_id, string recipe_description)
-{
-	
-	string statement("INSERT INTO recipes (recipe_id, recipe_name, creator_name , recipe_description) VALUES('" + recipe_id + "', '" + recipe_name + "','" + creator_id + "', '" + recipe_description + "'); ");
-	database::call(statement);
-	
-	return 0;
-}
-
 
 //Inserts the directions of the recipe    :: Step 3
-int insert_recipe_directions(int recipe_description_count, string recipe_id, string recipe_directions)
+int database::insert_recipe_directions(int recipe_description_count, string recipe_id, string recipe_directions)
 {
 	for (int i = 0; i < recipe_description_count; ++i)
 	{
@@ -106,7 +96,7 @@ int insert_recipe_directions(int recipe_description_count, string recipe_id, str
 
 
 //Inserts new user id and passwords
-int insert_new_user(string id, string name, string password)
+int database::insert_new_user(string id, string name, string password)
 {
 
 	string statement("INSERT INTO users (id, name, password) VALUES('" + id + "', '" + name + "','" + password + "'); ");
@@ -138,7 +128,7 @@ void database::save_recipe(json recipe)
 
 
 // will remove an entire row from a table, passing which table whi
-void remove_row(string table_name, string row, string name)
+void database::remove_row(string table_name, string row, string name)
 {
 	string statement("DELETE FROM " + table_name + " WHERE " + row + "='" + name + "'");
 	database::call(statement);
@@ -150,7 +140,7 @@ void remove_row(string table_name, string row, string name)
 	 update("Recipes" , "recipe_desciption", "New Description Goes Here", 
 	        "recipe_name","Chicken Alfredo" );
 */
-void update(string table_name, string col_to_update, string updated_info,
+void database::update(string table_name, string col_to_update, string updated_info,
 			 string condition_col, string search_condition)
 {
 	string statement1("Update" + table_name);
