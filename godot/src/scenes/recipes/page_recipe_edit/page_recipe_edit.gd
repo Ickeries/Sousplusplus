@@ -34,7 +34,7 @@ func get_recipe_data():
 	temp_data["recipe_description"] = description_text.text
 	temp_data["recipe_name"] = name_text.text
 	temp_data["creator_name"] = "david"
-	temp_data["instructions"] = get_recipe_ingredient_data()
+	temp_data["ingredients"] = get_recipe_ingredient_data()
 	return temp_data
 
 func get_recipe_ingredient_data():

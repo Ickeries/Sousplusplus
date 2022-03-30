@@ -120,10 +120,10 @@ int insert_new_user(string id, string name, string password)
 void database::save_recipe(json recipe)
 {
 	// Clear recipe ingredients
-	if (recipe["instructions"].size() > 0)
+	if (recipe["ingredients"].size() > 0)
 	{
 		clear_recipe_ingredients(recipe["recipe_id"]);
-		save_recipe_ingredients(recipe["instructions"]);
+		save_recipe_ingredients(recipe["ingredients"]);
 	}
 
 	string recipe_id = recipe["recipe_id"];
