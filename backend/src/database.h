@@ -26,7 +26,7 @@ namespace database
 
 	void save_recipe(json recipe);
 
-	int insert_recipes(string recipe_id, string name, string creator_id, string recipe_description);
+	//int insert_recipes(string recipe_id, string name, string creator_id, string recipe_description);
 	int insert_recipe_directions(int recipe_description_count, string recipe_id, string recipe_directions);
 	int insert_new_user(string recipe_id, string name, string password);
 
