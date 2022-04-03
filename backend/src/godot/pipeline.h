@@ -21,7 +21,7 @@ public:
     void _init(); // our initializer called by Godot
     void _process(float delta);
 	String check(String input);
-	
+	String get_recipes_by_filter(String name, String filter);
 	String get_recipes_by_name(String name);
 	String get_recipe_by_id(int id);
 	String get_recipe_by_name(String name);
