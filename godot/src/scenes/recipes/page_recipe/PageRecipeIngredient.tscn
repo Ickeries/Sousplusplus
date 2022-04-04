@@ -13,17 +13,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Name" type="Label" parent="."]
+[node name="Amount" type="Label" parent="."]
 margin_top = 9.0
-margin_right = 56.0
+margin_right = 20.0
 margin_bottom = 31.0
 custom_fonts/font = ExtResource( 1 )
-text = "Apples"
+text = "12"
 
-[node name="Amount" type="Label" parent="."]
-margin_left = 88.0
+[node name="Name" type="Label" parent="."]
+margin_left = 52.0
 margin_top = 9.0
 margin_right = 108.0
 margin_bottom = 31.0
 custom_fonts/font = ExtResource( 1 )
-text = "12"
+text = "Apples"

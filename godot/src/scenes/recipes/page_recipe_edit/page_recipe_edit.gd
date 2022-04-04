@@ -80,6 +80,12 @@ func _on_Save_pressed():
 	save_to_local_database()
 	Global.emit_signal("update_data", int(recipe_id))
 	Global.emit_signal("enter_return")
+	
+	
+	description_text.text = ""
+	Global.delete_children(ingredient_list)
+	Global.delete_children(directions_list)
+	recipe_id = -1
 
 
 func _on_DontSave_pressed():
