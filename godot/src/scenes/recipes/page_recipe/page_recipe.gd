@@ -1,10 +1,10 @@
 extends Control
 
-onready var name_text = $Scroll/Vertical/Header/Vertical/Name
-onready var description_text = $Scroll/Vertical/Description/Vertical/Text
+onready var name_text = $Front/Scroll/Vertical/Header/Vertical/Name
+onready var description_text = $Front/Scroll/Vertical/Description/Vertical/Text
 
 
-onready var ingredient_list = $Scroll/Vertical/Ingredients/Vertical/List
+onready var ingredient_list = $Back/Scroll/Vertical/Ingredients/Vertical/List
 var ingredient_loaded = load("res://src/scenes/recipes/page_recipe/PageRecipeIngredient.tscn")
 func _ready():
 	Global.connect("update_data", self, "on_update_data")
@@ -30,3 +30,11 @@ func _on_Button_pressed():
 
 func _on_Edit_pressed():
 	Global.emit_signal("set_page", "PageRecipeEdit")
+
+
+func _on_Read_pressed():
+	$Animator.play("to_back")
+
+
+func _on_Return_pressed():
+	$Animator.play_backwards("to_back")

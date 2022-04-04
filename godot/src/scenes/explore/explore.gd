@@ -31,12 +31,9 @@ func _on_Searchbar_search_entered(text):
 		$Label2.visible = true
 
 
-func _on_Scroll_gui_input(event):
-	pass # Replace with function body.
-
 
 func _on_Searchbar_filter_pressed(value):
-	$Vertical/Header/Margin/Filter.visible = value
+	$Filter.popup()
 
 
 func _on_Button_pressed():

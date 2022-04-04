@@ -3,6 +3,7 @@
 [ext_resource path="res://src/ui/ui_scroll.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://src/scenes/kitchen/page_kitchen.gd" type="Script" id=3]
+[ext_resource path="res://assets/fonts/font18.tres" type="DynamicFont" id=4]
 [ext_resource path="res://src/scenes/explore/PageExploreAddNewRecipe.tscn" type="PackedScene" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -19,7 +20,7 @@ grow_begin = -8.0
 grow_end = -8.0
 thickness = 4
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=10]
 bg_color = Color( 0.607843, 0.607843, 0.607843, 1 )
 draw_center = false
 border_width_left = 5
@@ -27,29 +28,6 @@ border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
 border_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 70
-corner_radius_top_right = 70
-corner_radius_bottom_right = 70
-corner_radius_bottom_left = 70
-expand_margin_left = 20.0
-expand_margin_right = 20.0
-expand_margin_top = 20.0
-expand_margin_bottom = 20.0
-
-[sub_resource type="StyleBoxEmpty" id=6]
-
-[sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0.607843, 0.607843, 0.607843, 1 )
-draw_center = false
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 0, 0.172549, 0.917647, 1 )
-corner_radius_top_left = 70
-corner_radius_top_right = 70
-corner_radius_bottom_right = 70
-corner_radius_bottom_left = 70
 expand_margin_left = 10.0
 expand_margin_right = 10.0
 expand_margin_top = 10.0
@@ -58,12 +36,24 @@ expand_margin_bottom = 10.0
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.607843, 0.607843, 0.607843, 1 )
 draw_center = false
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
 border_color = Color( 1, 1, 1, 1 )
-corner_radius_top_right = 70
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.607843, 0.607843, 0.607843, 1 )
+draw_center = false
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 1, 1, 1, 1 )
 expand_margin_left = 10.0
 expand_margin_right = 10.0
 expand_margin_top = 10.0
@@ -113,10 +103,10 @@ margin_bottom = 220.0
 rect_min_size = Vector2( 0, 220 )
 
 [node name="SignIn" type="Button" parent="Vertical/Header"]
-margin_left = 355.0
-margin_top = 14.0
-margin_right = 558.0
-margin_bottom = 197.0
+margin_left = 293.0
+margin_top = 23.0
+margin_right = 496.0
+margin_bottom = 206.0
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 1 )
 text = "Sign in"
@@ -151,17 +141,36 @@ margin_right = 131.144
 margin_bottom = 241.84
 
 [node name="Explore" type="Button" parent="."]
-margin_left = 3.0
-margin_top = 908.0
-margin_right = 120.0
-margin_bottom = 1022.0
-rect_min_size = Vector2( 80, 80 )
-custom_fonts/font = ExtResource( 2 )
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/focus = SubResource( 5 )
+margin_left = 175.0
+margin_top = 927.0
+margin_right = 252.0
+margin_bottom = 991.0
+rect_min_size = Vector2( 64, 64 )
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 10 )
 custom_styles/normal = SubResource( 4 )
 text = "Explore"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Kitchen" type="Button" parent="."]
+modulate = Color( 0.168627, 0.505882, 0.823529, 1 )
+margin_left = 310.0
+margin_top = 917.0
+margin_right = 390.0
+margin_bottom = 997.0
+rect_min_size = Vector2( 80, 80 )
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 7 )
+text = "Kitchen"
 __meta__ = {
 "_edit_use_anchors_": false
 }

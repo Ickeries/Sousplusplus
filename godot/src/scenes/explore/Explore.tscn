@@ -1,26 +1,31 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/prefabs/Searchbar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ui/ui_scroll.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://src/scenes/explore/explore.gd" type="Script" id=4]
-
-[sub_resource type="StyleBoxFlat" id=3]
-draw_center = false
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-
-[sub_resource type="StyleBoxFlat" id=2]
-draw_center = false
-border_width_bottom = 4
+[ext_resource path="res://assets/fonts/font18.tres" type="DynamicFont" id=5]
+[ext_resource path="res://src/prefabs/Textbar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/scenes/explore/FilterItem.tscn" type="PackedScene" id=7]
 
 [sub_resource type="StyleBoxLine" id=4]
 color = Color( 1, 1, 1, 1 )
 grow_begin = -8.0
 grow_end = -8.0
 thickness = 3
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.607843, 0.607843, 0.607843, 1 )
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 1, 1, 1, 1 )
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.607843, 0.607843, 0.607843, 1 )
@@ -30,11 +35,20 @@ border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
 border_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 70
 expand_margin_left = 10.0
 expand_margin_right = 10.0
 expand_margin_top = 10.0
 expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.286275, 0.286275, 0.286275, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+
+[sub_resource type="Animation" id=12]
+resource_name = "appear"
 
 [node name="Explore" type="Control"]
 anchor_right = 1.0
@@ -67,7 +81,7 @@ __meta__ = {
 
 [node name="Header" type="VBoxContainer" parent="Vertical"]
 margin_right = 576.0
-margin_bottom = 204.0
+margin_bottom = 128.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -75,137 +89,17 @@ __meta__ = {
 [node name="Searchbar" parent="Vertical/Header" instance=ExtResource( 1 )]
 margin_right = 576.0
 
-[node name="Margin" type="MarginContainer" parent="Vertical/Header"]
-margin_top = 164.0
-margin_right = 576.0
-margin_bottom = 204.0
-custom_constants/margin_left = 16
-
-[node name="Filter" type="VBoxContainer" parent="Vertical/Header/Margin"]
-margin_left = 16.0
-margin_right = 576.0
-margin_bottom = 40.0
-custom_constants/separation = 16
-
-[node name="FilterButton" type="Control" parent="Vertical/Header/Margin/Filter"]
-margin_right = 560.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 0, 40 )
-
-[node name="Button" type="Button" parent="Vertical/Header/Margin/Filter/FilterButton"]
-margin_top = -8.0
-margin_right = 131.0
-margin_bottom = 40.0
-custom_fonts/font = ExtResource( 3 )
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/disabled = SubResource( 3 )
-custom_styles/normal = SubResource( 3 )
-text = "Filter"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Carat" type="Label" parent="Vertical/Header/Margin/Filter/FilterButton"]
-margin_left = 145.0
-margin_top = -2.0
-margin_right = 162.0
-margin_bottom = 36.0
-rect_pivot_offset = Vector2( 7, 21 )
-custom_fonts/font = ExtResource( 3 )
-text = ">"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Ingredients" type="VBoxContainer" parent="Vertical/Header/Margin/Filter"]
-visible = false
-margin_top = 44.0
-margin_right = 560.0
-margin_bottom = 174.0
-
-[node name="Label" type="Label" parent="Vertical/Header/Margin/Filter/Ingredients"]
-margin_right = 560.0
-margin_bottom = 38.0
-custom_fonts/font = ExtResource( 3 )
-text = "Ingredients"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Include" type="HBoxContainer" parent="Vertical/Header/Margin/Filter/Ingredients"]
-margin_top = 42.0
-margin_right = 560.0
-margin_bottom = 84.0
-custom_constants/separation = 16
-
-[node name="Label" type="Label" parent="Vertical/Header/Margin/Filter/Ingredients/Include"]
-margin_top = 2.0
-margin_right = 112.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 112, 0 )
-custom_fonts/font = ExtResource( 3 )
-text = "Include"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Text" type="LineEdit" parent="Vertical/Header/Margin/Filter/Ingredients/Include"]
-margin_left = 128.0
-margin_right = 528.0
-margin_bottom = 42.0
-rect_min_size = Vector2( 400, 0 )
-custom_colors/font_color = Color( 0.552941, 0.905882, 0.466667, 1 )
-custom_fonts/font = ExtResource( 3 )
-custom_styles/normal = SubResource( 2 )
-text = "apple sugar"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Exclude" type="HBoxContainer" parent="Vertical/Header/Margin/Filter/Ingredients"]
-margin_top = 88.0
-margin_right = 560.0
-margin_bottom = 130.0
-custom_constants/separation = 16
-
-[node name="Label" type="Label" parent="Vertical/Header/Margin/Filter/Ingredients/Exclude"]
-margin_top = 2.0
-margin_right = 112.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 112, 0 )
-custom_fonts/font = ExtResource( 3 )
-text = "Exclude"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Text" type="LineEdit" parent="Vertical/Header/Margin/Filter/Ingredients/Exclude"]
-margin_left = 128.0
-margin_right = 528.0
-margin_bottom = 42.0
-rect_min_size = Vector2( 400, 0 )
-custom_colors/font_color = Color( 0.913725, 0.337255, 0.305882, 1 )
-custom_fonts/font = ExtResource( 3 )
-custom_styles/normal = SubResource( 2 )
-text = "apple sugar"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Panel" type="Panel" parent="Vertical"]
-margin_top = 220.0
+margin_top = 144.0
 margin_right = 576.0
-margin_bottom = 220.0
+margin_bottom = 144.0
 custom_styles/panel = SubResource( 4 )
 
 [node name="Scroll" type="ScrollContainer" parent="Vertical"]
-margin_top = 236.0
+margin_top = 160.0
 margin_right = 576.0
-margin_bottom = 896.0
-rect_min_size = Vector2( 0, 660 )
-rect_clip_content = false
+margin_bottom = 840.0
+rect_min_size = Vector2( 0, 680 )
 scroll_horizontal_enabled = false
 script = ExtResource( 2 )
 __meta__ = {
@@ -236,24 +130,117 @@ __meta__ = {
 }
 
 [node name="Kitchen" type="Button" parent="."]
-margin_left = 453.0
-margin_top = 902.0
-margin_right = 572.0
-margin_bottom = 1016.0
-rect_min_size = Vector2( 100, 100 )
-custom_fonts/font = ExtResource( 3 )
-custom_styles/hover = SubResource( 6 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/focus = SubResource( 6 )
+margin_left = 324.0
+margin_top = 931.0
+margin_right = 395.0
+margin_bottom = 995.0
+rect_min_size = Vector2( 64, 64 )
+custom_fonts/font = ExtResource( 5 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 10 )
 custom_styles/normal = SubResource( 6 )
 text = "Kitchen"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Explore" type="Button" parent="."]
+modulate = Color( 0.168627, 0.505882, 0.823529, 1 )
+margin_left = 169.0
+margin_top = 920.0
+margin_right = 249.0
+margin_bottom = 1000.0
+rect_min_size = Vector2( 80, 80 )
+custom_fonts/font = ExtResource( 5 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 10 )
+text = "Explore"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Filter" type="Popup" parent="."]
+visible = true
+margin_left = 17.0
+margin_top = 175.0
+margin_right = 264.0
+margin_bottom = 420.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Filter"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Animator" type="AnimationPlayer" parent="Filter"]
+anims/appear = SubResource( 12 )
+
+[node name="Textbar" parent="Filter" instance=ExtResource( 6 )]
+margin_left = 4.0
+margin_top = 10.0
+margin_right = 484.0
+margin_bottom = 90.0
+rect_scale = Vector2( 0.5, 0.5 )
+
+[node name="Tip" parent="Filter/Textbar" index="0"]
+text = "Type ingredients to filter.."
+
+[node name="Scroll" type="ScrollContainer" parent="Filter"]
+margin_left = 18.0
+margin_top = 52.0
+margin_right = 250.0
+margin_bottom = 236.0
+scroll_horizontal_enabled = false
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Vertical" type="VBoxContainer" parent="Filter/Scroll"]
+margin_right = 210.0
+margin_bottom = 232.0
+custom_constants/separation = 8
+
+[node name="FilterItem" parent="Filter/Scroll/Vertical" instance=ExtResource( 7 )]
+margin_right = 210.0
+
+[node name="FilterItem2" parent="Filter/Scroll/Vertical" instance=ExtResource( 7 )]
+margin_top = 48.0
+margin_right = 210.0
+margin_bottom = 88.0
+
+[node name="FilterItem3" parent="Filter/Scroll/Vertical" instance=ExtResource( 7 )]
+margin_top = 96.0
+margin_right = 210.0
+margin_bottom = 136.0
+
+[node name="FilterItem4" parent="Filter/Scroll/Vertical" instance=ExtResource( 7 )]
+margin_top = 144.0
+margin_right = 210.0
+margin_bottom = 184.0
+
+[node name="FilterItem5" parent="Filter/Scroll/Vertical" instance=ExtResource( 7 )]
+margin_top = 192.0
+margin_right = 210.0
+margin_bottom = 232.0
+
+[node name="Tween" type="Tween" parent="Filter/Scroll"]
+
 [connection signal="visibility_changed" from="." to="." method="_on_Explore_visibility_changed"]
 [connection signal="filter_pressed" from="Vertical/Header/Searchbar" to="." method="_on_Searchbar_filter_pressed"]
 [connection signal="search_entered" from="Vertical/Header/Searchbar" to="." method="_on_Searchbar_search_entered"]
-[connection signal="pressed" from="Vertical/Header/Margin/Filter/FilterButton/Button" to="." method="_on_Button_pressed"]
 [connection signal="gui_input" from="Vertical/Scroll" to="Vertical/Scroll" method="_on_Scroll_gui_input"]
 [connection signal="pressed" from="Kitchen" to="." method="_on_Kitchen_pressed"]
+[connection signal="gui_input" from="Filter/Scroll" to="Vertical/Scroll" method="_on_Scroll_gui_input"]
+
+[editable path="Filter/Textbar"]
