@@ -58,11 +58,11 @@ tracks/0/keys = {
 
 [node name="Item" type="Control"]
 modulate = Color( 1, 1, 1, 0 )
-anchor_right = 0.998
-anchor_bottom = 0.095
-margin_right = -315.848
-margin_bottom = 2.72
-rect_min_size = Vector2( 500, 100 )
+anchor_right = 0.869
+anchor_bottom = 0.109
+margin_right = -0.141998
+margin_bottom = -0.389008
+rect_min_size = Vector2( 450, 100 )
 mouse_filter = 1
 script = ExtResource( 3 )
 __meta__ = {
@@ -95,7 +95,7 @@ __meta__ = {
 
 [node name="Panel" type="Panel" parent="Creator"]
 margin_top = 28.0
-margin_right = 377.0
+margin_right = 302.0
 margin_bottom = 50.0
 mouse_filter = 2
 custom_styles/panel = SubResource( 5 )

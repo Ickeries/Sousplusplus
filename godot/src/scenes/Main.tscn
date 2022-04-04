@@ -123,9 +123,9 @@ script = ExtResource( 3 )
 layer = -100
 
 [node name="Color" type="Sprite" parent="Background"]
-position = Vector2( 287.487, 516.293 )
+position = Vector2( 283.032, 500.843 )
 rotation = -1.5708
-scale = Vector2( 0.509235, 598.541 )
+scale = Vector2( 0.556933, 654.604 )
 texture = SubResource( 11 )
 
 [node name="Tabs" type="Control" parent="."]
@@ -140,7 +140,6 @@ margin_top = 14.0
 
 [node name="Explore" parent="Tabs" instance=ExtResource( 2 )]
 visible = false
-margin_top = 14.0
 
 [node name="Kitchen" parent="Tabs" instance=ExtResource( 7 )]
 visible = false

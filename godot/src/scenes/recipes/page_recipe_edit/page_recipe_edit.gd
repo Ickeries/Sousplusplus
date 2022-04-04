@@ -8,6 +8,8 @@ var ingredient_loaded = load("res://src/scenes/recipes/page_recipe_edit/PageReci
 var instruction_loaded = load("res://src/scenes/recipes/page_recipe_edit/PageRecipeEditInstruction.tscn")
 
 onready var ingredient_list = $Scroll/Container/Vertical/Ingredients/Vertical/List
+onready var instruction_list = $Scroll/Container/Vertical/Instructions/Vertical/List
+
 onready var tags = $Scroll/Container/Vertical/Tags/Vertical/Horizontal
 var ingredient_list_item_loaded = load("res://src/prefabs/items/list_items/IngredientListItem.tscn")
 
@@ -35,6 +37,7 @@ func get_recipe_data():
 	temp_data["recipe_name"] = name_text.text
 	temp_data["creator_name"] = "david"
 	temp_data["ingredients"] = get_recipe_ingredient_data()
+	temp_data["instructions"] = get_recipe_instructions_data()
 	return temp_data
 
 func get_recipe_ingredient_data():
@@ -42,6 +45,12 @@ func get_recipe_ingredient_data():
 	for ingredient in ingredient_list.get_children():
 		ingredient_data.push_back(ingredient.get_data())
 	return ingredient_data
+
+func get_recipe_instructions_data():
+	var instructions_data = []
+	for instruction in instruction_list.get_children():
+		instructions_data.push_back(instruction.get_data())
+	return instructions_data
 
 
 func save_to_local_database():

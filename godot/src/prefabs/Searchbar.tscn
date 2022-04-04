@@ -21,14 +21,6 @@ border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-corner_radius_top_left = 70
-corner_radius_top_right = 70
-corner_radius_bottom_right = 70
-corner_radius_bottom_left = 70
-expand_margin_left = 10.0
-expand_margin_right = 10.0
-expand_margin_top = 10.0
-expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 1, 1, 1, 1 )
@@ -44,21 +36,35 @@ corner_radius_bottom_left = 60
 
 [node name="Searchbar" type="Control"]
 margin_right = 575.0
-margin_bottom = 160.0
-rect_min_size = Vector2( 128, 160 )
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_use_anchors_": false,
-"_edit_vertical_guides_": [ 291.0, 490.0 ]
+"_edit_use_anchors_": false
 }
 
-[node name="Tip" type="Label" parent="."]
+[node name="Vertical" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header" type="Control" parent="Vertical"]
+margin_right = 575.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 0, 150 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tip" type="Label" parent="Vertical/Header"]
 anchor_left = 0.032
-anchor_right = 0.867
-margin_left = 6.092
-margin_top = 22.0
-margin_right = -55.285
-margin_bottom = 72.0
+anchor_right = 0.771
+margin_left = 5.488
+margin_top = 9.0
+margin_right = 94.928
+margin_bottom = 59.0
 custom_colors/font_color = Color( 1, 1, 1, 0.482353 )
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 6 )
@@ -68,13 +74,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Line" type="LineEdit" parent="."]
+[node name="Text" type="LineEdit" parent="Vertical/Header"]
 anchor_left = 0.033
-anchor_right = 0.974
-margin_left = -0.483997
-margin_top = 23.891
-margin_right = -110.123
-margin_bottom = 74.891
+anchor_right = 0.782
+margin_left = 4.972
+margin_top = 8.0
+margin_right = 5.73297
+margin_bottom = 59.0
 custom_colors/selection_color = Color( 1, 1, 1, 0.631373 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_constants/minimum_spaces = 0
@@ -83,30 +89,32 @@ custom_styles/read_only = SubResource( 5 )
 custom_styles/focus = SubResource( 5 )
 custom_styles/normal = SubResource( 4 )
 max_length = 40
+caret_blink = true
+caret_blink_speed = 0.5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="Vertical/Header"]
 anchor_left = 0.034
-anchor_right = 0.737
-margin_left = -6.55
-margin_top = 75.0
-margin_right = 0.224976
-margin_bottom = 81.0
+anchor_right = 0.965
+margin_left = -3.544
+margin_top = 60.0
+margin_right = 3.06003
+margin_bottom = 66.0
 rect_min_size = Vector2( 0, 2 )
 custom_styles/panel = SubResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SearchButton" type="Button" parent="."]
-anchor_left = 0.755
-anchor_right = 0.755
-margin_left = -0.125
-margin_top = 14.0
-margin_right = 119.875
-margin_bottom = 134.0
+[node name="SearchButton" type="Button" parent="Vertical/Header"]
+anchor_left = 0.963
+anchor_right = 0.963
+margin_left = -117.908
+margin_top = 74.0
+margin_right = 2.09192
+margin_bottom = 122.0
 custom_fonts/font = ExtResource( 3 )
 custom_styles/hover = SubResource( 8 )
 custom_styles/pressed = SubResource( 9 )
@@ -118,7 +126,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="focus_entered" from="Line" to="." method="_on_Line_focus_entered"]
-[connection signal="text_changed" from="Line" to="." method="_on_Line_text_changed"]
-[connection signal="text_entered" from="Line" to="." method="_on_Line_text_entered"]
-[connection signal="pressed" from="SearchButton" to="." method="_on_SearchButton_pressed"]
+[node name="FilterButton" type="Button" parent="Vertical/Header"]
+anchor_left = 0.037
+anchor_right = 0.037
+margin_left = -0.092001
+margin_top = 73.0
+margin_right = 119.908
+margin_bottom = 121.0
+custom_fonts/font = ExtResource( 3 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 8 )
+text = "Filter"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Vertical/Header/SearchButton" to="." method="_on_SearchButton_pressed"]
+[connection signal="pressed" from="Vertical/Header/FilterButton" to="." method="_on_FilterButton_pressed"]
