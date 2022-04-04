@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/ui/ui_scroll.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=2]
@@ -20,45 +20,6 @@ color = Color( 1, 1, 1, 1 )
 grow_begin = -8.0
 grow_end = -8.0
 thickness = 4
-
-[sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 0.607843, 0.607843, 0.607843, 1 )
-draw_center = false
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 1, 1, 1, 1 )
-expand_margin_left = 10.0
-expand_margin_right = 10.0
-expand_margin_top = 10.0
-expand_margin_bottom = 10.0
-
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.607843, 0.607843, 0.607843, 1 )
-draw_center = false
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color( 1, 1, 1, 1 )
-expand_margin_left = 10.0
-expand_margin_right = 10.0
-expand_margin_top = 10.0
-expand_margin_bottom = 10.0
-
-[sub_resource type="StyleBoxFlat" id=7]
-bg_color = Color( 0.607843, 0.607843, 0.607843, 1 )
-draw_center = false
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color( 1, 1, 1, 1 )
-expand_margin_left = 10.0
-expand_margin_right = 10.0
-expand_margin_top = 10.0
-expand_margin_bottom = 10.0
 
 [node name="Kitchen" type="Control"]
 anchor_right = 1.0
@@ -140,11 +101,6 @@ margin_right = 252.0
 margin_bottom = 991.0
 rect_min_size = Vector2( 64, 64 )
 custom_fonts/font = ExtResource( 4 )
-custom_styles/hover = SubResource( 10 )
-custom_styles/pressed = SubResource( 10 )
-custom_styles/focus = SubResource( 10 )
-custom_styles/disabled = SubResource( 10 )
-custom_styles/normal = SubResource( 4 )
 text = "Explore"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -158,11 +114,6 @@ margin_right = 390.0
 margin_bottom = 997.0
 rect_min_size = Vector2( 80, 80 )
 custom_fonts/font = ExtResource( 4 )
-custom_styles/hover = SubResource( 10 )
-custom_styles/pressed = SubResource( 10 )
-custom_styles/focus = SubResource( 10 )
-custom_styles/disabled = SubResource( 10 )
-custom_styles/normal = SubResource( 7 )
 text = "Kitchen"
 __meta__ = {
 "_edit_use_anchors_": false

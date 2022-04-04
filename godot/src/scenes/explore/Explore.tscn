@@ -120,10 +120,10 @@ __meta__ = {
 
 [node name="Filter" type="Popup" parent="."]
 visible = true
-margin_left = 21.0
-margin_top = 245.0
-margin_right = 268.0
-margin_bottom = 490.0
+margin_left = 166.0
+margin_top = 188.0
+margin_right = 413.0
+margin_bottom = 433.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
