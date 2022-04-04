@@ -12,6 +12,7 @@ void Pipeline::_register_methods() {
 
 	// Search
 	register_method("get_recipes_by_name", &Pipeline::get_recipes_by_name);
+	register_method("get_recipes_by_filter", &Pipeline::get_recipes_by_filter);
 	// Recipe
 	register_method("get_recipe_by_id", &Pipeline::get_recipe_by_id);
 	register_method("get_recipe_by_name", &Pipeline::get_recipe_by_name);
@@ -70,6 +71,14 @@ String Pipeline::get_recipe_ingredients_by_id(int id)
 	return godot_string;
 }
 
+
+String Pipeline::get_recipes_by_filter(String name, String filter);
+{
+	
+	//json recipes = search::get_recipes_by_filter(name, filter);
+	return name;
+
+}
 
 void Pipeline::save_recipe(String recipe)
 {
