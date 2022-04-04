@@ -72,7 +72,7 @@ String Pipeline::get_recipe_ingredients_by_id(int id)
 }
 
 
-String Pipeline::get_recipes_by_filter(String name, String filter);
+String Pipeline::get_recipes_by_filter(String name, String filter)
 {
 	
 	//json recipes = search::get_recipes_by_filter(name, filter);

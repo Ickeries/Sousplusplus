@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://src/prefabs/items/list_items/list_item_ingredient.gd" type="Script" id=1]
+[ext_resource path="res://src/scenes/recipes/page_recipe_edit/page_recipe_edit_ingredient.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/fonts/box_row_title_font.tres" type="DynamicFont" id=3]
 

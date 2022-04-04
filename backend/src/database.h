@@ -21,8 +21,14 @@ namespace database
 
 	//Dont know why this is highlighted when the function is in the class...
 	int save_recipe_ingredients(json ingredients);
-	int save_recipe_ingredient(string recipe_id, string ingredient_name, string ingredient_amount);
-	int clear_recipe_ingredients(string id);
+	int save_recipe_ingredient(int recipe_id, string ingredient_name, string ingredient_amount);
+	int clear_recipe_ingredients(int id);
+
+
+	int save_recipe_directions(json directions);
+	int save_recipe_direction(int recipe_id, string recipe_description, int step);
+	int clear_recipe_directions(int id);
+
 
 	void save_recipe(json recipe);
 

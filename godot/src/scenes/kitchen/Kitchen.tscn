@@ -68,17 +68,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
-margin_left = 18.0
-margin_top = 6.0
-margin_right = 127.0
-margin_bottom = 44.0
-custom_fonts/font = ExtResource( 2 )
-text = "Kitchen"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Username" type="Label" parent="."]
 margin_left = 10.0
 margin_top = 174.0

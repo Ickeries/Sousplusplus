@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/prefabs/Searchbar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ui/ui_scroll.gd" type="Script" id=2]
@@ -13,32 +13,6 @@ color = Color( 1, 1, 1, 1 )
 grow_begin = -8.0
 grow_end = -8.0
 thickness = 3
-
-[sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 0.607843, 0.607843, 0.607843, 1 )
-draw_center = false
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 1, 1, 1, 1 )
-expand_margin_left = 10.0
-expand_margin_right = 10.0
-expand_margin_top = 10.0
-expand_margin_bottom = 10.0
-
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.607843, 0.607843, 0.607843, 1 )
-draw_center = false
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 1, 1, 1, 1 )
-expand_margin_left = 10.0
-expand_margin_right = 10.0
-expand_margin_top = 10.0
-expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxFlat" id=11]
 bg_color = Color( 0.286275, 0.286275, 0.286275, 1 )
@@ -55,17 +29,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="."]
-margin_left = 12.0
-margin_top = 6.0
-margin_right = 119.0
-margin_bottom = 44.0
-custom_fonts/font = ExtResource( 3 )
-text = "Explore"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -130,17 +93,12 @@ __meta__ = {
 }
 
 [node name="Kitchen" type="Button" parent="."]
-margin_left = 324.0
-margin_top = 931.0
-margin_right = 395.0
-margin_bottom = 995.0
+margin_left = 307.0
+margin_top = 953.0
+margin_right = 380.0
+margin_bottom = 1017.0
 rect_min_size = Vector2( 64, 64 )
 custom_fonts/font = ExtResource( 5 )
-custom_styles/hover = SubResource( 10 )
-custom_styles/pressed = SubResource( 10 )
-custom_styles/focus = SubResource( 10 )
-custom_styles/disabled = SubResource( 10 )
-custom_styles/normal = SubResource( 6 )
 text = "Kitchen"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -149,16 +107,11 @@ __meta__ = {
 [node name="Explore" type="Button" parent="."]
 modulate = Color( 0.168627, 0.505882, 0.823529, 1 )
 margin_left = 169.0
-margin_top = 920.0
+margin_top = 938.0
 margin_right = 249.0
-margin_bottom = 1000.0
+margin_bottom = 1018.0
 rect_min_size = Vector2( 80, 80 )
 custom_fonts/font = ExtResource( 5 )
-custom_styles/hover = SubResource( 10 )
-custom_styles/pressed = SubResource( 10 )
-custom_styles/focus = SubResource( 10 )
-custom_styles/disabled = SubResource( 10 )
-custom_styles/normal = SubResource( 10 )
 text = "Explore"
 __meta__ = {
 "_edit_use_anchors_": false

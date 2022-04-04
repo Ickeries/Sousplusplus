@@ -154,8 +154,8 @@ __meta__ = {
 [node name="Front" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 576.0
-margin_bottom = 1028.0
+margin_right = 4032.0
+margin_bottom = 7196.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -273,9 +273,9 @@ __meta__ = {
 
 [node name="Read" type="Button" parent="Front"]
 margin_left = 230.0
-margin_top = 950.0
+margin_top = 808.0
 margin_right = 338.0
-margin_bottom = 998.0
+margin_bottom = 856.0
 rect_pivot_offset = Vector2( 54, 26 )
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 4 )
@@ -294,17 +294,17 @@ anims/idle = SubResource( 7 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 576.0
-margin_right = 1152.0
-margin_bottom = 1028.0
+margin_right = 4608.0
+margin_bottom = 7196.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Scroll" type="ScrollContainer" parent="Back"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = -0.00012207
-margin_bottom = -91.0
+anchor_right = 0.135
+anchor_bottom = 0.125
+margin_right = -2.08002
+margin_bottom = -4.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -360,18 +360,18 @@ margin_right = 576.0
 margin_bottom = 68.0
 custom_constants/separation = 16
 
-[node name="Instructions" type="PanelContainer" parent="Back/Scroll/Vertical"]
+[node name="Directions" type="PanelContainer" parent="Back/Scroll/Vertical"]
 margin_top = 276.0
 margin_right = 576.0
 margin_bottom = 318.0
 mouse_filter = 2
 custom_styles/panel = SubResource( 3 )
 
-[node name="Vertical" type="VBoxContainer" parent="Back/Scroll/Vertical/Instructions"]
+[node name="Vertical" type="VBoxContainer" parent="Back/Scroll/Vertical/Directions"]
 margin_right = 576.0
 margin_bottom = 42.0
 
-[node name="Title" type="Label" parent="Back/Scroll/Vertical/Instructions/Vertical"]
+[node name="Title" type="Label" parent="Back/Scroll/Vertical/Directions/Vertical"]
 margin_right = 576.0
 margin_bottom = 38.0
 rect_min_size = Vector2( 576, 0 )
@@ -383,16 +383,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="List" type="VBoxContainer" parent="Back/Scroll/Vertical/Instructions/Vertical"]
+[node name="List" type="VBoxContainer" parent="Back/Scroll/Vertical/Directions/Vertical"]
 margin_top = 42.0
 margin_right = 576.0
 margin_bottom = 42.0
 
 [node name="Return" type="Button" parent="Back"]
 margin_left = 245.0
-margin_top = 952.0
+margin_top = 802.0
 margin_right = 353.0
-margin_bottom = 1000.0
+margin_bottom = 850.0
 rect_pivot_offset = Vector2( 54, 26 )
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 4 )
@@ -412,15 +412,15 @@ playback_speed = 2.0
 anims/RESET = SubResource( 8 )
 anims/to_back = SubResource( 9 )
 
-[node name="Return" type="Button" parent="."]
+[node name="Exit" type="Button" parent="."]
 margin_left = 9.0
-margin_top = 11.0
+margin_top = 62.0
 margin_right = 123.0
-margin_bottom = 67.0
+margin_bottom = 118.0
 rect_pivot_offset = Vector2( 54, 26 )
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 4 )
-text = "Exit"
+text = "Return"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -428,9 +428,9 @@ __meta__ = {
 [node name="Edit" type="Button" parent="."]
 modulate = Color( 0.0745098, 0.803922, 0.290196, 1 )
 margin_left = 450.0
-margin_top = 9.0
+margin_top = 960.0
 margin_right = 564.0
-margin_bottom = 65.0
+margin_bottom = 1016.0
 rect_pivot_offset = Vector2( 54, 26 )
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 4 )
@@ -442,5 +442,5 @@ __meta__ = {
 [connection signal="gui_input" from="Front/Scroll" to="Front/Scroll" method="_on_Scroll_gui_input"]
 [connection signal="pressed" from="Front/Read" to="." method="_on_Read_pressed"]
 [connection signal="pressed" from="Back/Return" to="." method="_on_Return_pressed"]
-[connection signal="pressed" from="Return" to="." method="_on_Read_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="Edit" to="." method="_on_Edit_pressed"]

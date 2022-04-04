@@ -20,6 +20,7 @@ func on_enter_page(page_name : String):
 		if page.visible:
 			previous_page = page
 		page.visible = page.name == page_name
+	$Title.text = page_name
 	$Fade/Animator.play("fade_to_clear")
 
 func on_set_page(page_name : String):
@@ -27,6 +28,7 @@ func on_set_page(page_name : String):
 	yield($Fade/Animator,"animation_finished")
 	for page in $Tabs.get_children():
 		page.visible = page.name == page_name
+	$Title.text = page_name
 	$Fade/Animator.play("fade_to_clear")
 
 func on_enter_return():
@@ -34,4 +36,9 @@ func on_enter_return():
 	yield($Fade/Animator,"animation_finished")
 	for page in $Tabs.get_children():
 		page.visible = (page == previous_page)
+	$Title.text = previous_page.name
 	$Fade/Animator.play("fade_to_clear")
+
+
+func _on_Exit_pressed():
+	get_tree().quit()
