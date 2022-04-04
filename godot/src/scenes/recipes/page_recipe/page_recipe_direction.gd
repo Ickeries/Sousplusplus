@@ -2,10 +2,10 @@ extends PanelContainer
 
 
 func set_data(data : Dictionary):
-	if data.has("recipe_description"):
-		$Horizontal/Text.set_text(data["recipe_description"])
+	if data.has("text"):
+		$Horizontal/Text.set_text(data["text"])
 
 func get_data():
 	var data = {}
-	data["recipe_description"] = $Horizontal/Text.get_text()
+	data["text"] = $Horizontal/Text.get_text()
 	return data

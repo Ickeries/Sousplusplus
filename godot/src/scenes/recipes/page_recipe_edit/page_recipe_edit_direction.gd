@@ -9,15 +9,15 @@ func _ready():
 
 
 func set_data(data : Dictionary):
-	if data.has("recipe_description"):
-		text.set_text(data["recipe_description"])
+	if data.has("text"):
+		text.set_text(data["text"])
 	if data.has("recipe_id"):
 		recipe_id = int(data["recipe_id"])
 
 func get_data():
 	var data = {}
 	data["recipe_id"] = recipe_id
-	data["recipe_description"] = text.get_text()
+	data["text"] = text.get_text()
 	data["step"] = get_index()
 	
 	return data

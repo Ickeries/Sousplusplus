@@ -17,6 +17,7 @@ corner_radius_bottom_right = 64
 corner_radius_bottom_left = 64
 
 [node name="PageExploreAddNewRecipe" type="Control"]
+modulate = Color( 0.0941176, 0.721569, 0.180392, 1 )
 self_modulate = Color( 0.0901961, 0.54902, 0.0823529, 1 )
 anchor_right = 0.781
 anchor_bottom = 0.09

@@ -11,6 +11,7 @@ var ingredient_loaded = load("res://src/scenes/recipes/page_recipe/PageRecipeIng
 var direction_loaded = load("res://src/scenes/recipes/page_recipe/PageRecipeDirection.tscn")
 
 var recipe_id = -1
+var user_id = -1
 
 func _ready():
 	Global.connect("update_data", self, "on_update_data")
@@ -20,6 +21,7 @@ func on_update_data(id : int):
 	var recipe = parse_json(Pipeline.get_recipe_by_id(id))
 	if recipe:
 		recipe_id = int(recipe["recipe_id"])
+		user_id = int(recipe["user_id"])
 		description_text.text = recipe["recipe_description"]
 		name_text.text = recipe["recipe_name"]
 		# Display recipe ingredients
@@ -58,3 +60,7 @@ func _on_Return_pressed():
 
 func _on_Exit_pressed():
 	Global.emit_signal("enter_return")
+
+
+func _on_PageRecipe_visibility_changed():
+	$Animator.play("RESET")

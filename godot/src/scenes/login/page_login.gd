@@ -6,5 +6,9 @@ func _on_Return_pressed():
 
 
 func _on_Login_pressed():
-	#var data = Pipeline.login_to_user($Inputs/Username.text, $Inputs/Password.text)
-	pass
+	var user = parse_json(Pipeline.login_user($Inputs/Username.get_text(), $Inputs/Password.get_text()))
+	if user:
+		Global.current_user = user
+		Global.emit_signal("enter_return")
+	else:
+		Global.print_message("Invalid login information!", Vector2(200,200))

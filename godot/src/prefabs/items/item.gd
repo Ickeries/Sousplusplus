@@ -8,6 +8,8 @@ func set_data(dictionary : Dictionary):
 	data = dictionary
 	if dictionary.has("recipe_name"):
 		$Name.text = dictionary["recipe_name"]
+	if dictionary.has("name"):
+		$Creator.text = "Made by " + dictionary["name"]
 
 func _on_Item_gui_input(event):
 	if event is InputEventMouseButton:

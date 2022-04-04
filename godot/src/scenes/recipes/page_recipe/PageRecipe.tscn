@@ -152,18 +152,15 @@ __meta__ = {
 }
 
 [node name="Front" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 4032.0
-margin_bottom = 7196.0
+margin_right = 564.0
+margin_bottom = 1028.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Scroll" type="ScrollContainer" parent="Front"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_bottom = -89.0
+margin_right = 576.0
+margin_bottom = 867.0
 scroll_horizontal_enabled = false
 script = ExtResource( 5 )
 __meta__ = {
@@ -272,11 +269,11 @@ __meta__ = {
 [node name="Tween" type="Tween" parent="Front/Scroll"]
 
 [node name="Read" type="Button" parent="Front"]
-margin_left = 230.0
-margin_top = 808.0
-margin_right = 338.0
-margin_bottom = 856.0
-rect_pivot_offset = Vector2( 54, 26 )
+margin_left = 204.0
+margin_top = 855.0
+margin_right = 371.0
+margin_bottom = 916.0
+rect_pivot_offset = Vector2( 81, 35 )
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 4 )
 text = "Read"
@@ -290,21 +287,33 @@ playback_speed = 0.5
 anims/RESET = SubResource( 6 )
 anims/idle = SubResource( 7 )
 
+[node name="Edit" type="Button" parent="Front"]
+modulate = Color( 0.0745098, 0.803922, 0.290196, 1 )
+margin_left = 204.0
+margin_top = 937.0
+margin_right = 371.0
+margin_bottom = 993.0
+rect_pivot_offset = Vector2( 54, 26 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 4 )
+text = "Edit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Back" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.013
 margin_left = 576.0
-margin_right = 4608.0
-margin_bottom = 7196.0
+margin_right = 1196.0
+margin_bottom = 1014.64
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Scroll" type="ScrollContainer" parent="Back"]
-anchor_right = 0.135
-anchor_bottom = 0.125
-margin_right = -2.08002
-margin_bottom = -4.0
+margin_right = 620.0
+margin_bottom = 843.0
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -389,14 +398,14 @@ margin_right = 576.0
 margin_bottom = 42.0
 
 [node name="Return" type="Button" parent="Back"]
-margin_left = 245.0
-margin_top = 802.0
-margin_right = 353.0
-margin_bottom = 850.0
-rect_pivot_offset = Vector2( 54, 26 )
+margin_left = 187.0
+margin_top = 831.0
+margin_right = 363.0
+margin_bottom = 898.0
+rect_pivot_offset = Vector2( 88, 34 )
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 4 )
-text = "Return"
+text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -414,9 +423,9 @@ anims/to_back = SubResource( 9 )
 
 [node name="Exit" type="Button" parent="."]
 margin_left = 9.0
-margin_top = 62.0
+margin_top = 13.0
 margin_right = 123.0
-margin_bottom = 118.0
+margin_bottom = 69.0
 rect_pivot_offset = Vector2( 54, 26 )
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 4 )
@@ -425,22 +434,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Edit" type="Button" parent="."]
-modulate = Color( 0.0745098, 0.803922, 0.290196, 1 )
-margin_left = 450.0
-margin_top = 960.0
-margin_right = 564.0
-margin_bottom = 1016.0
-rect_pivot_offset = Vector2( 54, 26 )
-custom_fonts/font = ExtResource( 2 )
-custom_styles/normal = SubResource( 4 )
-text = "Edit"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
+[connection signal="visibility_changed" from="." to="." method="_on_PageRecipe_visibility_changed"]
 [connection signal="gui_input" from="Front/Scroll" to="Front/Scroll" method="_on_Scroll_gui_input"]
 [connection signal="pressed" from="Front/Read" to="." method="_on_Read_pressed"]
+[connection signal="pressed" from="Front/Edit" to="." method="_on_Edit_pressed"]
+[connection signal="gui_input" from="Back/Scroll" to="Back/Scroll" method="_on_Scroll_gui_input"]
 [connection signal="pressed" from="Back/Return" to="." method="_on_Return_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
-[connection signal="pressed" from="Edit" to="." method="_on_Edit_pressed"]

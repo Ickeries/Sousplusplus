@@ -6,15 +6,12 @@ var message_loaded = load("res://src/prefabs/message/Message.tscn")
 signal give_image (image)
 signal recipe_page_called (recipe)
 signal recipe_popup_called (recipe)
-
 signal return_to_explore ()
 signal enter_recipe_edit(data)
 signal enter_recipe(data)
-
 signal enter_page(page_name)
 signal set_page(page_name)
 signal enter_return()
-
 signal update_data(id)
 
 var current_user = {}

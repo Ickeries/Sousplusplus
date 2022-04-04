@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/scenes/recipes/page_recipe_edit/PageRecipeEdit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/scenes/explore/Explore.tscn" type="PackedScene" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://src/scenes/login/Login.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/scenes/kitchen/Kitchen.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/scenes/splash/PageSplash.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/fonts/font18.tres" type="DynamicFont" id=9]
 
 [sub_resource type="Gradient" id=10]
 colors = PoolColorArray( 0.368627, 0.368627, 0.368627, 1, 0.105882, 0.105882, 0.105882, 1 )
@@ -169,6 +168,9 @@ anims/show_recipe_page = SubResource( 14 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Animator" type="AnimationPlayer" parent="Fade"]
 autoplay = "fade_to_clear"
@@ -189,11 +191,16 @@ __meta__ = {
 }
 
 [node name="Title" type="Button" parent="."]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 81.0
-margin_bottom = 36.0
-custom_fonts/font = ExtResource( 9 )
-text = "Explore"
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -72.5
+margin_top = 20.0
+margin_right = 72.5
+margin_bottom = 64.0
+custom_fonts/font = ExtResource( 4 )
+text = "Welcome"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]

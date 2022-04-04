@@ -45,7 +45,7 @@ json recipe::get_recipe_by_id(int id)
 // Returns all information of a recipe by indexing it's id.
 json recipe::get_recipe_by_name(string name)
 {
-	string statement = string("SELECT * FROM recipes WHERE recipe_name = '" + name + "' limit 1;");
+	string statement = string("SELECT * FROM recipes as r inner join users as u on r.user_id = u.id WHERE recipe_name = '" + name + "' limit 1;");
 	json results = database::call(statement);
 	cout << results.dump() << endl;
 

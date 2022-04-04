@@ -85,15 +85,15 @@ int database::save_recipe_directions(json directions)
 	for (int i = 0; i < directions.size(); i++)
 	{
 		cout << directions[i].dump() << endl;
-		save_recipe_direction(directions[i]["recipe_id"], directions[i]["recipe_description"], directions[i]["step"]);
+		save_recipe_direction(directions[i]["recipe_id"], directions[i]["text"], directions[i]["step"]);
 	}
 	cout << "Directions saved." << endl;
 	return 0;
 }
 
-int database::save_recipe_direction(int recipe_id, string recipe_description, int step)
+int database::save_recipe_direction(int recipe_id, string text, int step)
 {
-	string statement("INSERT INTO recipes_directions (recipe_id, recipe_description, step) VALUES('" + to_string(recipe_id) + "','" + recipe_description + "', '" + to_string(step) + "'); ");
+	string statement("INSERT INTO recipes_directions (recipe_id, text, step) VALUES('" + to_string(recipe_id) + "','" + text + "', '" + to_string(step) + "'); ");
 	cout << statement << endl;
 	database::call(statement);
 	return 0;
@@ -157,10 +157,10 @@ void database::save_recipe(json recipe)
 
 	string recipe_id = to_string(recipe["recipe_id"]);
 	string recipe_name = recipe["recipe_name"];
-	string creator_name = recipe["creator_name"];
+	string user_id = to_string(recipe["user_id"]);
 	string recipe_description = recipe["recipe_description"];
 
-	string statement("REPLACE INTO recipes (recipe_id, recipe_name, creator_name , recipe_description) VALUES('" + recipe_id + "', '" + recipe_name + "','" + creator_name + "', '" + recipe_description + "'); ");
+	string statement("REPLACE INTO recipes (recipe_id, recipe_name, user_id , recipe_description) VALUES('" + recipe_id + "', '" + recipe_name + "','" + user_id + "', '" + recipe_description + "'); ");
 	database::call(statement);
 
 }

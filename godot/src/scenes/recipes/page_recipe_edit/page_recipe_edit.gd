@@ -4,6 +4,7 @@ signal recipe_page_hide()
 
 # Recipe ID currently being worked on.
 var recipe_id = -1
+var user_id = -1
 
 var ingredient_loaded = load("res://src/scenes/recipes/page_recipe_edit/PageRecipeEditIngredient.tscn")
 var direction_loaded = load("res://src/scenes/recipes/page_recipe_edit/PageRecipeEditDirection.tscn")
@@ -20,6 +21,7 @@ func on_update_data(id : int):
 	var recipe = parse_json(Pipeline.get_recipe_by_id(id))
 	if recipe:
 		recipe_id = int(recipe["recipe_id"])
+		user_id = int(recipe["user_id"])
 		name_text.text = recipe["recipe_name"]
 		description_text.text = recipe["recipe_description"]
 		
@@ -47,7 +49,7 @@ func get_recipe_data():
 	temp_data["recipe_id"] = recipe_id
 	temp_data["recipe_description"] = description_text.text
 	temp_data["recipe_name"] = name_text.text
-	temp_data["creator_name"] = "david"
+	temp_data["user_id"] = user_id
 	temp_data["ingredients"] = get_recipe_ingredient_data()
 	temp_data["directions"] = get_recipe_directions_data()
 	return temp_data
@@ -77,11 +79,11 @@ func reset():
 func _on_Save_pressed():
 	save_to_local_database()
 	Global.emit_signal("update_data", int(recipe_id))
-	Global.emit_signal("set_page", "PageRecipe")
+	Global.emit_signal("enter_return")
 
 
 func _on_DontSave_pressed():
-	Global.emit_signal("set_page", "PageRecipe")
+	Global.emit_signal("enter_return")
 
 
 onready var name_text = $Scroll/Container/Vertical/Name/Horizontal/Text
@@ -106,7 +108,7 @@ func _on_RemoveIngredient_pressed():
 func _on_AddInstruction_pressed():
 	var direction_instance = direction_loaded.instance()
 	directions_list.add_child(direction_instance)
-	direction_instance.set_data({"recipe_id":recipe_id, "recipe_description":"", "step":direction_instance.get_index()})
+	direction_instance.set_data({"recipe_id":recipe_id, "text":"", "step":direction_instance.get_index()})
 	
 func _on_RemoveInstruction_pressed():
 	if directions_list.get_child_count() > 0:

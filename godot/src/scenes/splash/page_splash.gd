@@ -20,4 +20,4 @@ func _on_SplashPage_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
 			if event.pressed:
-				Global.emit_signal("enter_page", "Kitchen")
+				Global.emit_signal("enter_page", "Explore")

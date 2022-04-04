@@ -22,11 +22,10 @@ func update_list(array : Array):
 
 func _on_Searchbar_search_entered(text):
 	var results = parse_json(Pipeline.get_recipes_by_name(text))
-	if results != null:
+	if results != null and text:
 		update_list(results)
 		$Label2.visible = false
 	else:
-		Global.print_message("No valid recipes found.", Vector2(200,300))
 		update_list([])
 		$Label2.visible = true
 

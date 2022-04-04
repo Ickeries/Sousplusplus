@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/prefabs/Searchbar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ui/ui_scroll.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/fonts/font18.tres" type="DynamicFont" id=5]
 [ext_resource path="res://src/prefabs/Textbar.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/scenes/explore/FilterItem.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/earth.png" type="Texture" id=8]
 
 [sub_resource type="StyleBoxLine" id=4]
 color = Color( 1, 1, 1, 1 )
@@ -36,7 +37,7 @@ __meta__ = {
 [node name="Vertical" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 48.0
+margin_top = 112.0
 custom_constants/separation = 16
 __meta__ = {
 "_edit_use_anchors_": false
@@ -119,10 +120,10 @@ __meta__ = {
 
 [node name="Filter" type="Popup" parent="."]
 visible = true
-margin_left = 17.0
-margin_top = 175.0
-margin_right = 264.0
-margin_bottom = 420.0
+margin_left = 21.0
+margin_top = 245.0
+margin_right = 268.0
+margin_bottom = 490.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -188,6 +189,11 @@ margin_right = 210.0
 margin_bottom = 232.0
 
 [node name="Tween" type="Tween" parent="Filter/Scroll"]
+
+[node name="Earth" type="Sprite" parent="."]
+position = Vector2( 502, 108 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 8 )
 
 [connection signal="visibility_changed" from="." to="." method="_on_Explore_visibility_changed"]
 [connection signal="filter_pressed" from="Vertical/Header/Searchbar" to="." method="_on_Searchbar_filter_pressed"]

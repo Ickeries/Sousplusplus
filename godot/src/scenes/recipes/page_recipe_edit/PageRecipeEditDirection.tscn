@@ -6,9 +6,12 @@
 
 [sub_resource type="StyleBoxEmpty" id=6]
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=12]
 draw_center = false
-border_width_bottom = 4
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
 
 [sub_resource type="StyleBoxEmpty" id=11]
 
@@ -38,7 +41,7 @@ show_behind_parent = true
 margin_right = 530.0
 margin_bottom = 200.0
 mouse_filter = 2
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -63,6 +66,7 @@ rect_min_size = Vector2( 420, 200 )
 custom_styles/panel = SubResource( 11 )
 
 [node name="Hint" type="Label" parent="Horizontal/Text"]
+visible = false
 modulate = Color( 1, 1, 1, 0.529412 )
 margin_right = 436.0
 margin_bottom = 200.0

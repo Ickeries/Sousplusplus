@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/ui/ui_scroll.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://src/scenes/kitchen/page_kitchen.gd" type="Script" id=3]
 [ext_resource path="res://assets/fonts/font18.tres" type="DynamicFont" id=4]
 [ext_resource path="res://src/scenes/explore/PageExploreAddNewRecipe.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/kitchen Background (items).png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
@@ -68,20 +69,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Username" type="Label" parent="."]
-margin_left = 10.0
-margin_top = 174.0
-margin_right = 119.0
-margin_bottom = 212.0
-custom_fonts/font = ExtResource( 2 )
-text = "Lvl 1 Guest"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Vertical" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 67.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -91,11 +82,22 @@ margin_right = 576.0
 margin_bottom = 220.0
 rect_min_size = Vector2( 0, 220 )
 
+[node name="Username" type="Label" parent="Vertical/Header"]
+margin_left = 17.0
+margin_top = 172.0
+margin_right = 176.0
+margin_bottom = 210.0
+custom_fonts/font = ExtResource( 2 )
+text = "Guest"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="SignIn" type="Button" parent="Vertical/Header"]
-margin_left = 293.0
-margin_top = 23.0
-margin_right = 496.0
-margin_bottom = 206.0
+margin_left = 6.0
+margin_top = 107.0
+margin_right = 223.0
+margin_bottom = 161.0
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 1 )
 text = "Sign in"
@@ -109,10 +111,18 @@ margin_right = 576.0
 margin_bottom = 224.0
 custom_styles/panel = SubResource( 2 )
 
-[node name="Scroll" type="ScrollContainer" parent="Vertical"]
+[node name="PageExploreAddNewRecipe" parent="Vertical" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 228.0
 margin_right = 576.0
-margin_bottom = 228.0
+margin_bottom = 320.0
+
+[node name="Scroll" type="ScrollContainer" parent="Vertical"]
+margin_top = 324.0
+margin_right = 576.0
+margin_bottom = 824.0
+rect_min_size = Vector2( 0, 500 )
 scroll_horizontal_enabled = false
 script = ExtResource( 1 )
 __meta__ = {
@@ -122,12 +132,6 @@ __meta__ = {
 [node name="Grid" type="GridContainer" parent="Vertical/Scroll"]
 
 [node name="Tween" type="Tween" parent="Vertical/Scroll"]
-
-[node name="PageExploreAddNewRecipe" parent="." instance=ExtResource( 5 )]
-margin_left = 99.0
-margin_top = 223.0
-margin_right = 131.144
-margin_bottom = 241.84
 
 [node name="Explore" type="Button" parent="."]
 margin_left = 175.0
@@ -163,6 +167,11 @@ text = "Kitchen"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="KitchenBackground(items)" type="Sprite" parent="."]
+position = Vector2( 412, 173 )
+scale = Vector2( 0.0880594, 0.0880594 )
+texture = ExtResource( 6 )
 
 [connection signal="visibility_changed" from="." to="." method="_on_Kitchen_visibility_changed"]
 [connection signal="pressed" from="Vertical/Header/SignIn" to="." method="_on_SignIn_pressed"]

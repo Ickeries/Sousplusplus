@@ -30,6 +30,12 @@
     <ClInclude Include="src\recipe.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\database_users.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\godot\pipeline.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\database.cpp">
@@ -45,6 +51,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\recipe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\database_users.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\godot\pipeline.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

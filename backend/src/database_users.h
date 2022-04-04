@@ -17,8 +17,12 @@ using json = nlohmann::json;
 
 namespace database_users
 {
- int login_user(string username, string password);
+ json login_user(string username, string password);
  json get_recipes_by_user_id(int user_id);
+
+ json get_user_name(int user_id);
+
+
 }
 
 #endif

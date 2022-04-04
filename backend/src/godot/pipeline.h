@@ -27,6 +27,9 @@ public:
 	String get_recipe_by_name(String name);
 	String get_recipe_ingredients_by_id(int id);
 
+	String login_user(String name, String password);
+	String get_recipes_by_user_id(int id);
+	String get_user_name(int id);
 
 	void save_recipe(String recipe);
 	void save_recipe_ingredients(String recipe_ingredients);

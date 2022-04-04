@@ -31,9 +31,17 @@ func _on_Scroll_gui_input(event):
 
 
 func _on_Kitchen_visibility_changed():
-	var recipes = parse_json(Pipeline.get_recipes_by_name("a"))
-	if recipes:
-		update_list(recipes)
+	if Global.current_user:
+		var recipes = parse_json(Pipeline.get_recipes_by_user_id(int(Global.current_user.id)))
+		if recipes:
+			update_list(recipes)
+		
+		var user = parse_json(Pipeline.get_user_name(Global.current_user["id"]))
+		if user:
+			$Vertical/Header/Username.text = user.name
+	
+	
+	
 
 
 func _on_SignIn_pressed():

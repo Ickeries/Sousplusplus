@@ -3,6 +3,7 @@
 #include "database.h"
 #include "recipe.h"
 #include "search.h"
+#include "database_users.h"
 
 using namespace godot;
 
@@ -19,6 +20,10 @@ void Pipeline::_register_methods() {
 	register_method("get_recipe_ingredients_by_id", &Pipeline::get_recipe_ingredients_by_id);
 	register_method("save_recipe_ingredients", &Pipeline::save_recipe_ingredients);
 	register_method("save_recipe", &Pipeline::save_recipe);
+
+	register_method("login_user", &Pipeline::login_user);
+	register_method("get_recipes_by_user_id", &Pipeline::get_recipes_by_user_id);
+	register_method("get_user_name", &Pipeline::get_user_name);
 }
 
 Pipeline::Pipeline() {
@@ -68,6 +73,27 @@ String Pipeline::get_recipe_ingredients_by_id(int id)
 {
 	json ingredients_json = recipe::get_recipe_ingredients_by_id(id);
 	godot::String godot_string(ingredients_json.dump().c_str());
+	return godot_string;
+}
+
+String godot::Pipeline::login_user(String name, String password)
+{
+	json user_json = database_users::login_user(name.alloc_c_string(), password.alloc_c_string());
+	godot::String godot_string(user_json.dump().c_str());
+	return godot_string;
+}
+
+String godot::Pipeline::get_recipes_by_user_id(int id)
+{
+	json recipes_json = database_users::get_recipes_by_user_id(id);
+	godot::String godot_string(recipes_json.dump().c_str());
+	return godot_string;
+}
+
+String godot::Pipeline::get_user_name(int id)
+{
+	json user_json = database_users::get_user_name(id);
+	godot::String godot_string(user_json.dump().c_str());
 	return godot_string;
 }
 
