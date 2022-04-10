@@ -88,17 +88,11 @@ func _on_Save_pressed():
 	save_to_local_database()
 	Global.emit_signal("update_data", int(recipe_id))
 	Global.emit_signal("enter_return")
-<<<<<<< HEAD:project/src/scenes/recipes/page_recipe_edit/page_recipe_edit.gd
 	reset()
-=======
-	
-	
 	description_text.text = ""
 	Global.delete_children(ingredient_list)
 	Global.delete_children(directions_list)
 	recipe_id = -1
->>>>>>> 90d45db9d81d243aa36e6512dff3cf07490dbcbe:godot/src/scenes/recipes/page_recipe_edit/page_recipe_edit.gd
-
 
 func _on_DontSave_pressed():
 	Global.emit_signal("enter_return")
