@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/scenes/recipes/page_recipe_edit/page_recipe_edit_ingredient.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/box_row_title_font.tres" type="DynamicFont" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxFlat" id=2]
+draw_center = false
+border_width_bottom = 3
+
+[sub_resource type="StyleBoxFlat" id=3]
+draw_center = false
+border_width_bottom = 3
+
+[sub_resource type="StyleBoxFlat" id=4]
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+
+[node name="PageRecipeEditIngredient" type="PanelContainer"]
+anchor_right = 1.0
+margin_bottom = 40.0
+mouse_filter = 1
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Horizontal" type="HBoxContainer" parent="."]
+margin_right = 576.0
+margin_bottom = 44.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="LineEdit" parent="Horizontal"]
+margin_right = 300.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 300, 0 )
+mouse_filter = 1
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 2 )
+selecting_enabled = false
+
+[node name="Amount" type="LineEdit" parent="Horizontal"]
+margin_left = 304.0
+margin_right = 468.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 164, 0 )
+mouse_filter = 1
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 3 )
+selecting_enabled = false
+
+[node name="Remove" type="Button" parent="Horizontal"]
+margin_left = 472.0
+margin_right = 516.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 44, 44 )
+mouse_filter = 1
+custom_fonts/font = ExtResource( 3 )
+custom_styles/normal = SubResource( 4 )
+text = "X"
+
+[connection signal="pressed" from="Horizontal/Remove" to="." method="_on_Remove_pressed"]

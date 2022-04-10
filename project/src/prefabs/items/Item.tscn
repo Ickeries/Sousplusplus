@@ -1,0 +1,125 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/prefabs/items/item.gd" type="Script" id=3]
+[ext_resource path="res://assets/fonts/font18.tres" type="DynamicFont" id=4]
+
+[sub_resource type="StyleBoxLine" id=5]
+color = Color( 1, 1, 1, 1 )
+thickness = 3
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "normal"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "spawn"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=6]
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+
+[node name="Item" type="Control"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 0.869
+anchor_bottom = 0.109
+margin_right = -0.141998
+margin_bottom = -0.389008
+rect_min_size = Vector2( 450, 100 )
+mouse_filter = 1
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="."]
+margin_left = 108.0
+margin_top = 2.0
+margin_right = 246.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 89, 0 )
+custom_fonts/font = ExtResource( 2 )
+text = "NULL"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Creator" type="Label" parent="."]
+margin_left = 109.0
+margin_top = 40.0
+margin_right = 247.0
+margin_bottom = 62.0
+custom_colors/font_color = Color( 1, 1, 1, 0.282353 )
+custom_fonts/font = ExtResource( 4 )
+text = "NULL"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Creator"]
+margin_top = 32.0
+margin_right = 302.0
+margin_bottom = 54.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+autoplay = "spawn"
+anims/RESET = SubResource( 2 )
+anims/normal = SubResource( 4 )
+anims/spawn = SubResource( 3 )
+
+[node name="TextureRect" type="Panel" parent="."]
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+mouse_filter = 2
+custom_styles/panel = SubResource( 6 )
+
+[connection signal="gui_input" from="." to="." method="_on_Item_gui_input"]
