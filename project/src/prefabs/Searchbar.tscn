@@ -39,9 +39,6 @@ margin_right = 575.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Vertical" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -122,9 +119,6 @@ custom_styles/focus = SubResource( 8 )
 custom_styles/disabled = SubResource( 8 )
 custom_styles/normal = SubResource( 8 )
 text = "Search"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="FilterButton" type="Button" parent="Vertical/Header"]
 anchor_left = 0.037
@@ -140,9 +134,6 @@ custom_styles/focus = SubResource( 8 )
 custom_styles/disabled = SubResource( 8 )
 custom_styles/normal = SubResource( 8 )
 text = "Filter"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="text_changed" from="Vertical/Header/Text" to="." method="_on_Text_text_changed"]
 [connection signal="pressed" from="Vertical/Header/SearchButton" to="." method="_on_SearchButton_pressed"]

@@ -13,6 +13,7 @@ func _ready():
 	Global.connect("set_page", self, "on_set_page")
 
 
+
 func on_enter_page(page_name : String):
 	$Fade/Animator.play("fade_to_black")
 	yield($Fade/Animator,"animation_finished")
@@ -42,3 +43,16 @@ func on_enter_return():
 
 func _on_Exit_pressed():
 	get_tree().quit()
+
+#Navigation Bar found at bottom: Traverses through all the pages
+func _on_Explore_pressed():
+	Global.emit_signal("enter_page", "Explore")
+
+func _on_Kitchen_pressed():
+	Global.emit_signal("enter_page", "Kitchen")
+
+func _on_User_Account_pressed():
+	Global.emit_signal("enter_page", "Login")
+
+
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/scenes/explore/page_explore_add_new_recipe.gd" type="Script" id=2]
@@ -16,6 +16,8 @@ corner_radius_top_right = 64
 corner_radius_bottom_right = 64
 corner_radius_bottom_left = 64
 
+[sub_resource type="CanvasItemMaterial" id=3]
+
 [node name="PageExploreAddNewRecipe" type="Control"]
 modulate = Color( 0.0941176, 0.721569, 0.180392, 1 )
 self_modulate = Color( 0.0901961, 0.54902, 0.0823529, 1 )
@@ -26,9 +28,6 @@ margin_bottom = -0.160004
 rect_min_size = Vector2( 92, 92 )
 mouse_filter = 1
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Button" type="Button" parent="."]
 anchor_right = 0.649
@@ -47,4 +46,51 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Warning_Popup" type="Popup" parent="."]
+visible = true
+margin_left = 116.0
+margin_top = 671.0
+margin_right = 467.0
+margin_bottom = 824.0
+
+[node name="Panel" type="Panel" parent="Warning_Popup"]
+show_behind_parent = true
+material = SubResource( 3 )
+margin_left = -3.0
+margin_top = -216.0
+margin_right = 365.0
+margin_bottom = -1.0
+
+[node name="Return" type="Button" parent="Warning_Popup/Panel"]
+anchor_left = 0.114
+anchor_top = 0.679
+anchor_right = 0.389
+anchor_bottom = 0.865
+margin_left = -12.952
+margin_top = -2.985
+margin_right = 6.84801
+margin_bottom = -2.97501
+text = "Return"
+
+[node name="Sign_In" type="Button" parent="Warning_Popup/Panel"]
+anchor_left = 0.625
+anchor_top = 0.67
+anchor_right = 0.905
+anchor_bottom = 0.86
+margin_left = -23.0
+margin_top = -3.05
+margin_right = -7.03998
+margin_bottom = -2.90001
+text = "Sign In"
+
+[node name="Warning_Message" type="RichTextLabel" parent="Warning_Popup/Panel"]
+margin_left = 41.0
+margin_top = 56.0
+margin_right = 386.0
+margin_bottom = 108.0
+tab_size = 10
+text = "You must be a member to use this feature"
+
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Warning_Popup/Panel/Return" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="Warning_Popup/Panel/Sign_In" to="." method="_on_Sign_In_pressed"]

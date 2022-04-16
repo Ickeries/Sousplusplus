@@ -1,12 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/prefabs/Searchbar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ui/ui_scroll.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://src/scenes/explore/explore.gd" type="Script" id=4]
-[ext_resource path="res://assets/fonts/font18.tres" type="DynamicFont" id=5]
-[ext_resource path="res://src/prefabs/Textbar.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/scenes/explore/FilterItem.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/ui/earth.png" type="Texture" id=8]
 
 [sub_resource type="StyleBoxLine" id=4]
@@ -14,13 +11,6 @@ color = Color( 1, 1, 1, 1 )
 grow_begin = -8.0
 grow_end = -8.0
 thickness = 3
-
-[sub_resource type="StyleBoxFlat" id=11]
-bg_color = Color( 0.286275, 0.286275, 0.286275, 1 )
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
 
 [sub_resource type="Animation" id=12]
 resource_name = "appear"
@@ -30,18 +20,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Vertical" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 4.0
 margin_top = 112.0
+margin_right = 4.0
 custom_constants/separation = 16
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Header" type="VBoxContainer" parent="Vertical"]
 margin_right = 576.0
@@ -60,6 +46,7 @@ margin_bottom = 144.0
 custom_styles/panel = SubResource( 4 )
 
 [node name="Scroll" type="ScrollContainer" parent="Vertical"]
+visible = false
 margin_top = 160.0
 margin_right = 576.0
 margin_bottom = 840.0
@@ -89,106 +76,68 @@ margin_right = 452.0
 margin_bottom = 619.0
 custom_fonts/font = ExtResource( 3 )
 text = "No valid recipes found"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Kitchen" type="Button" parent="."]
-margin_left = 307.0
-margin_top = 953.0
-margin_right = 380.0
-margin_bottom = 1017.0
-rect_min_size = Vector2( 64, 64 )
-custom_fonts/font = ExtResource( 5 )
-text = "Kitchen"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Explore" type="Button" parent="."]
-modulate = Color( 0.168627, 0.505882, 0.823529, 1 )
-margin_left = 169.0
-margin_top = 938.0
-margin_right = 249.0
-margin_bottom = 1018.0
-rect_min_size = Vector2( 80, 80 )
-custom_fonts/font = ExtResource( 5 )
-text = "Explore"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Filter" type="Popup" parent="."]
-visible = true
-margin_left = 166.0
-margin_top = 188.0
-margin_right = 413.0
-margin_bottom = 433.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Panel" type="Panel" parent="Filter"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_styles/panel = SubResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_left = 57.0
+margin_top = 277.0
+margin_right = 504.0
+margin_bottom = 574.0
 
 [node name="Animator" type="AnimationPlayer" parent="Filter"]
 anims/appear = SubResource( 12 )
 
-[node name="Textbar" parent="Filter" instance=ExtResource( 6 )]
-margin_left = 4.0
+[node name="ItemList" type="ItemList" parent="Filter"]
+margin_left = 185.0
+margin_top = -7.0
+margin_right = 504.0
+margin_bottom = 657.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Filter/ItemList"]
+margin_left = 15.0
 margin_top = 10.0
-margin_right = 484.0
-margin_bottom = 90.0
-rect_scale = Vector2( 0.5, 0.5 )
+margin_right = 298.0
+margin_bottom = 436.0
 
-[node name="Tip" parent="Filter/Textbar" index="0"]
-text = "Type ingredients to filter.."
+[node name="PanelContainer" type="PanelContainer" parent="Filter/ItemList/VBoxContainer"]
+margin_right = 283.0
+margin_bottom = 34.0
 
-[node name="Scroll" type="ScrollContainer" parent="Filter"]
-margin_left = 18.0
-margin_top = 52.0
-margin_right = 250.0
-margin_bottom = 236.0
-scroll_horizontal_enabled = false
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Diet_Options" type="Button" parent="Filter/ItemList/VBoxContainer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 276.0
+margin_bottom = 27.0
+text = "Diet "
 
-[node name="Vertical" type="VBoxContainer" parent="Filter/Scroll"]
-margin_right = 210.0
-margin_bottom = 232.0
-custom_constants/separation = 8
+[node name="Vegetarian_Check_Box" type="CheckBox" parent="Filter/ItemList/VBoxContainer/PanelContainer/Diet_Options"]
+visible = false
+anchor_right = 0.06
+anchor_bottom = 0.5
+margin_left = -12.0
+margin_top = 62.0
+margin_right = 240.86
+margin_bottom = 76.0
+text = "Vegetarian"
 
-[node name="FilterItem" parent="Filter/Scroll/Vertical" instance=ExtResource( 7 )]
-margin_right = 210.0
+[node name="Vegan_Check_Box" type="CheckBox" parent="Filter/ItemList/VBoxContainer/PanelContainer/Diet_Options"]
+visible = false
+anchor_right = 0.06
+anchor_bottom = 0.5
+margin_left = -11.0
+margin_top = 37.0
+margin_right = 241.86
+margin_bottom = 51.0
+text = "Vegan"
 
-[node name="FilterItem2" parent="Filter/Scroll/Vertical" instance=ExtResource( 7 )]
-margin_top = 48.0
-margin_right = 210.0
-margin_bottom = 88.0
-
-[node name="FilterItem3" parent="Filter/Scroll/Vertical" instance=ExtResource( 7 )]
-margin_top = 96.0
-margin_right = 210.0
-margin_bottom = 136.0
-
-[node name="FilterItem4" parent="Filter/Scroll/Vertical" instance=ExtResource( 7 )]
-margin_top = 144.0
-margin_right = 210.0
-margin_bottom = 184.0
-
-[node name="FilterItem5" parent="Filter/Scroll/Vertical" instance=ExtResource( 7 )]
-margin_top = 192.0
-margin_right = 210.0
-margin_bottom = 232.0
-
-[node name="Tween" type="Tween" parent="Filter/Scroll"]
+[node name="Pescatarian_Check_Box" type="CheckBox" parent="Filter/ItemList/VBoxContainer/PanelContainer/Diet_Options"]
+visible = false
+anchor_right = 0.06
+anchor_bottom = 0.5
+margin_left = -11.0
+margin_top = 90.0
+margin_right = 241.86
+margin_bottom = 104.0
+text = "Pescatarian"
 
 [node name="Earth" type="Sprite" parent="."]
 position = Vector2( 502, 108 )
@@ -199,7 +148,4 @@ texture = ExtResource( 8 )
 [connection signal="filter_pressed" from="Vertical/Header/Searchbar" to="." method="_on_Searchbar_filter_pressed"]
 [connection signal="search_entered" from="Vertical/Header/Searchbar" to="." method="_on_Searchbar_search_entered"]
 [connection signal="gui_input" from="Vertical/Scroll" to="Vertical/Scroll" method="_on_Scroll_gui_input"]
-[connection signal="pressed" from="Kitchen" to="." method="_on_Kitchen_pressed"]
-[connection signal="gui_input" from="Filter/Scroll" to="Vertical/Scroll" method="_on_Scroll_gui_input"]
-
-[editable path="Filter/Textbar"]
+[connection signal="pressed" from="Filter/ItemList/VBoxContainer/PanelContainer/Diet_Options" to="." method="_on_Diet_Options_pressed"]

@@ -8,7 +8,7 @@ onready var items = $Vertical/Scroll/Center/Grid
 func _ready():
 	update_list([])
 	call_deferred("_deferred")
-
+	
 func _deferred():
 	pass
 
@@ -33,15 +33,22 @@ func _on_Searchbar_search_entered(text):
 
 func _on_Searchbar_filter_pressed(value):
 	$Filter.popup()
-
+	
 
 func _on_Button_pressed():
 	$Vertical/Header/Margin/Filter/Ingredients.visible = !$Vertical/Header/Margin/Filter/Ingredients.visible 
 
 
-func _on_Kitchen_pressed():
-	Global.emit_signal("enter_page", "Kitchen")
-
-
 func _on_Explore_visibility_changed():
 	_on_Searchbar_search_entered($Vertical/Header/Searchbar.get_text())
+
+#Its ugly but it works
+func _on_Diet_Options_pressed():
+	if $Filter/ItemList/VBoxContainer/PanelContainer/Diet_Options/Vegan_Check_Box.visible == true:
+		$Filter/ItemList/VBoxContainer/PanelContainer/Diet_Options/Vegan_Check_Box.hide()
+		$Filter/ItemList/VBoxContainer/PanelContainer/Diet_Options/Vegetarian_Check_Box.hide()
+	else:
+		$Filter/ItemList/VBoxContainer/PanelContainer/Diet_Options/Vegan_Check_Box.show()
+		$Filter/ItemList/VBoxContainer/PanelContainer/Diet_Options/Vegetarian_Check_Box.show()
+
+

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/fonts/large_title.tres" type="DynamicFont" id=2]
 [ext_resource path="res://src/scenes/splash/page_splash.gd" type="Script" id=3]
+[ext_resource path="res://assets/images/Main_Background.jpg" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -39,9 +40,6 @@ tracks/0/keys = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Title" type="Label" parent="."]
 anchor_left = 0.5
@@ -52,9 +50,13 @@ margin_right = 107.0
 margin_bottom = 354.0
 custom_fonts/font = ExtResource( 2 )
 text = "Sous++"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="MainBackground" type="Sprite" parent="Title"]
+show_behind_parent = true
+position = Vector2( 105, 236 )
+rotation = 1.5708
+scale = Vector2( 0.797954, 1.03742 )
+texture = ExtResource( 4 )
 
 [node name="Text" type="Label" parent="."]
 anchor_left = 0.5
@@ -65,13 +67,17 @@ margin_right = 83.5
 margin_bottom = 535.0
 custom_fonts/font = ExtResource( 1 )
 text = "Tap to start"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 autoplay = "idle"
 anims/RESET = SubResource( 1 )
 anims/idle = SubResource( 2 )
 
+[node name="Welcome_Back_Current_User" type="Label" parent="."]
+margin_left = 214.0
+margin_top = 358.0
+margin_right = 650.0
+margin_bottom = 576.0
+
 [connection signal="gui_input" from="." to="." method="_on_SplashPage_gui_input"]
+[connection signal="visibility_changed" from="Welcome_Back_Current_User" to="." method="_on_Welcome_Back_Current_User_visibility_changed"]

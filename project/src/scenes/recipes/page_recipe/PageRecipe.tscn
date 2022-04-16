@@ -147,9 +147,6 @@ tracks/1/keys = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Front" type="Control" parent="."]
 margin_right = 564.0
@@ -305,7 +302,7 @@ __meta__ = {
 anchor_bottom = 0.013
 margin_left = 576.0
 margin_right = 1196.0
-margin_bottom = 1028.0
+margin_bottom = 1295.28
 __meta__ = {
 "_edit_use_anchors_": false
 }
