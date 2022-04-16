@@ -15,12 +15,11 @@ bg_color = Color( 1, 1, 1, 0.709804 )
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id=8]
-bg_color = Color( 0.607843, 0.607843, 0.607843, 1 )
-draw_center = false
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
+bg_color = Color( 0.152941, 0.152941, 0.152941, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 1, 1, 1, 1 )
@@ -39,6 +38,9 @@ margin_right = 575.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Vertical" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -106,11 +108,9 @@ __meta__ = {
 }
 
 [node name="SearchButton" type="Button" parent="Vertical/Header"]
-anchor_left = 0.963
-anchor_right = 0.963
-margin_left = -531.725
+margin_left = 22.0
 margin_top = 81.0
-margin_right = -411.725
+margin_right = 142.0
 margin_bottom = 129.0
 custom_fonts/font = ExtResource( 3 )
 custom_styles/hover = SubResource( 8 )

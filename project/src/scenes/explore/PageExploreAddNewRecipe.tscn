@@ -28,6 +28,9 @@ margin_bottom = -0.160004
 rect_min_size = Vector2( 92, 92 )
 mouse_filter = 1
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Button" type="Button" parent="."]
 anchor_right = 0.649
@@ -49,17 +52,15 @@ __meta__ = {
 [node name="Warning_Popup" type="Popup" parent="."]
 visible = true
 margin_left = 116.0
-margin_top = 671.0
+margin_top = 369.0
 margin_right = 467.0
-margin_bottom = 824.0
+margin_bottom = 522.0
 
 [node name="Panel" type="Panel" parent="Warning_Popup"]
 show_behind_parent = true
 material = SubResource( 3 )
-margin_left = -3.0
-margin_top = -216.0
-margin_right = 365.0
-margin_bottom = -1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="Return" type="Button" parent="Warning_Popup/Panel"]
 anchor_left = 0.114

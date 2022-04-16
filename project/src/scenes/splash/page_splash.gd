@@ -1,30 +1,21 @@
 extends Control
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
+	pass
 
 func _on_SplashPage_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
 			if event.pressed:
-				Global.emit_signal("enter_page", "Explore")
-				
-
+				Events.emit_signal("set_page", "Explore", "fade_to_black")
 
 func _on_Welcome_Back_Current_User_visibility_changed():
 	if Global.current_user:
 		$Welcome_Back_Current_User.text = ("Welcome Back "+ Global.current_user.name)
 		
+
+# Called when splash page appears
+func _on_SplashPage_visibility_changed():
+	print("LEL")
+	if visible:
+		Events.emit_signal("show_bottom_menu", false)

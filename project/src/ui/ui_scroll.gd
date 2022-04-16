@@ -6,10 +6,15 @@ var pressed : bool = false
 
 var to_scroll_vertical : int = 0.0
 func _ready():
+	Events.connect("scroll", self, "on_scroll")
 	get_v_scrollbar().visible = false
 
 func _physics_process(delta):
 	pass
+
+func on_scroll(vec):
+	scroll_vertical -= vec.y
+
 
 func _on_Scroll_gui_input(event):
 	if event is InputEventMouseButton:
@@ -22,8 +27,8 @@ func _on_Scroll_gui_input(event):
 				pressed = false
 	
 	if event is InputEventMouseMotion:
-		var dist = event.relative
 		
-		if pressed and event.position.distance_to(start_position) > 10.0:
-			scroll_vertical -= event.relative.y
+		if pressed:
+			if event.position.distance_to(start_position) > 10.0:
+				scroll_vertical -= event.relative.y
 		last_position = event.position

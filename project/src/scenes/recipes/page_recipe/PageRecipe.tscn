@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/fonts/large_title.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=2]
@@ -12,7 +12,14 @@
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
-[sub_resource type="StyleBoxEmpty" id=3]
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.14902, 0.14902, 0.14902, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxFlat" id=4]
 draw_center = false
@@ -56,6 +63,8 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ) ]
 }
+
+[sub_resource type="StyleBoxEmpty" id=3]
 
 [sub_resource type="Animation" id=10]
 length = 0.001
@@ -143,7 +152,14 @@ tracks/1/keys = {
 "values": [ Vector2( 576, 0 ), Vector2( 0, 0 ) ]
 }
 
-[node name="PageRecipe" type="Control"]
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.137255, 0.137255, 0.137255, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Recipe" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 4 )
@@ -231,7 +247,7 @@ margin_top = 600.0
 margin_right = 576.0
 margin_bottom = 669.0
 mouse_filter = 2
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 13 )
 
 [node name="Vertical" type="VBoxContainer" parent="Front/Scroll/Vertical/Description"]
 margin_right = 576.0
@@ -267,9 +283,9 @@ __meta__ = {
 
 [node name="Read" type="Button" parent="Front"]
 margin_left = 204.0
-margin_top = 855.0
+margin_top = 755.0
 margin_right = 371.0
-margin_bottom = 916.0
+margin_bottom = 816.0
 rect_pivot_offset = Vector2( 81, 35 )
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 4 )
@@ -287,9 +303,9 @@ anims/idle = SubResource( 7 )
 [node name="Edit" type="Button" parent="Front"]
 modulate = Color( 0.0745098, 0.803922, 0.290196, 1 )
 margin_left = 204.0
-margin_top = 937.0
+margin_top = 837.0
 margin_right = 371.0
-margin_bottom = 993.0
+margin_bottom = 893.0
 rect_pivot_offset = Vector2( 54, 26 )
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 4 )
@@ -302,7 +318,7 @@ __meta__ = {
 anchor_bottom = 0.013
 margin_left = 576.0
 margin_right = 1196.0
-margin_bottom = 1295.28
+margin_bottom = 1402.19
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -310,6 +326,7 @@ __meta__ = {
 [node name="Scroll" type="ScrollContainer" parent="Back"]
 margin_right = 620.0
 margin_bottom = 843.0
+follow_focus = true
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -317,7 +334,7 @@ __meta__ = {
 
 [node name="Vertical" type="VBoxContainer" parent="Back/Scroll"]
 margin_right = 576.0
-margin_bottom = 318.0
+margin_bottom = 527.0
 
 [node name="Space" type="Control" parent="Back/Scroll/Vertical"]
 margin_right = 576.0
@@ -327,13 +344,13 @@ rect_min_size = Vector2( 0, 200 )
 [node name="Ingredients" type="PanelContainer" parent="Back/Scroll/Vertical"]
 margin_top = 204.0
 margin_right = 576.0
-margin_bottom = 272.0
+margin_bottom = 277.0
 mouse_filter = 2
 custom_styles/panel = SubResource( 3 )
 
 [node name="Vertical" type="VBoxContainer" parent="Back/Scroll/Vertical/Ingredients"]
 margin_right = 576.0
-margin_bottom = 68.0
+margin_bottom = 73.0
 
 [node name="Title" type="Label" parent="Back/Scroll/Vertical/Ingredients/Vertical"]
 margin_right = 576.0
@@ -350,7 +367,7 @@ __meta__ = {
 [node name="Serving Size" type="Label" parent="Back/Scroll/Vertical/Ingredients/Vertical"]
 margin_top = 42.0
 margin_right = 576.0
-margin_bottom = 64.0
+margin_bottom = 69.0
 rect_min_size = Vector2( 576, 0 )
 custom_fonts/font = ExtResource( 6 )
 custom_styles/normal = SubResource( 2 )
@@ -361,15 +378,16 @@ __meta__ = {
 }
 
 [node name="List" type="VBoxContainer" parent="Back/Scroll/Vertical/Ingredients/Vertical"]
-margin_top = 68.0
+margin_top = 73.0
 margin_right = 576.0
-margin_bottom = 68.0
+margin_bottom = 73.0
 custom_constants/separation = 16
+alignment = 1
 
 [node name="Directions" type="PanelContainer" parent="Back/Scroll/Vertical"]
-margin_top = 276.0
+margin_top = 281.0
 margin_right = 576.0
-margin_bottom = 318.0
+margin_bottom = 323.0
 mouse_filter = 2
 custom_styles/panel = SubResource( 3 )
 
@@ -383,7 +401,7 @@ margin_bottom = 38.0
 rect_min_size = Vector2( 576, 0 )
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 2 )
-text = "Instructions"
+text = "Directions"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -394,7 +412,13 @@ margin_top = 42.0
 margin_right = 576.0
 margin_bottom = 42.0
 
-[node name="Return" type="Button" parent="Back"]
+[node name="Space2" type="Control" parent="Back/Scroll/Vertical"]
+margin_top = 327.0
+margin_right = 576.0
+margin_bottom = 527.0
+rect_min_size = Vector2( 0, 200 )
+
+[node name="Title" type="Button" parent="Back"]
 margin_left = 187.0
 margin_top = 831.0
 margin_right = 363.0
@@ -407,7 +431,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Animator" type="AnimationPlayer" parent="Back/Return"]
+[node name="Animator" type="AnimationPlayer" parent="Back/Title"]
 autoplay = "idle"
 playback_speed = 0.5
 anims/RESET = SubResource( 10 )
@@ -418,14 +442,14 @@ playback_speed = 2.0
 anims/RESET = SubResource( 8 )
 anims/to_back = SubResource( 9 )
 
-[node name="Exit" type="Button" parent="."]
+[node name="Return" type="Button" parent="."]
 margin_left = 9.0
 margin_top = 13.0
 margin_right = 123.0
 margin_bottom = 69.0
 rect_pivot_offset = Vector2( 54, 26 )
 custom_fonts/font = ExtResource( 2 )
-custom_styles/normal = SubResource( 4 )
+custom_styles/normal = SubResource( 12 )
 text = "Return"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -436,5 +460,5 @@ __meta__ = {
 [connection signal="pressed" from="Front/Read" to="." method="_on_Read_pressed"]
 [connection signal="pressed" from="Front/Edit" to="." method="_on_Edit_pressed"]
 [connection signal="gui_input" from="Back/Scroll" to="Back/Scroll" method="_on_Scroll_gui_input"]
-[connection signal="pressed" from="Back/Return" to="." method="_on_Return_pressed"]
-[connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="Back/Title" to="." method="_on_Title_pressed"]
+[connection signal="pressed" from="Return" to="." method="_on_Return_pressed"]

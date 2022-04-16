@@ -1,11 +1,15 @@
-extends PanelContainer
+extends VBoxContainer
 
+onready var text = $Center/Text
+
+func _ready():
+	$Label.text = "Step " + str(get_index() + 1)
 
 func set_data(data : Dictionary):
 	if data.has("text"):
-		$Horizontal/Text.set_text(data["text"])
+		text.set_text(data["text"])
 
 func get_data():
 	var data = {}
-	data["text"] = $Horizontal/Text.get_text()
+	data["text"] = text.get_text()
 	return data

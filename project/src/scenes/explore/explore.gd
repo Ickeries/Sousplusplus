@@ -2,45 +2,44 @@ extends Control
 
 var item_loaded = load("res://src/prefabs/items/Item.tscn")
 var add_new_recipe_loaded = load("res://src/scenes/explore/PageExploreAddNewRecipe.tscn")
-onready var items = $Vertical/Scroll/Center/Grid
+
+onready var category_loaded = load("res://src/scenes/explore/PageExploreCategory.tscn")
+
+onready var items = $Scroll/Center/Vertical/Grid
 
 
 func _ready():
-	update_list([])
 	call_deferred("_deferred")
 	
 func _deferred():
 	pass
 
-func update_list(array : Array):
-	for child in items.get_children():
-		child.queue_free()
-	for i in array:
-		var item_instance = item_loaded.instance()
-		items.add_child(item_instance)
-		item_instance.set_data(i)
+
+func add_category(title : String, items):
+	var category_instance = category_loaded.instance()
+	$Scroll/Center/Vertical.add_child(category_instance)
+	category_instance.set_title(title)
+	category_instance.add_items(items)
 
 func _on_Searchbar_search_entered(text):
+	# Get recipes by name
+	for category in $Scroll/Center/Vertical.get_children():
+		category.queue_free()
+	
 	var results = Search.get_recipes_by_name(text)
-	if results != null and text:
-		update_list(results)
-		$Label2.visible = false
-	else:
-		update_list([])
-		$Label2.visible = true
-
-
+	add_category("Best Results (%s)" % results.size(), results)
+	add_category("Best Results (%s)" % results.size(), results)
 
 func _on_Searchbar_filter_pressed(value):
-	$Filter.popup()
-	
+	$Filter.visible = !$Filter.visible
 
 func _on_Button_pressed():
 	$Vertical/Header/Margin/Filter/Ingredients.visible = !$Vertical/Header/Margin/Filter/Ingredients.visible 
 
 
 func _on_Explore_visibility_changed():
-	_on_Searchbar_search_entered($Vertical/Header/Searchbar.get_text())
+	Events.emit_signal("show_bottom_menu", true)
+	_on_Searchbar_search_entered($Header/Searchbar.get_text())
 
 #Its ugly but it works
 func _on_Diet_Options_pressed():

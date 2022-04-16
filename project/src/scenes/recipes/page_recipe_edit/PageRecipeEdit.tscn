@@ -84,7 +84,7 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="PageRecipeEdit" type="Control"]
+[node name="RecipeEdit" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
@@ -103,7 +103,7 @@ __meta__ = {
 
 [node name="Container" type="MarginContainer" parent="Scroll"]
 margin_right = 550.0
-margin_bottom = 1194.0
+margin_bottom = 1531.0
 rect_min_size = Vector2( 550, 0 )
 mouse_filter = 2
 custom_constants/margin_right = 16
@@ -115,7 +115,7 @@ __meta__ = {
 [node name="Vertical" type="VBoxContainer" parent="Scroll/Container"]
 margin_left = 32.0
 margin_right = 534.0
-margin_bottom = 1194.0
+margin_bottom = 1531.0
 mouse_filter = 2
 custom_constants/separation = 32
 
@@ -241,13 +241,13 @@ text = "Vegetarian"
 [node name="Ingredients" type="PanelContainer" parent="Scroll/Container/Vertical"]
 margin_top = 628.0
 margin_right = 502.0
-margin_bottom = 742.0
+margin_bottom = 747.0
 mouse_filter = 1
 custom_styles/panel = SubResource( 14 )
 
 [node name="Vertical" type="VBoxContainer" parent="Scroll/Container/Vertical/Ingredients"]
 margin_right = 502.0
-margin_bottom = 114.0
+margin_bottom = 119.0
 
 [node name="Header" type="HBoxContainer" parent="Scroll/Container/Vertical/Ingredients/Vertical"]
 margin_right = 502.0
@@ -282,11 +282,11 @@ text = " - "
 [node name="Ref" type="HBoxContainer" parent="Scroll/Container/Vertical/Ingredients/Vertical"]
 margin_top = 88.0
 margin_right = 502.0
-margin_bottom = 110.0
+margin_bottom = 115.0
 
 [node name="Name" type="Label" parent="Scroll/Container/Vertical/Ingredients/Vertical/Ref"]
 margin_right = 290.0
-margin_bottom = 22.0
+margin_bottom = 27.0
 rect_min_size = Vector2( 290, 0 )
 custom_fonts/font = ExtResource( 1 )
 custom_styles/normal = SubResource( 18 )
@@ -294,21 +294,21 @@ text = "Name"
 
 [node name="Amount" type="Label" parent="Scroll/Container/Vertical/Ingredients/Vertical/Ref"]
 margin_left = 294.0
-margin_right = 358.0
-margin_bottom = 22.0
+margin_right = 371.0
+margin_bottom = 27.0
 custom_fonts/font = ExtResource( 1 )
 custom_styles/normal = SubResource( 18 )
 text = "Amount"
 
 [node name="List" type="VBoxContainer" parent="Scroll/Container/Vertical/Ingredients/Vertical"]
-margin_top = 114.0
+margin_top = 119.0
 margin_right = 502.0
-margin_bottom = 114.0
+margin_bottom = 119.0
 
 [node name="Directions" type="PanelContainer" parent="Scroll/Container/Vertical"]
-margin_top = 774.0
+margin_top = 779.0
 margin_right = 502.0
-margin_bottom = 862.0
+margin_bottom = 867.0
 mouse_filter = 2
 custom_styles/panel = SubResource( 15 )
 
@@ -354,9 +354,16 @@ margin_bottom = 88.0
 custom_constants/separation = 16
 
 [node name="Space2" type="Control" parent="Scroll/Container/Vertical"]
-margin_top = 894.0
+margin_top = 899.0
 margin_right = 502.0
-margin_bottom = 1194.0
+margin_bottom = 1199.0
+rect_min_size = Vector2( 0, 300 )
+mouse_filter = 2
+
+[node name="Space3" type="Control" parent="Scroll/Container/Vertical"]
+margin_top = 1231.0
+margin_right = 502.0
+margin_bottom = 1531.0
 rect_min_size = Vector2( 0, 300 )
 mouse_filter = 2
 

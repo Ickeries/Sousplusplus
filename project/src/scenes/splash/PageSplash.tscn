@@ -40,6 +40,21 @@ tracks/0/keys = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainBackground" type="TextureRect" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -98.0
+margin_bottom = 102.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Title" type="Label" parent="."]
 anchor_left = 0.5
@@ -50,13 +65,9 @@ margin_right = 107.0
 margin_bottom = 354.0
 custom_fonts/font = ExtResource( 2 )
 text = "Sous++"
-
-[node name="MainBackground" type="Sprite" parent="Title"]
-show_behind_parent = true
-position = Vector2( 105, 236 )
-rotation = 1.5708
-scale = Vector2( 0.797954, 1.03742 )
-texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Text" type="Label" parent="."]
 anchor_left = 0.5
@@ -67,6 +78,9 @@ margin_right = 83.5
 margin_bottom = 535.0
 custom_fonts/font = ExtResource( 1 )
 text = "Tap to start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 autoplay = "idle"
@@ -74,10 +88,14 @@ anims/RESET = SubResource( 1 )
 anims/idle = SubResource( 2 )
 
 [node name="Welcome_Back_Current_User" type="Label" parent="."]
-margin_left = 214.0
-margin_top = 358.0
-margin_right = 650.0
-margin_bottom = 576.0
+margin_left = 616.0
+margin_top = 354.0
+margin_right = 1052.0
+margin_bottom = 572.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="gui_input" from="." to="." method="_on_SplashPage_gui_input"]
+[connection signal="visibility_changed" from="." to="." method="_on_SplashPage_visibility_changed"]
 [connection signal="visibility_changed" from="Welcome_Back_Current_User" to="." method="_on_Welcome_Back_Current_User_visibility_changed"]
