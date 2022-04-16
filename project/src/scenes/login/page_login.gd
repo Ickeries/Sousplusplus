@@ -17,3 +17,16 @@ func _on_Login_pressed():
 func _on_CreateAccount_pressed():
 	Users.create_user($Inputs/Username/Line.text, $Inputs/Password/Line.text)
 	_on_Login_pressed()
+
+
+func _on_Login_visibility_changed():
+	if Global.current_user:
+		print("Welcome " , Global.current_user.name , "!")
+		$Inputs.visible = false
+		$Buttons.visible = false
+		$Profile_Settings.visible = true
+
+
+func _on_Logout_pressed():
+	pass
+	#Users.login_user(null, null)

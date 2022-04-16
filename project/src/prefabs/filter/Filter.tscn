@@ -1,0 +1,161 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/ui/ui_scroll.gd" type="Script" id=1]
+[ext_resource path="res://src/prefabs/filter/filter.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/fonts/large_title.tres" type="DynamicFont" id=4]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.105882, 0.105882, 0.105882, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[node name="Filter" type="Control"]
+anchor_right = 0.609
+anchor_bottom = 0.575
+margin_right = 0.215973
+margin_bottom = -0.100037
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 0, 591 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Vertical" type="VBoxContainer" parent="Container"]
+margin_right = 322.0
+margin_bottom = 168.0
+
+[node name="Diet" type="PanelContainer" parent="Container/Vertical"]
+margin_right = 322.0
+margin_bottom = 82.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="Vertical" type="VBoxContainer" parent="Container/Vertical/Diet"]
+margin_right = 322.0
+margin_bottom = 82.0
+
+[node name="DietButton" type="Button" parent="Container/Vertical/Diet/Vertical"]
+margin_right = 322.0
+margin_bottom = 82.0
+custom_fonts/font = ExtResource( 4 )
+text = "Diet >"
+flat = true
+align = 0
+
+[node name="List" type="VBoxContainer" parent="Container/Vertical/Diet/Vertical"]
+visible = false
+margin_top = 86.0
+margin_right = 273.0
+margin_bottom = 282.0
+
+[node name="Vegan" type="CheckBox" parent="Container/Vertical/Diet/Vertical/List"]
+margin_right = 273.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 3 )
+text = "Vegan"
+
+[node name="CheckBox2" type="CheckBox" parent="Container/Vertical/Diet/Vertical/List"]
+margin_top = 50.0
+margin_right = 273.0
+margin_bottom = 96.0
+custom_fonts/font = ExtResource( 3 )
+text = "No meat"
+
+[node name="CheckBox3" type="CheckBox" parent="Container/Vertical/Diet/Vertical/List"]
+margin_top = 100.0
+margin_right = 273.0
+margin_bottom = 146.0
+custom_fonts/font = ExtResource( 3 )
+text = "No meat"
+
+[node name="CheckBox4" type="CheckBox" parent="Container/Vertical/Diet/Vertical/List"]
+margin_top = 150.0
+margin_right = 273.0
+margin_bottom = 196.0
+custom_fonts/font = ExtResource( 3 )
+text = "No meat"
+
+[node name="Category" type="PanelContainer" parent="Container/Vertical"]
+margin_top = 86.0
+margin_right = 322.0
+margin_bottom = 168.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="Vertical" type="VBoxContainer" parent="Container/Vertical/Category"]
+margin_right = 322.0
+margin_bottom = 82.0
+
+[node name="CategoryButton" type="Button" parent="Container/Vertical/Category/Vertical"]
+margin_right = 322.0
+margin_bottom = 82.0
+custom_fonts/font = ExtResource( 4 )
+text = "Category >"
+flat = true
+align = 0
+
+[node name="List" type="VBoxContainer" parent="Container/Vertical/Category/Vertical"]
+visible = false
+margin_top = 86.0
+margin_right = 273.0
+margin_bottom = 282.0
+
+[node name="CheckBox2" type="CheckBox" parent="Container/Vertical/Category/Vertical/List"]
+margin_right = 273.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 3 )
+text = "Breakfast"
+
+[node name="CheckBox3" type="CheckBox" parent="Container/Vertical/Category/Vertical/List"]
+margin_top = 50.0
+margin_right = 273.0
+margin_bottom = 96.0
+custom_fonts/font = ExtResource( 3 )
+text = "Lunch"
+
+[node name="CheckBox4" type="CheckBox" parent="Container/Vertical/Category/Vertical/List"]
+margin_top = 100.0
+margin_right = 273.0
+margin_bottom = 146.0
+custom_fonts/font = ExtResource( 3 )
+text = "Dinner"
+
+[node name="CheckBox5" type="CheckBox" parent="Container/Vertical/Category/Vertical/List"]
+margin_top = 150.0
+margin_right = 273.0
+margin_bottom = 196.0
+custom_fonts/font = ExtResource( 3 )
+text = "Dessert"
+
+[node name="Button" type="Button" parent="."]
+margin_left = 118.0
+margin_top = 542.0
+margin_right = 212.0
+margin_bottom = 586.0
+custom_fonts/font = ExtResource( 3 )
+text = "Apply"
+
+[connection signal="pressed" from="Container/Vertical/Diet/Vertical/DietButton" to="." method="_on_DietButton_pressed"]
+[connection signal="pressed" from="Container/Vertical/Category/Vertical/CategoryButton" to="." method="_on_CategoryButton_pressed"]

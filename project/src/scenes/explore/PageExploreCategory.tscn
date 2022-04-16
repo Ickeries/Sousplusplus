@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/scenes/explore/page_explore_category.gd" type="Script" id=2]
+
+[node name="Category" type="VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 14.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Horizontal" type="HBoxContainer" parent="."]
+margin_right = 277.0
+margin_bottom = 38.0
+
+[node name="Title" type="Label" parent="Horizontal"]
+margin_right = 231.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 1 )
+text = "Category (400+)"
+align = 1
+valign = 1
+
+[node name="Hide" type="Button" parent="Horizontal"]
+margin_left = 235.0
+margin_right = 277.0
+margin_bottom = 38.0
+text = "Hide"
+
+[node name="Grid" type="GridContainer" parent="."]
+margin_top = 42.0
+margin_right = 277.0
+margin_bottom = 42.0
+custom_constants/vseparation = 8
+custom_constants/hseparation = 8
+columns = 2
+
+[connection signal="pressed" from="Horizontal/Hide" to="." method="_on_Hide_pressed"]

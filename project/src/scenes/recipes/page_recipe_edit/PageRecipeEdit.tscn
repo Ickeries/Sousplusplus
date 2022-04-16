@@ -84,13 +84,10 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="PageRecipeEdit" type="Control"]
+[node name="RecipeEdit" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Scroll" type="ScrollContainer" parent="."]
 anchor_right = 1.0
@@ -106,7 +103,7 @@ __meta__ = {
 
 [node name="Container" type="MarginContainer" parent="Scroll"]
 margin_right = 550.0
-margin_bottom = 1088.0
+margin_bottom = 1531.0
 rect_min_size = Vector2( 550, 0 )
 mouse_filter = 2
 custom_constants/margin_right = 16
@@ -118,7 +115,7 @@ __meta__ = {
 [node name="Vertical" type="VBoxContainer" parent="Scroll/Container"]
 margin_left = 32.0
 margin_right = 534.0
-margin_bottom = 1088.0
+margin_bottom = 1531.0
 mouse_filter = 2
 custom_constants/separation = 32
 
@@ -199,16 +196,58 @@ text = "Text is unused.
 selecting_enabled = false
 wrap_enabled = true
 
-[node name="Ingredients" type="PanelContainer" parent="Scroll/Container/Vertical"]
+[node name="Vertical" type="VBoxContainer" parent="Scroll/Container/Vertical"]
 margin_top = 522.0
 margin_right = 502.0
-margin_bottom = 636.0
+margin_bottom = 596.0
+
+[node name="Header" type="HBoxContainer" parent="Scroll/Container/Vertical/Vertical"]
+margin_right = 502.0
+margin_bottom = 46.0
+custom_constants/separation = 16
+
+[node name="Title" type="Label" parent="Scroll/Container/Vertical/Vertical/Header"]
+margin_top = 4.0
+margin_right = 207.0
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 5 )
+text = "Diet Catergory"
+
+[node name="ClearDescription" type="Button" parent="Scroll/Container/Vertical/Vertical/Header"]
+margin_left = 223.0
+margin_right = 306.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 5 )
+custom_styles/normal = SubResource( 17 )
+text = "Clear"
+
+[node name="Header2" type="HBoxContainer" parent="Scroll/Container/Vertical/Vertical"]
+margin_top = 50.0
+margin_right = 502.0
+margin_bottom = 74.0
+custom_constants/separation = 16
+
+[node name="Vegetarian Check" type="CheckBox" parent="Scroll/Container/Vertical/Vertical/Header2"]
+margin_right = 95.0
+margin_bottom = 24.0
+text = "Vegetarian"
+
+[node name="Vegan Check" type="CheckBox" parent="Scroll/Container/Vertical/Vertical/Header2"]
+margin_left = 111.0
+margin_right = 206.0
+margin_bottom = 24.0
+text = "Vegetarian"
+
+[node name="Ingredients" type="PanelContainer" parent="Scroll/Container/Vertical"]
+margin_top = 628.0
+margin_right = 502.0
+margin_bottom = 747.0
 mouse_filter = 1
 custom_styles/panel = SubResource( 14 )
 
 [node name="Vertical" type="VBoxContainer" parent="Scroll/Container/Vertical/Ingredients"]
 margin_right = 502.0
-margin_bottom = 114.0
+margin_bottom = 119.0
 
 [node name="Header" type="HBoxContainer" parent="Scroll/Container/Vertical/Ingredients/Vertical"]
 margin_right = 502.0
@@ -243,11 +282,11 @@ text = " - "
 [node name="Ref" type="HBoxContainer" parent="Scroll/Container/Vertical/Ingredients/Vertical"]
 margin_top = 88.0
 margin_right = 502.0
-margin_bottom = 110.0
+margin_bottom = 115.0
 
 [node name="Name" type="Label" parent="Scroll/Container/Vertical/Ingredients/Vertical/Ref"]
 margin_right = 290.0
-margin_bottom = 22.0
+margin_bottom = 27.0
 rect_min_size = Vector2( 290, 0 )
 custom_fonts/font = ExtResource( 1 )
 custom_styles/normal = SubResource( 18 )
@@ -255,21 +294,21 @@ text = "Name"
 
 [node name="Amount" type="Label" parent="Scroll/Container/Vertical/Ingredients/Vertical/Ref"]
 margin_left = 294.0
-margin_right = 358.0
-margin_bottom = 22.0
+margin_right = 371.0
+margin_bottom = 27.0
 custom_fonts/font = ExtResource( 1 )
 custom_styles/normal = SubResource( 18 )
 text = "Amount"
 
 [node name="List" type="VBoxContainer" parent="Scroll/Container/Vertical/Ingredients/Vertical"]
-margin_top = 114.0
+margin_top = 119.0
 margin_right = 502.0
-margin_bottom = 114.0
+margin_bottom = 119.0
 
 [node name="Directions" type="PanelContainer" parent="Scroll/Container/Vertical"]
-margin_top = 668.0
+margin_top = 779.0
 margin_right = 502.0
-margin_bottom = 756.0
+margin_bottom = 867.0
 mouse_filter = 2
 custom_styles/panel = SubResource( 15 )
 
@@ -315,34 +354,38 @@ margin_bottom = 88.0
 custom_constants/separation = 16
 
 [node name="Space2" type="Control" parent="Scroll/Container/Vertical"]
-margin_top = 788.0
+margin_top = 899.0
 margin_right = 502.0
-margin_bottom = 1088.0
+margin_bottom = 1199.0
+rect_min_size = Vector2( 0, 300 )
+mouse_filter = 2
+
+[node name="Space3" type="Control" parent="Scroll/Container/Vertical"]
+margin_top = 1231.0
+margin_right = 502.0
+margin_bottom = 1531.0
 rect_min_size = Vector2( 0, 300 )
 mouse_filter = 2
 
 [node name="Tween" type="Tween" parent="Scroll"]
 
 [node name="DontSave" type="Button" parent="."]
-margin_left = 13.0
-margin_top = 914.0
-margin_right = 125.0
-margin_bottom = 1014.0
+margin_left = 15.0
+margin_top = 41.0
+margin_right = 127.0
+margin_bottom = 141.0
 custom_fonts/font = ExtResource( 5 )
 custom_styles/hover = SubResource( 12 )
 custom_styles/pressed = SubResource( 12 )
 custom_styles/focus = SubResource( 12 )
 custom_styles/normal = SubResource( 12 )
 text = "Return"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Save" type="Button" parent="."]
-margin_left = 452.0
-margin_top = 913.0
-margin_right = 560.0
-margin_bottom = 1012.0
+margin_left = 427.0
+margin_top = 47.0
+margin_right = 535.0
+margin_bottom = 146.0
 custom_fonts/font = ExtResource( 5 )
 custom_styles/hover = SubResource( 11 )
 custom_styles/pressed = SubResource( 10 )
@@ -355,6 +398,7 @@ __meta__ = {
 
 [connection signal="gui_input" from="Scroll" to="Scroll" method="_on_Scroll_gui_input"]
 [connection signal="pressed" from="Scroll/Container/Vertical/Description/Vertical/Header/ClearDescription" to="." method="_on_ClearDescription_pressed"]
+[connection signal="pressed" from="Scroll/Container/Vertical/Vertical/Header/ClearDescription" to="." method="_on_ClearDescription_pressed"]
 [connection signal="pressed" from="Scroll/Container/Vertical/Ingredients/Vertical/Header/AddIngredient" to="." method="_on_AddIngredient_pressed"]
 [connection signal="pressed" from="Scroll/Container/Vertical/Ingredients/Vertical/Header/RemoveIngredient" to="." method="_on_RemoveIngredient_pressed"]
 [connection signal="pressed" from="Scroll/Container/Vertical/Directions/Vertical/Horizontal/AddInstruction" to="." method="_on_AddInstruction_pressed"]

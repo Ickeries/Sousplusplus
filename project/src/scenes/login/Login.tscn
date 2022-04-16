@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/prefabs/Textbar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/scenes/login/page_login.gd" type="Script" id=3]
+[ext_resource path="res://assets/fonts/font18.tres" type="DynamicFont" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
@@ -21,31 +22,25 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( -752, -272 )
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Inputs" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Username" parent="Inputs" instance=ExtResource( 2 )]
 margin_left = 32.0
-margin_top = 192.0
+margin_top = 463.0
 margin_right = 528.0
-margin_bottom = 317.0
+margin_bottom = 588.0
 
 [node name="Tip" parent="Inputs/Username" index="0"]
 text = "Username"
 
 [node name="Password" parent="Inputs" instance=ExtResource( 2 )]
-margin_left = 32.0
-margin_top = 320.0
-margin_right = 528.0
-margin_bottom = 445.0
+margin_left = 24.0
+margin_top = 559.0
+margin_right = 530.0
+margin_bottom = 687.0
 
 [node name="Tip" parent="Inputs/Password" index="0"]
 text = "Password"
@@ -55,23 +50,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="Return" type="Button" parent="Buttons"]
-margin_left = 16.0
-margin_top = 16.0
-margin_right = 144.0
-margin_bottom = 128.0
-custom_fonts/font = ExtResource( 1 )
-custom_styles/normal = SubResource( 1 )
-text = "Return"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Login" type="Button" parent="Buttons"]
-margin_left = 160.0
-margin_top = 496.0
-margin_right = 426.0
-margin_bottom = 576.0
+margin_left = 148.0
+margin_top = 701.0
+margin_right = 414.0
+margin_bottom = 781.0
 custom_fonts/font = ExtResource( 1 )
 custom_styles/normal = SubResource( 1 )
 text = "Login"
@@ -80,10 +63,10 @@ __meta__ = {
 }
 
 [node name="CreateAccount" type="Button" parent="Buttons"]
-margin_left = 160.0
-margin_top = 608.0
-margin_right = 426.0
-margin_bottom = 688.0
+margin_left = 151.0
+margin_top = 811.0
+margin_right = 417.0
+margin_bottom = 891.0
 custom_fonts/font = ExtResource( 1 )
 custom_styles/normal = SubResource( 1 )
 text = "Create Account"
@@ -91,9 +74,69 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="Buttons/Return" to="." method="_on_Return_pressed"]
+[node name="GridContainer" type="GridContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -80.0
+rect_pivot_offset = Vector2( 259, 56 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+columns = 3
+
+[node name="Explore" type="Button" parent="GridContainer"]
+modulate = Color( 0.168627, 0.505882, 0.823529, 1 )
+margin_right = 189.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+size_flags_horizontal = 11
+custom_fonts/font = ExtResource( 4 )
+text = "Explore"
+
+[node name="Kitchen" type="Button" parent="GridContainer"]
+margin_left = 193.0
+margin_right = 382.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 64, 64 )
+size_flags_horizontal = 11
+custom_fonts/font = ExtResource( 4 )
+text = "Kitchen"
+
+[node name="User_Account" type="Button" parent="GridContainer"]
+modulate = Color( 0.168627, 0.505882, 0.823529, 1 )
+margin_left = 386.0
+margin_right = 575.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+size_flags_horizontal = 11
+custom_fonts/font = ExtResource( 4 )
+text = "Profile"
+
+[node name="Label" type="Label" parent="."]
+margin_left = 36.0
+margin_top = 282.0
+margin_right = 71.0
+margin_bottom = 296.0
+rect_scale = Vector2( 13.5499, 8.90194 )
+
+[node name="Profile_Settings" type="Control" parent="."]
+visible = false
+margin_right = 571.0
+margin_bottom = 1034.0
+
+[node name="Logout" type="Button" parent="Profile_Settings"]
+margin_left = 147.0
+margin_top = 816.0
+margin_right = 413.0
+margin_bottom = 896.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = SubResource( 1 )
+text = "Logout"
+
+[connection signal="visibility_changed" from="." to="." method="_on_Login_visibility_changed"]
 [connection signal="pressed" from="Buttons/Login" to="." method="_on_Login_pressed"]
 [connection signal="pressed" from="Buttons/CreateAccount" to="." method="_on_CreateAccount_pressed"]
+[connection signal="pressed" from="Profile_Settings/Logout" to="." method="_on_Logout_pressed"]
 
 [editable path="Inputs/Username"]
 [editable path="Inputs/Password"]

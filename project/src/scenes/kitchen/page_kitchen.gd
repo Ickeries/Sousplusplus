@@ -33,7 +33,7 @@ func _on_Scroll_gui_input(event):
 func _on_Kitchen_visibility_changed():
 	if Global.current_user:
 		print(Global.current_user)
-		$Vertical/Header/SignIn.visible = false
+		#$Vertical/Header/SignIn.visible = false
 		var recipes = Search.get_recipes_by_user_id( int(Global.current_user.id) )
 		if recipes:
 			update_list(recipes)
@@ -41,15 +41,4 @@ func _on_Kitchen_visibility_changed():
 		var user_name = Users.get_user_name_by_id( int(Global.current_user.id) )
 		$Vertical/Header/Username.text = user_name
 	else:
-		$Vertical/Header/SignIn.visible = true
-	
-	
-	
-
-
-func _on_SignIn_pressed():
-	Global.emit_signal("enter_page", "Login")
-
-
-func _on_Explore_pressed():
-	Global.emit_signal("enter_page", "Explore")
+		pass#$Vertical/Header/SignIn.visible = true

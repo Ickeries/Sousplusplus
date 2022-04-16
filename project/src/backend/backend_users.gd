@@ -18,5 +18,5 @@ func get_user_name_by_id(id : int):
 	var result = Global.query_single(statement)
 	if result:
 		return result["name"]
-	return "null"
+	return null
 
