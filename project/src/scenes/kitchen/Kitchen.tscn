@@ -1,17 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://src/ui/ui_scroll.gd" type="Script" id=1]
+[ext_resource path="res://src/prefabs/recipe/Recipe.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://src/scenes/kitchen/page_kitchen.gd" type="Script" id=3]
-[ext_resource path="res://src/scenes/explore/PageExploreAddNewRecipe.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/ui/kitchen Background (items).png" type="Texture" id=6]
-[ext_resource path="res://assets/images/Background_Tile.jpg" type="Texture" id=7]
-
-[sub_resource type="StyleBoxLine" id=2]
-color = Color( 1, 1, 1, 1 )
-grow_begin = -8.0
-grow_end = -8.0
-thickness = 4
 
 [node name="Kitchen" type="Control"]
 anchor_right = 1.0
@@ -19,63 +10,62 @@ anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 3 )
 
-[node name="Vertical" type="VBoxContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 67.0
-
-[node name="Header" type="Control" parent="Vertical"]
+[node name="Categories" type="HBoxContainer" parent="."]
+margin_top = 255.0
 margin_right = 576.0
-margin_bottom = 220.0
-rect_min_size = Vector2( 0, 220 )
+margin_bottom = 299.0
+rect_min_size = Vector2( 576, 0 )
+alignment = 1
 
-[node name="Username" type="Label" parent="Vertical/Header"]
-margin_left = 17.0
-margin_top = 172.0
-margin_right = 176.0
-margin_bottom = 210.0
+[node name="Favorites" type="Button" parent="Categories"]
+margin_left = 5.0
+margin_right = 191.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 186, 0 )
 custom_fonts/font = ExtResource( 2 )
-text = "Guest"
+text = "Favorites"
 
-[node name="Panel" type="Panel" parent="Vertical"]
-margin_top = 224.0
-margin_right = 576.0
-margin_bottom = 224.0
-custom_styles/panel = SubResource( 2 )
+[node name="My Recipes" type="Button" parent="Categories"]
+margin_left = 195.0
+margin_right = 381.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 186, 0 )
+custom_fonts/font = ExtResource( 2 )
+text = "My Recipes"
 
-[node name="PageExploreAddNewRecipe" parent="Vertical" instance=ExtResource( 5 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 228.0
-margin_right = 576.0
-margin_bottom = 320.0
+[node name="Drafts" type="Button" parent="Categories"]
+margin_left = 385.0
+margin_right = 571.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 186, 0 )
+custom_fonts/font = ExtResource( 2 )
+text = "Drafts"
 
-[node name="Scroll" type="ScrollContainer" parent="Vertical"]
-margin_top = 324.0
-margin_right = 576.0
-margin_bottom = 824.0
-rect_min_size = Vector2( 0, 500 )
+[node name="Scroll" type="ScrollContainer" parent="."]
+margin_left = 5.0
+margin_top = 309.0
+margin_right = 572.0
+margin_bottom = 833.0
 scroll_horizontal_enabled = false
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Grid" type="GridContainer" parent="Vertical/Scroll"]
+[node name="CenterContainer" type="CenterContainer" parent="Scroll"]
+margin_right = 576.0
+margin_bottom = 278.0
+rect_min_size = Vector2( 576, 0 )
+mouse_filter = 2
 
-[node name="Tween" type="Tween" parent="Vertical/Scroll"]
+[node name="Vertical" type="VBoxContainer" parent="Scroll/CenterContainer"]
+margin_left = 68.0
+margin_right = 508.0
+margin_bottom = 278.0
 
-[node name="BackgroundTile" type="Sprite" parent="Vertical"]
-visible = false
-show_behind_parent = true
-position = Vector2( 91, 443 )
-scale = Vector2( 1.2025, 1.27125 )
-texture = ExtResource( 7 )
+[node name="Recipe" parent="Scroll/CenterContainer/Vertical" instance=ExtResource( 1 )]
+margin_bottom = 90.0
 
-[node name="KitchenBackground(items)" type="Sprite" parent="."]
-position = Vector2( 412, 173 )
-scale = Vector2( 0.0880594, 0.0880594 )
-texture = ExtResource( 6 )
+[node name="Recipe2" parent="Scroll/CenterContainer/Vertical" instance=ExtResource( 1 )]
+margin_top = 94.0
+margin_bottom = 184.0
 
-[connection signal="visibility_changed" from="." to="." method="_on_Kitchen_visibility_changed"]
-[connection signal="gui_input" from="Vertical/Scroll" to="Vertical/Scroll" method="_on_Scroll_gui_input"]
+[node name="Recipe3" parent="Scroll/CenterContainer/Vertical" instance=ExtResource( 1 )]
+margin_top = 188.0
+margin_bottom = 278.0

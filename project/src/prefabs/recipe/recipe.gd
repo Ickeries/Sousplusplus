@@ -1,5 +1,4 @@
 extends Control
-
 var recipe_data = {}
 
 var pressed : bool = false
@@ -8,11 +7,16 @@ var start_position : = Vector2(0,0)
 func set_data(dictionary : Dictionary):
 	recipe_data = dictionary
 	if dictionary.has("recipe_name"):
-		$Name.text = dictionary["recipe_name"]
+		$Title.text = dictionary["recipe_name"]
 	if dictionary.has("name"):
-		$Creator.text = "Made by " + dictionary["name"]
+		$User.text = "Made by " + dictionary["name"]
 
-func _on_Item_gui_input(event):
+
+func _on_Favorite_pressed():
+	$Favorite/Animator.play("press")
+
+
+func _on_Recipe_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
 			if event.pressed:

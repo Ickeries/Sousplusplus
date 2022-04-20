@@ -1,23 +1,26 @@
 extends Control
 
+signal filter_exited()
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+onready var filter_category_loaded = load("res://src/prefabs/filter/FilterCategory.tscn")
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+export (Array, String) var categories = []
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+# Populates existing filter options by using list of recipes
+func sort_recipes_by_categories(recipes):
+	print(recipes)
+
+
+
+
+
 func _on_DietButton_pressed():
-	$Container/Vertical/Diet/Vertical/List.visible = !$Container/Vertical/Diet/Vertical/List.visible
-
+	$Scroll/Vertical/Diet/Vertical/Margin/List.visible = !$Scroll/Vertical/Diet/Vertical/Margin/List.visible
 
 func _on_CategoryButton_pressed():
-	$Container/Vertical/Category/Vertical/List.visible = !$Container/Vertical/Category/Vertical/List.visible
+	$Scroll/Vertical/Category/Vertical/List.visible = !$Scroll/Vertical/Category/Vertical/List.visible
 
+
+func _on_Title_pressed():
+	emit_signal("filter_exited")

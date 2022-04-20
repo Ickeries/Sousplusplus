@@ -1,19 +1,63 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/prefabs/Searchbar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ui/ui_scroll.gd" type="Script" id=2]
 [ext_resource path="res://src/prefabs/filter/Filter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/scenes/explore/explore.gd" type="Script" id=4]
+[ext_resource path="res://assets/fonts/box_row_title_font.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/ui/earth.png" type="Texture" id=8]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 586, 250 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 573, 198 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "show"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.450625, 1 ),
+"update": 0,
+"values": [ Vector2( 573, 198 ), Vector2( 279, 195 ) ]
+}
 
 [node name="Explore" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Header" type="VBoxContainer" parent="."]
 margin_left = 4.0
@@ -36,9 +80,6 @@ rect_min_size = Vector2( 0, 680 )
 follow_focus = true
 scroll_horizontal_enabled = false
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Center" type="CenterContainer" parent="Scroll"]
 margin_right = 576.0
@@ -58,14 +99,37 @@ position = Vector2( 502, 108 )
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 8 )
 
+[node name="FilterButton" type="Button" parent="."]
+anchor_left = 0.037
+anchor_right = 0.037
+margin_left = 421.688
+margin_top = 200.0
+margin_right = 541.688
+margin_bottom = 244.0
+custom_fonts/font = ExtResource( 5 )
+text = "Filter"
+
+[node name="Darkness" type="ColorRect" parent="."]
+modulate = Color( 0, 0, 0, 0.411765 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
 [node name="Filter" parent="." instance=ExtResource( 3 )]
-visible = false
-margin_left = 208.0
+margin_left = 586.0
 margin_top = 250.0
-margin_right = 208.216
-margin_bottom = 249.9
+margin_right = 879.0
+margin_bottom = 940.0
+
+[node name="Animator" type="AnimationPlayer" parent="Filter"]
+autoplay = "idle"
+anims/RESET = SubResource( 1 )
+anims/idle = SubResource( 2 )
+anims/show = SubResource( 3 )
 
 [connection signal="visibility_changed" from="." to="." method="_on_Explore_visibility_changed"]
 [connection signal="filter_pressed" from="Header/Searchbar" to="." method="_on_Searchbar_filter_pressed"]
 [connection signal="search_entered" from="Header/Searchbar" to="." method="_on_Searchbar_search_entered"]
 [connection signal="gui_input" from="Scroll" to="Scroll" method="_on_Scroll_gui_input"]
+[connection signal="pressed" from="FilterButton" to="." method="_on_FilterButton_pressed"]
+[connection signal="filter_exited" from="Filter" to="." method="_on_Filter_filter_exited"]

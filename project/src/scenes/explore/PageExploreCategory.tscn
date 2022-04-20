@@ -7,9 +7,6 @@
 margin_right = 40.0
 margin_bottom = 14.0
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Horizontal" type="HBoxContainer" parent="."]
 margin_right = 277.0
@@ -35,6 +32,5 @@ margin_right = 277.0
 margin_bottom = 42.0
 custom_constants/vseparation = 8
 custom_constants/hseparation = 8
-columns = 2
 
 [connection signal="pressed" from="Horizontal/Hide" to="." method="_on_Hide_pressed"]

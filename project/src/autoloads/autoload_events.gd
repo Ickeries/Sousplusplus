@@ -15,6 +15,7 @@ signal return_to_previous_page(transition_animation)
 
 # Set the visibility of the menu bar.
 signal show_bottom_menu(value)
+signal darken_screen(value)
 
 signal set_recipe(recipe_data)
 
