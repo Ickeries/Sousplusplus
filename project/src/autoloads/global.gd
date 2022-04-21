@@ -1,4 +1,4 @@
-extends Node
+extends CanvasLayer
 
 var message_loaded = load("res://src/prefabs/message/Message.tscn")
 

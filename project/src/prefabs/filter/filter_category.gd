@@ -24,5 +24,8 @@ func set_options(value : Array):
 		filter_button_instance.text = option + "(0)"
 		$Vertical/List.add_child(filter_button_instance)
 
+func get_options():
+	return $List.get_children()
+
 func _on_Title_pressed():
 	$Vertical/List.visible = !$Vertical/List.visible

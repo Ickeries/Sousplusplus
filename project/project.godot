@@ -22,8 +22,7 @@ _global_script_class_icons={
 
 config/name="Sousplusplus"
 run/main_scene="res://src/scenes/Main.tscn"
-boot_splash/image="res://assets/images/Main_Background.png"
-boot_splash/bg_color=Color( 0.054902, 0.278431, 0.0901961, 1 )
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 
 [autoload]
@@ -36,8 +35,8 @@ Events="*res://src/autoloads/autoload_events.gd"
 
 [display]
 
-window/size/width=576
-window/size/height=1028
+window/size/width=1080
+window/size/height=1920
 window/size/test_width=518
 window/size/test_height=925
 window/energy_saving/keep_screen_on=false

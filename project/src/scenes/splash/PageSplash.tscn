@@ -1,9 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=1]
-[ext_resource path="res://assets/fonts/large_title.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/truetype/Roboto-Bold.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://src/scenes/splash/page_splash.gd" type="Script" id=3]
 [ext_resource path="res://assets/images/Main_Background.jpg" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=3]
+size = 142
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -58,12 +64,14 @@ __meta__ = {
 
 [node name="Title" type="Label" parent="."]
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-margin_left = -107.0
-margin_top = 278.0
-margin_right = 107.0
-margin_bottom = 354.0
-custom_fonts/font = ExtResource( 2 )
+anchor_bottom = 0.5
+margin_left = -237.5
+margin_top = -557.0
+margin_right = 237.5
+margin_bottom = -390.0
+custom_fonts/font = SubResource( 3 )
 text = "Sous++"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -73,9 +81,9 @@ __meta__ = {
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -83.5
-margin_top = 497.0
+margin_top = 639.0
 margin_right = 83.5
-margin_bottom = 535.0
+margin_bottom = 677.0
 custom_fonts/font = ExtResource( 1 )
 text = "Tap to start"
 __meta__ = {

@@ -36,8 +36,11 @@ corner_radius_bottom_left = 60
 [node name="Searchbar" type="Control"]
 margin_right = 575.0
 margin_bottom = 128.0
-rect_min_size = Vector2( 128, 128 )
+rect_min_size = Vector2( 500, 128 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Vertical" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -95,9 +98,9 @@ __meta__ = {
 anchor_left = 0.034
 anchor_right = 0.965
 margin_left = -3.544
-margin_top = 60.0
-margin_right = 3.06003
-margin_bottom = 66.0
+margin_top = 79.0
+margin_right = 3.06006
+margin_bottom = 85.0
 rect_min_size = Vector2( 0, 2 )
 custom_styles/panel = SubResource( 7 )
 __meta__ = {
@@ -105,10 +108,10 @@ __meta__ = {
 }
 
 [node name="SearchButton" type="Button" parent="Vertical/Header"]
-margin_left = 22.0
-margin_top = 81.0
-margin_right = 142.0
-margin_bottom = 129.0
+margin_left = 18.0
+margin_top = 100.0
+margin_right = 206.0
+margin_bottom = 171.0
 custom_fonts/font = ExtResource( 3 )
 custom_styles/hover = SubResource( 8 )
 custom_styles/pressed = SubResource( 9 )

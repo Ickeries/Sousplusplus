@@ -10,7 +10,19 @@ func get_all_recipe_data_by_id(id : int):
 		results["ingredients"] = Global.query(""" Select * from recipe_ingredients where recipe_id = %s;""" % [id])
 		#Obtain recipe directions
 		results["directions"] = Global.query(""" Select * from recipes_directions where recipe_id = %s;""" % [id])
+		#Obtain recipe tags
+		results["tags"] = Global.query("""Select * from recipe_tags where recipe_id = %s;""" % [id])
 	return results
+
+
+
+func get_recipe_tags_by_id(id : int):
+	var list = []
+	var results = Global.query("""Select tag_name from recipe_tags where recipe_id = %s;""" % [id])
+	for result in results:
+		list.push_back(result["tag_name"])
+	return list
+
 
 func clear_recipe_ingredients(id : int ):
 	var statement = """Delete from recipe_ingredients where recipe_id = %s;""" % [id]

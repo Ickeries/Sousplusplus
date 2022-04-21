@@ -20,3 +20,6 @@ custom_styles/pressed = SubResource( 3 )
 custom_styles/normal = SubResource( 1 )
 toggle_mode = true
 text = "Dairy (60)"
+__meta__ = {
+"_edit_use_anchors_": false
+}

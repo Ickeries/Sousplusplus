@@ -1,19 +1,27 @@
 extends Control
+
+onready var title = $Title
+onready var user = $User
+onready var favorite_animator = $Favorite/Animator
+
 var recipe_data = {}
 
 var pressed : bool = false
 var start_position : = Vector2(0,0)
 
+
+
 func set_data(dictionary : Dictionary):
 	recipe_data = dictionary
 	if dictionary.has("recipe_name"):
-		$Title.text = dictionary["recipe_name"]
+		title.text = dictionary["recipe_name"]
 	if dictionary.has("name"):
-		$User.text = "Made by " + dictionary["name"]
+		user.text = "Made by " + dictionary["name"]
 
 
 func _on_Favorite_pressed():
-	$Favorite/Animator.play("press")
+	favorite_animator.play("press")
+	Global.print_message("Added to favorites!", get_global_mouse_position())
 
 
 func _on_Recipe_gui_input(event):

@@ -27,7 +27,7 @@ func _on_Searchbar_search_entered(text):
 	add_category("Best Results (%s)" % results.size(), results)
 	add_category("Best Results (%s)" % results.size(), results)
 	
-	filter.sort_recipes_by_categories(results)
+	filter.filter_recipes(results)
 	
 
 func on_darken_screen(value):
@@ -35,7 +35,7 @@ func on_darken_screen(value):
 
 func _on_Explore_visibility_changed():
 	Events.emit_signal("show_bottom_menu", true)
-	_on_Searchbar_search_entered($Header/Searchbar.get_text())
+	_on_Searchbar_search_entered($Searchbar.get_text())
 
 
 

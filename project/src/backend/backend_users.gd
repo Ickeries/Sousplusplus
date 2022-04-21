@@ -20,3 +20,5 @@ func get_user_name_by_id(id : int):
 		return result["name"]
 	return null
 
+func get_user_favorite_recipes(id : int):
+	pass

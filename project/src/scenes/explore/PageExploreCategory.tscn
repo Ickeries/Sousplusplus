@@ -7,30 +7,37 @@
 margin_right = 40.0
 margin_bottom = 14.0
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Horizontal" type="HBoxContainer" parent="."]
-margin_right = 277.0
-margin_bottom = 38.0
+margin_right = 600.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 600, 0 )
+alignment = 1
 
 [node name="Title" type="Label" parent="Horizontal"]
-margin_right = 231.0
-margin_bottom = 38.0
+margin_left = 59.0
+margin_right = 494.0
+margin_bottom = 71.0
 custom_fonts/font = ExtResource( 1 )
 text = "Category (400+)"
 align = 1
 valign = 1
 
 [node name="Hide" type="Button" parent="Horizontal"]
-margin_left = 235.0
-margin_right = 277.0
-margin_bottom = 38.0
+margin_left = 498.0
+margin_right = 540.0
+margin_bottom = 71.0
 text = "Hide"
 
 [node name="Grid" type="GridContainer" parent="."]
-margin_top = 42.0
-margin_right = 277.0
-margin_bottom = 42.0
+margin_top = 75.0
+margin_right = 600.0
+margin_bottom = 75.0
 custom_constants/vseparation = 8
 custom_constants/hseparation = 8
 
+[connection signal="renamed" from="." to="." method="_on_Category_renamed"]
 [connection signal="pressed" from="Horizontal/Hide" to="." method="_on_Hide_pressed"]
