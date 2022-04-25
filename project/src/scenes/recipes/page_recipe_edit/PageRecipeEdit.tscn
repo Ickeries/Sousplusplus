@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/fonts/font18.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/prefabs/Searchbar.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://src/prefabs/TextBox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/scenes/recipes/page_recipe_edit/PageRecipeEditIngredient.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/scenes/recipes/page_recipe_edit/PageRecipeEditDirection.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/ui/ui_scroll.gd" type="Script" id=9]
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
@@ -85,34 +86,38 @@ anchor_bottom = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 follow_focus = true
+script = ExtResource( 9 )
 
 [node name="CenterContainer" type="CenterContainer" parent="Second/Scroll"]
 margin_right = 1080.0
-margin_bottom = 2434.0
+margin_bottom = 2188.0
 rect_min_size = Vector2( 1080, 0 )
+mouse_filter = 2
 
 [node name="Vertical" type="VBoxContainer" parent="Second/Scroll/CenterContainer"]
-margin_left = 41.0
-margin_right = 1039.0
-margin_bottom = 2434.0
+margin_left = 1.0
+margin_right = 1078.0
+margin_bottom = 2188.0
 
 [node name="Space" type="Control" parent="Second/Scroll/CenterContainer/Vertical"]
-margin_right = 998.0
+margin_right = 1077.0
 margin_bottom = 400.0
 rect_min_size = Vector2( 0, 400 )
+mouse_filter = 2
 
 [node name="Ingredients" type="PanelContainer" parent="Second/Scroll/CenterContainer/Vertical"]
 margin_top = 404.0
-margin_right = 998.0
+margin_right = 1077.0
 margin_bottom = 1296.0
+mouse_filter = 2
 custom_styles/panel = SubResource( 2 )
 
 [node name="Vertical" type="VBoxContainer" parent="Second/Scroll/CenterContainer/Vertical/Ingredients"]
-margin_right = 998.0
+margin_right = 1077.0
 margin_bottom = 892.0
 
 [node name="Title" type="Label" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical"]
-margin_right = 998.0
+margin_right = 1077.0
 margin_bottom = 118.0
 custom_fonts/font = ExtResource( 4 )
 text = "Ingredients"
@@ -120,11 +125,12 @@ align = 1
 
 [node name="Center" type="CenterContainer" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical"]
 margin_top = 122.0
-margin_right = 998.0
+margin_right = 1077.0
 margin_bottom = 892.0
 
 [node name="List" type="VBoxContainer" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical/Center"]
-margin_right = 998.0
+margin_left = 39.0
+margin_right = 1037.0
 margin_bottom = 770.0
 
 [node name="PageRecipeEditIngredient" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical/Center/List" instance=ExtResource( 7 )]
@@ -163,16 +169,17 @@ margin_bottom = 770.0
 
 [node name="Directions" type="PanelContainer" parent="Second/Scroll/CenterContainer/Vertical"]
 margin_top = 1300.0
-margin_right = 998.0
-margin_bottom = 2030.0
+margin_right = 1077.0
+margin_bottom = 1784.0
+mouse_filter = 2
 custom_styles/panel = SubResource( 1 )
 
 [node name="Vertical" type="VBoxContainer" parent="Second/Scroll/CenterContainer/Vertical/Directions"]
-margin_right = 998.0
-margin_bottom = 730.0
+margin_right = 1077.0
+margin_bottom = 484.0
 
 [node name="Title" type="Label" parent="Second/Scroll/CenterContainer/Vertical/Directions/Vertical"]
-margin_right = 998.0
+margin_right = 1077.0
 margin_bottom = 118.0
 custom_fonts/font = ExtResource( 4 )
 text = "Directions"
@@ -180,34 +187,35 @@ align = 1
 
 [node name="List" type="VBoxContainer" parent="Second/Scroll/CenterContainer/Vertical/Directions/Vertical"]
 margin_top = 122.0
-margin_right = 998.0
-margin_bottom = 730.0
+margin_right = 1077.0
+margin_bottom = 484.0
 
 [node name="PageRecipeEditDirection" parent="Second/Scroll/CenterContainer/Vertical/Directions/Vertical/List" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 998.0
-margin_bottom = 200.0
+margin_right = 1077.0
+margin_bottom = 118.0
 
 [node name="PageRecipeEditDirection2" parent="Second/Scroll/CenterContainer/Vertical/Directions/Vertical/List" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 204.0
-margin_right = 998.0
-margin_bottom = 404.0
+margin_top = 122.0
+margin_right = 1077.0
+margin_bottom = 240.0
 
 [node name="PageRecipeEditDirection3" parent="Second/Scroll/CenterContainer/Vertical/Directions/Vertical/List" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 408.0
-margin_right = 998.0
-margin_bottom = 608.0
+margin_top = 244.0
+margin_right = 1077.0
+margin_bottom = 362.0
 
 [node name="Space2" type="Control" parent="Second/Scroll/CenterContainer/Vertical"]
-margin_top = 2034.0
-margin_right = 998.0
-margin_bottom = 2434.0
+margin_top = 1788.0
+margin_right = 1077.0
+margin_bottom = 2188.0
 rect_min_size = Vector2( 0, 400 )
+mouse_filter = 2
 
 [node name="Menu" type="HBoxContainer" parent="."]
 anchor_left = 0.5
