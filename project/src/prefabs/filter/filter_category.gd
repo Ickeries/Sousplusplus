@@ -21,11 +21,11 @@ func set_options(value : Array):
 		option.queue_free()
 	for option in value:
 		var filter_button_instance = filter_button_loaded.instance()
-		filter_button_instance.text = option + "(0)"
+		filter_button_instance.text = option 
 		$Vertical/List.add_child(filter_button_instance)
 
 func get_options():
-	return $List.get_children()
+	return $Vertical/List.get_children()
 
 func _on_Title_pressed():
 	$Vertical/List.visible = !$Vertical/List.visible

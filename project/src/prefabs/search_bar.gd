@@ -1,7 +1,5 @@
 extends Textbar
 
-signal filter_pressed(value)
-
 func get_text():
 	return $Vertical/Header/Text.text
 

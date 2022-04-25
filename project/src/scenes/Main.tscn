@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/scenes/recipes/page_recipe_edit/PageRecipeEdit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/scenes/explore/Explore.tscn" type="PackedScene" id=2]
@@ -8,15 +8,7 @@
 [ext_resource path="res://src/scenes/login/Login.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/scenes/kitchen/Kitchen.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/scenes/splash/PageSplash.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/fonts/font18.tres" type="DynamicFont" id=9]
 [ext_resource path="res://assets/fonts/font48.tres" type="DynamicFont" id=10]
-
-[sub_resource type="StyleBoxFlat" id=26]
-bg_color = Color( 0.12549, 0.12549, 0.12549, 1 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
 
 [sub_resource type="Animation" id=22]
 length = 0.001
@@ -154,37 +146,31 @@ rect_pivot_offset = Vector2( 259, 56 )
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.0
 columns = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Explore" type="Button" parent="BottomMenu"]
 margin_right = 357.0
-margin_bottom = 118.0
+margin_bottom = 124.0
 rect_min_size = Vector2( 80, 80 )
 size_flags_horizontal = 11
 custom_fonts/font = ExtResource( 10 )
-custom_styles/normal = SubResource( 26 )
 text = "Explore"
 
 [node name="Kitchen" type="Button" parent="BottomMenu"]
 margin_left = 361.0
 margin_right = 718.0
-margin_bottom = 118.0
+margin_bottom = 124.0
 rect_min_size = Vector2( 64, 64 )
 size_flags_horizontal = 11
-custom_fonts/font = ExtResource( 9 )
-custom_styles/normal = SubResource( 26 )
+custom_fonts/font = ExtResource( 10 )
 text = "Kitchen"
 
 [node name="User_Account" type="Button" parent="BottomMenu"]
 margin_left = 722.0
 margin_right = 1079.0
-margin_bottom = 118.0
+margin_bottom = 124.0
 rect_min_size = Vector2( 80, 80 )
 size_flags_horizontal = 11
-custom_fonts/font = ExtResource( 9 )
-custom_styles/normal = SubResource( 26 )
+custom_fonts/font = ExtResource( 10 )
 text = "Profile"
 
 [node name="TopMenu" type="Control" parent="."]

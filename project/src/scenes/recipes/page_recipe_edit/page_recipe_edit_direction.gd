@@ -1,12 +1,8 @@
-extends PanelContainer
+extends Control
 
 onready var text = $Horizontal/Text/TextEdit
 
 var recipe_id = -1
-
-func _ready():
-	$Horizontal/Number.text = str(get_index() + 1)
-
 
 func set_data(data : Dictionary):
 	if data.has("text"):

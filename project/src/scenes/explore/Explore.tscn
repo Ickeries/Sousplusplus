@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/prefabs/Searchbar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ui/ui_scroll.gd" type="Script" id=2]
 [ext_resource path="res://src/prefabs/filter/Filter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/scenes/explore/explore.gd" type="Script" id=4]
 [ext_resource path="res://assets/fonts/box_row_title_font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=6]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -100,7 +101,7 @@ __meta__ = {
 [node name="Searchbar" parent="." instance=ExtResource( 1 )]
 margin_left = 4.0
 margin_top = 112.0
-margin_right = 1035.0
+margin_right = 1069.0
 margin_bottom = 240.0
 
 [node name="Scroll" type="ScrollContainer" parent="."]
@@ -112,9 +113,6 @@ rect_min_size = Vector2( 0, 680 )
 follow_focus = true
 scroll_horizontal_enabled = false
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Center" type="CenterContainer" parent="Scroll"]
 margin_right = 1040.0
@@ -131,17 +129,31 @@ mouse_filter = 2
 [node name="FilterButton" type="Button" parent="."]
 anchor_left = 0.037
 anchor_right = 0.037
-margin_left = 857.04
-margin_top = 214.0
-margin_right = 1008.04
-margin_bottom = 291.0
+margin_left = 846.04
+margin_top = 220.0
+margin_right = 997.04
+margin_bottom = 297.0
 custom_fonts/font = ExtResource( 5 )
 text = "Filter"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Search" type="Button" parent="."]
+anchor_left = 0.037
+anchor_right = 0.037
+margin_left = -2.96
+margin_top = 216.0
+margin_right = 197.04
+margin_bottom = 293.0
+custom_fonts/font = ExtResource( 6 )
+text = "Search"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Darkness" type="ColorRect" parent="."]
+visible = false
 modulate = Color( 0, 0, 0, 0.411765 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -152,6 +164,7 @@ margin_left = 1078.0
 margin_top = 214.0
 margin_right = 1618.0
 margin_bottom = 1690.0
+categories = [ "Diet", "Category", "Include" ]
 
 [node name="Animator" type="AnimationPlayer" parent="Filter"]
 autoplay = "idle"
@@ -160,8 +173,7 @@ anims/idle = SubResource( 2 )
 anims/show = SubResource( 3 )
 
 [connection signal="visibility_changed" from="." to="." method="_on_Explore_visibility_changed"]
-[connection signal="filter_pressed" from="Searchbar" to="." method="_on_Searchbar_filter_pressed"]
-[connection signal="search_entered" from="Searchbar" to="." method="_on_Searchbar_search_entered"]
 [connection signal="gui_input" from="Scroll" to="Scroll" method="_on_Scroll_gui_input"]
 [connection signal="pressed" from="FilterButton" to="." method="_on_FilterButton_pressed"]
+[connection signal="pressed" from="Search" to="." method="_on_Search_pressed"]
 [connection signal="filter_exited" from="Filter" to="." method="_on_Filter_filter_exited"]

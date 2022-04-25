@@ -23,27 +23,26 @@ mouse_filter = 2
 custom_constants/separation = 8
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_use_anchors_": false,
 "_editor_description_": ""
 }
 
 [node name="Label" type="Label" parent="."]
-margin_right = 574.0
-margin_bottom = 38.0
+margin_right = 1037.0
+margin_bottom = 71.0
 custom_fonts/font = ExtResource( 2 )
 text = "1"
 align = 1
 
 [node name="Center" type="CenterContainer" parent="."]
-margin_top = 46.0
-margin_right = 574.0
-margin_bottom = 207.0
+margin_top = 79.0
+margin_right = 1037.0
+margin_bottom = 594.0
 mouse_filter = 2
 
 [node name="Text" type="Label" parent="Center"]
-margin_left = 12.0
-margin_right = 562.0
-margin_bottom = 161.0
+margin_left = 243.0
+margin_right = 793.0
+margin_bottom = 515.0
 rect_min_size = Vector2( 550, 50 )
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 1 )

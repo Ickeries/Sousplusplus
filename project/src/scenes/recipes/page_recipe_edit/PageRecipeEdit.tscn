@@ -1,407 +1,248 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/fonts/font18.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/prefabs/Searchbar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/scenes/recipes/page_recipe_edit/page_recipe_edit.gd" type="Script" id=3]
+[ext_resource path="res://assets/fonts/font48.tres" type="DynamicFont" id=4]
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=5]
-[ext_resource path="res://src/ui/ui_scroll.gd" type="Script" id=6]
-[ext_resource path="res://assets/fonts/box_row_title_font.tres" type="DynamicFont" id=7]
-[ext_resource path="res://assets/fonts/large_title.tres" type="DynamicFont" id=8]
+[ext_resource path="res://src/prefabs/TextBox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/scenes/recipes/page_recipe_edit/PageRecipeEditIngredient.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/scenes/recipes/page_recipe_edit/PageRecipeEditDirection.tscn" type="PackedScene" id=8]
 
-[sub_resource type="StyleBoxEmpty" id=13]
+[sub_resource type="StyleBoxEmpty" id=2]
 
-[sub_resource type="StyleBoxFlat" id=16]
-bg_color = Color( 0, 0, 0, 0.478431 )
-draw_center = false
-border_width_right = 1
-border_width_bottom = 4
-expand_margin_top = 4.0
-expand_margin_bottom = 4.0
-
-[sub_resource type="StyleBoxEmpty" id=14]
-
-[sub_resource type="StyleBoxFlat" id=17]
-draw_center = false
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-
-[sub_resource type="StyleBoxFlat" id=8]
-bg_color = Color( 0, 0, 0, 1 )
-draw_center = false
-border_width_bottom = 4
-border_color = Color( 1, 1, 1, 1 )
-
-[sub_resource type="StyleBoxEmpty" id=18]
-
-[sub_resource type="StyleBoxEmpty" id=15]
-
-[sub_resource type="StyleBoxFlat" id=12]
-bg_color = Color( 0.690196, 0.266667, 0.156863, 1 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id=11]
-bg_color = Color( 0.137255, 0.490196, 0.741176, 1 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 0.0745098, 0.254902, 0.384314, 1 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id=9]
-bg_color = Color( 0.117647, 0.427451, 0.647059, 1 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+[sub_resource type="StyleBoxEmpty" id=1]
 
 [node name="RecipeEdit" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
 
-[node name="Scroll" type="ScrollContainer" parent="."]
+[node name="First" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = -267.0
-rect_min_size = Vector2( 576, 0 )
-follow_focus = true
-scroll_horizontal_enabled = false
-script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Container" type="MarginContainer" parent="Scroll"]
-margin_right = 550.0
-margin_bottom = 1531.0
-rect_min_size = Vector2( 550, 0 )
-mouse_filter = 2
-custom_constants/margin_right = 16
-custom_constants/margin_left = 32
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Searchbar" parent="First" instance=ExtResource( 2 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -390.0
+margin_top = -288.0
+margin_right = 390.0
+margin_bottom = -160.0
 
-[node name="Vertical" type="VBoxContainer" parent="Scroll/Container"]
-margin_left = 32.0
-margin_right = 534.0
-margin_bottom = 1531.0
-mouse_filter = 2
-custom_constants/separation = 32
+[node name="Header" parent="First/Searchbar/Vertical" index="0"]
+margin_right = 780.0
 
-[node name="Space" type="Control" parent="Scroll/Container/Vertical"]
-margin_right = 502.0
-margin_bottom = 150.0
-rect_min_size = Vector2( 0, 150 )
-mouse_filter = 1
+[node name="Tip" parent="First/Searchbar/Vertical/Header" index="0"]
+text = "Name of Recipe.."
 
-[node name="Name" type="PanelContainer" parent="Scroll/Container/Vertical"]
-margin_top = 182.0
-margin_right = 502.0
-margin_bottom = 268.0
-mouse_filter = 1
-custom_styles/panel = SubResource( 13 )
+[node name="User" type="RichTextLabel" parent="First"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -191.0
+margin_top = -157.0
+margin_right = 191.0
+margin_bottom = -85.0
+custom_fonts/bold_font = ExtResource( 5 )
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Created by [b]David[/b]"
+text = "Created by David"
+fit_content_height = true
 
-[node name="Horizontal" type="VBoxContainer" parent="Scroll/Container/Vertical/Name"]
-margin_right = 502.0
-margin_bottom = 86.0
-custom_constants/separation = 6
+[node name="Description" parent="First" instance=ExtResource( 6 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -464.0
+margin_top = 148.0
+margin_right = 464.0
+margin_bottom = 581.0
 
-[node name="Title" type="Label" parent="Scroll/Container/Vertical/Name/Horizontal"]
-margin_right = 502.0
-margin_bottom = 38.0
-custom_fonts/font = ExtResource( 7 )
-text = "Title"
-autowrap = true
-
-[node name="Text" type="LineEdit" parent="Scroll/Container/Vertical/Name/Horizontal"]
-margin_top = 44.0
-margin_right = 502.0
-margin_bottom = 86.0
-rect_min_size = Vector2( 300, 0 )
-custom_fonts/font = ExtResource( 5 )
-custom_styles/normal = SubResource( 16 )
-
-[node name="Description" type="PanelContainer" parent="Scroll/Container/Vertical"]
-margin_top = 300.0
-margin_right = 502.0
-margin_bottom = 490.0
-mouse_filter = 1
-custom_styles/panel = SubResource( 14 )
-
-[node name="Vertical" type="VBoxContainer" parent="Scroll/Container/Vertical/Description"]
-margin_right = 502.0
-margin_bottom = 190.0
-
-[node name="Header" type="HBoxContainer" parent="Scroll/Container/Vertical/Description/Vertical"]
-margin_right = 502.0
-margin_bottom = 46.0
-custom_constants/separation = 16
-
-[node name="Title" type="Label" parent="Scroll/Container/Vertical/Description/Vertical/Header"]
-margin_top = 4.0
-margin_right = 164.0
-margin_bottom = 42.0
-custom_fonts/font = ExtResource( 5 )
+[node name="Label" type="Label" parent="First"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -114.5
+margin_top = 75.0
+margin_right = 114.5
+margin_bottom = 127.0
+custom_fonts/font = ExtResource( 1 )
 text = "Description"
 
-[node name="ClearDescription" type="Button" parent="Scroll/Container/Vertical/Description/Vertical/Header"]
-margin_left = 180.0
-margin_right = 263.0
-margin_bottom = 46.0
-custom_fonts/font = ExtResource( 5 )
-custom_styles/normal = SubResource( 17 )
-text = "Clear"
+[node name="Second" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 
-[node name="Text" type="TextEdit" parent="Scroll/Container/Vertical/Description/Vertical"]
-margin_top = 50.0
-margin_right = 502.0
-margin_bottom = 190.0
-rect_min_size = Vector2( 0, 140 )
-custom_fonts/font = ExtResource( 5 )
-custom_styles/focus = SubResource( 8 )
-custom_styles/normal = SubResource( 8 )
-text = "Text is unused.
-"
-selecting_enabled = false
-wrap_enabled = true
+[node name="Scroll" type="ScrollContainer" parent="Second"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+follow_focus = true
 
-[node name="Vertical" type="VBoxContainer" parent="Scroll/Container/Vertical"]
-margin_top = 522.0
-margin_right = 502.0
-margin_bottom = 596.0
+[node name="CenterContainer" type="CenterContainer" parent="Second/Scroll"]
+margin_right = 1080.0
+margin_bottom = 2434.0
+rect_min_size = Vector2( 1080, 0 )
 
-[node name="Header" type="HBoxContainer" parent="Scroll/Container/Vertical/Vertical"]
-margin_right = 502.0
-margin_bottom = 46.0
-custom_constants/separation = 16
+[node name="Vertical" type="VBoxContainer" parent="Second/Scroll/CenterContainer"]
+margin_left = 41.0
+margin_right = 1039.0
+margin_bottom = 2434.0
 
-[node name="Title" type="Label" parent="Scroll/Container/Vertical/Vertical/Header"]
-margin_top = 4.0
-margin_right = 207.0
-margin_bottom = 42.0
-custom_fonts/font = ExtResource( 5 )
-text = "Diet Catergory"
+[node name="Space" type="Control" parent="Second/Scroll/CenterContainer/Vertical"]
+margin_right = 998.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 0, 400 )
 
-[node name="ClearDescription" type="Button" parent="Scroll/Container/Vertical/Vertical/Header"]
-margin_left = 223.0
-margin_right = 306.0
-margin_bottom = 46.0
-custom_fonts/font = ExtResource( 5 )
-custom_styles/normal = SubResource( 17 )
-text = "Clear"
+[node name="Ingredients" type="PanelContainer" parent="Second/Scroll/CenterContainer/Vertical"]
+margin_top = 404.0
+margin_right = 998.0
+margin_bottom = 1296.0
+custom_styles/panel = SubResource( 2 )
 
-[node name="Header2" type="HBoxContainer" parent="Scroll/Container/Vertical/Vertical"]
-margin_top = 50.0
-margin_right = 502.0
-margin_bottom = 74.0
-custom_constants/separation = 16
+[node name="Vertical" type="VBoxContainer" parent="Second/Scroll/CenterContainer/Vertical/Ingredients"]
+margin_right = 998.0
+margin_bottom = 892.0
 
-[node name="Vegetarian Check" type="CheckBox" parent="Scroll/Container/Vertical/Vertical/Header2"]
-margin_right = 95.0
-margin_bottom = 24.0
-text = "Vegetarian"
-
-[node name="Vegan Check" type="CheckBox" parent="Scroll/Container/Vertical/Vertical/Header2"]
-margin_left = 111.0
-margin_right = 206.0
-margin_bottom = 24.0
-text = "Vegetarian"
-
-[node name="Ingredients" type="PanelContainer" parent="Scroll/Container/Vertical"]
-margin_top = 628.0
-margin_right = 502.0
-margin_bottom = 747.0
-mouse_filter = 1
-custom_styles/panel = SubResource( 14 )
-
-[node name="Vertical" type="VBoxContainer" parent="Scroll/Container/Vertical/Ingredients"]
-margin_right = 502.0
-margin_bottom = 119.0
-
-[node name="Header" type="HBoxContainer" parent="Scroll/Container/Vertical/Ingredients/Vertical"]
-margin_right = 502.0
-margin_bottom = 84.0
-
-[node name="Title" type="Label" parent="Scroll/Container/Vertical/Ingredients/Vertical/Header"]
-margin_top = 23.0
-margin_right = 256.0
-margin_bottom = 61.0
-rect_min_size = Vector2( 256, 0 )
-custom_fonts/font = ExtResource( 5 )
+[node name="Title" type="Label" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical"]
+margin_right = 998.0
+margin_bottom = 118.0
+custom_fonts/font = ExtResource( 4 )
 text = "Ingredients"
+align = 1
 
-[node name="AddIngredient" type="Button" parent="Scroll/Container/Vertical/Ingredients/Vertical/Header"]
-margin_left = 260.0
-margin_right = 344.0
-margin_bottom = 84.0
-rect_min_size = Vector2( 84, 84 )
-custom_fonts/font = ExtResource( 8 )
-custom_styles/normal = SubResource( 17 )
-text = " + "
+[node name="Center" type="CenterContainer" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical"]
+margin_top = 122.0
+margin_right = 998.0
+margin_bottom = 892.0
 
-[node name="RemoveIngredient" type="Button" parent="Scroll/Container/Vertical/Ingredients/Vertical/Header"]
-margin_left = 348.0
-margin_right = 432.0
-margin_bottom = 84.0
-rect_min_size = Vector2( 84, 84 )
-custom_fonts/font = ExtResource( 8 )
-custom_styles/normal = SubResource( 17 )
-text = " - "
+[node name="List" type="VBoxContainer" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical/Center"]
+margin_right = 998.0
+margin_bottom = 770.0
 
-[node name="Ref" type="HBoxContainer" parent="Scroll/Container/Vertical/Ingredients/Vertical"]
-margin_top = 88.0
-margin_right = 502.0
-margin_bottom = 115.0
+[node name="PageRecipeEditIngredient" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical/Center/List" instance=ExtResource( 7 )]
 
-[node name="Name" type="Label" parent="Scroll/Container/Vertical/Ingredients/Vertical/Ref"]
-margin_right = 290.0
-margin_bottom = 27.0
-rect_min_size = Vector2( 290, 0 )
-custom_fonts/font = ExtResource( 1 )
-custom_styles/normal = SubResource( 18 )
-text = "Name"
+[node name="PageRecipeEditIngredient2" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical/Center/List" instance=ExtResource( 7 )]
+margin_top = 86.0
+margin_bottom = 168.0
 
-[node name="Amount" type="Label" parent="Scroll/Container/Vertical/Ingredients/Vertical/Ref"]
-margin_left = 294.0
-margin_right = 371.0
-margin_bottom = 27.0
-custom_fonts/font = ExtResource( 1 )
-custom_styles/normal = SubResource( 18 )
-text = "Amount"
+[node name="PageRecipeEditIngredient3" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical/Center/List" instance=ExtResource( 7 )]
+margin_top = 172.0
+margin_bottom = 254.0
 
-[node name="List" type="VBoxContainer" parent="Scroll/Container/Vertical/Ingredients/Vertical"]
-margin_top = 119.0
-margin_right = 502.0
-margin_bottom = 119.0
+[node name="PageRecipeEditIngredient4" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical/Center/List" instance=ExtResource( 7 )]
+margin_top = 258.0
+margin_bottom = 340.0
 
-[node name="Directions" type="PanelContainer" parent="Scroll/Container/Vertical"]
-margin_top = 779.0
-margin_right = 502.0
-margin_bottom = 867.0
-mouse_filter = 2
-custom_styles/panel = SubResource( 15 )
+[node name="PageRecipeEditIngredient5" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical/Center/List" instance=ExtResource( 7 )]
+margin_top = 344.0
+margin_bottom = 426.0
 
-[node name="Vertical" type="VBoxContainer" parent="Scroll/Container/Vertical/Directions"]
-margin_right = 502.0
-margin_bottom = 88.0
+[node name="PageRecipeEditIngredient6" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical/Center/List" instance=ExtResource( 7 )]
+margin_top = 430.0
+margin_bottom = 512.0
 
-[node name="Horizontal" type="HBoxContainer" parent="Scroll/Container/Vertical/Directions/Vertical"]
-margin_right = 502.0
-margin_bottom = 84.0
-custom_constants/separation = 10
+[node name="PageRecipeEditIngredient7" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical/Center/List" instance=ExtResource( 7 )]
+margin_top = 516.0
+margin_bottom = 598.0
 
-[node name="Title" type="Label" parent="Scroll/Container/Vertical/Directions/Vertical/Horizontal"]
-margin_top = 23.0
-margin_right = 256.0
-margin_bottom = 61.0
-rect_min_size = Vector2( 256, 0 )
-custom_fonts/font = ExtResource( 5 )
+[node name="PageRecipeEditIngredient8" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical/Center/List" instance=ExtResource( 7 )]
+margin_top = 602.0
+margin_bottom = 684.0
+
+[node name="PageRecipeEditIngredient9" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical/Center/List" instance=ExtResource( 7 )]
+margin_top = 688.0
+margin_bottom = 770.0
+
+[node name="Directions" type="PanelContainer" parent="Second/Scroll/CenterContainer/Vertical"]
+margin_top = 1300.0
+margin_right = 998.0
+margin_bottom = 2030.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Vertical" type="VBoxContainer" parent="Second/Scroll/CenterContainer/Vertical/Directions"]
+margin_right = 998.0
+margin_bottom = 730.0
+
+[node name="Title" type="Label" parent="Second/Scroll/CenterContainer/Vertical/Directions/Vertical"]
+margin_right = 998.0
+margin_bottom = 118.0
+custom_fonts/font = ExtResource( 4 )
 text = "Directions"
+align = 1
 
-[node name="AddInstruction" type="Button" parent="Scroll/Container/Vertical/Directions/Vertical/Horizontal"]
-margin_left = 266.0
-margin_right = 350.0
-margin_bottom = 84.0
-rect_min_size = Vector2( 84, 84 )
-custom_fonts/font = ExtResource( 8 )
-custom_styles/normal = SubResource( 17 )
-text = " + "
+[node name="List" type="VBoxContainer" parent="Second/Scroll/CenterContainer/Vertical/Directions/Vertical"]
+margin_top = 122.0
+margin_right = 998.0
+margin_bottom = 730.0
 
-[node name="RemoveInstruction" type="Button" parent="Scroll/Container/Vertical/Directions/Vertical/Horizontal"]
-margin_left = 360.0
-margin_right = 444.0
-margin_bottom = 84.0
-rect_min_size = Vector2( 84, 84 )
-custom_fonts/font = ExtResource( 8 )
-custom_styles/normal = SubResource( 17 )
-text = " - "
+[node name="PageRecipeEditDirection" parent="Second/Scroll/CenterContainer/Vertical/Directions/Vertical/List" instance=ExtResource( 8 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 998.0
+margin_bottom = 200.0
 
-[node name="List" type="VBoxContainer" parent="Scroll/Container/Vertical/Directions/Vertical"]
-margin_top = 88.0
-margin_right = 502.0
-margin_bottom = 88.0
-custom_constants/separation = 16
+[node name="PageRecipeEditDirection2" parent="Second/Scroll/CenterContainer/Vertical/Directions/Vertical/List" instance=ExtResource( 8 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 204.0
+margin_right = 998.0
+margin_bottom = 404.0
 
-[node name="Space2" type="Control" parent="Scroll/Container/Vertical"]
-margin_top = 899.0
-margin_right = 502.0
-margin_bottom = 1199.0
-rect_min_size = Vector2( 0, 300 )
-mouse_filter = 2
+[node name="PageRecipeEditDirection3" parent="Second/Scroll/CenterContainer/Vertical/Directions/Vertical/List" instance=ExtResource( 8 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 408.0
+margin_right = 998.0
+margin_bottom = 608.0
 
-[node name="Space3" type="Control" parent="Scroll/Container/Vertical"]
-margin_top = 1231.0
-margin_right = 502.0
-margin_bottom = 1531.0
-rect_min_size = Vector2( 0, 300 )
-mouse_filter = 2
+[node name="Space2" type="Control" parent="Second/Scroll/CenterContainer/Vertical"]
+margin_top = 2034.0
+margin_right = 998.0
+margin_bottom = 2434.0
+rect_min_size = Vector2( 0, 400 )
 
-[node name="Tween" type="Tween" parent="Scroll"]
+[node name="Menu" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -376.5
+margin_top = -328.0
+margin_right = 376.5
+margin_bottom = -173.0
+custom_constants/separation = 64
+alignment = 1
 
-[node name="DontSave" type="Button" parent="."]
-margin_left = 15.0
-margin_top = 41.0
-margin_right = 127.0
-margin_bottom = 141.0
-custom_fonts/font = ExtResource( 5 )
-custom_styles/hover = SubResource( 12 )
-custom_styles/pressed = SubResource( 12 )
-custom_styles/focus = SubResource( 12 )
-custom_styles/normal = SubResource( 12 )
-text = "Return"
+[node name="1" type="Button" parent="Menu"]
+margin_left = 80.0
+margin_right = 235.0
+margin_bottom = 155.0
+rect_min_size = Vector2( 155, 155 )
+custom_fonts/font = ExtResource( 4 )
+text = "1"
 
-[node name="Save" type="Button" parent="."]
-margin_left = 427.0
-margin_top = 47.0
-margin_right = 535.0
-margin_bottom = 146.0
-custom_fonts/font = ExtResource( 5 )
-custom_styles/hover = SubResource( 11 )
-custom_styles/pressed = SubResource( 10 )
-custom_styles/focus = SubResource( 9 )
-custom_styles/normal = SubResource( 9 )
-text = "Save"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="2" type="Button" parent="Menu"]
+margin_left = 299.0
+margin_right = 454.0
+margin_bottom = 155.0
+rect_min_size = Vector2( 155, 155 )
+custom_fonts/font = ExtResource( 4 )
+text = "2"
 
-[connection signal="gui_input" from="Scroll" to="Scroll" method="_on_Scroll_gui_input"]
-[connection signal="pressed" from="Scroll/Container/Vertical/Description/Vertical/Header/ClearDescription" to="." method="_on_ClearDescription_pressed"]
-[connection signal="pressed" from="Scroll/Container/Vertical/Vertical/Header/ClearDescription" to="." method="_on_ClearDescription_pressed"]
-[connection signal="pressed" from="Scroll/Container/Vertical/Ingredients/Vertical/Header/AddIngredient" to="." method="_on_AddIngredient_pressed"]
-[connection signal="pressed" from="Scroll/Container/Vertical/Ingredients/Vertical/Header/RemoveIngredient" to="." method="_on_RemoveIngredient_pressed"]
-[connection signal="pressed" from="Scroll/Container/Vertical/Directions/Vertical/Horizontal/AddInstruction" to="." method="_on_AddInstruction_pressed"]
-[connection signal="pressed" from="Scroll/Container/Vertical/Directions/Vertical/Horizontal/RemoveInstruction" to="." method="_on_RemoveInstruction_pressed"]
-[connection signal="pressed" from="DontSave" to="." method="_on_DontSave_pressed"]
-[connection signal="pressed" from="Save" to="." method="_on_Save_pressed"]
+[node name="3" type="Button" parent="Menu"]
+margin_left = 518.0
+margin_right = 673.0
+margin_bottom = 155.0
+rect_min_size = Vector2( 155, 155 )
+custom_fonts/font = ExtResource( 4 )
+text = "3"
+
+[editable path="First/Searchbar"]

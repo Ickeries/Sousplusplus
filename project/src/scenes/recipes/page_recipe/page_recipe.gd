@@ -46,13 +46,10 @@ func on_set_recipe(data):
 				var direction_instance = direction_loaded.instance()
 				directions_list.add_child(direction_instance)
 				direction_instance.set_data(direction)
-	
 
-func _on_Button_pressed():
-	Global.emit_signal("enter_return")
 
 func _on_Edit_pressed():
-	Global.emit_signal("set_page", "PageRecipeEdit")
+	Events.emit_signal("set_page", "RecipeEdit")
 
 
 func _on_Read_pressed():

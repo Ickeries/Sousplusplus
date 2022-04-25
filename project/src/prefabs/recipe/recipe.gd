@@ -10,7 +10,6 @@ var pressed : bool = false
 var start_position : = Vector2(0,0)
 
 
-
 func set_data(dictionary : Dictionary):
 	recipe_data = dictionary
 	if dictionary.has("recipe_name"):

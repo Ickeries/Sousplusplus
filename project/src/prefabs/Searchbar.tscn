@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/prefabs/search_bar.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=2]
-[ext_resource path="res://assets/fonts/box_row_title_font.tres" type="DynamicFont" id=3]
 
 [sub_resource type="StyleBoxEmpty" id=6]
 
@@ -14,33 +13,11 @@
 bg_color = Color( 1, 1, 1, 0.709804 )
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id=8]
-bg_color = Color( 0.152941, 0.152941, 0.152941, 1 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id=9]
-bg_color = Color( 1, 1, 1, 1 )
-draw_center = false
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-corner_radius_top_left = 60
-corner_radius_top_right = 60
-corner_radius_bottom_right = 60
-corner_radius_bottom_left = 60
-
 [node name="Searchbar" type="Control"]
 margin_right = 575.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 500, 128 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Vertical" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -107,18 +84,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SearchButton" type="Button" parent="Vertical/Header"]
-margin_left = 18.0
-margin_top = 100.0
-margin_right = 206.0
-margin_bottom = 171.0
-custom_fonts/font = ExtResource( 3 )
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/focus = SubResource( 8 )
-custom_styles/disabled = SubResource( 8 )
-custom_styles/normal = SubResource( 8 )
-text = "Search"
-
 [connection signal="text_changed" from="Vertical/Header/Text" to="." method="_on_Text_text_changed"]
-[connection signal="pressed" from="Vertical/Header/SearchButton" to="." method="_on_SearchButton_pressed"]
