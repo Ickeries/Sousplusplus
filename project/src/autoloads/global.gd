@@ -2,7 +2,7 @@ extends CanvasLayer
 
 var message_loaded = load("res://src/prefabs/message/Message.tscn")
 
-
+# delete
 signal give_image (image)
 signal recipe_page_called (recipe)
 signal recipe_popup_called (recipe)
@@ -13,8 +13,12 @@ signal enter_page(page_name)
 signal set_page(page_name)
 signal enter_return()
 signal update_data(id)
-
-var current_user = {}
+# this
+# current user info
+var current_id = 0
+var current_password = "" 
+ 
+# var current_user = {}
 var current_recipe = ""
 var current_ui_button = null
 
