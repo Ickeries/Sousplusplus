@@ -9,7 +9,7 @@ export (Array, String) var options = [] setget set_options
 func set_title(value : String):
 	title = value
 	if $Vertical/Title != null:
-		$Vertical/Title.text = title + " >"
+		$Vertical/Title.text = title
 
 func set_options(value : Array):
 	options = value

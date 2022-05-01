@@ -1,6 +1,7 @@
 extends Control
 
 signal filter_exited()
+signal filter_applied()
 
 onready var filter_category_loaded = load("res://src/prefabs/filter/FilterCategory.tscn")
 
@@ -25,22 +26,16 @@ func filter_recipes(recipes):
 
 func get_all_enabled_options():
 	var enabled = []
-	for category in $Vertical/Scroll/Vertical.get_children():
+	for category in $Vertical/Scroll/Center/Vertical.get_children():
 		for option in category.get_options():
 			if option.pressed:
 				enabled.push_back(option.text)
 	return enabled
 
-func _on_DietButton_pressed():
-	$Scroll/Vertical/Diet/Vertical/Margin/List.visible = !$Scroll/Vertical/Diet/Vertical/Margin/List.visible
-
-func _on_CategoryButton_pressed():
-	$Scroll/Vertical/Category/Vertical/List.visible = !$Scroll/Vertical/Category/Vertical/List.visible
-
-
-func _on_Title_pressed():
-	emit_signal("filter_exited")
-
 
 func _on_Apply_pressed():
+	emit_signal("filter_applied")
+
+
+func _on_Cancel_pressed():
 	emit_signal("filter_exited")

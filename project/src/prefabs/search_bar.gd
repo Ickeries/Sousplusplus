@@ -8,6 +8,7 @@ func _on_SearchButton_pressed():
 
 
 func _on_Text_text_changed(new_text):
+	emit_signal("search_edited", get_text())
 	if new_text.length() > 0:
 		$Vertical/Header/Tip.visible = false
 	else:

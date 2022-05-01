@@ -1,6 +1,11 @@
 extends VBoxContainer
 
 var recipe_loaded = load("res://src/prefabs/recipe/Recipe.tscn")
+
+func _ready():
+	Events.connect("scroll", self, "on_scroll")
+
+
 func set_title(title : String):
 	$Horizontal/Title.set_text(title)
 
@@ -17,3 +22,7 @@ func _on_Hide_pressed():
 
 func _on_Category_renamed():
 	$Horizontal/Title.set_text(name)
+
+func on_scroll(vec : Vector2):
+	if vec.x:
+		$Grid.rect_position.x += vec.x

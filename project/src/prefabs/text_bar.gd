@@ -2,6 +2,7 @@ extends Control
 class_name Textbar
 
 signal search_entered(text)
+signal search_edited(text)
 
 onready var line = $Line
 

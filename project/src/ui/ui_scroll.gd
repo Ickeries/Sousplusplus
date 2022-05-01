@@ -27,7 +27,6 @@ func _on_Scroll_gui_input(event):
 				pressed = false
 	
 	if event is InputEventMouseMotion:
-		
 		if pressed:
 			if event.position.distance_to(start_position) > 10.0:
 				scroll_vertical -= event.relative.y

@@ -14,8 +14,8 @@ bg_color = Color( 1, 1, 1, 0.709804 )
 corner_radius_bottom_left = 10
 
 [node name="Textbar" type="Control"]
-margin_right = 561.0
-margin_bottom = 125.0
+margin_right = 611.0
+margin_bottom = 88.0
 rect_min_size = Vector2( 128, 0 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -33,7 +33,7 @@ margin_bottom = 59.0
 custom_colors/font_color = Color( 1, 1, 1, 0.482353 )
 custom_fonts/font = ExtResource( 3 )
 custom_styles/normal = SubResource( 6 )
-text = "Search.."
+text = "Text"
 valign = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -59,12 +59,13 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="."]
-anchor_left = 0.034
-anchor_right = 0.971
-margin_left = 0.925999
-margin_top = 62.0
-margin_right = 0.268982
-margin_bottom = 68.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -285.925
+margin_top = -6.0
+margin_right = 285.925
 rect_min_size = Vector2( 0, 2 )
 custom_styles/panel = SubResource( 7 )
 __meta__ = {
