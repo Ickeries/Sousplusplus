@@ -123,6 +123,7 @@ anims/RESET = SubResource( 2 )
 anims/idle = SubResource( 3 )
 anims/show = SubResource( 4 )
 
+[connection signal="visibility_changed" from="." to="." method="_on_Explore_visibility_changed"]
 [connection signal="search_edited" from="SearchBar" to="." method="_on_SearchBar_search_edited"]
 [connection signal="search_entered" from="SearchBar" to="." method="_on_SearchBar_search_entered"]
 [connection signal="gui_input" from="SearchList" to="SearchList" method="_on_Scroll_gui_input"]

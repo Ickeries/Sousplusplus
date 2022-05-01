@@ -53,3 +53,7 @@ func _on_SearchBar_search_entered(text):
 
 func _on_SearchBar_search_edited(text):
 	_on_SearchBar_search_entered(text)
+
+
+func _on_Explore_visibility_changed():
+	Events.emit_signal("show_bottom_menu", true)

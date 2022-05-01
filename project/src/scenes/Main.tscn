@@ -145,6 +145,9 @@ rect_pivot_offset = Vector2( 259, 56 )
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.0
 columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Explore" type="Button" parent="BottomMenu"]
 margin_right = 357.0
@@ -186,6 +189,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Animator" type="AnimationPlayer" parent="Transition"]
 autoplay = "immediate"
