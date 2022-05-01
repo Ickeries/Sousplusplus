@@ -68,3 +68,15 @@ func save_recipe(data : Dictionary):
 						VALUES (%s, '%s', %s, '%s'); """ % ["recipes", data["recipe_id"], data["recipe_name"], data["user_id"], data["recipe_description"]]
 	print(statement)
 	Global.query(statement)
+	
+
+func add_favorite_recipe(recipe_id: int):
+	var date = "11/11/1111"
+	var statement = """Insert into user_favorites (user_id, recipe_id, date_favorited)
+						Values(%s, %s, '%s'); """  % [Global.current_id, recipe_id, date]
+	Global.query(statement)
+
+func remove_favorite_recipe(recipe_id: int):
+	var statement= """DELETE from user_favorites 
+					  WHERE recipe_id = %s and user_id = %s""" % [recipe_id, Global.current_id]
+	Global.query(statement)

@@ -57,9 +57,6 @@ margin_right = 440.0
 margin_bottom = 93.0
 rect_min_size = Vector2( 880, 186 )
 script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 autoplay = "spawn"
@@ -118,9 +115,7 @@ anchor_bottom = 1.0
 mouse_filter = 2
 border_width = 2.0
 editor_only = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="gui_input" from="." to="." method="_on_Recipe_gui_input"]
 [connection signal="pressed" from="Favorite" to="." method="_on_Favorite_pressed"]
+[connection signal="toggled" from="Favorite" to="." method="_on_Favorite_toggled"]

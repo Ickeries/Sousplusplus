@@ -15,10 +15,10 @@ signal enter_return()
 signal update_data(id)
 # this
 # current user info
-var current_id = 0
+var current_id = 420
 var current_password = "" 
  
-# var current_user = {}
+var current_user = {}
 var current_recipe = ""
 var current_ui_button = null
 

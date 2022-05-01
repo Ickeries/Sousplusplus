@@ -19,7 +19,7 @@ func set_data(dictionary : Dictionary):
 		user.text = "Made by " + dictionary["name"]
 
 
-func _on_Favorite_pressed():
+func _on_Favorite_pressed(event):
 	favorite_animator.play("press")
 	Global.print_message("Added to favorites!", get_global_mouse_position())
 
@@ -39,3 +39,11 @@ func _on_Recipe_gui_input(event):
 	if event is InputEventMouseMotion:
 		if pressed:
 			Events.emit_signal("scroll", event.relative)
+
+
+func _on_Favorite_toggled(button_pressed):
+	if button_pressed:
+		Recipe.add_favorite_recipe(recipe_data['recipe_id'])
+	else:
+		Recipe.remove_favorite_recipe(recipe_data['recipe_id'])	
+	favorite_animator.play("press")
