@@ -43,7 +43,9 @@ func _on_Recipe_gui_input(event):
 
 func _on_Favorite_toggled(button_pressed):
 	if button_pressed:
-		Recipe.add_favorite_recipe(recipe_data['recipe_id'])
+		if(recipe_data.has("recipe_id")):
+			Recipe.add_favorite_recipe(recipe_data['recipe_id'])
 	else:
-		Recipe.remove_favorite_recipe(recipe_data['recipe_id'])	
+		if(recipe_data.has("recipe_id")):
+			Recipe.remove_favorite_recipe(recipe_data['recipe_id'])	
 	favorite_animator.play("press")
