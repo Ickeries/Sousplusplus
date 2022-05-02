@@ -234,6 +234,7 @@ anims/fade_to_clear = SubResource( 24 )
 anims/immediate = SubResource( 25 )
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 position = Vector2( 555, 966 )
 texture = ExtResource( 2 )
 
