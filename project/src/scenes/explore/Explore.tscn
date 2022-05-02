@@ -69,6 +69,10 @@ margin_top = 112.0
 margin_right = 1069.0
 margin_bottom = 240.0
 
+[node name="Timer" type="Timer" parent="SearchBar"]
+wait_time = 0.4
+one_shot = true
+
 [node name="SearchList" type="ScrollContainer" parent="."]
 margin_left = 22.0
 margin_top = 304.0
@@ -126,6 +130,7 @@ anims/show = SubResource( 4 )
 [connection signal="visibility_changed" from="." to="." method="_on_Explore_visibility_changed"]
 [connection signal="search_edited" from="SearchBar" to="." method="_on_SearchBar_search_edited"]
 [connection signal="search_entered" from="SearchBar" to="." method="_on_SearchBar_search_entered"]
+[connection signal="timeout" from="SearchBar/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="gui_input" from="SearchList" to="SearchList" method="_on_Scroll_gui_input"]
 [connection signal="pressed" from="FilterButton" to="." method="_on_FilterButton_pressed"]
 [connection signal="filter_applied" from="Filter" to="." method="_on_Filter_filter_applied"]

@@ -32,6 +32,7 @@ Recipe="*res://src/backend/backend_recipe.gd"
 Search="*res://src/backend/backend_search.gd"
 Users="*res://src/backend/backend_users.gd"
 Events="*res://src/autoloads/autoload_events.gd"
+Database="*res://src/backend/backend_database.gd"
 
 [display]
 
