@@ -11,6 +11,8 @@ func _ready():
 	Events.connect("set_page", self, "on_set_page")
 	Events.connect("return_to_previous_page", self, "on_return_to_previous_page")
 	Events.connect("show_bottom_menu", self, "on_show_bottom_menu")
+	Events.connect("set_buffering", self, "on_set_buffering")
+
 
 # Sets visibility of page called by page_name
 func set_page(page_name, remember_previous_page=true):
@@ -56,6 +58,11 @@ func on_return_to_previous_page(transition_animation="immediate"):
 
 func on_show_bottom_menu(value : bool):
 	bottom_menu.set_visible(value)
+
+func on_set_buffering(value : bool):
+	$Sprite.visible = value
+
+
 
 func _on_Explore_pressed():
 	Events.emit_signal("set_page", "Explore", "fade_to_black")

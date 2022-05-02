@@ -2,18 +2,6 @@ extends CanvasLayer
 
 var message_loaded = load("res://src/prefabs/message/Message.tscn")
 
-# delete
-signal give_image (image)
-signal recipe_page_called (recipe)
-signal recipe_popup_called (recipe)
-signal return_to_explore ()
-signal enter_recipe_edit(data)
-signal enter_recipe(data)
-signal enter_page(page_name)
-signal set_page(page_name)
-signal enter_return()
-signal update_data(id)
-# this
 # current user info
 var current_id = 420
 var current_password = "" 
@@ -42,17 +30,13 @@ func _ready():
 	db.path = db_name
 
 func query_single(statement : String):
-	Global.db.open_db()
 	db.query(statement)
-	Global.db.close_db()
 	if db.query_result.size() > 0:
 		return db.query_result[0]
 	return null
 
 func query(statement : String):
-	Global.db.open_db()
 	db.query(statement)
-	Global.db.close_db()
 	return db.query_result.duplicate()
 
 func get_data_template():

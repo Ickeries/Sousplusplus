@@ -21,3 +21,5 @@ signal set_recipe(recipe_data)
 
 # Scrolls any scroll boxes
 signal scroll(vec)
+
+signal set_buffering(value)

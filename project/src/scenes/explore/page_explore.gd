@@ -43,7 +43,7 @@ func _on_SearchBar_search_entered(text):
 		# If text is being searched
 		for category in search_list.get_children():
 			category.queue_free()
-		var results = Search.get_recipes_by_name(search_bar.get_text())
+		var results = Search.get_recipes_by_name(search_bar.get_text(), "online")
 		var results_filtered = filter.filter_recipes(results)
 		add_category("Best Results (%s)" % results_filtered.size(), results_filtered)
 	else:
@@ -52,8 +52,16 @@ func _on_SearchBar_search_entered(text):
 
 
 func _on_SearchBar_search_edited(text):
-	_on_SearchBar_search_entered(text)
+	for category in search_list.get_children():
+		category.queue_free()
+	Events.emit_signal("set_buffering", true)
+	$SearchBar/Timer.start()
 
 
 func _on_Explore_visibility_changed():
 	Events.emit_signal("show_bottom_menu", true)
+
+
+func _on_Timer_timeout():
+	Events.emit_signal("set_buffering", false)
+	_on_SearchBar_search_entered(search_bar.get_text())
