@@ -14,11 +14,19 @@ func login_user(username : String, password : String):
 	return Global.query_single(statement)
 
 func get_user_name_by_id(id : int):
-	var statement = """Select name from users where id = %s;""" % [id]
-	var result = Global.query_single(statement)
+	var statement = """Select user_name from users where user_id = %s;""" % [id]
+	var result = Database.query_online_single(statement)
 	if result:
-		return result["name"]
+		return result["user_name"]
 	return null
+
+func recipe_is_favorites(user_id, recipe_id):
+	pass
+
+func get_user_created_recipes(id: int):
+	var statement = """Select * from recipes where user_id = '%s';""" % [id]
+	var result = Database.query_online(statement)
+	return result
 
 func get_user_favorite_recipes(id : int):
 	pass

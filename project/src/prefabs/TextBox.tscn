@@ -1,42 +1,39 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/fonts/font18.tres" type="DynamicFont" id=1]
-
-[sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 1, 1, 1, 1 )
-draw_center = false
-border_width_left = 6
-border_width_top = 6
-border_width_right = 6
-border_width_bottom = 6
+[ext_resource path="res://src/prefabs/prefab_text_box.gd" type="Script" id=2]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
-[sub_resource type="StyleBoxEmpty" id=2]
-
-[sub_resource type="StyleBoxEmpty" id=3]
-
-[sub_resource type="StyleBoxEmpty" id=4]
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 1 )
 
 [node name="TextBox" type="Control"]
-margin_right = 633.0
-margin_bottom = 338.0
+margin_right = 747.0
+margin_bottom = 78.0
+script = ExtResource( 2 )
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Text" type="TextEdit" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 5 )
-
-[node name="TextEdit" type="TextEdit" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 17.0
-margin_top = 13.0
-margin_right = -13.0
-margin_bottom = -14.0
+margin_bottom = -132.0
+rect_min_size = Vector2( 100, 70 )
 custom_fonts/font = ExtResource( 1 )
-custom_styles/read_only = SubResource( 1 )
-custom_styles/focus = SubResource( 2 )
-custom_styles/normal = SubResource( 3 )
-custom_styles/completion = SubResource( 4 )
+custom_styles/normal = SubResource( 1 )
+text = "This is a test"
 wrap_enabled = true
+
+[node name="Panel" type="Panel" parent="Text"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -478.0
+margin_top = -6.0
+margin_right = 478.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="text_changed" from="Text" to="." method="_on_Text_text_changed"]

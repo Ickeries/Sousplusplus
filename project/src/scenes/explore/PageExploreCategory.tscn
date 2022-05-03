@@ -7,9 +7,6 @@
 margin_right = 40.0
 margin_bottom = 14.0
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Horizontal" type="HBoxContainer" parent="."]
 margin_right = 600.0
@@ -30,10 +27,11 @@ margin_right = 481.0
 margin_bottom = 71.0
 text = "Hide"
 
-[node name="Grid" type="HBoxContainer" parent="."]
+[node name="Grid" type="GridContainer" parent="."]
 margin_top = 75.0
 margin_right = 600.0
 margin_bottom = 75.0
+columns = 3
 
 [connection signal="renamed" from="." to="." method="_on_Category_renamed"]
 [connection signal="pressed" from="Horizontal/Hide" to="." method="_on_Hide_pressed"]

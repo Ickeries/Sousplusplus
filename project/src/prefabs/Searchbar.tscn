@@ -14,14 +14,11 @@ bg_color = Color( 1, 1, 1, 0.709804 )
 corner_radius_bottom_left = 10
 
 [node name="Searchbar" type="Control"]
-margin_right = 575.0
+margin_right = 1005.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 500, 128 )
 mouse_filter = 2
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Vertical" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -31,7 +28,7 @@ __meta__ = {
 }
 
 [node name="Header" type="Control" parent="Vertical"]
-margin_right = 575.0
+margin_right = 1005.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 0, 150 )
 __meta__ = {
@@ -56,11 +53,11 @@ __meta__ = {
 
 [node name="Text" type="LineEdit" parent="Vertical/Header"]
 anchor_left = 0.033
-anchor_right = 0.782
-margin_left = 4.972
+anchor_right = 0.962
+margin_left = 4.835
 margin_top = 8.0
-margin_right = 5.73297
-margin_bottom = 59.0
+margin_right = 0.189941
+margin_bottom = 79.0
 custom_colors/selection_color = Color( 1, 1, 1, 0.631373 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_constants/minimum_spaces = 0
@@ -71,9 +68,6 @@ custom_styles/normal = SubResource( 4 )
 max_length = 40
 caret_blink = true
 caret_blink_speed = 0.5
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Panel" type="Panel" parent="Vertical/Header"]
 anchor_left = 0.034

@@ -3,7 +3,7 @@ extends CanvasLayer
 var message_loaded = load("res://src/prefabs/message/Message.tscn")
 
 # current user info
-var current_id = 420
+var current_id = 0
 var current_password = "" 
  
 var current_user = {}
@@ -34,10 +34,6 @@ func query_single(statement : String):
 	if db.query_result.size() > 0:
 		return db.query_result[0]
 	return null
-
-func query(statement : String):
-	db.query(statement)
-	return db.query_result.duplicate()
 
 func get_data_template():
 	return data_template.duplicate()

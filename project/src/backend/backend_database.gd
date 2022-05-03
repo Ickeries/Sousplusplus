@@ -44,6 +44,16 @@ func query_online(statement):
 	var datas = database_online.execute(statement)
 	return data_to_dictionary(datas)
 
+func query_online_single(statement):
+	#database.connect_to_host("postgres://%s:%s@%s:%d/%s" % [user, password, host, port, database_connection])
+	var datas = database_online.execute(statement)
+	if datas.size() > 0:
+		var datas_dict = data_to_dictionary(datas)
+		if datas_dict.size() > 0:
+			return datas_dict[0]
+	return {}
+
+
 func data_to_dictionary(datas):
 	var result = []
 	

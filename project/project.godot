@@ -40,6 +40,10 @@ Users="*res://src/backend/backend_users.gd"
 Events="*res://src/autoloads/autoload_events.gd"
 Database="*res://src/backend/backend_database.gd"
 
+[debug]
+
+gdscript/warnings/enable=false
+
 [display]
 
 window/size/width=1080
@@ -50,6 +54,10 @@ window/energy_saving/keep_screen_on=false
 window/handheld/orientation="portrait"
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[global]
+
+warn=false
 
 [input]
 

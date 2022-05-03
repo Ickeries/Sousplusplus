@@ -1,5 +1,9 @@
 extends Textbar
 
+func set_text(text : String):
+	$Vertical/Header/Text.text = text
+	_on_Text_text_changed(text)
+
 func get_text():
 	return $Vertical/Header/Text.text
 

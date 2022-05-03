@@ -1,20 +1,21 @@
 extends Node
 
 
-func get_recipes_by_name(text : String, database="offline"):
+# Online 
+func search_recipes_online(text : String):
 	var statement = """Select * from recipes where recipe_name like '%c%s%c';""" % ["%",text, "%"]
-	
-	var results = []
-	if database == "offline":
-		results = Database.query(statement)
-	elif database == "online":
-		results = Database.query_online(statement)
-	return results
+	return Database.query_online(statement)
 
-func get_recipes_by_user_id(id : int):
+func search_recipes_by_user_id(id : int):
 	var statement = """Select * from recipes where user_id = %s;""" % [id]
-	return Database.query(statement)
+	return Database.query_online(statement)
 
-func get_favorite_recipes(id : int):
-	var statement = """SELECT recipe_id from user_favorites where user_id = %s; """ % [id]
+func search_user_favorite_recipes(id : int):
+	var statement = """Select * from recipes as a where exists (Select * from user_favorites as b where b.user_id = %s and a.recipe_id = b.recipe_id);""" % [id]
+	return Database.query_online(statement)
+
+
+# Offline 
+func search_recipes_offline(text : String):
+	var statement = """Select * from recipes where recipe_name like '%c%s%c';""" % ["%",text, "%"]
 	return Database.query(statement)

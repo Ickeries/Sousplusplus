@@ -2,22 +2,17 @@ extends Control
 
 onready var text = $Horizontal/Center/Text
 
-var recipe_id = -1
-
 func _ready():
 	$Horizontal/Index.text = str(get_index() + 1)
 
 func set_data(data : Dictionary):
 	if data.has("text"):
 		text.set_text(data["text"])
-	if data.has("recipe_id"):
-		recipe_id = int(data["recipe_id"])
 
 func get_data():
 	var data = {}
-	data["recipe_id"] = recipe_id
 	data["text"] = text.get_text()
-	data["step"] = get_index()
+	data["step"] = get_index() + 1
 	
 	return data
 

@@ -22,7 +22,7 @@ __meta__ = {
 
 [node name="Horizontal" type="HBoxContainer" parent="."]
 margin_right = 1077.0
-margin_bottom = 125.0
+margin_bottom = 124.0
 
 [node name="Index" type="Label" parent="Horizontal"]
 margin_top = 3.0
@@ -34,7 +34,7 @@ text = "1"
 [node name="Center" type="CenterContainer" parent="Horizontal"]
 margin_left = 61.0
 margin_right = 1011.0
-margin_bottom = 125.0
+margin_bottom = 124.0
 
 [node name="Text" type="TextEdit" parent="Horizontal/Center"]
 margin_top = 27.0
@@ -43,8 +43,8 @@ margin_bottom = 97.0
 rect_min_size = Vector2( 950, 70 )
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 3 )
-text = "A Very fdasf sdf asdf asdf as"
 wrap_enabled = true
+caret_blink = true
 
 [node name="Panel" type="Panel" parent="Horizontal/Center/Text"]
 anchor_left = 0.5

@@ -4,19 +4,29 @@ onready var title = $Title
 onready var user = $User
 onready var favorite_animator = $Favorite/Animator
 
-var recipe_data = {}
+var mode : String = "offline"
+var recipe_id = -1
+var user_name : String = ""
+
+
 
 var pressed : bool = false
 var start_position : = Vector2(0,0)
 
 
+func load_recipe(data : Dictionary):
+	if data.has("recipe_id"):
+		recipe_id = data["recipe_id"]
+		user.text = "Made by " + str(Users.get_user_name_by_id(data.user_id))
+	if data.has("recipe_name"):
+		title.text = data["recipe_name"]
+	pass
 
-func set_data(dictionary : Dictionary):
-	recipe_data = dictionary
-	if dictionary.has("recipe_name"):
-		title.text = dictionary["recipe_name"]
-	if dictionary.has("name"):
-		user.text = "Made by " + dictionary["name"]
+func get_recipe_name():
+	return title.text
+
+func get_user_name():
+	return user_name
 
 
 func _on_Favorite_pressed(event):
@@ -33,8 +43,8 @@ func _on_Recipe_gui_input(event):
 			else:
 				pressed = false
 				if event.position.distance_to(start_position) < 10.0:
-					Events.emit_signal("set_recipe", recipe_data)
-					Events.emit_signal("set_page", "Recipe")
+					Events.emit_signal("set_recipe", self)
+					Events.emit_signal("set_page", "RecipeEdit")
 	
 	if event is InputEventMouseMotion:
 		if pressed:
@@ -43,9 +53,7 @@ func _on_Recipe_gui_input(event):
 
 func _on_Favorite_toggled(button_pressed):
 	if button_pressed:
-		if(recipe_data.has("recipe_id")):
-			Recipe.add_favorite_recipe(recipe_data['recipe_id'])
+		Recipe.add_favorite_recipe(recipe_id)
 	else:
-		if(recipe_data.has("recipe_id")):
-			Recipe.remove_favorite_recipe(recipe_data['recipe_id'])	
+		Recipe.remove_favorite_recipe(recipe_id)	
 	favorite_animator.play("press")

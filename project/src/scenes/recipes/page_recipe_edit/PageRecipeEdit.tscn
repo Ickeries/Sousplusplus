@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/fonts/font18.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/prefabs/Searchbar.tscn" type="PackedScene" id=2]
@@ -6,214 +6,348 @@
 [ext_resource path="res://assets/fonts/font48.tres" type="DynamicFont" id=4]
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=5]
 [ext_resource path="res://src/prefabs/TextBox.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/scenes/recipes/page_recipe_edit/PageRecipeEditIngredient.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/scenes/recipes/page_recipe_edit/PageRecipeEditDirection.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/ui/ui_scroll.gd" type="Script" id=9]
+[ext_resource path="res://src/scenes/recipes/page_recipe_edit/PageRecipeEditTag.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/images/chicken_nuggets.png" type="Texture" id=11]
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
+[sub_resource type="StyleBoxEmpty" id=4]
+
 [sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.054902, 0.262745, 0.0745098, 1 )
+draw_center = false
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0.14902, 0.627451, 0.180392, 1 )
 
 [node name="RecipeEdit" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 1675.0 ]
+}
 
-[node name="First" type="Control" parent="."]
-visible = false
+[node name="SubPages" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Searchbar" parent="First" instance=ExtResource( 2 )]
+[node name="First" type="Control" parent="SubPages"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 1080, 1920 )
+
+[node name="RecipeNameText" parent="SubPages/First" instance=ExtResource( 2 )]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -390.0
-margin_top = -288.0
-margin_right = 390.0
-margin_bottom = -160.0
+margin_left = -383.0
+margin_top = -584.0
+margin_right = 397.0
+margin_bottom = -456.0
 
-[node name="Header" parent="First/Searchbar/Vertical" index="0"]
+[node name="Header" parent="SubPages/First/RecipeNameText/Vertical" index="0"]
 margin_right = 780.0
 
-[node name="Tip" parent="First/Searchbar/Vertical/Header" index="0"]
-text = "Name of Recipe.."
+[node name="Tip" parent="SubPages/First/RecipeNameText/Vertical/Header" index="0"]
+text = "Untitled"
+align = 1
 
-[node name="User" type="RichTextLabel" parent="First"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -191.0
-margin_top = -157.0
-margin_right = 191.0
-margin_bottom = -85.0
-custom_fonts/bold_font = ExtResource( 5 )
-custom_fonts/normal_font = ExtResource( 1 )
-bbcode_enabled = true
-bbcode_text = "Created by [b]David[/b]"
-text = "Created by David"
-fit_content_height = true
+[node name="Text" parent="SubPages/First/RecipeNameText/Vertical/Header" index="1"]
+align = 1
 
-[node name="Description" parent="First" instance=ExtResource( 6 )]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -464.0
-margin_top = 148.0
-margin_right = 464.0
-margin_bottom = 581.0
+[node name="EnterNameHere" type="Label" parent="SubPages/First"]
+margin_left = 244.0
+margin_top = 284.0
+margin_right = 790.0
+margin_bottom = 402.0
+custom_fonts/font = ExtResource( 5 )
+text = "Recipe Name"
+align = 1
+valign = 1
 
-[node name="Label" type="Label" parent="First"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -114.5
-margin_top = 75.0
-margin_right = 114.5
-margin_bottom = 127.0
-custom_fonts/font = ExtResource( 1 )
+[node name="Images" type="TextureButton" parent="SubPages/First"]
+margin_left = 85.0
+margin_top = 547.0
+margin_right = 1000.0
+margin_bottom = 1243.0
+texture_normal = ExtResource( 11 )
+expand = true
+stretch_mode = 6
+
+[node name="Second" type="Control" parent="SubPages"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1080.0
+margin_right = 1080.0
+
+[node name="Scroll" type="ScrollContainer" parent="SubPages/Second"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -238.0
+script = ExtResource( 9 )
+
+[node name="Vertical" type="VBoxContainer" parent="SubPages/Second/Scroll"]
+margin_right = 1080.0
+margin_bottom = 1232.0
+custom_constants/separation = 128
+
+[node name="Control" type="Control" parent="SubPages/Second/Scroll/Vertical"]
+margin_right = 1080.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 200 )
+
+[node name="Description" type="CenterContainer" parent="SubPages/Second/Scroll/Vertical"]
+margin_top = 328.0
+margin_right = 1080.0
+margin_bottom = 512.0
+rect_min_size = Vector2( 1080, 0 )
+
+[node name="Vertical" type="VBoxContainer" parent="SubPages/Second/Scroll/Vertical/Description"]
+margin_left = 140.0
+margin_right = 940.0
+margin_bottom = 184.0
+
+[node name="EnterDescriptionLabel" type="Label" parent="SubPages/Second/Scroll/Vertical/Description/Vertical"]
+margin_right = 800.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 200, 100 )
+custom_fonts/font = ExtResource( 5 )
 text = "Description"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Second" type="Control" parent="."]
+[node name="DescriptionText" parent="SubPages/Second/Scroll/Vertical/Description/Vertical" instance=ExtResource( 6 )]
+margin_top = 104.0
+margin_right = 800.0
+margin_bottom = 184.0
+rect_min_size = Vector2( 800, 80 )
+skin_width = 10.0
+
+[node name="Text" parent="SubPages/Second/Scroll/Vertical/Description/Vertical/DescriptionText" index="0"]
+text = "Enter description here"
+
+[node name="Tags" type="CenterContainer" parent="SubPages/Second/Scroll/Vertical"]
+margin_top = 640.0
+margin_right = 1080.0
+margin_bottom = 1232.0
+rect_min_size = Vector2( 1080, 0 )
+
+[node name="Vertical" type="VBoxContainer" parent="SubPages/Second/Scroll/Vertical/Tags"]
+margin_left = 184.0
+margin_right = 896.0
+margin_bottom = 592.0
+custom_constants/separation = 32
+
+[node name="EnterTagsLabel" type="Label" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical"]
+margin_right = 712.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 200, 100 )
+custom_fonts/font = ExtResource( 5 )
+text = "Enabled Tags"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnabledList" type="GridContainer" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical"]
+margin_top = 132.0
+margin_right = 712.0
+margin_bottom = 132.0
+custom_constants/vseparation = 32
+custom_constants/hseparation = 32
+columns = 4
+
+[node name="SuggestedTabsLabel" type="Label" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical"]
+margin_top = 164.0
+margin_right = 712.0
+margin_bottom = 264.0
+rect_min_size = Vector2( 200, 100 )
+custom_fonts/font = ExtResource( 5 )
+text = "Suggested Tags"
+align = 1
+valign = 2
+
+[node name="TagSearchBar" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical" instance=ExtResource( 2 )]
+margin_top = 296.0
+margin_right = 712.0
+margin_bottom = 424.0
+
+[node name="Header" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/TagSearchBar/Vertical" index="0"]
+margin_right = 712.0
+
+[node name="Tip" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/TagSearchBar/Vertical/Header" index="0"]
+text = "Search tags.."
+
+[node name="SuggestedList" type="GridContainer" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical"]
+modulate = Color( 0.654902, 0.654902, 0.654902, 0.572549 )
+margin_top = 456.0
+margin_right = 712.0
+margin_bottom = 592.0
+custom_constants/vseparation = 32
+custom_constants/hseparation = 32
+columns = 4
+
+[node name="RecipeTag" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/SuggestedList" instance=ExtResource( 10 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 154.0
+margin_bottom = 52.0
+
+[node name="RecipeTag2" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/SuggestedList" instance=ExtResource( 10 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 186.0
+margin_right = 340.0
+margin_bottom = 52.0
+
+[node name="RecipeTag3" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/SuggestedList" instance=ExtResource( 10 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 372.0
+margin_right = 526.0
+margin_bottom = 52.0
+
+[node name="RecipeTag4" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/SuggestedList" instance=ExtResource( 10 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 558.0
+margin_right = 712.0
+margin_bottom = 52.0
+
+[node name="RecipeTag5" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/SuggestedList" instance=ExtResource( 10 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 84.0
+margin_right = 154.0
+margin_bottom = 136.0
+
+[node name="RecipeTag6" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/SuggestedList" instance=ExtResource( 10 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 186.0
+margin_top = 84.0
+margin_right = 340.0
+margin_bottom = 136.0
+
+[node name="Third" type="Control" parent="SubPages"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 2160.0
+margin_right = 2160.0
+rect_min_size = Vector2( 1080, 1920 )
 
-[node name="Scroll" type="ScrollContainer" parent="Second"]
+[node name="Scroll" type="ScrollContainer" parent="SubPages/Third"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_bottom = -229.0
 follow_focus = true
 script = ExtResource( 9 )
 
-[node name="CenterContainer" type="CenterContainer" parent="Second/Scroll"]
+[node name="Center" type="CenterContainer" parent="SubPages/Third/Scroll"]
 margin_right = 1080.0
-margin_bottom = 2188.0
+margin_bottom = 1100.0
 rect_min_size = Vector2( 1080, 0 )
 mouse_filter = 2
 
-[node name="Vertical" type="VBoxContainer" parent="Second/Scroll/CenterContainer"]
-margin_left = 1.0
-margin_right = 1078.0
-margin_bottom = 2188.0
+[node name="Vertical" type="VBoxContainer" parent="SubPages/Third/Scroll/Center"]
+margin_left = 285.0
+margin_right = 795.0
+margin_bottom = 1100.0
 
-[node name="Space" type="Control" parent="Second/Scroll/CenterContainer/Vertical"]
-margin_right = 1077.0
-margin_bottom = 400.0
-rect_min_size = Vector2( 0, 400 )
+[node name="Space" type="Control" parent="SubPages/Third/Scroll/Center/Vertical"]
+margin_right = 510.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 200 )
 mouse_filter = 2
 
-[node name="Ingredients" type="PanelContainer" parent="Second/Scroll/CenterContainer/Vertical"]
-margin_top = 404.0
-margin_right = 1077.0
-margin_bottom = 1296.0
+[node name="Ingredients" type="PanelContainer" parent="SubPages/Third/Scroll/Center/Vertical"]
+margin_top = 204.0
+margin_right = 510.0
+margin_bottom = 448.0
 mouse_filter = 2
 custom_styles/panel = SubResource( 2 )
 
-[node name="Vertical" type="VBoxContainer" parent="Second/Scroll/CenterContainer/Vertical/Ingredients"]
-margin_right = 1077.0
-margin_bottom = 892.0
+[node name="Vertical" type="VBoxContainer" parent="SubPages/Third/Scroll/Center/Vertical/Ingredients"]
+margin_right = 510.0
+margin_bottom = 244.0
 
-[node name="Title" type="Label" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical"]
-margin_right = 1077.0
+[node name="Title" type="Label" parent="SubPages/Third/Scroll/Center/Vertical/Ingredients/Vertical"]
+margin_right = 510.0
 margin_bottom = 118.0
 custom_fonts/font = ExtResource( 4 )
 text = "Ingredients"
 align = 1
 
-[node name="Center" type="CenterContainer" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical"]
+[node name="Center" type="CenterContainer" parent="SubPages/Third/Scroll/Center/Vertical/Ingredients/Vertical"]
 margin_top = 122.0
-margin_right = 1077.0
-margin_bottom = 892.0
+margin_right = 510.0
+margin_bottom = 244.0
 
-[node name="List" type="VBoxContainer" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical/Center"]
-margin_left = 39.0
-margin_right = 1037.0
-margin_bottom = 770.0
+[node name="List" type="VBoxContainer" parent="SubPages/Third/Scroll/Center/Vertical/Ingredients/Vertical/Center"]
+margin_left = 227.0
+margin_right = 282.0
+margin_bottom = 122.0
 
-[node name="PageRecipeEditIngredient" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical/Center/List" instance=ExtResource( 7 )]
+[node name="IngredientList" type="VBoxContainer" parent="SubPages/Third/Scroll/Center/Vertical/Ingredients/Vertical/Center/List"]
+margin_right = 55.0
 
-[node name="PageRecipeEditIngredient2" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical/Center/List" instance=ExtResource( 7 )]
-margin_top = 86.0
-margin_bottom = 168.0
+[node name="AddNewIngredient" type="Button" parent="SubPages/Third/Scroll/Center/Vertical/Ingredients/Vertical/Center/List"]
+margin_top = 4.0
+margin_right = 55.0
+margin_bottom = 122.0
+custom_colors/font_color = Color( 0.137255, 0.576471, 0.247059, 1 )
+custom_fonts/font = ExtResource( 4 )
+custom_styles/normal = SubResource( 4 )
+text = "+"
 
-[node name="PageRecipeEditIngredient3" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical/Center/List" instance=ExtResource( 7 )]
-margin_top = 172.0
-margin_bottom = 254.0
-
-[node name="PageRecipeEditIngredient4" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical/Center/List" instance=ExtResource( 7 )]
-margin_top = 258.0
-margin_bottom = 340.0
-
-[node name="PageRecipeEditIngredient5" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical/Center/List" instance=ExtResource( 7 )]
-margin_top = 344.0
-margin_bottom = 426.0
-
-[node name="PageRecipeEditIngredient6" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical/Center/List" instance=ExtResource( 7 )]
-margin_top = 430.0
-margin_bottom = 512.0
-
-[node name="PageRecipeEditIngredient7" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical/Center/List" instance=ExtResource( 7 )]
-margin_top = 516.0
-margin_bottom = 598.0
-
-[node name="PageRecipeEditIngredient8" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical/Center/List" instance=ExtResource( 7 )]
-margin_top = 602.0
-margin_bottom = 684.0
-
-[node name="PageRecipeEditIngredient9" parent="Second/Scroll/CenterContainer/Vertical/Ingredients/Vertical/Center/List" instance=ExtResource( 7 )]
-margin_top = 688.0
-margin_bottom = 770.0
-
-[node name="Directions" type="PanelContainer" parent="Second/Scroll/CenterContainer/Vertical"]
-margin_top = 1300.0
-margin_right = 1077.0
-margin_bottom = 1784.0
+[node name="Directions" type="PanelContainer" parent="SubPages/Third/Scroll/Center/Vertical"]
+margin_top = 452.0
+margin_right = 510.0
+margin_bottom = 696.0
 mouse_filter = 2
 custom_styles/panel = SubResource( 1 )
 
-[node name="Vertical" type="VBoxContainer" parent="Second/Scroll/CenterContainer/Vertical/Directions"]
-margin_right = 1077.0
-margin_bottom = 484.0
+[node name="Vertical" type="VBoxContainer" parent="SubPages/Third/Scroll/Center/Vertical/Directions"]
+margin_right = 510.0
+margin_bottom = 244.0
 
-[node name="Title" type="Label" parent="Second/Scroll/CenterContainer/Vertical/Directions/Vertical"]
-margin_right = 1077.0
+[node name="Title" type="Label" parent="SubPages/Third/Scroll/Center/Vertical/Directions/Vertical"]
+margin_right = 510.0
 margin_bottom = 118.0
 custom_fonts/font = ExtResource( 4 )
 text = "Directions"
 align = 1
 
-[node name="List" type="VBoxContainer" parent="Second/Scroll/CenterContainer/Vertical/Directions/Vertical"]
+[node name="List" type="VBoxContainer" parent="SubPages/Third/Scroll/Center/Vertical/Directions/Vertical"]
 margin_top = 122.0
-margin_right = 1077.0
-margin_bottom = 484.0
+margin_right = 510.0
+margin_bottom = 244.0
 
-[node name="PageRecipeEditDirection" parent="Second/Scroll/CenterContainer/Vertical/Directions/Vertical/List" instance=ExtResource( 8 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 1077.0
-margin_bottom = 118.0
+[node name="DirectionList" type="VBoxContainer" parent="SubPages/Third/Scroll/Center/Vertical/Directions/Vertical/List"]
+margin_right = 510.0
 
-[node name="PageRecipeEditDirection2" parent="Second/Scroll/CenterContainer/Vertical/Directions/Vertical/List" instance=ExtResource( 8 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 122.0
-margin_right = 1077.0
-margin_bottom = 240.0
+[node name="AddNewDirection" type="Button" parent="SubPages/Third/Scroll/Center/Vertical/Directions/Vertical/List"]
+margin_top = 4.0
+margin_right = 510.0
+margin_bottom = 122.0
+custom_colors/font_color = Color( 0.137255, 0.576471, 0.247059, 1 )
+custom_fonts/font = ExtResource( 4 )
+custom_styles/normal = SubResource( 4 )
+text = "+"
 
-[node name="PageRecipeEditDirection3" parent="Second/Scroll/CenterContainer/Vertical/Directions/Vertical/List" instance=ExtResource( 8 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 244.0
-margin_right = 1077.0
-margin_bottom = 362.0
-
-[node name="Space2" type="Control" parent="Second/Scroll/CenterContainer/Vertical"]
-margin_top = 1788.0
-margin_right = 1077.0
-margin_bottom = 2188.0
+[node name="Space2" type="Control" parent="SubPages/Third/Scroll/Center/Vertical"]
+margin_top = 700.0
+margin_right = 510.0
+margin_bottom = 1100.0
 rect_min_size = Vector2( 0, 400 )
 mouse_filter = 2
 
@@ -222,35 +356,75 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -376.5
-margin_top = -328.0
-margin_right = 376.5
-margin_bottom = -173.0
+margin_left = -531.5
+margin_top = -195.0
+margin_right = 531.5
+margin_bottom = -45.0
 custom_constants/separation = 64
 alignment = 1
 
 [node name="1" type="Button" parent="Menu"]
-margin_left = 80.0
-margin_right = 235.0
-margin_bottom = 155.0
-rect_min_size = Vector2( 155, 155 )
-custom_fonts/font = ExtResource( 4 )
-text = "1"
+margin_left = 102.0
+margin_right = 252.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+custom_fonts/font = ExtResource( 1 )
+text = "Title"
 
 [node name="2" type="Button" parent="Menu"]
-margin_left = 299.0
-margin_right = 454.0
-margin_bottom = 155.0
-rect_min_size = Vector2( 155, 155 )
-custom_fonts/font = ExtResource( 4 )
-text = "2"
+margin_left = 316.0
+margin_right = 467.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+custom_fonts/font = ExtResource( 1 )
+text = "Details"
 
 [node name="3" type="Button" parent="Menu"]
-margin_left = 518.0
-margin_right = 673.0
-margin_bottom = 155.0
-rect_min_size = Vector2( 155, 155 )
-custom_fonts/font = ExtResource( 4 )
-text = "3"
+margin_left = 531.0
+margin_right = 747.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+custom_fonts/font = ExtResource( 1 )
+text = "Directions"
 
-[editable path="First/Searchbar"]
+[node name="Save" type="Button" parent="Menu"]
+margin_left = 811.0
+margin_right = 961.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = SubResource( 3 )
+text = "Save"
+
+[node name="Save" type="Popup" parent="."]
+margin_left = 154.0
+margin_top = 593.0
+margin_right = 940.0
+margin_bottom = 1268.0
+
+[node name="Panel" type="Panel" parent="Save"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Return" type="Button" parent="."]
+margin_left = 40.0
+margin_top = 27.0
+margin_right = 352.0
+margin_bottom = 151.0
+custom_fonts/font = ExtResource( 4 )
+text = "Return"
+
+[connection signal="visibility_changed" from="." to="." method="_on_RecipeEdit_visibility_changed"]
+[connection signal="pressed" from="SubPages/First/Images" to="." method="_on_Images_pressed"]
+[connection signal="search_edited" from="SubPages/Second/Scroll/Vertical/Tags/Vertical/TagSearchBar" to="." method="_on_TagSearchBar_search_edited"]
+[connection signal="pressed" from="SubPages/Third/Scroll/Center/Vertical/Ingredients/Vertical/Center/List/AddNewIngredient" to="." method="_on_AddNewIngredient_pressed"]
+[connection signal="pressed" from="SubPages/Third/Scroll/Center/Vertical/Directions/Vertical/List/AddNewDirection" to="." method="_on_AddNewDirection_pressed"]
+[connection signal="pressed" from="Menu/1" to="." method="_on_1_pressed"]
+[connection signal="pressed" from="Menu/2" to="." method="_on_2_pressed"]
+[connection signal="pressed" from="Menu/3" to="." method="_on_3_pressed"]
+[connection signal="pressed" from="Menu/Save" to="." method="_on_Save_pressed"]
+[connection signal="pressed" from="Return" to="." method="_on_Return_pressed"]
+
+[editable path="SubPages/First/RecipeNameText"]
+[editable path="SubPages/Second/Scroll/Vertical/Description/Vertical/DescriptionText"]
+[editable path="SubPages/Second/Scroll/Vertical/Tags/Vertical/TagSearchBar"]

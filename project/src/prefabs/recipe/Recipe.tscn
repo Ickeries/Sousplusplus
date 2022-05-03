@@ -141,9 +141,6 @@ margin_right = 700.0
 margin_bottom = 314.0
 rect_min_size = Vector2( 700, 314 )
 script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 autoplay = "spawn"
@@ -179,9 +176,6 @@ margin_bottom = 78.0
 rect_min_size = Vector2( 280, 0 )
 custom_fonts/font = ExtResource( 1 )
 text = "Apple Pie"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="User" type="Label" parent="."]
 margin_left = 9.0

@@ -1,7 +1,7 @@
 extends VBoxContainer
 
 var recipe_loaded = load("res://src/prefabs/recipe/Recipe.tscn")
-
+var mode = "offline"
 func _ready():
 	Events.connect("scroll", self, "on_scroll")
 
@@ -9,10 +9,14 @@ func _ready():
 func set_title(title : String):
 	$Horizontal/Title.set_text(title)
 
-func add_items(items):
-	for item in items:
+func set_mode(new_mode : String):
+	mode = new_mode
+
+func add_recipes(recipes):
+	for recipe in recipes:
 		var recipe_instance = recipe_loaded.instance()
-		recipe_instance.call_deferred("set_data",item)
+		recipe_instance.mode = mode
+		recipe_instance.call_deferred("load_recipe", recipe)
 		$Grid.add_child(recipe_instance)
 
 
