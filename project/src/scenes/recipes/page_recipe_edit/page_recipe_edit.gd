@@ -153,4 +153,12 @@ func _on_RecipeEdit_visibility_changed():
 
 
 func _on_Return_pressed():
+	reset()
+	Events.emit_signal("return_to_previous_page", "fade_to_black")
+
+
+func _on_Delete_pressed():
+	if recipe_id != -1:
+		Recipe.delete_recipe(recipe_id)
+	reset()
 	Events.emit_signal("return_to_previous_page", "fade_to_black")

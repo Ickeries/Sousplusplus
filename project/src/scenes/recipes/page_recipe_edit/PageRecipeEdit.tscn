@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/fonts/font18.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/prefabs/Searchbar.tscn" type="PackedScene" id=2]
@@ -24,6 +24,9 @@ border_width_top = 8
 border_width_right = 8
 border_width_bottom = 8
 border_color = Color( 0.14902, 0.627451, 0.180392, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.819608, 0.164706, 0.164706, 1 )
 
 [node name="RecipeEdit" type="Control"]
 anchor_right = 1.0
@@ -414,6 +417,15 @@ margin_bottom = 151.0
 custom_fonts/font = ExtResource( 4 )
 text = "Return"
 
+[node name="Delete" type="Button" parent="."]
+margin_left = 746.0
+margin_top = 27.0
+margin_right = 1058.0
+margin_bottom = 151.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/normal = SubResource( 5 )
+text = "Delete"
+
 [connection signal="visibility_changed" from="." to="." method="_on_RecipeEdit_visibility_changed"]
 [connection signal="pressed" from="SubPages/First/Images" to="." method="_on_Images_pressed"]
 [connection signal="search_edited" from="SubPages/Second/Scroll/Vertical/Tags/Vertical/TagSearchBar" to="." method="_on_TagSearchBar_search_edited"]
@@ -424,6 +436,7 @@ text = "Return"
 [connection signal="pressed" from="Menu/3" to="." method="_on_3_pressed"]
 [connection signal="pressed" from="Menu/Save" to="." method="_on_Save_pressed"]
 [connection signal="pressed" from="Return" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="Delete" to="." method="_on_Delete_pressed"]
 
 [editable path="SubPages/First/RecipeNameText"]
 [editable path="SubPages/Second/Scroll/Vertical/Description/Vertical/DescriptionText"]

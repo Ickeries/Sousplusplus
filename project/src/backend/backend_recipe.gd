@@ -52,7 +52,21 @@ func save_recipe_online(recipe):
 		var statement2 = """Insert into recipe_directions (recipe_id, text, step) values (%s, '%s', %s) """ % [recipe.recipe_id, direction.text, direction.step] 
 		Database.query_online(statement2)
 
-
+func delete_recipe(id : int):
+	var statement = """Delete from recipes where recipe_id = %s""" % [id]
+	Database.query_online(statement)
+	
+	statement = """Delete from recipe_directions where recipe_id = %s""" % [id]
+	Database.query_online(statement)
+	
+	statement = """Delete from recipe_ingredients where recipe_id = %s""" % [id]
+	Database.query_online(statement)
+	
+	statement = """Delete from user_favorites where recipe_id = %s""" % [id]
+	Database.query_online(statement)
+	
+	statement = """Delete from recipe_tags where recipe_id = %s""" % [id]
+	Database.query_online(statement)
 
 func get_recipe_tags_by_id(id : int):
 	var list = []
