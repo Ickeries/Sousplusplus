@@ -5,7 +5,7 @@ onready var text = $Horizontal/Center/Text
 func _ready():
 	$Horizontal/Index.text = str(get_index() + 1)
 
-func set_data(data : Dictionary):
+func load_direction(data : Dictionary):
 	if data.has("text"):
 		text.set_text(data["text"])
 

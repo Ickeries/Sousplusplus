@@ -66,6 +66,7 @@ func update_ingredients(ingredients):
 	for ingredient in ingredients:
 		var ingredient_instance = ingredient_loaded.instance()
 		ingredient_instance.load_ingredient(ingredient)
+		ingredient_instance.call_deferred("load_ingredient", ingredient)
 		ingredient_list.add_child(ingredient_instance)
 
 func update_directions(directions):
@@ -74,7 +75,7 @@ func update_directions(directions):
 	
 	for direction in directions:
 		var direction_instance = direction_loaded.instance()
-		direction_instance.load_ingredient(direction)
+		direction_instance.call_deferred("load_direction", direction)
 		direction_list.add_child(direction_instance)
 
 func get_data():
