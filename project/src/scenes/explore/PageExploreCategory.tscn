@@ -31,7 +31,6 @@ text = "Hide"
 margin_top = 75.0
 margin_right = 600.0
 margin_bottom = 75.0
-columns = 3
 
 [connection signal="renamed" from="." to="." method="_on_Category_renamed"]
 [connection signal="pressed" from="Horizontal/Hide" to="." method="_on_Hide_pressed"]

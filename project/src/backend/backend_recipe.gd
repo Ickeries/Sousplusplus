@@ -31,8 +31,17 @@ func get_recipe_data_online(id : int):
 
 
 func save_new_recipe_online(recipe):
-	var query = """Insert into recipes (user_id, recipe_name, recipe_description) values (%s, '%s', '%s') """ % [recipe.user_id, recipe.recipe_name, recipe.recipe_description]
-	Database.query_online(query)
+	var query = """Insert into recipes (user_id, recipe_name, recipe_description) values (%s, '%s', '%s') RETURNING recipe_id;""" % [recipe.user_id, recipe.recipe_name, recipe.recipe_description]
+	var result = Database.query_online_single(query)
+	if result:
+		var recipe_id = result.recipe_id
+		for ingredient in recipe.ingredients:
+			var statement2 = """Insert into recipe_ingredients (recipe_id, ingredient_name, ingredient_amount, ingredient_unit) values (%s, '%s', %s, '%s') """ % [recipe_id, ingredient.ingredient_name, ingredient.ingredient_amount, ingredient.ingredient_unit] 
+			Database.query_online(statement2)
+		
+		for direction in recipe.directions:
+			var statement2 = """Insert into recipe_directions (recipe_id, text, step) values (%s, '%s', %s) """ % [recipe_id, direction.text, direction.step] 
+			Database.query_online(statement2)
 
 
 
