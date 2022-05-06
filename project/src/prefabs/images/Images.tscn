@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/prefabs/images/images.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/images/pecan_pie.jpeg" type="Texture" id=3]
+[ext_resource path="res://src/prefabs/Searchbar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/ui/ui_scroll.gd" type="Script" id=5]
+[ext_resource path="res://assets/fonts/font48.tres" type="DynamicFont" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.164706, 0.164706, 0.164706, 1 )
@@ -15,8 +19,11 @@ expand_margin_top = 16.0
 expand_margin_bottom = 16.0
 
 [node name="Images" type="Popup"]
-margin_right = 1065.0
-margin_bottom = 1912.0
+visible = true
+margin_left = 56.0
+margin_top = 35.0
+margin_right = 1025.0
+margin_bottom = 1882.0
 script = ExtResource( 1 )
 directory_path = "res://assets/images/"
 
@@ -28,12 +35,24 @@ custom_styles/panel = SubResource( 1 )
 [node name="Scroll" type="ScrollContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 93.0
+margin_top = 620.0
+margin_right = -8.0
+margin_bottom = -94.0
+scroll_horizontal_enabled = false
+script = ExtResource( 5 )
 
-[node name="Grid" type="GridContainer" parent="Scroll"]
+[node name="Center" type="CenterContainer" parent="Scroll"]
+margin_right = 980.0
+rect_min_size = Vector2( 980, 0 )
+mouse_filter = 2
+
+[node name="Grid" type="GridContainer" parent="Scroll/Center"]
+margin_left = 490.0
+margin_right = 490.0
+mouse_filter = 2
 custom_constants/vseparation = 16
 custom_constants/hseparation = 16
-columns = 4
+columns = 3
 
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
@@ -42,4 +61,47 @@ custom_fonts/font = ExtResource( 2 )
 text = "Select image to use"
 align = 1
 
+[node name="Preview" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -182.5
+margin_top = 92.0
+margin_right = 182.5
+margin_bottom = 459.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 7
+
+[node name="Searchbar" parent="." instance=ExtResource( 4 )]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -347.5
+margin_top = 487.0
+margin_right = 347.5
+margin_bottom = 615.0
+
+[node name="Header" parent="Searchbar/Vertical" index="0"]
+margin_right = 695.0
+
+[node name="Tip" parent="Searchbar/Vertical/Header" index="0"]
+text = "Type image name here"
+
+[node name="Confirm" type="Button" parent="."]
+margin_left = 291.0
+margin_top = 1708.0
+margin_right = 667.0
+margin_bottom = 1832.0
+custom_fonts/font = ExtResource( 6 )
+text = "Confirm"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
 [connection signal="about_to_show" from="." to="." method="_on_Images_about_to_show"]
+[connection signal="gui_input" from="Scroll" to="Scroll" method="_on_Scroll_gui_input"]
+[connection signal="search_edited" from="Searchbar" to="." method="_on_Searchbar_search_edited"]
+[connection signal="pressed" from="Confirm" to="." method="_on_Confirm_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[editable path="Searchbar"]

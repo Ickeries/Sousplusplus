@@ -84,6 +84,16 @@ func get_recipe_tags_by_id(id : int):
 		list.push_back(result["tag_name"])
 	return list
 
+func get_favorited_recipes():
+	var statement = """Select recipe_id from user_favorites where user_id = %s""" % [Global.current_id]
+	var results = Database.query_online(statement)
+	var favorited = []
+	if results:
+		for result in results:
+			favorited.push_back(result.recipe_id)
+	return favorited
+
+
 func add_favorite_recipe(recipe_id: int):
 	var date = "11/11/1111"
 	var statement = """Insert into user_favorites (user_id, recipe_id, date_favorited)

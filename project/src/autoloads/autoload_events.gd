@@ -13,10 +13,12 @@ signal set_page(page_name, transition_animation, remember_previous_page)
 signal return_to_previous_page(transition_animation)
 
 signal image_changed (image_path)
+signal image_confirmed (image_path)
 # Set the visibility of the menu bar.
 signal show_bottom_menu(value)
 signal darken_screen(value)
-
+signal play_transition(transition_animation)
+signal transition_finished()
 signal set_recipe(recipe_data)
 signal loading_started()
 signal loading_finished()

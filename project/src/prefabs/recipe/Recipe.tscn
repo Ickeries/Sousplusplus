@@ -1,8 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/fonts/font18.tres" type="DynamicFont" id=2]
-[ext_resource path="res://assets/images/chicken_nuggets.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/Background_Tile.jpg" type="Texture" id=3]
 [ext_resource path="res://assets/icons/star/2.png" type="Texture" id=4]
 [ext_resource path="res://assets/icons/star/0.png" type="Texture" id=5]
 [ext_resource path="res://src/prefabs/recipe/recipe.gd" type="Script" id=6]
@@ -95,45 +95,73 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("TextureRect:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 5 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("TextureRect:rect_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "press"
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_scale")
+tracks/0/path = NodePath("TextureRect:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:mouse_filter")
+tracks/1/path = NodePath("TextureRect:rect_scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"update": 1,
-"values": [  ]
+"times": PoolRealArray( 0, 0.1, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.8, 0.8 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+
+[sub_resource type="Animation" id=6]
+resource_name = "unpress"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ ExtResource( 4 ) ]
 }
 
 [node name="Recipe" type="Control"]
@@ -184,22 +212,32 @@ custom_fonts/font = ExtResource( 1 )
 text = "Apple Pie"
 autowrap = true
 
-[node name="Favorite" type="TextureButton" parent="."]
+[node name="Favorite" type="Control" parent="."]
 margin_left = 443.0
 margin_top = 241.0
 margin_right = 515.0
 margin_bottom = 313.0
 rect_pivot_offset = Vector2( 37, 37 )
-toggle_mode = true
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 5 )
-texture_disabled = ExtResource( 5 )
-expand = true
 
 [node name="Animator" type="AnimationPlayer" parent="Favorite"]
+autoplay = "unpress"
 anims/RESET = SubResource( 2 )
 anims/press = SubResource( 3 )
+anims/unpress = SubResource( 6 )
+
+[node name="TextureRect" type="TextureRect" parent="Favorite"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 36, 38 )
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Button" type="Button" parent="Favorite"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+toggle_mode = true
+flat = true
 
 [connection signal="gui_input" from="." to="." method="_on_Recipe_gui_input"]
 [connection signal="visibility_changed" from="." to="." method="_on_Recipe_visibility_changed"]
-[connection signal="toggled" from="Favorite" to="." method="_on_Favorite_toggled"]
+[connection signal="toggled" from="Favorite/Button" to="." method="_on_Favorite_Button_toggled"]

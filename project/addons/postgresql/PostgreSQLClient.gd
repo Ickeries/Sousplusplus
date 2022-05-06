@@ -1734,7 +1734,8 @@ func reponce_parser(response: PoolByteArray):
 				match char(response_buffer[message_length]):
 					'I':
 						# If idle (if not in a transaction block).
-						prints("Not in a transaction block.")
+						pass
+						#prints("Not in a transaction block.")
 					'T':
 						# If in a transaction block.
 						prints("In a transaction block.")

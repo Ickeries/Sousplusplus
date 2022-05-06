@@ -13,7 +13,6 @@ func _ready():
 	Events.connect("show_bottom_menu", self, "on_show_bottom_menu")
 	Events.connect("set_buffering", self, "on_set_buffering")
 
-
 # Sets visibility of page called by page_name
 func set_page(page_name, remember_previous_page=true):
 	# Check if called page exists

@@ -20,8 +20,6 @@ func get_user_name_by_id(id : int):
 		return result["user_name"]
 	return null
 
-func recipe_is_favorites(user_id, recipe_id):
-	pass
 
 func get_user_created_recipes(id: int):
 	var statement = """Select * from recipes where user_id = '%s';""" % [id]
@@ -29,4 +27,6 @@ func get_user_created_recipes(id: int):
 	return result
 
 func get_user_favorite_recipes(id : int):
-	pass
+	var statement = """Select recipe_id from user_favorites where user_id = %s""" % [id]
+	var results = Database.query_online(statement)
+	return results

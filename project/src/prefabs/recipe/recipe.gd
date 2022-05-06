@@ -7,12 +7,13 @@ onready var favorite_animator = $Favorite/Animator
 var mode : String = "offline"
 var recipe_id = -1
 var user_name : String = ""
-
-
-
 var pressed : bool = false
 var start_position : = Vector2(0,0)
 
+var data = {}
+
+func _ready():
+	load_recipe(data)
 
 func load_recipe(data : Dictionary):
 	if data.has("recipe_id"):
@@ -20,8 +21,14 @@ func load_recipe(data : Dictionary):
 		user.text = "Made by " + str(Users.get_user_name_by_id(data.user_id))
 	if data.has("recipe_name"):
 		title.text = data["recipe_name"]
-	if data.has("recipe_image"):
+	if data.has("recipe_image") and data.recipe_image:
 		$Image.texture = load("res://assets/images/%s" % [data.recipe_image])
+	if Global.favorited_recipes.has(data.recipe_id):
+		$Favorite/Button.set_pressed_no_signal(true)
+		favorite_animator.play("press")
+	else:
+		favorite_animator.play("unpress")
+		$Favorite/Button.set_pressed_no_signal(false)
 	pass
 
 func get_recipe_name():
@@ -62,3 +69,13 @@ func _on_Favorite_toggled(button_pressed):
 
 func _on_Recipe_visibility_changed():
 	pressed = false
+
+
+func _on_Favorite_Button_toggled(button_pressed):
+	if button_pressed:
+		Recipe.add_favorite_recipe(recipe_id)
+		favorite_animator.play("press")
+		
+	else:
+		Recipe.remove_favorite_recipe(recipe_id)
+		favorite_animator.play("unpress")

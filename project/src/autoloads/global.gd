@@ -7,20 +7,7 @@ var current_id = 0
 var current_password = "" 
  
 var current_user = {}
-var current_recipe = ""
-var current_ui_button = null
-
-var data_template = {
-"recipe_id" : -1,
-"recipe_name" : "",
-"creator_id" : 1,
-"recipe_description" : "",
-"tags" : [],
-"instructions" : [],
-}
-
-var data = {}
-
+var favorited_recipes = []
 const SQLite = preload("res://addons/godot-sqlite/bin/gdsqlite.gdns")
 onready var db = SQLite.new()
 var db_name = "database.db"
@@ -34,9 +21,6 @@ func query_single(statement : String):
 	if db.query_result.size() > 0:
 		return db.query_result[0]
 	return null
-
-func get_data_template():
-	return data_template.duplicate()
 
 func print_message(message : String, pos : Vector2):
 	var message_instance = message_loaded.instance()

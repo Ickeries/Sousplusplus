@@ -71,9 +71,9 @@ wait_time = 0.4
 one_shot = true
 
 [node name="SearchList" type="ScrollContainer" parent="."]
-margin_left = 3.0
+margin_left = 26.0
 margin_top = 384.0
-margin_right = 1075.0
+margin_right = 1066.0
 margin_bottom = 1710.0
 rect_min_size = Vector2( 0, 680 )
 custom_styles/bg = SubResource( 1 )

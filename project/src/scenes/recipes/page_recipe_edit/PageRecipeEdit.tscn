@@ -87,10 +87,10 @@ text = "Press here to add image."
 align = 1
 
 [node name="Images" type="TextureButton" parent="SubPages/First"]
-margin_left = 85.0
+margin_left = 21.0
 margin_top = 547.0
-margin_right = 1000.0
-margin_bottom = 1243.0
+margin_right = 1057.0
+margin_bottom = 1247.0
 texture_normal = ExtResource( 11 )
 expand = true
 stretch_mode = 6
@@ -109,7 +109,7 @@ script = ExtResource( 9 )
 
 [node name="Vertical" type="VBoxContainer" parent="SubPages/Second/Scroll"]
 margin_right = 1080.0
-margin_bottom = 1204.0
+margin_bottom = 1040.0
 custom_constants/separation = 128
 
 [node name="Control" type="Control" parent="SubPages/Second/Scroll/Vertical"]
@@ -147,53 +147,34 @@ rect_min_size = Vector2( 800, 80 )
 skin_width = 10.0
 
 [node name="Text" parent="SubPages/Second/Scroll/Vertical/Description/Vertical/DescriptionText" index="0"]
+custom_fonts/font = ExtResource( 5 )
 text = "Enter description here"
 
 [node name="Tags" type="CenterContainer" parent="SubPages/Second/Scroll/Vertical"]
 margin_top = 640.0
 margin_right = 1080.0
-margin_bottom = 1204.0
+margin_bottom = 1040.0
 rect_min_size = Vector2( 1080, 0 )
 
 [node name="Vertical" type="VBoxContainer" parent="SubPages/Second/Scroll/Vertical/Tags"]
 margin_left = 272.0
 margin_right = 808.0
-margin_bottom = 564.0
+margin_bottom = 400.0
 custom_constants/separation = 32
 
-[node name="EnterTagsLabel" type="Label" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical"]
+[node name="TagLabel" type="Label" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical"]
 margin_right = 536.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 200, 100 )
 custom_fonts/font = ExtResource( 5 )
-text = "Enabled Tags"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EnabledList" type="GridContainer" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical"]
-margin_top = 132.0
-margin_right = 536.0
-margin_bottom = 132.0
-custom_constants/vseparation = 32
-custom_constants/hseparation = 32
-columns = 4
-
-[node name="SuggestedTabsLabel" type="Label" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical"]
-margin_top = 164.0
-margin_right = 536.0
-margin_bottom = 264.0
-rect_min_size = Vector2( 200, 100 )
-custom_fonts/font = ExtResource( 5 )
-text = "Suggested Tags"
+text = "Tags"
 align = 1
 valign = 2
 
 [node name="TagSearchBar" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical" instance=ExtResource( 2 )]
-margin_top = 296.0
+margin_top = 132.0
 margin_right = 536.0
-margin_bottom = 424.0
+margin_bottom = 260.0
 
 [node name="Header" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/TagSearchBar/Vertical" index="0"]
 margin_right = 536.0
@@ -203,9 +184,9 @@ text = "Search tags.."
 
 [node name="SuggestedList" type="GridContainer" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical"]
 modulate = Color( 0.654902, 0.654902, 0.654902, 0.572549 )
-margin_top = 456.0
+margin_top = 292.0
 margin_right = 536.0
-margin_bottom = 564.0
+margin_bottom = 400.0
 custom_constants/vseparation = 32
 custom_constants/hseparation = 32
 columns = 4
@@ -305,19 +286,22 @@ align = 1
 margin_top = 122.0
 margin_right = 510.0
 margin_bottom = 244.0
+mouse_filter = 1
 
 [node name="List" type="VBoxContainer" parent="SubPages/Third/Scroll/Center/Vertical/Ingredients/Vertical/Center"]
-margin_left = 227.0
-margin_right = 282.0
+margin_left = 105.0
+margin_right = 405.0
 margin_bottom = 122.0
 
 [node name="IngredientList" type="VBoxContainer" parent="SubPages/Third/Scroll/Center/Vertical/Ingredients/Vertical/Center/List"]
-margin_right = 55.0
+margin_right = 300.0
 
 [node name="AddNewIngredient" type="Button" parent="SubPages/Third/Scroll/Center/Vertical/Ingredients/Vertical/Center/List"]
 margin_top = 4.0
-margin_right = 55.0
+margin_right = 300.0
 margin_bottom = 122.0
+rect_min_size = Vector2( 300, 0 )
+mouse_filter = 1
 custom_colors/font_color = Color( 0.137255, 0.576471, 0.247059, 1 )
 custom_fonts/font = ExtResource( 4 )
 custom_styles/normal = SubResource( 4 )
@@ -348,11 +332,13 @@ margin_bottom = 244.0
 
 [node name="DirectionList" type="VBoxContainer" parent="SubPages/Third/Scroll/Center/Vertical/Directions/Vertical/List"]
 margin_right = 510.0
+custom_constants/separation = 128
 
 [node name="AddNewDirection" type="Button" parent="SubPages/Third/Scroll/Center/Vertical/Directions/Vertical/List"]
 margin_top = 4.0
 margin_right = 510.0
 margin_bottom = 122.0
+mouse_filter = 1
 custom_colors/font_color = Color( 0.137255, 0.576471, 0.247059, 1 )
 custom_fonts/font = ExtResource( 4 )
 custom_styles/normal = SubResource( 4 )
@@ -438,15 +424,11 @@ custom_styles/normal = SubResource( 5 )
 text = "Delete"
 
 [node name="Images" parent="." instance=ExtResource( 7 )]
-visible = false
-margin_left = 30.0
-margin_top = 183.0
-margin_right = 1053.0
-margin_bottom = 1651.0
 
 [connection signal="visibility_changed" from="." to="." method="_on_RecipeEdit_visibility_changed"]
 [connection signal="pressed" from="SubPages/First/Images" to="." method="_on_Images_pressed"]
 [connection signal="search_edited" from="SubPages/Second/Scroll/Vertical/Tags/Vertical/TagSearchBar" to="." method="_on_TagSearchBar_search_edited"]
+[connection signal="gui_input" from="SubPages/Third/Scroll" to="SubPages/Third/Scroll" method="_on_Scroll_gui_input"]
 [connection signal="pressed" from="SubPages/Third/Scroll/Center/Vertical/Ingredients/Vertical/Center/List/AddNewIngredient" to="." method="_on_AddNewIngredient_pressed"]
 [connection signal="pressed" from="SubPages/Third/Scroll/Center/Vertical/Directions/Vertical/List/AddNewDirection" to="." method="_on_AddNewDirection_pressed"]
 [connection signal="pressed" from="Menu/1" to="." method="_on_1_pressed"]

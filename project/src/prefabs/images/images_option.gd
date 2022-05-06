@@ -9,4 +9,5 @@ func set_texture(new_texture):
 	$Image.texture = load(new_texture)
 
 func _on_Button_pressed():
+	$Animator.play("pressed")
 	Events.emit_signal("image_changed", $Image.texture.resource_path)

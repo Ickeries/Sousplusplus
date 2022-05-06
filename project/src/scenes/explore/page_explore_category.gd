@@ -16,7 +16,7 @@ func add_recipes(recipes):
 	for recipe in recipes:
 		var recipe_instance = recipe_loaded.instance()
 		recipe_instance.mode = mode
-		recipe_instance.call_deferred("load_recipe", recipe)
+		recipe_instance.data = recipe
 		$Grid.add_child(recipe_instance)
 
 

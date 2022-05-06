@@ -28,21 +28,21 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="."]
 margin_right = 1037.0
-margin_bottom = 71.0
+margin_bottom = 60.0
 custom_fonts/font = ExtResource( 2 )
 text = "1"
 align = 1
 
 [node name="Center" type="CenterContainer" parent="."]
-margin_top = 79.0
+margin_top = 68.0
 margin_right = 1037.0
-margin_bottom = 594.0
+margin_bottom = 443.0
 mouse_filter = 2
 
 [node name="Text" type="Label" parent="Center"]
 margin_left = 243.0
 margin_right = 793.0
-margin_bottom = 515.0
+margin_bottom = 375.0
 rect_min_size = Vector2( 550, 50 )
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 1 )

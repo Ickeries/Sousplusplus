@@ -23,17 +23,19 @@ var mode = "offline"
 
 func _ready():
 	Events.connect("set_recipe", self, "load_recipe")
-	Events.connect("image_changed", self, "on_image_changed")
+	Events.connect("image_confirmed", self, "on_image_confirmed")
 
 func _physics_process(delta):
 	$SubPages.rect_position = lerp($SubPages.rect_position, to_position, delta * 5.0)
 
 func reset():
+	to_position = Vector2(-1080,0) * 0
 	recipe_id = -1
 	update_ingredients([])
 	update_directions([])
 	recipe_name_text.set_text("")
 	recipe_description_text.set_text("")
+	image.texture_normal = null
 
 func load_recipe(recipe : Control):
 	var recipe_data = {}
@@ -81,7 +83,7 @@ func update_directions(directions):
 	
 	for direction in directions:
 		var direction_instance = direction_loaded.instance()
-		direction_instance.call_deferred("load_direction", direction)
+		direction_instance.data = direction
 		direction_list.add_child(direction_instance)
 
 func get_data():
@@ -135,7 +137,7 @@ func _on_TagSearchBar_search_edited(text):
 func _on_Images_pressed():
 	$Images.popup()
 
-func on_image_changed(image_path):
+func on_image_confirmed(image_path):
 	image.texture_normal = load(image_path)
 	$Images.hide()
 
@@ -176,3 +178,7 @@ func _on_Delete_pressed():
 		Recipe.delete_recipe(recipe_id)
 	reset()
 	Events.emit_signal("return_to_previous_page", "fade_to_black")
+
+
+func _on_Scroll_gui_input(event):
+	pass # Replace with function body.

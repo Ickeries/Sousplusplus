@@ -23,6 +23,7 @@ __meta__ = {
 [node name="Horizontal" type="HBoxContainer" parent="."]
 margin_right = 1077.0
 margin_bottom = 124.0
+mouse_filter = 2
 
 [node name="Index" type="Label" parent="Horizontal"]
 margin_top = 3.0
@@ -33,14 +34,16 @@ text = "1"
 
 [node name="Center" type="CenterContainer" parent="Horizontal"]
 margin_left = 61.0
-margin_right = 1011.0
+margin_right = 961.0
 margin_bottom = 124.0
+mouse_filter = 2
 
 [node name="Text" type="TextEdit" parent="Horizontal/Center"]
-margin_top = 19.0
-margin_right = 950.0
-margin_bottom = 104.0
-rect_min_size = Vector2( 950, 85 )
+margin_top = 17.0
+margin_right = 900.0
+margin_bottom = 107.0
+rect_min_size = Vector2( 900, 90 )
+mouse_filter = 1
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 3 )
 text = "asdfasfasf"
@@ -55,4 +58,13 @@ margin_top = -5.0
 margin_bottom = -1.0
 custom_styles/panel = SubResource( 2 )
 
+[node name="Remove" type="Button" parent="Horizontal"]
+margin_left = 965.0
+margin_right = 1041.0
+margin_bottom = 124.0
+mouse_filter = 1
+custom_fonts/font = ExtResource( 3 )
+text = "X"
+
 [connection signal="text_changed" from="Horizontal/Center/Text" to="." method="_on_Text_text_changed"]
+[connection signal="pressed" from="Horizontal/Remove" to="." method="_on_Remove_pressed"]
