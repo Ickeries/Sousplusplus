@@ -424,6 +424,7 @@ custom_styles/normal = SubResource( 5 )
 text = "Delete"
 
 [node name="Images" parent="." instance=ExtResource( 7 )]
+visible = false
 
 [connection signal="visibility_changed" from="." to="." method="_on_RecipeEdit_visibility_changed"]
 [connection signal="pressed" from="SubPages/First/Images" to="." method="_on_Images_pressed"]

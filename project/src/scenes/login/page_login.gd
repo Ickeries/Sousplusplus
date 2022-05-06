@@ -7,7 +7,9 @@ func _on_Return_pressed():
 
 func _on_Login_pressed():
 	var user = Users.login_user($Inputs/Username/Line.text, $Inputs/Password/Line.text)
+	print(user)
 	if user:
+		Global.current_id = user.user_id
 		Events.emit_signal("return_to_previous_page", "fade_to_black")
 	else:
 		Global.print_message("Invalid login information!", Vector2(200,200))

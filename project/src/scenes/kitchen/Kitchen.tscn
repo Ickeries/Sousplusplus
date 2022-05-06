@@ -72,6 +72,7 @@ custom_fonts/font = ExtResource( 4 )
 text = "Add New Recipe"
 
 [node name="Login" type="Button" parent="."]
+visible = false
 margin_left = 220.0
 margin_top = 724.0
 margin_right = 873.0

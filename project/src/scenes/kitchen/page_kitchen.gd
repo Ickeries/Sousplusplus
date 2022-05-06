@@ -19,21 +19,14 @@ func _on_Button_pressed():
 func _on_My_Recipes_pressed():
 	for category in recipe_list.get_children():
 		category.queue_free()
-	if Global.current_id != 0:
-		$Login.visible = false
-		var results = Users.get_user_created_recipes(Global.current_id)
-		add_category("Best Results (%s)" % results.size(), results)
-	else:
-		$Login.visible = true
+	$Login.visible = false
+	var results = Users.get_user_created_recipes(Global.current_id)
+	add_category("Best Results (%s)" % results.size(), results)
 
 
 func _on_Kitchen_visibility_changed():
 	_on_My_Recipes_pressed()
 	Events.emit_signal("show_bottom_menu", true)
-	if Global.current_id == 0:
-		$Login.visible = true
-	else:
-		$Login.visible = false
 
 
 func _on_Favorites_pressed():

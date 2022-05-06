@@ -76,3 +76,7 @@ func _on_Fullscreen_pressed():
 
 func _on_Exit_pressed():
 	get_tree().quit()
+
+
+func _on_User_Account_pressed():
+	Events.emit_signal("set_page", "Login")
