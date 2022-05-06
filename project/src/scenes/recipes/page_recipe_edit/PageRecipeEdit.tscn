@@ -1,11 +1,13 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://assets/fonts/font18.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/fonts/recipe_directions_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/prefabs/Searchbar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/scenes/recipes/page_recipe_edit/page_recipe_edit.gd" type="Script" id=3]
 [ext_resource path="res://assets/fonts/font48.tres" type="DynamicFont" id=4]
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=5]
 [ext_resource path="res://src/prefabs/TextBox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/prefabs/images/Images.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/fonts/large_title.tres" type="DynamicFont" id=8]
 [ext_resource path="res://src/ui/ui_scroll.gd" type="Script" id=9]
 [ext_resource path="res://src/scenes/recipes/page_recipe_edit/PageRecipeEditTag.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/images/chicken_nuggets.png" type="Texture" id=11]
@@ -75,6 +77,15 @@ text = "Recipe Name"
 align = 1
 valign = 1
 
+[node name="ImageReminderLabel" type="Label" parent="SubPages/First"]
+margin_left = -15.0
+margin_top = 829.0
+margin_right = 1107.0
+margin_bottom = 947.0
+custom_fonts/font = ExtResource( 8 )
+text = "Press here to add image."
+align = 1
+
 [node name="Images" type="TextureButton" parent="SubPages/First"]
 margin_left = 85.0
 margin_top = 547.0
@@ -98,7 +109,7 @@ script = ExtResource( 9 )
 
 [node name="Vertical" type="VBoxContainer" parent="SubPages/Second/Scroll"]
 margin_right = 1080.0
-margin_bottom = 1232.0
+margin_bottom = 1204.0
 custom_constants/separation = 128
 
 [node name="Control" type="Control" parent="SubPages/Second/Scroll/Vertical"]
@@ -141,17 +152,17 @@ text = "Enter description here"
 [node name="Tags" type="CenterContainer" parent="SubPages/Second/Scroll/Vertical"]
 margin_top = 640.0
 margin_right = 1080.0
-margin_bottom = 1232.0
+margin_bottom = 1204.0
 rect_min_size = Vector2( 1080, 0 )
 
 [node name="Vertical" type="VBoxContainer" parent="SubPages/Second/Scroll/Vertical/Tags"]
-margin_left = 184.0
-margin_right = 896.0
-margin_bottom = 592.0
+margin_left = 272.0
+margin_right = 808.0
+margin_bottom = 564.0
 custom_constants/separation = 32
 
 [node name="EnterTagsLabel" type="Label" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical"]
-margin_right = 712.0
+margin_right = 536.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 200, 100 )
 custom_fonts/font = ExtResource( 5 )
@@ -163,7 +174,7 @@ __meta__ = {
 
 [node name="EnabledList" type="GridContainer" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical"]
 margin_top = 132.0
-margin_right = 712.0
+margin_right = 536.0
 margin_bottom = 132.0
 custom_constants/vseparation = 32
 custom_constants/hseparation = 32
@@ -171,7 +182,7 @@ columns = 4
 
 [node name="SuggestedTabsLabel" type="Label" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical"]
 margin_top = 164.0
-margin_right = 712.0
+margin_right = 536.0
 margin_bottom = 264.0
 rect_min_size = Vector2( 200, 100 )
 custom_fonts/font = ExtResource( 5 )
@@ -181,11 +192,11 @@ valign = 2
 
 [node name="TagSearchBar" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical" instance=ExtResource( 2 )]
 margin_top = 296.0
-margin_right = 712.0
+margin_right = 536.0
 margin_bottom = 424.0
 
 [node name="Header" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/TagSearchBar/Vertical" index="0"]
-margin_right = 712.0
+margin_right = 536.0
 
 [node name="Tip" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/TagSearchBar/Vertical/Header" index="0"]
 text = "Search tags.."
@@ -193,8 +204,8 @@ text = "Search tags.."
 [node name="SuggestedList" type="GridContainer" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical"]
 modulate = Color( 0.654902, 0.654902, 0.654902, 0.572549 )
 margin_top = 456.0
-margin_right = 712.0
-margin_bottom = 592.0
+margin_right = 536.0
+margin_bottom = 564.0
 custom_constants/vseparation = 32
 custom_constants/hseparation = 32
 columns = 4
@@ -202,44 +213,44 @@ columns = 4
 [node name="RecipeTag" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/SuggestedList" instance=ExtResource( 10 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 154.0
-margin_bottom = 52.0
+margin_right = 110.0
+margin_bottom = 38.0
 
 [node name="RecipeTag2" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/SuggestedList" instance=ExtResource( 10 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 186.0
-margin_right = 340.0
-margin_bottom = 52.0
+margin_left = 142.0
+margin_right = 252.0
+margin_bottom = 38.0
 
 [node name="RecipeTag3" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/SuggestedList" instance=ExtResource( 10 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 372.0
-margin_right = 526.0
-margin_bottom = 52.0
+margin_left = 284.0
+margin_right = 394.0
+margin_bottom = 38.0
 
 [node name="RecipeTag4" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/SuggestedList" instance=ExtResource( 10 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 558.0
-margin_right = 712.0
-margin_bottom = 52.0
+margin_left = 426.0
+margin_right = 536.0
+margin_bottom = 38.0
 
 [node name="RecipeTag5" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/SuggestedList" instance=ExtResource( 10 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 84.0
-margin_right = 154.0
-margin_bottom = 136.0
+margin_top = 70.0
+margin_right = 110.0
+margin_bottom = 108.0
 
 [node name="RecipeTag6" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/SuggestedList" instance=ExtResource( 10 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 186.0
-margin_top = 84.0
-margin_right = 340.0
-margin_bottom = 136.0
+margin_left = 142.0
+margin_top = 70.0
+margin_right = 252.0
+margin_bottom = 108.0
 
 [node name="Third" type="Control" parent="SubPages"]
 anchor_right = 1.0
@@ -367,32 +378,32 @@ custom_constants/separation = 64
 alignment = 1
 
 [node name="1" type="Button" parent="Menu"]
-margin_left = 102.0
-margin_right = 252.0
+margin_left = 20.0
+margin_right = 170.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
 custom_fonts/font = ExtResource( 1 )
 text = "Title"
 
 [node name="2" type="Button" parent="Menu"]
-margin_left = 316.0
-margin_right = 467.0
+margin_left = 234.0
+margin_right = 447.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
 custom_fonts/font = ExtResource( 1 )
 text = "Details"
 
 [node name="3" type="Button" parent="Menu"]
-margin_left = 531.0
-margin_right = 747.0
+margin_left = 511.0
+margin_right = 820.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
 custom_fonts/font = ExtResource( 1 )
 text = "Directions"
 
 [node name="Save" type="Button" parent="Menu"]
-margin_left = 811.0
-margin_right = 961.0
+margin_left = 884.0
+margin_right = 1043.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
 custom_fonts/font = ExtResource( 1 )
@@ -425,6 +436,13 @@ margin_bottom = 151.0
 custom_fonts/font = ExtResource( 4 )
 custom_styles/normal = SubResource( 5 )
 text = "Delete"
+
+[node name="Images" parent="." instance=ExtResource( 7 )]
+visible = false
+margin_left = 30.0
+margin_top = 183.0
+margin_right = 1053.0
+margin_bottom = 1651.0
 
 [connection signal="visibility_changed" from="." to="." method="_on_RecipeEdit_visibility_changed"]
 [connection signal="pressed" from="SubPages/First/Images" to="." method="_on_Images_pressed"]

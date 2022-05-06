@@ -12,13 +12,14 @@ extends Node
 signal set_page(page_name, transition_animation, remember_previous_page)
 signal return_to_previous_page(transition_animation)
 
-
+signal image_changed (image_path)
 # Set the visibility of the menu bar.
 signal show_bottom_menu(value)
 signal darken_screen(value)
 
 signal set_recipe(recipe_data)
-
+signal loading_started()
+signal loading_finished()
 # Scrolls any scroll boxes
 signal scroll(vec)
 

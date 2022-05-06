@@ -52,6 +52,7 @@ func on_set_page(page_name : String, transition_animation="immediate", remember_
 func on_return_to_previous_page(transition_animation="immediate"):
 	transition.play(transition_animation) if transition.has_animation(transition_animation) else transition.play("immediate")
 	yield(transition, "animation_finished")
+	Events.emit_signal("loading_started")
 	set_previous_page()
 	transition.play_backwards(transition_animation) if transition.has_animation(transition_animation) else transition.play_backwards("immediate")
 

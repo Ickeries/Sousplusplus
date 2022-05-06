@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/scenes/recipes/page_recipe_edit/page_recipe_edit_direction.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/font18.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/recipe_directions_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/fonts/font48.tres" type="DynamicFont" id=3]
 
 [sub_resource type="StyleBoxEmpty" id=3]
@@ -17,7 +17,6 @@ margin_bottom = 0.199989
 rect_min_size = Vector2( 1077, 118 )
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_use_anchors_": false,
 "_editor_description_": ""
 }
 
@@ -38,23 +37,22 @@ margin_right = 1011.0
 margin_bottom = 124.0
 
 [node name="Text" type="TextEdit" parent="Horizontal/Center"]
-margin_top = 27.0
+margin_top = 19.0
 margin_right = 950.0
-margin_bottom = 97.0
-rect_min_size = Vector2( 950, 70 )
+margin_bottom = 104.0
+rect_min_size = Vector2( 950, 85 )
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 3 )
+text = "asdfasfasf"
 wrap_enabled = true
 caret_blink = true
 
 [node name="Panel" type="Panel" parent="Horizontal/Center/Text"]
-anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -478.0
-margin_top = -6.0
-margin_right = 478.0
+margin_top = -5.0
+margin_bottom = -1.0
 custom_styles/panel = SubResource( 2 )
 
 [connection signal="text_changed" from="Horizontal/Center/Text" to="." method="_on_Text_text_changed"]

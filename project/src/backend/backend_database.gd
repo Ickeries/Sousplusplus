@@ -28,6 +28,7 @@ func _ready():
 func _physics_process(delta):
 	database_online.poll()
 
+
 func query_single(statement : String):
 	database_offline.query(statement)
 	if database_offline.query_result.size() > 0:

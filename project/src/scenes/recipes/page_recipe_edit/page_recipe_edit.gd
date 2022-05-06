@@ -11,6 +11,8 @@ onready var direction_list = $SubPages/Third/Scroll/Center/Vertical/Directions/V
 onready var add_new_ingredient_button = $SubPages/Third/Scroll/Center/Vertical/Ingredients/Vertical/Center/List/AddNewIngredient
 onready var add_new_direction_button = $SubPages/Third/Scroll/Center/Vertical/Ingredients/Vertical/Center/List/AddNewIngredient
 
+onready var image = $SubPages/First/Images
+
 var direction_loaded = preload("res://src/scenes/recipes/page_recipe_edit/PageRecipeEditDirection.tscn")
 var ingredient_loaded = preload("res://src/scenes/recipes/page_recipe_edit/PageRecipeEditIngredient.tscn")
 var tag_loaded = preload("res://src/scenes/recipes/page_recipe_edit/PageRecipeEditTag.tscn")
@@ -21,6 +23,7 @@ var mode = "offline"
 
 func _ready():
 	Events.connect("set_recipe", self, "load_recipe")
+	Events.connect("image_changed", self, "on_image_changed")
 
 func _physics_process(delta):
 	$SubPages.rect_position = lerp($SubPages.rect_position, to_position, delta * 5.0)
@@ -50,6 +53,9 @@ func load_recipe(recipe : Control):
 		update_ingredients(recipe_data["ingredients"])
 	if recipe_data.has("directions"):
 		update_directions(recipe_data["directions"])
+	
+	if recipe_data.has("recipe_image"):
+		image.texture_normal = load("res://assets/images/%s" % [recipe_data.recipe_image])
 
 
 func save_recipe():
@@ -83,6 +89,7 @@ func get_data():
 	data["recipe_id"] = recipe_id
 	data["recipe_name"] = get_recipe_name()
 	data["recipe_description"] = get_description()
+	data["recipe_image"] = get_image()
 	data["user_id"] = Global.current_id
 	data["ingredients"] = get_ingredients()
 	data["directions"] = get_directions()
@@ -93,6 +100,9 @@ func get_recipe_name():
 
 func get_description():
 	return recipe_description_text.get_text()
+
+func get_image():
+	return image.texture_normal.resource_path.trim_prefix("res://assets/images/")
 
 func get_ingredients():
 	var ingredients = []
@@ -123,8 +133,11 @@ func _on_TagSearchBar_search_edited(text):
 
 
 func _on_Images_pressed():
-	pass 
+	$Images.popup()
 
+func on_image_changed(image_path):
+	image.texture_normal = load(image_path)
+	$Images.hide()
 
 
 # Signals

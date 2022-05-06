@@ -20,6 +20,8 @@ func load_recipe(data : Dictionary):
 		user.text = "Made by " + str(Users.get_user_name_by_id(data.user_id))
 	if data.has("recipe_name"):
 		title.text = data["recipe_name"]
+	if data.has("recipe_image"):
+		$Image.texture = load("res://assets/images/%s" % [data.recipe_image])
 	pass
 
 func get_recipe_name():
@@ -27,7 +29,6 @@ func get_recipe_name():
 
 func get_user_name():
 	return user_name
-
 
 func _on_Favorite_pressed(event):
 	favorite_animator.play("press")
@@ -43,8 +44,8 @@ func _on_Recipe_gui_input(event):
 			else:
 				pressed = false
 				if event.position.distance_to(start_position) < 10.0:
+					Events.emit_signal("set_page", "RecipeEdit", "fade_to_black")
 					Events.emit_signal("set_recipe", self)
-					Events.emit_signal("set_page", "RecipeEdit")
 	
 	if event is InputEventMouseMotion:
 		if pressed:
@@ -57,3 +58,7 @@ func _on_Favorite_toggled(button_pressed):
 	else:
 		Recipe.remove_favorite_recipe(recipe_id)	
 	favorite_animator.play("press")
+
+
+func _on_Recipe_visibility_changed():
+	pressed = false

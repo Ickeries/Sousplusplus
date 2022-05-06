@@ -16,9 +16,9 @@ mouse_filter = 2
 script = ExtResource( 3 )
 
 [node name="Categories" type="HBoxContainer" parent="."]
-margin_top = 459.0
+margin_top = 145.0
 margin_right = 1080.0
-margin_bottom = 536.0
+margin_bottom = 222.0
 rect_min_size = Vector2( 1080, 0 )
 custom_constants/separation = 32
 alignment = 1
@@ -46,9 +46,9 @@ custom_styles/focus = SubResource( 1 )
 text = "My Recipes"
 
 [node name="Scroll" type="ScrollContainer" parent="."]
-margin_top = 545.0
+margin_top = 246.0
 margin_right = 1080.0
-margin_bottom = 1761.0
+margin_bottom = 1741.0
 scroll_horizontal_enabled = false
 script = ExtResource( 1 )
 
