@@ -3,7 +3,8 @@ extends Node
 
 # Online 
 func search_recipes_online(text : String):
-	var statement = """Select * from recipes where recipe_name like '%c%s%c';""" % ["%",text, "%"]
+	text = text.to_lower()
+	var statement = """Select * from recipes where LOWER(recipe_name) like '%c%s%c';""" % ["%",text, "%"]
 	return Database.query_online(statement)
 
 func search_recipes_by_user_id(id : int):
