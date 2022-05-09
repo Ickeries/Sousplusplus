@@ -2,19 +2,6 @@ extends Node
 
 # Returns all data of a recipe. including ingredients and instructions
 
-func get_recipe_data_offline(id : int):
-	# Obtain main recipe data
-	var query = """ Select * from recipes as a inner join users as b on a.user_id = b.user_id where recipe_id = %s;""" % [id]
-	var results = Database.query_single(query)
-	if results:
-		# Obtain recipe ingredient data
-		results["ingredients"] = Database.query(""" Select * from recipe_ingredients where recipe_id = %s;""" % [id])
-		#Obtain recipe directions
-		results["directions"] = Database.query(""" Select * from recipes_directions where recipe_id = %s;""" % [id])
-		#Obtain recipe tags
-		results["tags"] = Database.query("""Select * from recipe_tags where recipe_id = %s;""" % [id])
-	return results
-
 
 func get_recipe_data_online(id : int):
 	# Obtain main recipe data
@@ -26,7 +13,7 @@ func get_recipe_data_online(id : int):
 		#Obtain recipe directions
 		results["directions"] = Database.query_online(""" Select * from recipe_directions where recipe_id = %s;""" % [id])
 		#Obtain recipe tags
-		results["tags"] = Database.query_online("""Select * from recipe_tags where recipe_id = %s;""" % [id])
+		results["tags"] = Database.query_online("""Select tag_id, tag_name from recipe_tags where recipe_id = %s;""" % [id])
 	return results
 
 
@@ -41,6 +28,10 @@ func save_new_recipe_online(recipe):
 		
 		for direction in recipe.directions:
 			var statement2 = """Insert into recipe_directions (recipe_id, text, step) values (%s, '%s', %s) """ % [recipe_id, direction.text, direction.step] 
+			Database.query_online(statement2)
+		
+		for tag in recipe.tags:
+			var statement2 = """Insert into recipe_tags (recipe_id, tag_id, tag_name) values (%s, %s, '%s') """ % [recipe.recipe_id, tag.tag_id, tag.tag_name] 
 			Database.query_online(statement2)
 
 
@@ -60,6 +51,12 @@ func save_recipe_online(recipe):
 	for direction in recipe.directions:
 		var statement2 = """Insert into recipe_directions (recipe_id, text, step) values (%s, '%s', %s) """ % [recipe.recipe_id, direction.text, direction.step] 
 		Database.query_online(statement2)
+	
+	statement = """Delete from recipe_tags where recipe_id = %s;""" % [recipe.recipe_id]
+	Database.query_online(statement)
+	for tag in recipe.tags:
+		var statement2 = """Insert into recipe_tags (recipe_id, tag_id, tag_name) values (%s, %s, '%s') """ % [recipe.recipe_id, tag.tag_id, tag.tag_name] 
+		Database.query_online(statement2)
 
 func delete_recipe(id : int):
 	var statement = """Delete from recipes where recipe_id = %s""" % [id]
@@ -77,11 +74,21 @@ func delete_recipe(id : int):
 	statement = """Delete from recipe_tags where recipe_id = %s""" % [id]
 	Database.query_online(statement)
 
+func add_new_tag(tag_name):
+	var statement = """Select * from tags where tag_name = '%s'""" % [tag_name]
+	var result1 = Database.query_online_single(statement)
+	if result1:
+		return result1
+	
+	statement = """Insert into tags (tag_name) values ('%s') returning tag_id, tag_name """ % [tag_name]
+	var result2 = Database.query_online_single(statement)
+	return result2
+
 func get_recipe_tags_by_id(id : int):
 	var list = []
-	var results = Database.query("""Select tag_name from recipe_tags where recipe_id = %s;""" % [id])
+	var results = Database.query("""Select tag_id from recipe_tags where recipe_id = %s;""" % [id])
 	for result in results:
-		list.push_back(result["tag_name"])
+		list.push_back(result["tag_id"])
 	return list
 
 func get_favorited_recipes():

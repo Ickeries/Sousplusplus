@@ -3,8 +3,7 @@ extends Control
 # Nodes
 onready var recipe_name_text = $SubPages/First/RecipeNameText
 onready var recipe_description_text = $SubPages/Second/Scroll/Vertical/Description/Vertical/DescriptionText
-onready var tag_suggested_list = $SubPages/Second/Scroll/Vertical/Tags/Vertical/SuggestedList/
-onready var tag_enabled_list = $SubPages/Second/Scroll/Vertical/Tags/Vertical/EnabledList/
+onready var tag_list = $SubPages/Second/Scroll/Vertical/Tags/Vertical/SuggestedList/
 onready var ingredient_list = $SubPages/Third/Scroll/Center/Vertical/Ingredients/Vertical/Center/List/IngredientList
 onready var direction_list = $SubPages/Third/Scroll/Center/Vertical/Directions/Vertical/List/DirectionList
 
@@ -16,9 +15,12 @@ onready var image = $SubPages/First/Images
 var direction_loaded = preload("res://src/scenes/recipes/page_recipe_edit/PageRecipeEditDirection.tscn")
 var ingredient_loaded = preload("res://src/scenes/recipes/page_recipe_edit/PageRecipeEditIngredient.tscn")
 var tag_loaded = preload("res://src/scenes/recipes/page_recipe_edit/PageRecipeEditTag.tscn")
+
+
 var to_position : = Vector2(0,0)
 
 var recipe_id : int = -1
+var tags = []
 var mode = "offline"
 
 func _ready():
@@ -41,9 +43,7 @@ func load_recipe(recipe : Control):
 	var recipe_data = {}
 	recipe_id = recipe.recipe_id
 	mode = recipe.mode
-	if mode == "offline":
-		recipe_data = Recipe.get_recipe_data_offline(recipe.recipe_id)
-	elif mode == "online":
+	if mode == "online":
 		recipe_data = Recipe.get_recipe_data_online(recipe.recipe_id)
 	if recipe_data.has("recipe_name"):
 		recipe_name_text.set_text( recipe_data["recipe_name"] )
@@ -58,6 +58,8 @@ func load_recipe(recipe : Control):
 	
 	if recipe_data.has("recipe_image"):
 		image.texture_normal = load("res://assets/images/%s" % [recipe_data.recipe_image])
+	
+	update_tags(recipe_data["tags"])
 
 
 func save_recipe():
@@ -86,6 +88,30 @@ func update_directions(directions):
 		direction_instance.data = direction
 		direction_list.add_child(direction_instance)
 
+func update_tags(tags):
+	for child in tag_list.get_children():
+		child.queue_free()
+	
+	for tag_data in tags:
+		var tag_instance = tag_loaded.instance()
+		tag_instance.data = tag_data
+		tag_list.add_child(tag_instance)
+		tag_instance.enabled = true
+	
+	
+	var random_tags = Search.search_random_tags(10)
+	for tag_data in random_tags:
+		var already_has : bool = false
+		for tag in tags:
+			if tag.hash() == tag_data.hash():
+				already_has = true
+				continue
+		if already_has:
+			continue
+		var tag_instance = tag_loaded.instance()
+		tag_instance.data = tag_data
+		tag_list.add_child(tag_instance)
+
 func get_data():
 	var data = {}
 	data["recipe_id"] = recipe_id
@@ -95,6 +121,7 @@ func get_data():
 	data["user_id"] = Global.current_id
 	data["ingredients"] = get_ingredients()
 	data["directions"] = get_directions()
+	data["tags"] = get_tags()
 	return data
 
 func get_recipe_name():
@@ -120,6 +147,14 @@ func get_directions():
 		directions.push_back(data)
 	return directions
 
+func get_tags():
+	var tags = []
+	for tag in tag_list.get_children():
+		if tag.is_pressed():
+			var data = tag.get_data()
+			tags.push_back(data)
+	return tags
+
 # Add a new ingredient to the list.
 func _on_AddNewIngredient_pressed():
 	var ingredient_instance = ingredient_loaded.instance()
@@ -129,9 +164,6 @@ func _on_AddNewDirection_pressed():
 	var direction_instance = direction_loaded.instance()
 	direction_list.add_child(direction_instance)
 
-# Updates the grid of suggested tags.
-func _on_TagSearchBar_search_edited(text):
-	pass 
 
 
 func _on_Images_pressed():
@@ -182,3 +214,29 @@ func _on_Delete_pressed():
 
 func _on_Scroll_gui_input(event):
 	pass # Replace with function body.
+
+onready var tag_search_bar = $SubPages/Second/Scroll/Vertical/Tags/Vertical/TagSearchBar
+
+func _on_CreateNewTag_pressed():
+	var tag_name = tag_search_bar.get_text()
+	var tag_data = Recipe.add_new_tag(tag_name)
+	if tag_data:
+		var tag_instance = tag_loaded.instance()
+		tag_list.add_child(tag_instance)
+		tag_instance.data = tag_data
+		tag_instance.enabled = true
+		
+		tag_search_bar.set_text("")
+
+# Updates the grid of suggested tags.
+func _on_TagSearchBar_search_edited(text):
+	for child in tag_list.get_children():
+		if child.is_pressed():
+			continue
+		child.queue_free()
+	
+	var searched_tags = Search.search_tags(text)
+	for tag_data in searched_tags:
+		var tag_instance = tag_loaded.instance()
+		tag_instance.data = tag_data
+		tag_list.add_child(tag_instance)

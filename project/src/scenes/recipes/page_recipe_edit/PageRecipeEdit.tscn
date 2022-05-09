@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/fonts/recipe_directions_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/prefabs/Searchbar.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://src/ui/ui_scroll.gd" type="Script" id=9]
 [ext_resource path="res://src/scenes/recipes/page_recipe_edit/PageRecipeEditTag.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/images/chicken_nuggets.png" type="Texture" id=11]
+[ext_resource path="res://assets/fonts/font18.tres" type="DynamicFont" id=12]
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
@@ -109,7 +110,7 @@ script = ExtResource( 9 )
 
 [node name="Vertical" type="VBoxContainer" parent="SubPages/Second/Scroll"]
 margin_right = 1080.0
-margin_bottom = 1040.0
+margin_bottom = 1072.0
 custom_constants/separation = 128
 
 [node name="Control" type="Control" parent="SubPages/Second/Scroll/Vertical"]
@@ -153,17 +154,17 @@ text = "Enter description here"
 [node name="Tags" type="CenterContainer" parent="SubPages/Second/Scroll/Vertical"]
 margin_top = 640.0
 margin_right = 1080.0
-margin_bottom = 1040.0
+margin_bottom = 1072.0
 rect_min_size = Vector2( 1080, 0 )
 
 [node name="Vertical" type="VBoxContainer" parent="SubPages/Second/Scroll/Vertical/Tags"]
-margin_left = 272.0
-margin_right = 808.0
-margin_bottom = 400.0
+margin_left = 224.0
+margin_right = 856.0
+margin_bottom = 432.0
 custom_constants/separation = 32
 
 [node name="TagLabel" type="Label" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical"]
-margin_right = 536.0
+margin_right = 632.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 200, 100 )
 custom_fonts/font = ExtResource( 5 )
@@ -173,22 +174,29 @@ valign = 2
 
 [node name="TagSearchBar" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical" instance=ExtResource( 2 )]
 margin_top = 132.0
-margin_right = 536.0
+margin_right = 632.0
 margin_bottom = 260.0
 
 [node name="Header" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/TagSearchBar/Vertical" index="0"]
-margin_right = 536.0
+margin_right = 632.0
 
 [node name="Tip" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/TagSearchBar/Vertical/Header" index="0"]
 text = "Search tags.."
 
+[node name="CreateNewTag" type="Button" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/TagSearchBar"]
+margin_left = 620.0
+margin_top = 42.0
+margin_right = 727.0
+margin_bottom = 86.0
+custom_fonts/font = ExtResource( 12 )
+text = "Create"
+
 [node name="SuggestedList" type="GridContainer" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical"]
-modulate = Color( 0.654902, 0.654902, 0.654902, 0.572549 )
 margin_top = 292.0
-margin_right = 536.0
-margin_bottom = 400.0
-custom_constants/vseparation = 32
-custom_constants/hseparation = 32
+margin_right = 632.0
+margin_bottom = 432.0
+custom_constants/vseparation = 64
+custom_constants/hseparation = 64
 columns = 4
 
 [node name="RecipeTag" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/SuggestedList" instance=ExtResource( 10 )]
@@ -200,38 +208,38 @@ margin_bottom = 38.0
 [node name="RecipeTag2" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/SuggestedList" instance=ExtResource( 10 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 142.0
-margin_right = 252.0
+margin_left = 174.0
+margin_right = 284.0
 margin_bottom = 38.0
 
 [node name="RecipeTag3" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/SuggestedList" instance=ExtResource( 10 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 284.0
-margin_right = 394.0
+margin_left = 348.0
+margin_right = 458.0
 margin_bottom = 38.0
 
 [node name="RecipeTag4" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/SuggestedList" instance=ExtResource( 10 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 426.0
-margin_right = 536.0
+margin_left = 522.0
+margin_right = 632.0
 margin_bottom = 38.0
 
 [node name="RecipeTag5" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/SuggestedList" instance=ExtResource( 10 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 70.0
+margin_top = 102.0
 margin_right = 110.0
-margin_bottom = 108.0
+margin_bottom = 140.0
 
 [node name="RecipeTag6" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/SuggestedList" instance=ExtResource( 10 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 142.0
-margin_top = 70.0
-margin_right = 252.0
-margin_bottom = 108.0
+margin_left = 174.0
+margin_top = 102.0
+margin_right = 284.0
+margin_bottom = 140.0
 
 [node name="Third" type="Control" parent="SubPages"]
 anchor_right = 1.0
@@ -429,6 +437,7 @@ visible = false
 [connection signal="visibility_changed" from="." to="." method="_on_RecipeEdit_visibility_changed"]
 [connection signal="pressed" from="SubPages/First/Images" to="." method="_on_Images_pressed"]
 [connection signal="search_edited" from="SubPages/Second/Scroll/Vertical/Tags/Vertical/TagSearchBar" to="." method="_on_TagSearchBar_search_edited"]
+[connection signal="pressed" from="SubPages/Second/Scroll/Vertical/Tags/Vertical/TagSearchBar/CreateNewTag" to="." method="_on_CreateNewTag_pressed"]
 [connection signal="gui_input" from="SubPages/Third/Scroll" to="SubPages/Third/Scroll" method="_on_Scroll_gui_input"]
 [connection signal="pressed" from="SubPages/Third/Scroll/Center/Vertical/Ingredients/Vertical/Center/List/AddNewIngredient" to="." method="_on_AddNewIngredient_pressed"]
 [connection signal="pressed" from="SubPages/Third/Scroll/Center/Vertical/Directions/Vertical/List/AddNewDirection" to="." method="_on_AddNewDirection_pressed"]

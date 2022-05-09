@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/fonts/font18.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/scenes/recipes/page_recipe_edit/page_recipe_edit_tag.gd" type="Script" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.180392, 0.180392, 0.180392, 1 )
@@ -13,12 +14,97 @@ expand_margin_right = 8.0
 expand_margin_top = 8.0
 expand_margin_bottom = 8.0
 
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "pressed"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.396078 ), Color( 0.466667, 0.952941, 0.266667, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "unpressed"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.466667, 0.952941, 0.266667, 1 ), Color( 1, 1, 1, 0.415686 ) ]
+}
+
 [node name="RecipeTag" type="Label"]
 anchor_right = 0.125
 anchor_bottom = 0.028
 margin_bottom = -0.760002
+rect_pivot_offset = Vector2( 67, 28 )
 custom_fonts/font = ExtResource( 1 )
 text = "Dessert"
+align = 1
+valign = 1
+script = ExtResource( 2 )
 
 [node name="Panel" type="Panel" parent="."]
 show_behind_parent = true
@@ -29,4 +115,13 @@ custom_styles/panel = SubResource( 1 )
 [node name="Button" type="Button" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+toggle_mode = true
 flat = true
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+autoplay = "unpressed"
+anims/RESET = SubResource( 2 )
+anims/pressed = SubResource( 3 )
+anims/unpressed = SubResource( 4 )
+
+[connection signal="toggled" from="Button" to="." method="_on_Button_toggled"]

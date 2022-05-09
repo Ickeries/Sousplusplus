@@ -14,6 +14,13 @@ func search_user_favorite_recipes(id : int):
 	var statement = """Select * from recipes as a where exists (Select * from user_favorites as b where b.user_id = %s and a.recipe_id = b.recipe_id);""" % [id]
 	return Database.query_online(statement)
 
+func search_random_tags(limit : int):
+	var statement = """ Select * from tags ORDER BY RANDOM() LIMIT %s""" % [limit]
+	return Database.query_online(statement)
+
+func search_tags(tag_name):
+	var statement = """Select * from tags where tag_name like '%c%s%c'""" % ["%", tag_name, "%"]
+	return Database.query_online(statement)
 
 # Offline 
 func search_recipes_offline(text : String):
