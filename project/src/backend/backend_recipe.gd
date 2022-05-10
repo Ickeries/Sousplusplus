@@ -86,7 +86,7 @@ func add_new_tag(tag_name):
 
 func get_recipe_tags_by_id(id : int):
 	var list = []
-	var results = Database.query_online("""Select * tag_name from recipe_tags where recipe_id = %s;""" % [id])
+	var results = Database.query_online("""Select * from recipe_tags where recipe_id = %s;""" % [id])
 	for result in results:
 		list.push_back(result["tag_name"])
 	return list
