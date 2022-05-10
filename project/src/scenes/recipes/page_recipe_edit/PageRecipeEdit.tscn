@@ -158,13 +158,13 @@ margin_bottom = 1072.0
 rect_min_size = Vector2( 1080, 0 )
 
 [node name="Vertical" type="VBoxContainer" parent="SubPages/Second/Scroll/Vertical/Tags"]
-margin_left = 224.0
-margin_right = 856.0
+margin_left = 290.0
+margin_right = 790.0
 margin_bottom = 432.0
 custom_constants/separation = 32
 
 [node name="TagLabel" type="Label" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical"]
-margin_right = 632.0
+margin_right = 500.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 200, 100 )
 custom_fonts/font = ExtResource( 5 )
@@ -174,11 +174,11 @@ valign = 2
 
 [node name="TagSearchBar" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical" instance=ExtResource( 2 )]
 margin_top = 132.0
-margin_right = 632.0
+margin_right = 500.0
 margin_bottom = 260.0
 
 [node name="Header" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/TagSearchBar/Vertical" index="0"]
-margin_right = 632.0
+margin_right = 500.0
 
 [node name="Tip" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/TagSearchBar/Vertical/Header" index="0"]
 text = "Search tags.."
@@ -193,11 +193,11 @@ text = "Create"
 
 [node name="SuggestedList" type="GridContainer" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical"]
 margin_top = 292.0
-margin_right = 632.0
+margin_right = 500.0
 margin_bottom = 432.0
 custom_constants/vseparation = 64
 custom_constants/hseparation = 64
-columns = 4
+columns = 3
 
 [node name="RecipeTag" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/SuggestedList" instance=ExtResource( 10 )]
 anchor_right = 0.0
@@ -222,23 +222,24 @@ margin_bottom = 38.0
 [node name="RecipeTag4" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/SuggestedList" instance=ExtResource( 10 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 522.0
-margin_right = 632.0
-margin_bottom = 38.0
-
-[node name="RecipeTag5" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/SuggestedList" instance=ExtResource( 10 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_top = 102.0
 margin_right = 110.0
 margin_bottom = 140.0
 
-[node name="RecipeTag6" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/SuggestedList" instance=ExtResource( 10 )]
+[node name="RecipeTag5" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/SuggestedList" instance=ExtResource( 10 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 174.0
 margin_top = 102.0
 margin_right = 284.0
+margin_bottom = 140.0
+
+[node name="RecipeTag6" parent="SubPages/Second/Scroll/Vertical/Tags/Vertical/SuggestedList" instance=ExtResource( 10 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 348.0
+margin_top = 102.0
+margin_right = 458.0
 margin_bottom = 140.0
 
 [node name="Third" type="Control" parent="SubPages"]

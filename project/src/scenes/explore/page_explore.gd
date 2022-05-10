@@ -44,10 +44,13 @@ func _on_SearchBar_search_entered(text):
 		var results = Search.search_recipes_online(search_bar.get_text())
 		var results_filtered = filter.filter_recipes(results)
 		add_category("Best Results (%s)" % results_filtered.size(), results_filtered)
-	else:
+	else: 
 		# If no text is being searched
-		pass
-
+		for category in search_list.get_children():
+			category.queue_free()
+		var results = Search.search_random_recipes(10)
+		var results_filtered = filter.filter_recipes(results)
+		add_category("Suggested", results_filtered)
 
 func _on_SearchBar_search_edited(text):
 	for category in search_list.get_children():

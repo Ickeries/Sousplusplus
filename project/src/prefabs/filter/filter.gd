@@ -14,6 +14,8 @@ func filter_recipes(recipes):
 	var options = get_all_enabled_options()
 	for recipe in recipes:
 		var recipe_tags = Recipe.get_recipe_tags_by_id(recipe["recipe_id"])
+		print(options)
+		#if recipe_tag
 		var filtered = false
 		for option in options:
 			if recipe_tags.find(option) == -1:

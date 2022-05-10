@@ -41,53 +41,89 @@ margin_bottom = 1776.0
 
 [node name="Title" type="Label" parent="Vertical"]
 margin_right = 702.0
-margin_bottom = 71.0
+margin_bottom = 60.0
 custom_fonts/font = ExtResource( 3 )
 text = "Filter "
 align = 1
 
 [node name="Scroll" type="ScrollContainer" parent="Vertical"]
-margin_top = 75.0
+margin_top = 64.0
 margin_right = 702.0
-margin_bottom = 1675.0
+margin_bottom = 1664.0
 rect_min_size = Vector2( 0, 1600 )
 script = ExtResource( 1 )
 
 [node name="Center" type="CenterContainer" parent="Vertical/Scroll"]
 margin_right = 702.0
-margin_bottom = 174.0
+margin_bottom = 1532.0
 rect_min_size = Vector2( 702, 0 )
 
 [node name="Vertical" type="VBoxContainer" parent="Vertical/Scroll/Center"]
 margin_left = 88.0
 margin_right = 614.0
-margin_bottom = 174.0
+margin_bottom = 1532.0
 rect_min_size = Vector2( 526, 0 )
 mouse_filter = 2
 
 [node name="Category" parent="Vertical/Scroll/Center/Vertical" instance=ExtResource( 5 )]
 margin_right = 526.0
-margin_bottom = 174.0
-options = [ "vegan" ]
+margin_bottom = 206.0
+title = "Diet"
+options = [ "vegan", "vegetarian" ]
+
+[node name="Category2" parent="Vertical/Scroll/Center/Vertical" instance=ExtResource( 5 )]
+margin_top = 210.0
+margin_right = 526.0
+margin_bottom = 462.0
+title = "Ingredients"
+options = [ "Egg", "Milk Butter", "Lemon Juice" ]
+
+[node name="Category3" parent="Vertical/Scroll/Center/Vertical" instance=ExtResource( 5 )]
+margin_top = 466.0
+margin_right = 526.0
+margin_bottom = 672.0
+title = "Vegetable"
+options = [ "Tomato", "Onion;Minced" ]
+
+[node name="Category4" parent="Vertical/Scroll/Center/Vertical" instance=ExtResource( 5 )]
+margin_top = 676.0
+margin_right = 526.0
+margin_bottom = 836.0
+title = "Fruit"
+options = [ "Apple" ]
+
+[node name="Category5" parent="Vertical/Scroll/Center/Vertical" instance=ExtResource( 5 )]
+margin_top = 840.0
+margin_right = 526.0
+margin_bottom = 1138.0
+title = "Meat"
+options = [ "Ground Beef", "Chicken", "Chicken Breast", "Bacon" ]
+
+[node name="Category6" parent="Vertical/Scroll/Center/Vertical" instance=ExtResource( 5 )]
+margin_top = 1142.0
+margin_right = 526.0
+margin_bottom = 1532.0
+title = "Spices"
+options = [ "Minced", "Ground", "Red Pepper Flakes", "Koshar", "Grated", "Sugar" ]
 
 [node name="Horizontal" type="HBoxContainer" parent="Vertical"]
-margin_top = 1679.0
+margin_top = 1668.0
 margin_right = 702.0
-margin_bottom = 1756.0
+margin_bottom = 1734.0
 custom_constants/separation = 32
 alignment = 1
 
 [node name="Apply" type="Button" parent="Vertical/Horizontal"]
-margin_left = 154.0
-margin_right = 320.0
-margin_bottom = 77.0
+margin_left = 182.0
+margin_right = 322.0
+margin_bottom = 66.0
 custom_fonts/font = ExtResource( 3 )
 text = "Apply"
 
 [node name="Cancel" type="Button" parent="Vertical/Horizontal"]
-margin_left = 352.0
-margin_right = 548.0
-margin_bottom = 77.0
+margin_left = 354.0
+margin_right = 520.0
+margin_bottom = 66.0
 custom_fonts/font = ExtResource( 3 )
 text = "Cancel"
 
