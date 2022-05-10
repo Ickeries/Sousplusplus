@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=1]
-[ext_resource path="res://assets/fonts/truetype/Roboto-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/images/Main_Background.png" type="Texture" id=1]
+[ext_resource path="res://assets/fonts/truetype/Firestarter Z.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://src/scenes/splash/page_splash.gd" type="Script" id=3]
-[ext_resource path="res://assets/images/Main_Background.jpg" type="Texture" id=4]
+[ext_resource path="res://assets/fonts/font48.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/logo.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=3]
 size = 142
@@ -14,7 +15,7 @@ font_data = ExtResource( 2 )
 [sub_resource type="Animation" id=1]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Text:modulate")
+tracks/0/path = NodePath("Logo:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -23,32 +24,90 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Logo:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.1, 0.1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "idle"
+[sub_resource type="Animation" id=4]
+resource_name = "begin1"
+length = 6.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Text:modulate")
+tracks/0/path = NodePath("Logo:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.4, 5.5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Logo:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.1, 0.1 ), Vector2( 2, 2 ), Vector2( 1.5, 1.5 ), Vector2( 1.5, 1.5 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+loop = true
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Logo:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "idle"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Logo:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 15.0, 0.0, -15.0, 0.0 ]
 }
 
 [node name="SplashPage" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MainBackground" type="TextureRect" parent="."]
 show_behind_parent = true
@@ -56,54 +115,51 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -98.0
 margin_bottom = 102.0
-texture = ExtResource( 4 )
+texture = ExtResource( 1 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Title" type="Label" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -237.5
-margin_top = -557.0
-margin_right = 237.5
-margin_bottom = -390.0
+margin_left = -262.0
+margin_top = -281.0
+margin_right = 298.0
+margin_bottom = -83.0
+rect_pivot_offset = Vector2( 201, 127 )
 custom_fonts/font = SubResource( 3 )
 text = "Sous++"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Text" type="Label" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -83.5
-margin_top = 639.0
-margin_right = 83.5
-margin_bottom = 677.0
-custom_fonts/font = ExtResource( 1 )
-text = "Tap to start"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Logo" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 530, 895 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 5 )
 
 [node name="Animator" type="AnimationPlayer" parent="."]
-autoplay = "idle"
+autoplay = "begin1"
 anims/RESET = SubResource( 1 )
+anims/begin1 = SubResource( 4 )
 anims/idle = SubResource( 2 )
 
-[node name="Welcome_Back_Current_User" type="Label" parent="."]
-margin_left = 616.0
-margin_top = 354.0
-margin_right = 1052.0
-margin_bottom = 572.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Animator2" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+playback_speed = 0.25
+anims/RESET = SubResource( 5 )
+anims/idle = SubResource( 6 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 239.0
+margin_top = 1268.0
+margin_right = 818.0
+margin_bottom = 1386.0
+custom_fonts/font = ExtResource( 4 )
+text = "Tap to start!"
 
 [connection signal="gui_input" from="." to="." method="_on_SplashPage_gui_input"]
 [connection signal="visibility_changed" from="." to="." method="_on_SplashPage_visibility_changed"]
-[connection signal="visibility_changed" from="Welcome_Back_Current_User" to="." method="_on_Welcome_Back_Current_User_visibility_changed"]

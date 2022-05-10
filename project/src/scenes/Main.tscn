@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/scenes/recipes/page_recipe_edit/PageRecipeEdit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/icons/buffering.png" type="Texture" id=2]
 [ext_resource path="res://src/scenes/main.gd" type="Script" id=3]
+[ext_resource path="res://src/scenes/create_account/CreateAccount.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/scenes/recipes/page_recipe/PageRecipe.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/scenes/login/Login.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/scenes/kitchen/Kitchen.tscn" type="PackedScene" id=7]
@@ -34,7 +35,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ true ]
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=23]
@@ -47,7 +48,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0.1, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
@@ -59,10 +60,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=24]
@@ -86,10 +87,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ false, true ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Animator:playback_speed")
@@ -145,9 +146,6 @@ script = ExtResource( 3 )
 [node name="Pages" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SplashPage" parent="Pages" instance=ExtResource( 8 )]
 
@@ -168,7 +166,10 @@ visible = false
 [node name="Explore" parent="Pages" instance=ExtResource( 9 )]
 visible = false
 
-[node name="BottomMenu" type="GridContainer" parent="."]
+[node name="CreateAccount" parent="Pages" instance=ExtResource( 4 )]
+visible = false
+
+[node name="BottomMenu" type="Control" parent="."]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -177,10 +178,6 @@ margin_bottom = -8.0
 rect_pivot_offset = Vector2( 259, 56 )
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.0
-columns = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Explore" type="Button" parent="BottomMenu"]
 margin_right = 357.0
@@ -191,8 +188,8 @@ custom_fonts/font = ExtResource( 10 )
 text = "Explore"
 
 [node name="Kitchen" type="Button" parent="BottomMenu"]
-margin_left = 361.0
-margin_right = 718.0
+margin_left = 364.0
+margin_right = 721.0
 margin_bottom = 124.0
 rect_min_size = Vector2( 64, 64 )
 size_flags_horizontal = 11
@@ -200,28 +197,23 @@ custom_fonts/font = ExtResource( 10 )
 text = "Kitchen"
 
 [node name="User_Account" type="Button" parent="BottomMenu"]
-margin_left = 722.0
-margin_right = 1079.0
+margin_left = 726.0
+margin_right = 1083.0
 margin_bottom = 124.0
 rect_min_size = Vector2( 80, 80 )
 size_flags_horizontal = 11
 custom_fonts/font = ExtResource( 10 )
 text = "Profile"
 
-[node name="TopMenu" type="Control" parent="."]
-anchor_right = 1.0
-margin_left = 273.0
-margin_bottom = 56.0
-mouse_filter = 1
-
 [node name="Transition" type="ColorRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 0 )
 
 [node name="Animator" type="AnimationPlayer" parent="Transition"]
-autoplay = "immediate"
+autoplay = "RESET"
 playback_speed = 3.0
 anims/RESET = SubResource( 22 )
 anims/fade_to_black = SubResource( 23 )

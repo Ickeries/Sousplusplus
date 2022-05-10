@@ -1,7 +1,7 @@
 tool
 extends PanelContainer
 
-var filter_button_loaded = preload("res://src/prefabs/filter/FilterButton.tscn")
+var filter_button_loaded = load("res://src/prefabs/filter/FilterButton.tscn")
 
 export (String) var title = "Null" setget set_title
 export (Array, String) var options = [] setget set_options

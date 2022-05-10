@@ -12,9 +12,9 @@ onready var add_new_direction_button = $SubPages/Third/Scroll/Center/Vertical/In
 
 onready var image = $SubPages/First/Images
 
-var direction_loaded = preload("res://src/scenes/recipes/page_recipe_edit/PageRecipeEditDirection.tscn")
-var ingredient_loaded = preload("res://src/scenes/recipes/page_recipe_edit/PageRecipeEditIngredient.tscn")
-var tag_loaded = preload("res://src/scenes/recipes/page_recipe_edit/PageRecipeEditTag.tscn")
+var direction_loaded = load("res://src/scenes/recipes/page_recipe_edit/PageRecipeEditDirection.tscn")
+var ingredient_loaded = load("res://src/scenes/recipes/page_recipe_edit/PageRecipeEditIngredient.tscn")
+var tag_loaded = load("res://src/scenes/recipes/page_recipe_edit/PageRecipeEditTag.tscn")
 
 
 var to_position : = Vector2(0,0)
@@ -29,6 +29,11 @@ func _ready():
 
 func _physics_process(delta):
 	$SubPages.rect_position = lerp($SubPages.rect_position, to_position, delta * 5.0)
+
+func set_edit(value : bool):
+	$Delete.visible = value
+	$SubPages/First/Images.disabled = !value
+	$Menu/Save.visible = value
 
 func reset():
 	to_position = Vector2(-1080,0) * 0
@@ -58,6 +63,12 @@ func load_recipe(recipe : Control):
 	
 	if recipe_data.has("recipe_image"):
 		image.texture_normal = load("res://assets/images/%s" % [recipe_data.recipe_image])
+	
+	if recipe_data.has("user_id"):
+		if recipe_data["user_id"] == Global.current_id:
+			set_edit(true)
+		else:
+			set_edit(false)
 	
 	update_tags(recipe_data["tags"])
 

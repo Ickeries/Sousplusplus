@@ -1,5 +1,6 @@
 extends Node
 
+
 onready var pages = $Pages
 onready var bottom_menu = $BottomMenu
 onready var transition = $Transition/Animator
@@ -79,4 +80,4 @@ func _on_Exit_pressed():
 
 
 func _on_User_Account_pressed():
-	Events.emit_signal("set_page", "Login")
+	Events.emit_signal("set_page", "Login", "fade_to_black")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/prefabs/images/images.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/prefabs/Searchbar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/ui/ui_scroll.gd" type="Script" id=5]
 [ext_resource path="res://assets/fonts/font48.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/fonts/font18.tres" type="DynamicFont" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.164706, 0.164706, 0.164706, 1 )
@@ -19,7 +20,6 @@ expand_margin_top = 16.0
 expand_margin_bottom = 16.0
 
 [node name="Images" type="Popup"]
-visible = true
 margin_left = 56.0
 margin_top = 35.0
 margin_right = 1025.0
@@ -97,6 +97,14 @@ text = "Confirm"
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
+
+[node name="Error" type="Label" parent="."]
+margin_left = 255.0
+margin_top = 713.0
+margin_right = 295.0
+margin_bottom = 727.0
+custom_fonts/font = ExtResource( 7 )
+text = "sdfsfsdfsf"
 
 [connection signal="about_to_show" from="." to="." method="_on_Images_about_to_show"]
 [connection signal="gui_input" from="Scroll" to="Scroll" method="_on_Scroll_gui_input"]

@@ -404,16 +404,6 @@ custom_fonts/font = ExtResource( 1 )
 custom_styles/normal = SubResource( 3 )
 text = "Save"
 
-[node name="Save" type="Popup" parent="."]
-margin_left = 154.0
-margin_top = 593.0
-margin_right = 940.0
-margin_bottom = 1268.0
-
-[node name="Panel" type="Panel" parent="Save"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
 [node name="Return" type="Button" parent="."]
 margin_left = 40.0
 margin_top = 27.0
@@ -432,7 +422,6 @@ custom_styles/normal = SubResource( 5 )
 text = "Delete"
 
 [node name="Images" parent="." instance=ExtResource( 7 )]
-visible = false
 
 [connection signal="visibility_changed" from="." to="." method="_on_RecipeEdit_visibility_changed"]
 [connection signal="pressed" from="SubPages/First/Images" to="." method="_on_Images_pressed"]

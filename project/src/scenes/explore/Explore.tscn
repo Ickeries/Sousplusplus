@@ -71,10 +71,10 @@ wait_time = 0.4
 one_shot = true
 
 [node name="SearchList" type="ScrollContainer" parent="."]
-margin_left = 26.0
-margin_top = 384.0
-margin_right = 1066.0
-margin_bottom = 1710.0
+margin_left = 19.0
+margin_top = 411.0
+margin_right = 1059.0
+margin_bottom = 1737.0
 rect_min_size = Vector2( 0, 680 )
 custom_styles/bg = SubResource( 1 )
 follow_focus = true
@@ -98,9 +98,9 @@ alignment = 1
 anchor_left = 0.037
 anchor_right = 0.037
 margin_left = 825.04
-margin_top = 220.0
+margin_top = 248.0
 margin_right = 997.04
-margin_bottom = 368.0
+margin_bottom = 396.0
 custom_fonts/font = ExtResource( 2 )
 text = "Filter"
 __meta__ = {

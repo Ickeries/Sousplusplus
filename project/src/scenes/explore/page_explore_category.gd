@@ -28,5 +28,4 @@ func _on_Category_renamed():
 	$Horizontal/Title.set_text(name)
 
 func on_scroll(vec : Vector2):
-	if vec.x:
-		$Grid.rect_position.x += vec.x
+	pass

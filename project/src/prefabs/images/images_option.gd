@@ -1,4 +1,4 @@
-extends Control
+extends TextureRect
 
 
 # Declare member variables here. Examples:
@@ -6,8 +6,8 @@ extends Control
 # var b = "text"
 
 func set_texture(new_texture):
-	$Image.texture = load(new_texture)
+	texture = load(new_texture)
 
 func _on_Button_pressed():
 	$Animator.play("pressed")
-	Events.emit_signal("image_changed", $Image.texture.resource_path)
+	Events.emit_signal("image_changed", texture.resource_path)

@@ -39,7 +39,6 @@ func get_user_name():
 
 func _on_Favorite_pressed(event):
 	favorite_animator.play("press")
-	Global.print_message("Added to favorites!", get_global_mouse_position())
 
 
 func _on_Recipe_gui_input(event):

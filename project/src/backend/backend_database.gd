@@ -19,10 +19,6 @@ func _ready():
 	database_online.connect("connection_error", self, "on_connection_error")
 	database_online.connect("connection_closed", self, "on_connection_closed")
 	var error = database_online.connect_to_host(get_connection_string())
-	
-	# Connecting to offline database
-	database_offline.path = database_offline_name
-	database_offline.open_db()
 
 
 func _physics_process(delta):
@@ -77,7 +73,7 @@ func on_connection_established():
 	query_online("Select * from recipes;")
 
 func on_connection_error(error_object: Dictionary):
-	print("Damn")
+	Global.print_message(str(error_object))
 
 func on_connection_closed(clean_closure := true):
 	print("Connection failed")

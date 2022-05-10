@@ -22,11 +22,10 @@ func query_single(statement : String):
 		return db.query_result[0]
 	return null
 
-func print_message(message : String, pos : Vector2):
+func print_message(message : String):
 	var message_instance = message_loaded.instance()
 	add_child(message_instance)
 	message_instance.get_node("Label").text = message
-	message_instance.rect_position = pos
 
 static func delete_children(node):
 	for n in node.get_children():

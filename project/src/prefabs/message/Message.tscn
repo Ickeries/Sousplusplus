@@ -6,7 +6,7 @@
 [sub_resource type="Animation" id=1]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_position")
+tracks/0/path = NodePath("Label:rect_size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -15,39 +15,15 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Vector2( 1080, 665 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:modulate")
+tracks/1/path = NodePath("Label:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Label:rect_position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -40.5, -19 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Label:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -55,14 +31,38 @@ tracks/3/keys = {
 }
 
 [sub_resource type="Animation" id=2]
-resource_name = "spawn"
-tracks/0/type = "method"
-tracks/0/path = NodePath(".")
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:rect_size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1080, 665 ), Vector2( 1080, 665 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -70,51 +70,25 @@ tracks/0/keys = {
 "method": "queue_free"
 } ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("Label:rect_position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( -40.5, -19 ), Vector2( -40.5, -39 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Label:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
 
 [node name="Message" type="Control"]
+margin_right = 1080.0
+margin_bottom = 1249.0
+rect_min_size = Vector2( 1080, 100 )
 script = ExtResource( 2 )
 
-[node name="Animator" type="AnimationPlayer" parent="."]
-autoplay = "spawn"
-anims/RESET = SubResource( 1 )
-anims/spawn = SubResource( 2 )
-
 [node name="Label" type="Label" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -54.0
-margin_top = -19.0
-margin_right = 54.0
-margin_bottom = 19.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 6.0
+margin_right = 1080.0
+margin_bottom = 671.0
 custom_fonts/font = ExtResource( 1 )
 text = "Error!!!!"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+valign = 1
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/RESET = SubResource( 1 )
+anims/idle = SubResource( 2 )

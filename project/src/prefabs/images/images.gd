@@ -15,7 +15,7 @@ func _ready():
 
 func on_image_changed(image_path):
 	preview.texture = load(image_path)
-
+	
 func _on_Images_about_to_show():
 	for child in grid.get_children():
 		child.queue_free()
@@ -33,7 +33,6 @@ func _on_Images_about_to_show():
 			file_name = directory.get_next()
 	else:
 		print("An error occurred when trying to access the path.")
-
 
 
 func _on_Searchbar_search_edited(text):

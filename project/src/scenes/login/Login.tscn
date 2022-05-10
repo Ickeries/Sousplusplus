@@ -1,8 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/prefabs/Textbar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/scenes/login/page_login.gd" type="Script" id=3]
+[ext_resource path="res://assets/images/Main_Background.png" type="Texture" id=4]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.12549, 0.12549, 0.12549, 0.890196 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
@@ -16,14 +24,35 @@ expand_margin_right = 4.0
 expand_margin_top = 4.0
 expand_margin_bottom = 4.0
 
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.129412, 0.129412, 0.129412, 0.898039 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
 [node name="Login" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( -752, -272 )
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -341.0
+margin_top = -605.0
+margin_right = 342.0
+margin_bottom = 300.0
+custom_styles/panel = SubResource( 2 )
 
 [node name="Inputs" type="Control" parent="."]
 anchor_right = 1.0
@@ -36,6 +65,7 @@ margin_right = 769.0
 margin_bottom = 578.0
 
 [node name="Tip" parent="Inputs/Username" index="0"]
+custom_colors/font_color = Color( 1, 1, 1, 0.733333 )
 text = "Username"
 
 [node name="Password" parent="Inputs" instance=ExtResource( 2 )]
@@ -45,6 +75,7 @@ margin_right = 785.0
 margin_bottom = 734.0
 
 [node name="Tip" parent="Inputs/Password" index="0"]
+custom_colors/font_color = Color( 1, 1, 1, 0.729412 )
 text = "Password"
 
 [node name="Buttons" type="Control" parent="."]
@@ -60,9 +91,6 @@ margin_bottom = 917.0
 custom_fonts/font = ExtResource( 1 )
 custom_styles/normal = SubResource( 1 )
 text = "Login"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CreateAccount" type="Button" parent="Buttons"]
 margin_left = 309.0
@@ -75,6 +103,24 @@ text = "Create Account"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ContinueAsGuest" type="Button" parent="Buttons"]
+margin_left = 309.0
+margin_top = 1108.0
+margin_right = 733.0
+margin_bottom = 1188.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = SubResource( 1 )
+text = "Continue as Guest"
+
+[node name="Return" type="Button" parent="Buttons"]
+margin_left = 27.0
+margin_top = 28.0
+margin_right = 369.0
+margin_bottom = 129.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = SubResource( 3 )
+text = "Return"
 
 [node name="Profile_Settings" type="Control" parent="."]
 visible = false
@@ -93,6 +139,8 @@ text = "Logout"
 [connection signal="visibility_changed" from="." to="." method="_on_Login_visibility_changed"]
 [connection signal="pressed" from="Buttons/Login" to="." method="_on_Login_pressed"]
 [connection signal="pressed" from="Buttons/CreateAccount" to="." method="_on_CreateAccount_pressed"]
+[connection signal="pressed" from="Buttons/ContinueAsGuest" to="." method="_on_CreateAccount_pressed"]
+[connection signal="pressed" from="Buttons/Return" to="." method="_on_Return_pressed"]
 [connection signal="pressed" from="Profile_Settings/Logout" to="." method="_on_Logout_pressed"]
 
 [editable path="Inputs/Username"]
