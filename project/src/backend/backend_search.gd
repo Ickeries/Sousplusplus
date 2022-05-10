@@ -30,5 +30,5 @@ func search_recipes_offline(text : String):
 
 #Search Random Recipes
 func search_random_recipes(limit):
-	var statement = """ Select * from recipes order by random()  limit 10;"""
+	var statement = """ Select * from recipes order by random()  limit 25;"""
 	return Database.query_online(statement)
