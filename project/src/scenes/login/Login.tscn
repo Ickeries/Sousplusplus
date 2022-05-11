@@ -126,10 +126,11 @@ custom_styles/normal = SubResource( 3 )
 text = "Return"
 
 [node name="CheckBox" type="CheckBox" parent="Buttons"]
-margin_left = 839.0
-margin_top = 682.0
-margin_right = 863.0
-margin_bottom = 706.0
+margin_left = 248.0
+margin_top = 746.0
+margin_right = 371.0
+margin_bottom = 772.0
+text = "Hide Password"
 
 [node name="Profile_Settings" type="Control" parent="."]
 visible = false
@@ -144,7 +145,6 @@ margin_bottom = 896.0
 custom_fonts/font = ExtResource( 1 )
 custom_styles/normal = SubResource( 1 )
 text = "Logout"
-
 
 [connection signal="visibility_changed" from="." to="." method="_on_Login_visibility_changed"]
 [connection signal="pressed" from="Buttons/Login" to="." method="_on_Login_pressed"]
