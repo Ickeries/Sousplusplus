@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/prefabs/images/images.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=2]
@@ -6,7 +6,8 @@
 [ext_resource path="res://src/prefabs/Searchbar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/ui/ui_scroll.gd" type="Script" id=5]
 [ext_resource path="res://assets/fonts/font48.tres" type="DynamicFont" id=6]
-[ext_resource path="res://assets/fonts/font18.tres" type="DynamicFont" id=7]
+[ext_resource path="res://assets/images/apple_pie.jpeg" type="Texture" id=7]
+[ext_resource path="res://src/prefabs/images/ImagesOption.tscn" type="PackedScene" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.164706, 0.164706, 0.164706, 1 )
@@ -20,6 +21,7 @@ expand_margin_top = 16.0
 expand_margin_bottom = 16.0
 
 [node name="Images" type="Popup"]
+visible = true
 margin_left = 56.0
 margin_top = 35.0
 margin_right = 1025.0
@@ -43,16 +45,155 @@ script = ExtResource( 5 )
 
 [node name="Center" type="CenterContainer" parent="Scroll"]
 margin_right = 980.0
+margin_bottom = 1888.0
 rect_min_size = Vector2( 980, 0 )
 mouse_filter = 2
 
 [node name="Grid" type="GridContainer" parent="Scroll/Center"]
-margin_left = 490.0
-margin_right = 490.0
+margin_left = 90.0
+margin_right = 890.0
+margin_bottom = 1888.0
 mouse_filter = 2
 custom_constants/vseparation = 16
 custom_constants/hseparation = 16
 columns = 3
+
+[node name="ImagesOption" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
+margin_right = 256.0
+margin_bottom = 256.0
+texture = ExtResource( 7 )
+
+[node name="ImagesOption2" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
+margin_left = 272.0
+margin_right = 528.0
+margin_bottom = 256.0
+texture = ExtResource( 7 )
+
+[node name="ImagesOption3" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
+margin_left = 544.0
+margin_right = 800.0
+margin_bottom = 256.0
+texture = ExtResource( 7 )
+
+[node name="ImagesOption4" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
+margin_top = 272.0
+margin_right = 256.0
+margin_bottom = 528.0
+texture = ExtResource( 7 )
+
+[node name="ImagesOption5" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
+margin_left = 272.0
+margin_top = 272.0
+margin_right = 528.0
+margin_bottom = 528.0
+texture = ExtResource( 7 )
+
+[node name="ImagesOption6" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
+margin_left = 544.0
+margin_top = 272.0
+margin_right = 800.0
+margin_bottom = 528.0
+texture = ExtResource( 7 )
+
+[node name="ImagesOption7" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
+margin_top = 544.0
+margin_right = 256.0
+margin_bottom = 800.0
+texture = ExtResource( 7 )
+
+[node name="ImagesOption8" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
+margin_left = 272.0
+margin_top = 544.0
+margin_right = 528.0
+margin_bottom = 800.0
+texture = ExtResource( 7 )
+
+[node name="ImagesOption9" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
+margin_left = 544.0
+margin_top = 544.0
+margin_right = 800.0
+margin_bottom = 800.0
+texture = ExtResource( 7 )
+
+[node name="ImagesOption10" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
+margin_top = 816.0
+margin_right = 256.0
+margin_bottom = 1072.0
+texture = ExtResource( 7 )
+
+[node name="ImagesOption11" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
+margin_left = 272.0
+margin_top = 816.0
+margin_right = 528.0
+margin_bottom = 1072.0
+texture = ExtResource( 7 )
+
+[node name="ImagesOption12" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
+margin_left = 544.0
+margin_top = 816.0
+margin_right = 800.0
+margin_bottom = 1072.0
+texture = ExtResource( 7 )
+
+[node name="ImagesOption13" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
+margin_top = 1088.0
+margin_right = 256.0
+margin_bottom = 1344.0
+texture = ExtResource( 7 )
+
+[node name="ImagesOption14" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
+margin_left = 272.0
+margin_top = 1088.0
+margin_right = 528.0
+margin_bottom = 1344.0
+texture = ExtResource( 7 )
+
+[node name="ImagesOption15" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
+margin_left = 544.0
+margin_top = 1088.0
+margin_right = 800.0
+margin_bottom = 1344.0
+texture = ExtResource( 7 )
+
+[node name="ImagesOption16" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
+margin_top = 1360.0
+margin_right = 256.0
+margin_bottom = 1616.0
+texture = ExtResource( 7 )
+
+[node name="ImagesOption17" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
+margin_left = 272.0
+margin_top = 1360.0
+margin_right = 528.0
+margin_bottom = 1616.0
+texture = ExtResource( 7 )
+
+[node name="ImagesOption18" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
+margin_left = 544.0
+margin_top = 1360.0
+margin_right = 800.0
+margin_bottom = 1616.0
+texture = ExtResource( 7 )
+
+[node name="ImagesOption19" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
+margin_top = 1632.0
+margin_right = 256.0
+margin_bottom = 1888.0
+texture = ExtResource( 7 )
+
+[node name="ImagesOption20" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
+margin_left = 272.0
+margin_top = 1632.0
+margin_right = 528.0
+margin_bottom = 1888.0
+texture = ExtResource( 7 )
+
+[node name="ImagesOption21" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
+margin_left = 544.0
+margin_top = 1632.0
+margin_right = 800.0
+margin_bottom = 1888.0
+texture = ExtResource( 7 )
 
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
@@ -97,14 +238,6 @@ text = "Confirm"
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
-
-[node name="Error" type="Label" parent="."]
-margin_left = 255.0
-margin_top = 713.0
-margin_right = 295.0
-margin_bottom = 727.0
-custom_fonts/font = ExtResource( 7 )
-text = "sdfsfsdfsf"
 
 [connection signal="about_to_show" from="." to="." method="_on_Images_about_to_show"]
 [connection signal="gui_input" from="Scroll" to="Scroll" method="_on_Scroll_gui_input"]

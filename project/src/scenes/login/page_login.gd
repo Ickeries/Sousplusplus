@@ -1,6 +1,8 @@
 extends Control
 
 
+onready var password_bar = $Inputs/Password
+
 func _on_Return_pressed():
 	Events.emit_signal("return_to_previous_page", "fade_to_black")
 
@@ -24,3 +26,6 @@ func _on_Login_visibility_changed():
 		$Buttons.visible = false
 		$Profile_Settings.visible = true
 	Events.emit_signal("show_bottom_menu", false)
+	
+func _on_CheckBox_toggled(button_pressed):
+	password_bar.set_hidden(button_pressed)

@@ -13,16 +13,12 @@ func set_title(new_title : String):
 func set_mode(new_mode : String):
 	mode = new_mode
 
-func add_recipes(recipes, limit):
-	var count = 0
+func add_recipes(recipes):
 	for recipe in recipes:
-		if count >= limit:
-			break
 		var recipe_instance = recipe_loaded.instance()
 		recipe_instance.mode = mode
 		recipe_instance.data = recipe
 		grid.add_child(recipe_instance)
-		count += 1
 
 
 func _on_Hide_pressed():

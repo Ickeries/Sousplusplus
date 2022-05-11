@@ -152,7 +152,6 @@ text = "Logout"
 [connection signal="pressed" from="Buttons/ContinueAsGuest" to="." method="_on_CreateAccount_pressed"]
 [connection signal="pressed" from="Buttons/Return" to="." method="_on_Return_pressed"]
 [connection signal="toggled" from="Buttons/CheckBox" to="." method="_on_CheckBox_toggled"]
-[connection signal="toggled" from="Buttons/CheckBox" to="Inputs/Password" method="_on_CheckBox_toggled"]
 [connection signal="pressed" from="Profile_Settings/Logout" to="." method="_on_Logout_pressed"]
 
 [editable path="Inputs/Username"]

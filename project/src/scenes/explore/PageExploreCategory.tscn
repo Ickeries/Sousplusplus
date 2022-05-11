@@ -34,6 +34,7 @@ align = 1
 valign = 1
 
 [node name="Hide" type="Button" parent="Center/Horizontal"]
+visible = false
 margin_left = 544.0
 margin_right = 659.0
 margin_bottom = 100.0

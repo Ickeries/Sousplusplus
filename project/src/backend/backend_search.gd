@@ -25,5 +25,5 @@ func search_tags(tag_name):
 
 #Search Random Recipes
 func search_random_recipes(limit):
-	var statement = """ Select * from recipes order by random()  limit 25;"""
+	var statement = """ Select * from recipes order by random()  limit %s;""" % limit
 	return Database.query_online(statement)

@@ -1,17 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/fonts/box_row_title_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://src/ui/ui_scroll.gd" type="Script" id=3]
 [ext_resource path="res://src/scenes/explore/page_explore.gd" type="Script" id=4]
 [ext_resource path="res://src/prefabs/Searchbar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/prefabs/filter/Filter.tscn" type="PackedScene" id=6]
-
-[sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0.0196078, 0.0196078, 0.0196078, 0.356863 )
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -69,28 +62,17 @@ script = ExtResource( 4 )
 
 [node name="SearchBar" parent="." instance=ExtResource( 5 )]
 margin_left = 4.0
-margin_top = 112.0
+margin_top = 61.0
 margin_right = 1069.0
-margin_bottom = 240.0
+margin_bottom = 189.0
 
 [node name="Timer" type="Timer" parent="SearchBar"]
 wait_time = 0.4
 one_shot = true
 
-[node name="Panel" type="Panel" parent="SearchBar"]
-show_behind_parent = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 11.0
-margin_top = -19.0
-margin_right = -2.0
-margin_bottom = -19.0
-mouse_filter = 2
-custom_styles/panel = SubResource( 5 )
-
 [node name="SearchList" type="ScrollContainer" parent="."]
 margin_left = 19.0
-margin_top = 411.0
+margin_top = 268.0
 margin_right = 1059.0
 margin_bottom = 1791.0
 rect_min_size = Vector2( 0, 680 )
@@ -117,14 +99,11 @@ alignment = 1
 anchor_left = 0.037
 anchor_right = 0.037
 margin_left = 825.04
-margin_top = 248.0
+margin_top = 172.0
 margin_right = 997.04
-margin_bottom = 396.0
+margin_bottom = 250.0
 custom_fonts/font = ExtResource( 2 )
 text = "Filter"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ScreenEffect" type="ColorRect" parent="."]
 visible = false

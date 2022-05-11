@@ -8,21 +8,20 @@ export (Array, String) var options = [] setget set_options
 
 func set_title(value : String):
 	title = value
-	if Engine.is_editor_hint():
+	if $Vertical/Title != null:
 		$Vertical/Title.text = title
 
 func set_options(value : Array):
 	options = value
-	if Engine.is_editor_hint():
-		if $Vertical/List == null:
-			return
-		
-		for option in $Vertical/List.get_children():
-			option.queue_free()
-		for option in value:
-			var filter_button_instance = filter_button_loaded.instance()
-			filter_button_instance.text = option 
-			$Vertical/List.add_child(filter_button_instance)
+	if $Vertical/List == null:
+		return
+	
+	for option in $Vertical/List.get_children():
+		option.queue_free()
+	for option in value:
+		var filter_button_instance = filter_button_loaded.instance()
+		filter_button_instance.text = option 
+		$Vertical/List.add_child(filter_button_instance)
 
 func get_options():
 	return $Vertical/List.get_children()

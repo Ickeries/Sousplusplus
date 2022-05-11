@@ -16,10 +16,5 @@ func _on_Line_focus_entered():
 func _on_Line_text_entered(new_text):
 	pass
 
-
-func _on_CheckBox_toggled(button_pressed):
-	hidden = !hidden
-	if hidden == false:
-		$Line.secret = false
-	else :
-		$Line.secret = true
+func set_hidden(value):
+	$Line.secret = value

@@ -15,30 +15,14 @@ func _ready():
 
 func on_image_changed(image_path):
 	preview.texture = load(image_path)
-	
-func _on_Images_about_to_show():
-	for child in grid.get_children():
-		child.queue_free()
-	var directory = Directory.new()
-	if directory.open(directory_path) == OK:
-		directory.list_dir_begin()
-		var file_name = directory.get_next()
-		while file_name != "":
-			if extensions.has(file_name.get_extension()):
-				if file_name.find(search_bar.get_text()) != -1 or search_bar.get_text() == "":
-					var image_option_instance = image_option_loaded.instance()
-					grid.add_child(image_option_instance)
-					image_option_instance.set_texture( "%s/%s" % [directory.get_current_dir(), file_name] )
-			file_name = directory.get_next()
-	else:
-		print("An error occurred when trying to access the path.")
+
 
 
 func _on_Searchbar_search_edited(text):
 	$Timer.start()
 
 func _on_Timer_timeout():
-	_on_Images_about_to_show()
+	pass
 
 
 func _on_Confirm_pressed():
