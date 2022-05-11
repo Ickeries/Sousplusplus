@@ -20,14 +20,7 @@ func _on_CreateAccount_pressed():
 
 func _on_Login_visibility_changed():
 	if Global.current_user:
-		print("Welcome " , Global.current_user.name , "!")
 		$Inputs.visible = false
 		$Buttons.visible = false
 		$Profile_Settings.visible = true
 	Events.emit_signal("show_bottom_menu", false)
-
-
-func _on_Logout_pressed():
-	pass
-	#Users.login_user(null, null)
-

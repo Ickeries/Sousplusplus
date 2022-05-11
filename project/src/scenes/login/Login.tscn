@@ -145,6 +145,7 @@ custom_fonts/font = ExtResource( 1 )
 custom_styles/normal = SubResource( 1 )
 text = "Logout"
 
+
 [connection signal="visibility_changed" from="." to="." method="_on_Login_visibility_changed"]
 [connection signal="pressed" from="Buttons/Login" to="." method="_on_Login_pressed"]
 [connection signal="pressed" from="Buttons/CreateAccount" to="." method="_on_CreateAccount_pressed"]
