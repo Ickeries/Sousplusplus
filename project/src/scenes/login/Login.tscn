@@ -78,6 +78,9 @@ margin_bottom = 734.0
 custom_colors/font_color = Color( 1, 1, 1, 0.729412 )
 text = "Password"
 
+[node name="Line" parent="Inputs/Password" index="1"]
+secret = true
+
 [node name="Buttons" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -122,6 +125,12 @@ custom_fonts/font = ExtResource( 1 )
 custom_styles/normal = SubResource( 3 )
 text = "Return"
 
+[node name="CheckBox" type="CheckBox" parent="Buttons"]
+margin_left = 839.0
+margin_top = 682.0
+margin_right = 863.0
+margin_bottom = 706.0
+
 [node name="Profile_Settings" type="Control" parent="."]
 visible = false
 margin_right = 571.0
@@ -141,6 +150,8 @@ text = "Logout"
 [connection signal="pressed" from="Buttons/CreateAccount" to="." method="_on_CreateAccount_pressed"]
 [connection signal="pressed" from="Buttons/ContinueAsGuest" to="." method="_on_CreateAccount_pressed"]
 [connection signal="pressed" from="Buttons/Return" to="." method="_on_Return_pressed"]
+[connection signal="toggled" from="Buttons/CheckBox" to="." method="_on_CheckBox_toggled"]
+[connection signal="toggled" from="Buttons/CheckBox" to="Inputs/Password" method="_on_CheckBox_toggled"]
 [connection signal="pressed" from="Profile_Settings/Logout" to="." method="_on_Logout_pressed"]
 
 [editable path="Inputs/Username"]

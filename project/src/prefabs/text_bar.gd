@@ -4,6 +4,7 @@ class_name Textbar
 signal search_entered(text)
 signal search_edited(text)
 
+var hidden = true
 
 func _on_Line_text_changed(new_text):
 	$Tip.visible = (new_text.length() == 0)
@@ -14,3 +15,11 @@ func _on_Line_focus_entered():
 
 func _on_Line_text_entered(new_text):
 	pass
+
+
+func _on_CheckBox_toggled(button_pressed):
+	hidden = !hidden
+	if hidden == false:
+		$Line.secret = false
+	else :
+		$Line.secret = true
