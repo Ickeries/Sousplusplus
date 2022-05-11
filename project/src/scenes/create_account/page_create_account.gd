@@ -47,4 +47,4 @@ func _on_Confirm_pressed():
 
 
 func _on_Return_pressed():
-	Events.emit_signal("return_to_previous_page", "fade_to_black")
+	Events.emit_signal("set_page", "Login", "fade_to_black")

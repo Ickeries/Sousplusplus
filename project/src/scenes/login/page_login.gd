@@ -1,14 +1,19 @@
 extends Control
 
-
+onready var username_bar = $Inputs/Username
 onready var password_bar = $Inputs/Password
 
+func reset():
+	username_bar.set_text("")
+	password_bar.set_text("")
+	
+
 func _on_Return_pressed():
-	Events.emit_signal("return_to_previous_page", "fade_to_black")
+	Events.emit_signal("set_page","Kitchen", "fade_to_black")
 
 
 func _on_Login_pressed():
-	var user = Users.login_user($Inputs/Username/Line.text, $Inputs/Password/Line.text)
+	var user = Users.login_user(username_bar.get_text(), password_bar.get_text())
 	if user:
 		Global.current_id = user.user_id
 		Global.current_password = user.user_password
@@ -16,13 +21,13 @@ func _on_Login_pressed():
 		Events.emit_signal("set_page", "Kitchen", "fade_to_black")
 	else:
 		Global.print_message("Invalid login information!")
-	$Inputs/Password/Line.text = ""
 
 func _on_CreateAccount_pressed():
 	Events.emit_signal("set_page", "CreateAccount", "fade_to_black")
 
 
 func _on_Login_visibility_changed():
+	reset()
 	if Global.current_user:
 		$Inputs.visible = false
 		$Buttons.visible = false

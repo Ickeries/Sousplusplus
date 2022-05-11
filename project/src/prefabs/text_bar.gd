@@ -6,6 +6,12 @@ signal search_edited(text)
 
 var hidden = true
 
+func set_text(new_text : String):
+	$Line.text = new_text
+
+func get_text():
+	return $Line.text
+
 func _on_Line_text_changed(new_text):
 	$Tip.visible = (new_text.length() == 0)
 

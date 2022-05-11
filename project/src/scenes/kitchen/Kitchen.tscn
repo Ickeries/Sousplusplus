@@ -59,7 +59,6 @@ custom_styles/panel = SubResource( 2 )
 tabs_visible = false
 
 [node name="First" type="Control" parent="Tabs"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -99,8 +98,11 @@ margin_right = 465.5
 margin_bottom = 164.0
 custom_fonts/font = ExtResource( 4 )
 text = "Welcome back, user!"
+align = 1
+autowrap = true
 
 [node name="Second" type="Control" parent="Tabs"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0

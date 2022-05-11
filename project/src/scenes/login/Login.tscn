@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/prefabs/Textbar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/scenes/login/page_login.gd" type="Script" id=3]
 [ext_resource path="res://assets/images/Main_Background.png" type="Texture" id=4]
+[ext_resource path="res://assets/fonts/dynamic_font.tres" type="DynamicFont" id=5]
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.12549, 0.12549, 0.12549, 0.890196 )
@@ -88,9 +89,9 @@ mouse_filter = 2
 
 [node name="Login" type="Button" parent="Buttons"]
 margin_left = 392.0
-margin_top = 837.0
+margin_top = 853.0
 margin_right = 658.0
-margin_bottom = 917.0
+margin_bottom = 933.0
 custom_fonts/font = ExtResource( 1 )
 custom_styles/normal = SubResource( 1 )
 text = "Login"
@@ -130,6 +131,9 @@ margin_left = 248.0
 margin_top = 746.0
 margin_right = 371.0
 margin_bottom = 772.0
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = ExtResource( 5 )
+pressed = true
 text = "Hide Password"
 
 [node name="Profile_Settings" type="Control" parent="."]
