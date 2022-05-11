@@ -16,7 +16,7 @@ func _on_Login_pressed():
 		Events.emit_signal("set_page", "Kitchen", "fade_to_black")
 	else:
 		Global.print_message("Invalid login information!")
-
+	$Inputs/Password/Line.text = ""
 
 func _on_CreateAccount_pressed():
 	Events.emit_signal("set_page", "CreateAccount", "fade_to_black")

@@ -80,4 +80,7 @@ func _on_Exit_pressed():
 
 
 func _on_User_Account_pressed():
-	Events.emit_signal("set_page", "Login", "fade_to_black")
+	if Global.current_id == -1:
+		Events.emit_signal("set_page", "Login", "fade_to_black")
+	else:
+		Events.emit_signal("set_page", "UserPage", "fade_to_black")
