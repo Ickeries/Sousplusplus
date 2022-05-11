@@ -1,39 +1,51 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/scenes/explore/page_explore_category.gd" type="Script" id=2]
 
+[sub_resource type="StyleBoxEmpty" id=1]
+
 [node name="Category" type="VBoxContainer"]
 margin_right = 40.0
 margin_bottom = 14.0
+custom_constants/separation = 16
 alignment = 1
 script = ExtResource( 2 )
 
-[node name="Horizontal" type="HBoxContainer" parent="."]
-margin_right = 1126.0
-margin_bottom = 60.0
+[node name="Center" type="CenterContainer" parent="."]
+margin_right = 1080.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 1080, 0 )
+
+[node name="Horizontal" type="HBoxContainer" parent="Center"]
+margin_left = 210.0
+margin_right = 869.0
+margin_bottom = 100.0
 rect_min_size = Vector2( 600, 0 )
 
-[node name="Title" type="Label" parent="Horizontal"]
-margin_right = 1080.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 1080, 0 )
+[node name="Title" type="Label" parent="Center/Horizontal"]
+margin_right = 540.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 540, 100 )
 custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = SubResource( 1 )
 text = "Category (400+)"
 align = 1
 valign = 1
 
-[node name="Hide" type="Button" parent="Horizontal"]
-margin_left = 1084.0
-margin_right = 1126.0
-margin_bottom = 60.0
+[node name="Hide" type="Button" parent="Center/Horizontal"]
+margin_left = 544.0
+margin_right = 659.0
+margin_bottom = 100.0
+custom_fonts/font = ExtResource( 1 )
 text = "Hide"
+flat = true
 
 [node name="Grid" type="GridContainer" parent="."]
-margin_top = 64.0
-margin_right = 1126.0
-margin_bottom = 64.0
+margin_top = 116.0
+margin_right = 1080.0
+margin_bottom = 116.0
 columns = 2
 
 [connection signal="renamed" from="." to="." method="_on_Category_renamed"]
-[connection signal="pressed" from="Horizontal/Hide" to="." method="_on_Hide_pressed"]
+[connection signal="pressed" from="Center/Horizontal/Hide" to="." method="_on_Hide_pressed"]

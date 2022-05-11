@@ -34,6 +34,8 @@ func set_edit(value : bool):
 	$Delete.visible = value
 	$SubPages/First/Images.disabled = !value
 	$Menu/Save.visible = value
+	$SubPages/Third/Scroll/Center/Vertical/Ingredients/Vertical/Center/List/AddNewIngredient.visible = value
+	$SubPages/Third/Scroll/Center/Vertical/Directions/Vertical/List/AddNewDirection.visible = value
 
 func reset():
 	to_position = Vector2(-1080,0) * 0
@@ -47,9 +49,7 @@ func reset():
 func load_recipe(recipe : Control):
 	var recipe_data = {}
 	recipe_id = recipe.recipe_id
-	mode = recipe.mode
-	if mode == "online":
-		recipe_data = Recipe.get_recipe_data_online(recipe.recipe_id)
+	recipe_data = Recipe.get_recipe_data_online(recipe.recipe_id)
 	if recipe_data.has("recipe_name"):
 		recipe_name_text.set_text( recipe_data["recipe_name"] )
 	

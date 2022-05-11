@@ -28,12 +28,12 @@ func _on_FilterButton_pressed():
 	$ScreenEffect.visible = true
 	$Filter/Animator.play("show")
 
-func add_category(title : String, recipes):
+func add_category(title : String, recipes, limit=10):
 	var category_instance = category_loaded.instance()
 	search_list.add_child(category_instance)
 	category_instance.set_title(title)
 	category_instance.set_mode("online")
-	category_instance.add_recipes(recipes)
+	category_instance.add_recipes(recipes, limit)
 
 
 func _on_SearchBar_search_entered(text):
@@ -43,14 +43,13 @@ func _on_SearchBar_search_entered(text):
 			category.queue_free()
 		var results = Search.search_recipes_online(search_bar.get_text())
 		var results_filtered = filter.filter_recipes(results)
-		add_category("Best Results (%s)" % results_filtered.size(), results_filtered)
+		add_category("Best Results (%s)" % results_filtered.size(), results_filtered, 10)
 	else: 
 		# If no text is being searched
 		for category in search_list.get_children():
 			category.queue_free()
-		var results = Search.search_random_recipes(10)
-		var results_filtered = filter.filter_recipes(results)
-		add_category("Suggested", results_filtered)
+		add_category("Suggested", filter.filter_recipes(Search.search_random_recipes(10)), 4)
+		add_category("Most Favorites!", filter.filter_recipes(Search.search_random_recipes(10)), 3)
 
 func _on_SearchBar_search_edited(text):
 	for category in search_list.get_children():

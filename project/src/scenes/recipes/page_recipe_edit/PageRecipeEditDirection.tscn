@@ -46,7 +46,6 @@ rect_min_size = Vector2( 900, 90 )
 mouse_filter = 1
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 3 )
-text = "asdfasfasf"
 wrap_enabled = true
 caret_blink = true
 

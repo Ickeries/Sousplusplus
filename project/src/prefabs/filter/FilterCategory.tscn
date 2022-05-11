@@ -32,6 +32,7 @@ custom_styles/normal = SubResource( 2 )
 text = "Category"
 
 [node name="List" type="VBoxContainer" parent="Vertical"]
+visible = false
 margin_top = 122.0
 margin_right = 500.0
 margin_bottom = 122.0

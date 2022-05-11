@@ -23,7 +23,6 @@ func _on_Images_about_to_show():
 	if directory.open(directory_path) == OK:
 		directory.list_dir_begin()
 		var file_name = directory.get_next()
-		print(file_name)
 		while file_name != "":
 			if extensions.has(file_name.get_extension()):
 				if file_name.find(search_bar.get_text()) != -1 or search_bar.get_text() == "":

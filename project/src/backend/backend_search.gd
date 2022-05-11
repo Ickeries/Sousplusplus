@@ -23,11 +23,6 @@ func search_tags(tag_name):
 	var statement = """Select * from tags where tag_name like '%c%s%c'""" % ["%", tag_name, "%"]
 	return Database.query_online(statement)
 
-# Offline 
-func search_recipes_offline(text : String):
-	var statement = """Select * from recipes where recipe_name like '%c%s%c';""" % ["%",text, "%"]
-	return Database.query(statement)
-
 #Search Random Recipes
 func search_random_recipes(limit):
 	var statement = """ Select * from recipes order by random()  limit 25;"""

@@ -182,7 +182,6 @@ mouse_filter = 2
 custom_styles/panel = SubResource( 1 )
 
 [node name="Image" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0.592157 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_clip_content = true

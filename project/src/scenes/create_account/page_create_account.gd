@@ -40,7 +40,6 @@ func _on_Confirm_pressed():
 			Global.print_message("Bad characters in password")
 			return
 	var created_user = Users.create_user(username_bar.get_text(), password_bar.get_text())
-	print(created_user)
 	Global.current_id = created_user.user_id
 	Global.current_password = created_user.user_password
 	Events.emit_signal("set_page", "Kitchen", "fade_to_black")

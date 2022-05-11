@@ -28,7 +28,6 @@ func _on_Text_text_changed():
 	for line in text.get_line_count():
 		count += text.get_line_wrap_count(line)
 	text.rect_min_size.y = text.get_line_height() * count
-	print(count)
 
 
 func _on_Remove_pressed():

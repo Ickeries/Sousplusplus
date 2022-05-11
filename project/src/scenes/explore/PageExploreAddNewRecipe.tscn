@@ -1,7 +1,29 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=1]
-[ext_resource path="res://src/scenes/explore/page_explore_add_new_recipe.gd" type="Script" id=2]
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Control
+
+
+
+func _on_Button_pressed():
+	if Global.current_user:
+		Global.emit_signal(\"update_data\", 0)
+		Global.emit_signal(\"enter_page\", \"PageRecipeEdit\")
+	else:
+		$Warning_Popup.visible = true
+		
+func _on_Sign_In_pressed():
+	Global.emit_signal(\"enter_page\", \"Login\")
+	$Warning_Popup.hide()
+
+
+func _on_Return_pressed():
+	Global.emit_signal(\"enter_return\")
+	$Warning_Popup.hide()
+
+"
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.105882, 0.105882, 0.105882, 1 )
@@ -27,10 +49,7 @@ margin_right = 14.144
 margin_bottom = -0.160004
 rect_min_size = Vector2( 92, 92 )
 mouse_filter = 1
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = SubResource( 4 )
 
 [node name="Button" type="Button" parent="."]
 anchor_right = 0.649

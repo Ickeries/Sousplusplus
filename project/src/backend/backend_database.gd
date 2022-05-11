@@ -8,11 +8,6 @@ var host = "isilo.db.elephantsql.com"
 var port = 5432
 var database_connection = "knlvkgbo"
 
-# Offline database -> SQLITE
-const SQLite = preload("res://addons/godot-sqlite/bin/gdsqlite.gdns")
-onready var database_offline = SQLite.new()
-var database_offline_name = "database.db"
-
 func _ready():
 	# Connecting to online database
 	database_online.connect("connection_established", self, "on_connection_established")
@@ -25,24 +20,11 @@ func _physics_process(delta):
 	database_online.poll()
 
 
-func query_single(statement : String):
-	database_offline.query(statement)
-	if database_offline.query_result.size() > 0:
-		return database_offline.query_result[0]
-	return null
-
-func query(statement : String):
-	database_offline.query(statement)
-	return database_offline.query_result.duplicate()
-
-
 func query_online(statement):
-	#database.connect_to_host("postgres://%s:%s@%s:%d/%s" % [user, password, host, port, database_connection])
 	var datas = database_online.execute(statement)
 	return data_to_dictionary(datas)
 
 func query_online_single(statement):
-	#database.connect_to_host("postgres://%s:%s@%s:%d/%s" % [user, password, host, port, database_connection])
 	var datas = database_online.execute(statement)
 	if datas.size() > 0:
 		var datas_dict = data_to_dictionary(datas)
@@ -53,11 +35,9 @@ func query_online_single(statement):
 
 func data_to_dictionary(datas):
 	var result = []
-	
 	# If nothing was returned
 	if datas.size() == 0:
 		return {}
-	
 	for data in datas[0].data_row:
 		var dictionary = {}
 		for i in data.size():
@@ -80,4 +60,3 @@ func on_connection_closed(clean_closure := true):
 
 func _exit_tree():
 	database_online.close()
-	database_offline.close_db()
