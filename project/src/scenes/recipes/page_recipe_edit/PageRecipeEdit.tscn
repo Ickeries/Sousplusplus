@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/fonts/recipe_directions_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/prefabs/Searchbar.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://src/scenes/recipes/page_recipe_edit/PageRecipeEditTag.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/images/chicken_nuggets.png" type="Texture" id=11]
 [ext_resource path="res://assets/fonts/font18.tres" type="DynamicFont" id=12]
+[ext_resource path="res://assets/kitchen.jpg" type="Texture" id=13]
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
@@ -38,6 +39,15 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 1675.0 ]
 }
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 0.278431, 0.27451, 0.27451, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -71.0
+margin_right = 93.0
+texture = ExtResource( 13 )
+stretch_mode = 7
 
 [node name="SubPages" type="Control" parent="."]
 anchor_right = 1.0

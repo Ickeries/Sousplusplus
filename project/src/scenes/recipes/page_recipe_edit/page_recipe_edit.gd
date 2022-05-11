@@ -25,6 +25,7 @@ var mode = "offline"
 
 func _ready():
 	Events.connect("set_recipe", self, "load_recipe")
+	Events.connect("new_recipe", self, "on_new_recipe")
 	Events.connect("image_confirmed", self, "on_image_confirmed")
 
 func _physics_process(delta):
@@ -47,9 +48,8 @@ func reset():
 	image.texture_normal = null
 
 func load_recipe(recipe : Control):
-	var recipe_data = {}
 	recipe_id = recipe.recipe_id
-	recipe_data = Recipe.get_recipe_data_online(recipe.recipe_id)
+	var recipe_data = Recipe.get_recipe_data_online(recipe.recipe_id)
 	if recipe_data.has("recipe_name"):
 		recipe_name_text.set_text( recipe_data["recipe_name"] )
 	
@@ -63,15 +63,23 @@ func load_recipe(recipe : Control):
 	
 	if recipe_data.has("recipe_image"):
 		image.texture_normal = load("res://assets/images/%s" % [recipe_data.recipe_image])
-	
+	print(recipe_id)
 	if recipe_data.has("user_id"):
 		if recipe_data["user_id"] == Global.current_id:
 			set_edit(true)
+		elif recipe_id == -1:
+			set_edit(true)
 		else:
 			set_edit(false)
+	if recipe_id == -1:
+		reset()
 	
 	update_tags(recipe_data["tags"])
 
+func on_new_recipe():
+	reset()
+	recipe_id = -1
+	set_edit(true)
 
 func save_recipe():
 	var data = get_data()

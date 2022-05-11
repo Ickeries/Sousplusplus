@@ -11,6 +11,8 @@ func _on_Login_pressed():
 	var user = Users.login_user($Inputs/Username/Line.text, $Inputs/Password/Line.text)
 	if user:
 		Global.current_id = user.user_id
+		Global.current_password = user.user_password
+		Global.current_user_name = user.user_name
 		Events.emit_signal("set_page", "Kitchen", "fade_to_black")
 	else:
 		Global.print_message("Invalid login information!")

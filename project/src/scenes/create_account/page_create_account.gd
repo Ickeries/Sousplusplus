@@ -42,6 +42,7 @@ func _on_Confirm_pressed():
 	var created_user = Users.create_user(username_bar.get_text(), password_bar.get_text())
 	Global.current_id = created_user.user_id
 	Global.current_password = created_user.user_password
+	Global.current_user_name= created_user.user_name
 	Events.emit_signal("set_page", "Kitchen", "fade_to_black")
 
 

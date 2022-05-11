@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://src/prefabs/images/images.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/item_font.tres" type="DynamicFont" id=2]
@@ -8,6 +8,21 @@
 [ext_resource path="res://assets/fonts/font48.tres" type="DynamicFont" id=6]
 [ext_resource path="res://assets/images/apple_pie.jpeg" type="Texture" id=7]
 [ext_resource path="res://src/prefabs/images/ImagesOption.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/images/chicken_nuggets.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/pancake.jpg" type="Texture" id=10]
+[ext_resource path="res://assets/images/pasta_alfredo.jpg" type="Texture" id=11]
+[ext_resource path="res://assets/images/pizza.jpg" type="Texture" id=12]
+[ext_resource path="res://assets/images/pumpkin_pie.jpg" type="Texture" id=13]
+[ext_resource path="res://assets/images/key_lime_pie.jpeg" type="Texture" id=14]
+[ext_resource path="res://assets/images/burger.jpg" type="Texture" id=15]
+[ext_resource path="res://assets/images/cheesecake_basque.jpg" type="Texture" id=16]
+[ext_resource path="res://assets/images/cheesecake_lemon.jpg" type="Texture" id=17]
+[ext_resource path="res://assets/images/cherry_pie.jpeg" type="Texture" id=18]
+[ext_resource path="res://assets/images/chicken.jpeg" type="Texture" id=19]
+[ext_resource path="res://assets/images/edemame.jpg" type="Texture" id=20]
+[ext_resource path="res://assets/images/frenchfries.jpg" type="Texture" id=21]
+[ext_resource path="res://assets/images/salmon_fryed.jpg" type="Texture" id=22]
+[ext_resource path="res://assets/images/sphaghetti1.jpg" type="Texture" id=23]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.164706, 0.164706, 0.164706, 1 )
@@ -21,7 +36,6 @@ expand_margin_top = 16.0
 expand_margin_bottom = 16.0
 
 [node name="Images" type="Popup"]
-visible = true
 margin_left = 56.0
 margin_top = 35.0
 margin_right = 1025.0
@@ -45,14 +59,14 @@ script = ExtResource( 5 )
 
 [node name="Center" type="CenterContainer" parent="Scroll"]
 margin_right = 980.0
-margin_bottom = 1888.0
+margin_bottom = 1616.0
 rect_min_size = Vector2( 980, 0 )
 mouse_filter = 2
 
 [node name="Grid" type="GridContainer" parent="Scroll/Center"]
 margin_left = 90.0
 margin_right = 890.0
-margin_bottom = 1888.0
+margin_bottom = 1616.0
 mouse_filter = 2
 custom_constants/vseparation = 16
 custom_constants/hseparation = 16
@@ -67,133 +81,113 @@ texture = ExtResource( 7 )
 margin_left = 272.0
 margin_right = 528.0
 margin_bottom = 256.0
-texture = ExtResource( 7 )
+texture = ExtResource( 15 )
 
 [node name="ImagesOption3" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
 margin_left = 544.0
 margin_right = 800.0
 margin_bottom = 256.0
-texture = ExtResource( 7 )
+texture = ExtResource( 16 )
 
 [node name="ImagesOption4" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
 margin_top = 272.0
 margin_right = 256.0
 margin_bottom = 528.0
-texture = ExtResource( 7 )
+texture = ExtResource( 17 )
 
 [node name="ImagesOption5" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
 margin_left = 272.0
 margin_top = 272.0
 margin_right = 528.0
 margin_bottom = 528.0
-texture = ExtResource( 7 )
+texture = ExtResource( 18 )
 
 [node name="ImagesOption6" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
 margin_left = 544.0
 margin_top = 272.0
 margin_right = 800.0
 margin_bottom = 528.0
-texture = ExtResource( 7 )
+texture = ExtResource( 19 )
 
 [node name="ImagesOption7" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
 margin_top = 544.0
 margin_right = 256.0
 margin_bottom = 800.0
-texture = ExtResource( 7 )
+texture = ExtResource( 9 )
 
 [node name="ImagesOption8" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
 margin_left = 272.0
 margin_top = 544.0
 margin_right = 528.0
 margin_bottom = 800.0
-texture = ExtResource( 7 )
+texture = ExtResource( 20 )
 
 [node name="ImagesOption9" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
 margin_left = 544.0
 margin_top = 544.0
 margin_right = 800.0
 margin_bottom = 800.0
-texture = ExtResource( 7 )
+texture = ExtResource( 21 )
 
 [node name="ImagesOption10" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
 margin_top = 816.0
 margin_right = 256.0
 margin_bottom = 1072.0
-texture = ExtResource( 7 )
+texture = ExtResource( 14 )
 
 [node name="ImagesOption11" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
 margin_left = 272.0
 margin_top = 816.0
 margin_right = 528.0
 margin_bottom = 1072.0
-texture = ExtResource( 7 )
+texture = ExtResource( 10 )
 
 [node name="ImagesOption12" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
 margin_left = 544.0
 margin_top = 816.0
 margin_right = 800.0
 margin_bottom = 1072.0
-texture = ExtResource( 7 )
+texture = ExtResource( 11 )
 
 [node name="ImagesOption13" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
 margin_top = 1088.0
 margin_right = 256.0
 margin_bottom = 1344.0
-texture = ExtResource( 7 )
+texture = ExtResource( 3 )
 
 [node name="ImagesOption14" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
 margin_left = 272.0
 margin_top = 1088.0
 margin_right = 528.0
 margin_bottom = 1344.0
-texture = ExtResource( 7 )
+texture = ExtResource( 12 )
 
 [node name="ImagesOption15" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
 margin_left = 544.0
 margin_top = 1088.0
 margin_right = 800.0
 margin_bottom = 1344.0
-texture = ExtResource( 7 )
+texture = ExtResource( 12 )
 
 [node name="ImagesOption16" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
 margin_top = 1360.0
 margin_right = 256.0
 margin_bottom = 1616.0
-texture = ExtResource( 7 )
+texture = ExtResource( 13 )
 
 [node name="ImagesOption17" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
 margin_left = 272.0
 margin_top = 1360.0
 margin_right = 528.0
 margin_bottom = 1616.0
-texture = ExtResource( 7 )
+texture = ExtResource( 22 )
 
 [node name="ImagesOption18" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
 margin_left = 544.0
 margin_top = 1360.0
 margin_right = 800.0
 margin_bottom = 1616.0
-texture = ExtResource( 7 )
-
-[node name="ImagesOption19" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
-margin_top = 1632.0
-margin_right = 256.0
-margin_bottom = 1888.0
-texture = ExtResource( 7 )
-
-[node name="ImagesOption20" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
-margin_left = 272.0
-margin_top = 1632.0
-margin_right = 528.0
-margin_bottom = 1888.0
-texture = ExtResource( 7 )
-
-[node name="ImagesOption21" parent="Scroll/Center/Grid" instance=ExtResource( 8 )]
-margin_left = 544.0
-margin_top = 1632.0
-margin_right = 800.0
-margin_bottom = 1888.0
-texture = ExtResource( 7 )
+texture = ExtResource( 23 )
 
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
@@ -239,10 +233,20 @@ text = "Confirm"
 wait_time = 0.25
 one_shot = true
 
+[node name="Button" type="Button" parent="."]
+margin_left = 890.0
+margin_top = -4.0
+margin_right = 966.0
+margin_bottom = 120.0
+custom_fonts/font = ExtResource( 6 )
+text = "X"
+flat = true
+
 [connection signal="about_to_show" from="." to="." method="_on_Images_about_to_show"]
 [connection signal="gui_input" from="Scroll" to="Scroll" method="_on_Scroll_gui_input"]
 [connection signal="search_edited" from="Searchbar" to="." method="_on_Searchbar_search_edited"]
 [connection signal="pressed" from="Confirm" to="." method="_on_Confirm_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 
 [editable path="Searchbar"]

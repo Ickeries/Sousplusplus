@@ -3,8 +3,9 @@ extends CanvasLayer
 var message_loaded = load("res://src/prefabs/message/Message.tscn")
 
 # current user info
-var current_id = 0
+var current_id = -1
 var current_password = "" 
+var current_user_name = ""
 var current_user = {}
 var favorited_recipes = []
 

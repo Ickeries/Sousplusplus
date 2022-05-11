@@ -20,6 +20,7 @@ signal darken_screen(value)
 signal play_transition(transition_animation)
 signal transition_finished()
 signal set_recipe(recipe_data)
+signal new_recipe()
 signal loading_started()
 signal loading_finished()
 # Scrolls any scroll boxes
