@@ -36,6 +36,7 @@ expand_margin_top = 16.0
 expand_margin_bottom = 16.0
 
 [node name="Images" type="Popup"]
+visible = true
 margin_left = 56.0
 margin_top = 35.0
 margin_right = 1025.0

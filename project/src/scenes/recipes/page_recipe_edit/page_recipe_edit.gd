@@ -12,9 +12,9 @@ onready var add_new_direction_button = $SubPages/Third/Scroll/Center/Vertical/In
 
 onready var image = $SubPages/First/Images
 
-var direction_loaded = load("res://src/scenes/recipes/page_recipe_edit/PageRecipeEditDirection.tscn")
-var ingredient_loaded = load("res://src/scenes/recipes/page_recipe_edit/PageRecipeEditIngredient.tscn")
-var tag_loaded = load("res://src/scenes/recipes/page_recipe_edit/PageRecipeEditTag.tscn")
+var direction_loaded = preload("res://src/scenes/recipes/page_recipe_edit/PageRecipeEditDirection.tscn")
+var ingredient_loaded = preload("res://src/scenes/recipes/page_recipe_edit/PageRecipeEditIngredient.tscn")
+var tag_loaded = preload("res://src/scenes/recipes/page_recipe_edit/PageRecipeEditTag.tscn")
 
 
 var to_position : = Vector2(0,0)
@@ -176,7 +176,7 @@ func get_tags():
 
 # Add a new ingredient to the list.
 func _on_AddNewIngredient_pressed():
-	var ingredient_instance = ingredient_loaded.instance()
+	var ingredient_instance = load("res://src/scenes/recipes/page_recipe_edit/PageRecipeEditIngredient.tscn").instance()
 	ingredient_list.add_child(ingredient_instance)
 
 func _on_AddNewDirection_pressed():
